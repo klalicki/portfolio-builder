@@ -19,14 +19,23 @@ export default config({
           directory: "src/assets/images/projects",
           publicPath: "../../assets/images/projects/",
         }),
-        content: fields.document({
+        // content: fields.document({
+        //   label: "Content",
+        //   formatting: true,
+        //   dividers: true,
+        //   links: true,
+        //   images: {
+        //     directory: "src/assets/images/projects",
+        //     publicPath: "../../assets/images/projects/",
+        //   },
+        // }),
+        content: fields.mdx({
           label: "Content",
-          formatting: true,
-          dividers: true,
-          links: true,
-          images: {
-            directory: "src/assets/images/projects",
-            publicPath: "../../assets/images/projects/",
+          options: {
+            image: {
+              directory: "src/assets/images/projects",
+              publicPath: "../../assets/images/projects/",
+            },
           },
         }),
       },
