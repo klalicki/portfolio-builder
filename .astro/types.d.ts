@@ -135,6 +135,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"projects": {
+"my-first-project.mdoc": {
+	id: "my-first-project.mdoc";
+  slug: "my-first-project";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdoc"] };
 };
 
 	};
