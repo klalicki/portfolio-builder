@@ -8,6 +8,7 @@ export default config({
     projects: collection({
       label: "Projects",
       slugField: "title",
+      previewUrl: "/projects/{slug}",
       path: "src/content/projects/*",
       entryLayout: "content",
       format: { contentField: "content" },
