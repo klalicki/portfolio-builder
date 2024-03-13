@@ -1,6 +1,5 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
-import { repeating, wrapper } from "@keystatic/core/content-components";
-import React from "react";
+import { repeating, wrapper, block } from "@keystatic/core/content-components";
 
 export default config({
   storage: {
@@ -24,14 +23,19 @@ export default config({
         }),
         content: fields.markdoc({
           label: "Content",
-          layouts: [[1], [1, 1]],
-          options: {
-            image: {
-              directory: "src/assets/images/projects",
-              publicPath: "../../assets/images/projects/",
-            },
-          },
+          options: {},
           components: {
+            newImage: block({
+              label: "newImage",
+              schema: {
+                id: fields.text({ label: "Playlist ID" }),
+                thumbnail: fields.image({
+                  label: "Thumbnail Image",
+                  directory: "src/assets/images/projects",
+                  publicPath: "../../assets/images/projects/",
+                }),
+              },
+            }),
             columnGroup: repeating({
               children: "column",
               label: "Column Group",
