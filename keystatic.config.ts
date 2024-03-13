@@ -9,9 +9,15 @@ export default config({
       label: "Projects",
       slugField: "title",
       path: "src/content/projects/*",
+      entryLayout: "content",
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
+        thumbnail: fields.image({
+          label: "Thumbnail Image",
+          directory: "src/assets/images/projects",
+          publicPath: "../../assets/images/projects/",
+        }),
         content: fields.document({
           label: "Content",
           formatting: true,
