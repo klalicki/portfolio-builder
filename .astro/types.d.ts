@@ -154,7 +154,7 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		"pages": {
+		"posts": {
 };
 
 	};

@@ -1,5 +1,6 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
+import React from "react";
 
 export default config({
   storage: {
