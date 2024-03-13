@@ -3,7 +3,6 @@ import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 const { slug } = Astro.params;
-console.log(slug);
 if (!slug) throw new Error('Slug not found');
 const post = await getEntry('projects', slug);
 

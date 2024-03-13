@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import '../styles.css'
 
 export interface Props {
@@ -6,6 +7,7 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+const projects= await getCollection('projects')
 ---
 
 <!DOCTYPE html>
@@ -19,6 +21,12 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<!-- basic nav that creates a link for each project in the projects collection -->
+		<nav>
+			{projects.map((project)=>{
+				return <a href={`/projects/${project.slug}`}>{project.data.title}</a>
+			})}
+		</nav>
 		<slot />
 	</body>
 </html>
