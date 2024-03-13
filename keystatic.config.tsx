@@ -29,7 +29,7 @@ export default config({
         //     publicPath: "../../assets/images/projects/",
         //   },
         // }),
-        content: fields.mdx({
+        content: fields.markdoc({
           label: "Content",
           options: {
             image: {
