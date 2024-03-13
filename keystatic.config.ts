@@ -19,13 +19,14 @@ export default config({
           directory: "src/assets/images/projects",
           publicPath: "../../assets/images/projects/",
         }),
-        content: fields.markdoc({
+        content: fields.document({
           label: "Content",
-          options: {
-            image: {
-              directory: "src/assets/images/projects",
-              publicPath: "../../assets/images/projects/",
-            },
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: "src/assets/images/projects",
+            publicPath: "../../assets/images/projects/",
           },
         }),
       },
