@@ -134,9 +134,7 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"pages": {
-};
-"projects": {
+		"projects": {
 "my-first-project.mdoc": {
 	id: "my-first-project.mdoc";
   slug: "my-first-project";
@@ -156,7 +154,9 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		
+		"pages": {
+};
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;

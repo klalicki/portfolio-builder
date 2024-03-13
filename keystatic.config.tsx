@@ -1,5 +1,5 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
-import { wrapper } from "@keystatic/core/content-components";
+import { repeating, wrapper } from "@keystatic/core/content-components";
 
 export default config({
   storage: {
@@ -23,6 +23,7 @@ export default config({
         }),
         content: fields.markdoc({
           label: "Content",
+          layouts: [[1], [1, 1]],
           options: {
             image: {
               directory: "src/assets/images/projects",
@@ -30,13 +31,46 @@ export default config({
             },
           },
           components: {
-            Columns: wrapper({
-              label: "Columns",
+            columnGroup: repeating({
+              children: "column",
+              label: "Column Group",
               schema: {},
+              validation: { children: { min: 1, max: 4 } },
+              ContentView: (props) => {
+                // console.log(props);
+                return (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "1rem",
+                    }}
+                  >
+                    {props.children}
+                  </div>
+                );
+              },
             }),
-            Column: wrapper({
+            column: wrapper({
               label: "Column",
-              schema: {},
+              schema: {
+                basis: fields.text({
+                  label: "desired width",
+                }),
+              },
+              forSpecificLocations: true,
+              ContentView: (props) => {
+                return (
+                  <div
+                    style={{
+                      // width: `clamp(50px, ${props.value.basis}, 100%)`,
+                      flexGrow: 1,
+                    }}
+                  >
+                    {props.children}
+                  </div>
+                );
+              },
             }),
           },
         }),
