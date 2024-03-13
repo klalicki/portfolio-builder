@@ -1,4 +1,5 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
+import { wrapper } from "@keystatic/core/content-components";
 
 export default config({
   storage: {
@@ -8,6 +9,7 @@ export default config({
     projects: collection({
       label: "Projects",
       slugField: "title",
+      columns: ["title"],
       previewUrl: "/projects/{slug}",
       path: "src/content/projects/*",
       entryLayout: "content",
@@ -26,6 +28,16 @@ export default config({
               directory: "src/assets/images/projects",
               publicPath: "../../assets/images/projects/",
             },
+          },
+          components: {
+            Columns: wrapper({
+              label: "Columns",
+              schema: {},
+            }),
+            Column: wrapper({
+              label: "Column",
+              schema: {},
+            }),
           },
         }),
       },
