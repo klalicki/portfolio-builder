@@ -1,27 +1,54 @@
-import { config, fields, collection } from '@keystatic/core';
+import { config, fields, collection, singleton } from "@keystatic/core";
 
 export default config({
   storage: {
-    kind: 'local',
+    kind: "local",
   },
   collections: {
-    posts: collection({
-      label: 'Posts',
-      slugField: 'title',
-      path: 'src/content/posts/*',
-      format: { contentField: 'content' },
+    projects: collection({
+      label: "Projects",
+      slugField: "title",
+      path: "src/content/projects/*",
+      format: { contentField: "content" },
       schema: {
-        title: fields.slug({ name: { label: 'Title' } }),
+        title: fields.slug({ name: { label: "Title" } }),
         content: fields.document({
-          label: 'Content',
+          label: "Content",
           formatting: true,
           dividers: true,
           links: true,
           images: {
-            directory: 'src/assets/images/posts',
-            publicPath: '../../assets/images/posts/',
+            directory: "src/assets/images/projects",
+            publicPath: "../../assets/images/projects/",
           },
         }),
+      },
+    }),
+    pages: collection({
+      label: "Pages",
+      slugField: "title",
+      path: "src/content/pages/*",
+      format: { contentField: "content" },
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        content: fields.document({
+          label: "Content",
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: "src/assets/images/pages",
+            publicPath: "../../assets/images/pages/",
+          },
+        }),
+      },
+    }),
+  },
+  singletons: {
+    settings: singleton({
+      label: "Settings",
+      schema: {
+        name: fields.text({ label: "Name" }),
       },
     }),
   },
