@@ -4,7 +4,6 @@ const projectCollection = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      thumbnail: image(),
     }),
 });
 

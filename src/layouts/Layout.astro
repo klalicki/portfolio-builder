@@ -26,7 +26,8 @@ const projects= await getCollection('projects')
 		<nav>
 			{projects.map((project)=>{
 				return <a href={`/projects/${project.slug}`}>
-					<Image src={project.data.thumbnail} alt=""/>
+					{project.data.thumbnail && <Image src={project.data.thumbnail} alt=""/>}
+					
 					{project.data.title}</a>
 			})}
 		</nav>

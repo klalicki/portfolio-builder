@@ -14,28 +14,14 @@ export default config({
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
-        thumbnail: fields.image({
-          label: "Thumbnail Image",
-          directory: "src/assets/images/projects",
-          publicPath: "../../assets/images/projects/",
-        }),
-        // content: fields.document({
-        //   label: "Content",
-        //   formatting: true,
-        //   dividers: true,
-        //   links: true,
-        //   images: {
-        //     directory: "src/assets/images/projects",
-        //     publicPath: "../../assets/images/projects/",
-        //   },
-        // }),
-        content: fields.markdoc({
+        content: fields.document({
           label: "Content",
-          options: {
-            image: {
-              directory: "src/assets/images/projects",
-              publicPath: "../../assets/images/projects/",
-            },
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: "src/assets/images/pages",
+            publicPath: "../../assets/images/pages/",
           },
         }),
       },
