@@ -14,7 +14,11 @@ export default config({
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
-        thumbnail: fields.image({ label: "Thumbnail Image" }),
+        thumbnail: fields.image({
+          label: "Thumbnail Image",
+          directory: "src/assets/images/pages",
+          publicPath: "../../assets/images/pages/",
+        }),
 
         content: fields.document({
           label: "Content",
