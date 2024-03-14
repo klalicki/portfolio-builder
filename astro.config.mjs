@@ -1,5 +1,5 @@
-// const isDev = process.env.NODE_ENV === "development";
-const isDev = false;
+const isDev = process.env.NODE_ENV === "development";
+// const isDev = false;
 
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
