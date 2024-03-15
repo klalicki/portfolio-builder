@@ -134,7 +134,16 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"projects": {
+		"pages": {
+"this-is-a-page.mdoc": {
+	id: "this-is-a-page.mdoc";
+  slug: "this-is-a-page";
+  body: string;
+  collection: "pages";
+  data: any
+} & { render(): Render[".mdoc"] };
+};
+"projects": {
 "my-first-project.mdoc": {
 	id: "my-first-project.mdoc";
   slug: "my-first-project";

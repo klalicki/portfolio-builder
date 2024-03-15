@@ -19,17 +19,25 @@ export default config({
           directory: "src/assets/images/pages",
           publicPath: "../../assets/images/pages/",
         }),
-
-        content: fields.document({
+        content: fields.markdoc({
           label: "Content",
-          formatting: true,
-          dividers: true,
-          links: true,
-          images: {
-            directory: "src/assets/images/pages",
-            publicPath: "../../assets/images/pages/",
+          options: {
+            image: {
+              directory: "src/assets/images/pages",
+              publicPath: "../../assets/images/pages/",
+            },
           },
         }),
+        // content: fields.document({
+        //   label: "Content",
+        //   formatting: true,
+        //   dividers: true,
+        //   links: true,
+        //   images: {
+        //     directory: "src/assets/images/pages",
+        //     publicPath: "../../assets/images/pages/",
+        //   },
+        // }),
       },
     }),
     pages: collection({
