@@ -1,3 +1,5 @@
+const urlBase = process.env.BASE_URL || "";
+
 const isDev = process.env.NODE_ENV === "development";
 // const isDev = false;
 
@@ -10,4 +12,5 @@ import keystatic from "@keystatic/astro";
 export default defineConfig({
   integrations: [markdoc(), ...(isDev ? [react(), keystatic()] : [])],
   output: isDev ? "hybrid" : "static",
+  base: urlBase,
 });
