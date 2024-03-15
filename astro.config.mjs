@@ -1,6 +1,7 @@
 const urlBase = process.env.BASE_URL || "";
 console.log("env");
 console.log(process.env);
+console.log("urlBase: " + urlBase);
 const isDev = process.env.NODE_ENV === "development";
 // const isDev = false;
 
