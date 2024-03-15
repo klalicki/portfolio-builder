@@ -25,8 +25,9 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: "." # default value when not using subfolders
-  # BUILD_PATH: subfolder
+  BUILD_PATH: ${{ github.event.repository.name }} # default value when not using subfolders
+  NODE_ENV: build
+  BASE_URL: ${{ github.event.repository.name }}
 
 jobs:
   build:
