@@ -27,7 +27,7 @@ concurrency:
 env:
   BUILD_PATH: "." # default value when not using subfolders
   NODE_ENV: build
-  BASE_URL: ${{ github.event.repository.name }}
+  BASE_URL: https://kristoff.dev/portfolio-builder/
 
 jobs:
   build:
