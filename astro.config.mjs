@@ -15,5 +15,4 @@ export default defineConfig({
   integrations: [markdoc(), ...(isDev ? [react(), keystatic()] : [])],
   output: isDev ? "hybrid" : "static",
   site: "https://kristoff.dev",
-  base: "/portfolio-builder",
 });

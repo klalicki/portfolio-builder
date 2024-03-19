@@ -1,4 +1,5 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
+import { block } from "@keystatic/core/content-components";
 
 export default config({
   storage: {
@@ -21,6 +22,17 @@ export default config({
         }),
         content: fields.markdoc({
           label: "Content",
+          components: {
+            Columns: block({
+              label: "Columns",
+              schema: {
+                columns: fields.array(
+                  fields.child({ kind: "block", placeholder: "col" }),
+                  { label: "Column" }
+                ),
+              },
+            }),
+          },
           options: {
             image: {
               directory: "src/assets/images/pages",
@@ -47,7 +59,7 @@ export default config({
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
-        content: fields.document({
+        content: fields.markdoc({
           label: "Content",
           formatting: true,
           dividers: true,
