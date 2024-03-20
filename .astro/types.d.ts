@@ -151,6 +151,13 @@ declare module 'astro:content' {
   collection: "projects";
   data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
+"testing-my-new-custom-field.mdoc": {
+	id: "testing-my-new-custom-field.mdoc";
+  slug: "testing-my-new-custom-field";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdoc"] };
 };
 
 	};

@@ -27,6 +27,7 @@ export default config({
           directory: "src/assets/images/pages",
           publicPath: "../../assets/images/pages/",
         }),
+        newField: demoField({ label: "Demo Field" }),
         content: fields.markdoc({
           label: "Content",
           components: {
