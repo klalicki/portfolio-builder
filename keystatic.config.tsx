@@ -1,5 +1,12 @@
-import { config, fields, collection, singleton } from "@keystatic/core";
+import {
+  config,
+  fields,
+  collection,
+  singleton,
+  type BasicFormField,
+} from "@keystatic/core";
 import { block } from "@keystatic/core/content-components";
+import { demoField } from "./custom-fields/demoField";
 
 export default config({
   storage: {
