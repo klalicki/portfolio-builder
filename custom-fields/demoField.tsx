@@ -1,5 +1,6 @@
 import type { BasicFormField, FormFieldStoredValue } from "@keystatic/core";
 import { useState } from "react";
+import { FieldPrimitive } from "@keystar/ui/field";
 
 function parseAsNormalField(value: FormFieldStoredValue) {
   if (value === undefined) {
@@ -25,24 +26,17 @@ export function demoField({
     formKind: undefined,
     label,
     Input(props) {
-      const [blurred, setBlurred] = useState(false);
-
       return (
-        <div>
-          <p>My custom input</p>
+        <FieldPrimitive description={description} label={label}>
           <input
             type="color"
             autoFocus={props.autoFocus}
             value={props.value}
-            onBlur={() => {
-              setBlurred(true);
-            }}
             onChange={(e) => {
               props.onChange(e.target.value);
             }}
           />
-          <input type="text" value={props.value} />
-        </div>
+        </FieldPrimitive>
       );
     },
     defaultValue() {
