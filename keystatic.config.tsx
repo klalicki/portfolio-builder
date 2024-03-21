@@ -6,7 +6,7 @@ import {
   type BasicFormField,
 } from "@keystatic/core";
 import { block } from "@keystatic/core/content-components";
-import { demoField } from "./custom-fields/demoField";
+import * as customFields from "./fields";
 
 export default config({
   storage: {
@@ -27,7 +27,7 @@ export default config({
           directory: "src/assets/images/pages",
           publicPath: "../../assets/images/pages/",
         }),
-        newField: demoField({ label: "Demo Field" }),
+        accent: customFields.colorPicker({ label: "Accent Color" }),
         content: fields.markdoc({
           label: "Content",
           components: {
@@ -69,23 +69,47 @@ export default config({
         title: fields.slug({ name: { label: "Title" } }),
         content: fields.markdoc({
           label: "Content",
-          formatting: true,
-          dividers: true,
-          links: true,
-          images: {
-            directory: "src/assets/images/pages",
-            publicPath: "../../assets/images/pages/",
+          options: {
+            image: {
+              directory: "src/assets/images/pages",
+              publicPath: "../../assets/images/pages/",
+            },
           },
         }),
       },
     }),
   },
   singletons: {
-    settings: singleton({
-      label: "Settings",
+    menu: singleton({
+      label: "Menu",
       schema: {
-        name: fields.text({ label: "Name" }),
+        position: fields.select({
+          label: "Menu Position",
+          options: [
+            { label: "Sidebar", value: "sidebar" },
+            { label: "Top bar", value: "top" },
+            {
+              label: "Sticky Topbar",
+              value: "sticky",
+            },
+            { label: "Hamburger", value: "hamburger" },
+          ],
+          defaultValue: "sidebar",
+        }),
       },
     }),
   },
 });
+/* {
+          label: "Menu Position",
+          options: [
+            { label: "Sidebar", value: "sidebar" },
+            { label: "Top bar", value: "top" },
+            {
+              label: "Sticky Topbar",
+              value: "sticky",
+            },
+            { label: "Hamburger", value: "hamburger" },
+          ],
+          defaultValue: "sidebar",
+        } */
