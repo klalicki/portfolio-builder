@@ -31,7 +31,8 @@ import { ViewTransitions } from 'astro:transitions';
 	</head>
 	<body >
 		<!-- basic nav that creates a link for each project in the projects collection -->
-		<nav>
+		<header transition:animate="initial">
+	<nav>
 			{projects.map((project)=>{
 				return <a href={`/projects/${project.slug}`}>
 					{project.data.thumbnail && <Image style={{width:'100px'}} src={project.data.thumbnail} 
@@ -42,6 +43,11 @@ import { ViewTransitions } from 'astro:transitions';
 					{project.data.title}</a>
 			})}
 		</nav>
-		<slot  />
+		</header>
+	
+		<main transition:animate="slide" >
+<slot  />
+		</main>
+		
 	</body>
 </html>

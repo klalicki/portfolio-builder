@@ -37,7 +37,11 @@ export default config({
           directory: "src/assets/images/pages",
           publicPath: "../../assets/images/pages/",
         }),
-        accent: customFields.colorPicker({ label: "Accent Color" }),
+        accent: customFields.colorPicker({
+          description: "an accenty color",
+          label: "Accent Color",
+          defaultValue: "#ff0000",
+        }),
         content: fields.markdoc({
           label: "Content",
           components: {
