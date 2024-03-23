@@ -16,4 +16,7 @@ export default defineConfig({
   integrations: [markdoc(), ...(isDev ? [react(), keystatic()] : [])],
   output: isDev ? "hybrid" : "static",
   site: isDev ? "" : urlBase,
+  build: {
+    assetsPrefix: isDev ? "" : urlBase,
+  },
 });
