@@ -54,6 +54,9 @@ jobs:
           npm run astro build \
             --site "${{ steps.pages.outputs.origin }}"
         working-directory: ${{ env.BUILD_PATH }}
+      - name: Post-build formatting
+        run: node ./postbuild.mjs -path ${{ env.BASE_URL }}
+        working-directory: ${{ env.BUILD_PATH }}      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
