@@ -28,16 +28,29 @@ if ((argvs[0] === "--p" || argvs[0] === "-path") && argvs[1]) {
           let content = fs.readFileSync(filePath);
 
           content = String(content).replace(
-            /src=["'][.]{0,1}\//g,
-            `src="${PRODUCTION_URL}/`
+            /src="\//g,
+            `src="${PRODUCTION_URL}`
           );
           content = String(content).replace(
-            /href=["'][.]{0,1}\//g,
-            `href="${PRODUCTION_URL}/`
+            /href="\//g,
+            `href="${PRODUCTION_URL}`
           );
           content = String(content).replace(
-            /url\(["'][.]{0,1}\//g,
-            `url("${PRODUCTION_URL}/`
+            /url\("\//g,
+            `url("${PRODUCTION_URL}`
+          );
+
+          content = String(content).replace(
+            /src='\//g,
+            `src='${PRODUCTION_URL}`
+          );
+          content = String(content).replace(
+            /href='\//g,
+            `href='${PRODUCTION_URL}`
+          );
+          content = String(content).replace(
+            /url\('\//g,
+            `url('${PRODUCTION_URL}`
           );
           fs.writeFileSync(filePath, content);
         }
