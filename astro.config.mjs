@@ -12,7 +12,8 @@ import keystatic from "@keystatic/astro";
 
 // https://astro.build/config
 export default defineConfig({
+  base: urlBase,
   integrations: [markdoc(), ...(isDev ? [react(), keystatic()] : [])],
   output: isDev ? "hybrid" : "static",
-  site: isDev ? "" : "https://kristoff.dev/portfolio-builder",
+  site: isDev ? "" : "https://kristoff.dev/portfolio-builder/",
 });
