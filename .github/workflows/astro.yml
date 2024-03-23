@@ -27,7 +27,7 @@ concurrency:
 env:
   BUILD_PATH: "." # default value when not using subfolders
   NODE_ENV: build
-  BASE_URL: https://kristoff.dev/portfolio-builder
+  BASE_URL: https://kristoff.dev/portfolio-builder/
 
 jobs:
   build:
@@ -56,7 +56,7 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
       - name: Post-build formatting
         run: node ./postbuild.mjs -path ${{ env.BASE_URL }}
-        working-directory: ${{ env.BUILD_PATH }}      
+        working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

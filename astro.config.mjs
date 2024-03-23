@@ -1,4 +1,4 @@
-const urlBase = process.env.BASE_URL + "/" || "";
+const urlBase = process.env.BASE_URL || "";
 // console.log("env");
 // console.log(process.env);
 console.log("urlBase: " + urlBase);
