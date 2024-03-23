@@ -21,7 +21,7 @@ export default config({
   collections: {
     projects: collection({
       label: "Projects",
-      slugField: "title",
+      slugField: "title", 
       previewUrl: "/projects/{slug}",
       path: "src/content/projects/*",
       entryLayout: "content",
