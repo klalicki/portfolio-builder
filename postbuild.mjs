@@ -29,15 +29,15 @@ if ((argvs[0] === "--p" || argvs[0] === "-path") && argvs[1]) {
 
           content = String(content).replace(
             /src=["'][.]{0,1}\//g,
-            `src="${PRODUCTION_URL}`
+            `src="${PRODUCTION_URL}/`
           );
           content = String(content).replace(
             /href=["'][.]{0,1}\//g,
-            `href="${PRODUCTION_URL}`
+            `href="${PRODUCTION_URL}/`
           );
           content = String(content).replace(
             /url\(["'][.]{0,1}\//g,
-            `url("${PRODUCTION_URL}`
+            `url("${PRODUCTION_URL}/`
           );
           fs.writeFileSync(filePath, content);
         }
