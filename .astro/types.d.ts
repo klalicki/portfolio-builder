@@ -144,6 +144,13 @@ declare module 'astro:content' {
 } & { render(): Render[".mdoc"] };
 };
 "projects": {
+"asdasd.mdoc": {
+	id: "asdasd.mdoc";
+  slug: "asdasd";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdoc"] };
 "my-first-project.mdoc": {
 	id: "my-first-project.mdoc";
   slug: "my-first-project";

@@ -1,6 +1,4 @@
-const urlBase = process.env.BASE_URL
-  ? { base: process.env.BASE_URL + "/" }
-  : {};
+const urlBase = process.env.BASE_URL + "/" || "";
 // console.log("env");
 // console.log(process.env);
 console.log("urlBase: " + urlBase);
@@ -14,7 +12,11 @@ import keystatic from "@keystatic/astro";
 
 // https://astro.build/config
 export default defineConfig({
-  ...urlBase,
+  base: urlBase,
   integrations: [markdoc(), ...(isDev ? [react(), keystatic()] : [])],
   output: isDev ? "hybrid" : "static",
+  site: isDev ? "" : urlBase,
+  build: {
+    assetsPrefix: isDev ? "" : urlBase,
+  },
 });
