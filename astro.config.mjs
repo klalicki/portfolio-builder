@@ -1,6 +1,6 @@
-const urlBase = process.env.BASE_URL || "";
-console.log("env");
-console.log(process.env);
+const urlBase = process.env.BASE_URL + "/" || "";
+// console.log("env");
+// console.log(process.env);
 console.log("urlBase: " + urlBase);
 const isDev = process.env.NODE_ENV === "development";
 // const isDev = false;
@@ -15,5 +15,5 @@ export default defineConfig({
   base: urlBase,
   integrations: [markdoc(), ...(isDev ? [react(), keystatic()] : [])],
   output: isDev ? "hybrid" : "static",
-  site: isDev ? "" : "https://kristoff.dev/portfolio-builder/",
+  site: isDev ? "" : urlBase,
 });
