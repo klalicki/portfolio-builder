@@ -5,6 +5,7 @@ const projectCollection = defineCollection({
     z.object({
       title: z.string(),
       thumbnail: image(),
+      accent: z.string(),
     }),
 });
 

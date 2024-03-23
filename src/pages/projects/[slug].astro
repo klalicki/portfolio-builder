@@ -1,6 +1,8 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import MultiColumn from '../../components/pagebuilder/MultiColumn.astro';
+import Column from '../../components/pagebuilder/Column.astro';
 
 const { slug } = Astro.params;
 if (!slug) throw new Error('Slug not found');
@@ -19,5 +21,5 @@ export async function getStaticPaths() {
 
 <Layout title={post.data.title}>
   <h1>{post.data.title}</h1>
-  <Content />
+  <Content components={{MultiColumn}} />
 </Layout>

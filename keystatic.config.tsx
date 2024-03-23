@@ -5,7 +5,7 @@ import {
   singleton,
   type BasicFormField,
 } from "@keystatic/core";
-import { block } from "@keystatic/core/content-components";
+import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import * as customFields from "./fields";
 
 export default config({
@@ -21,17 +21,14 @@ export default config({
   collections: {
     projects: collection({
       label: "Projects",
-      slugField: "title", 
+      slugField: "title",
       previewUrl: "/projects/{slug}",
       path: "src/content/projects/*",
       entryLayout: "content",
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
-        tags: fields.relationship({
-          label: "Tags",
-          collection: "tags",
-        }),
+
         thumbnail: fields.image({
           label: "Thumbnail Image",
           directory: "src/assets/images/pages",
@@ -45,14 +42,14 @@ export default config({
         content: fields.markdoc({
           label: "Content",
           components: {
-            Columns: block({
-              label: "Columns",
-              schema: {
-                columns: fields.array(
-                  fields.child({ kind: "block", placeholder: "col" }),
-                  { label: "Column" }
-                ),
-              },
+            MultiColumn: repeating({
+              label: "Multi-Column Layout",
+              children: ["Column"],
+              schema: {},
+            }),
+            Column: wrapper({
+              label: "Column",
+              schema: {},
             }),
           },
           options: {
@@ -78,7 +75,7 @@ export default config({
         title: fields.slug({ name: { label: "Title" } }),
         blocks: fields.blocks(
           {
-            // First block option is a link to a Page
+            // First block option is just a markdoc field
             text: {
               label: "Text",
               schema: fields.markdoc({
@@ -112,16 +109,26 @@ export default config({
                     label: "Feed type",
                     options: [
                       { label: "All published projects", value: "all" },
-                      { label: "All published projects by tag", value: "tag" },
                       { label: "Select projects", value: "select" },
                     ],
                     defaultValue: "all",
                   }),
 
                   {
+                    select: fields.array(
+                      fields.relationship({
+                        label: "a",
+                        collection: "projects",
+                      }),
+                      {
+                        label: "choose a bla",
+                        itemLabel: (props) => {
+                          return props.value || "page";
+                        },
+                      }
+                    ),
+
                     all: fields.empty(),
-                    tag: fields.empty(),
-                    select: fields.empty(),
                   }
                 ),
               }),

@@ -135,32 +135,25 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"pages": {
-"this-is-a-page.mdoc": {
-	id: "this-is-a-page.mdoc";
-  slug: "this-is-a-page";
+"a-new-page.mdoc": {
+	id: "a-new-page.mdoc";
+  slug: "a-new-page";
+  body: string;
+  collection: "pages";
+  data: any
+} & { render(): Render[".mdoc"] };
+"a-new-page/blocks/1/value.mdoc": {
+	id: "a-new-page/blocks/1/value.mdoc";
+  slug: "a-new-page/blocks/1/value";
   body: string;
   collection: "pages";
   data: any
 } & { render(): Render[".mdoc"] };
 };
 "projects": {
-"my-first-project.mdoc": {
-	id: "my-first-project.mdoc";
-  slug: "my-first-project";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".mdoc"] };
-"project-2.mdoc": {
-	id: "project-2.mdoc";
-  slug: "project-2";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".mdoc"] };
-"project-3.mdoc": {
-	id: "project-3.mdoc";
-  slug: "project-3";
+"you-wouldn-t-download-a-hedgehog.mdoc": {
+	id: "you-wouldn-t-download-a-hedgehog.mdoc";
+  slug: "you-wouldn-t-download-a-hedgehog";
   body: string;
   collection: "projects";
   data: InferEntrySchema<"projects">
