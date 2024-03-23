@@ -14,5 +14,5 @@ import keystatic from "@keystatic/astro";
 export default defineConfig({
   integrations: [markdoc(), ...(isDev ? [react(), keystatic()] : [])],
   output: isDev ? "hybrid" : "static",
-  site: "https://kristoff.dev",
+  site: isDev ? "" : "https://kristoff.dev/portfolio-builder",
 });
