@@ -10,16 +10,9 @@ import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
 
-import relativeLinks from "astro-relative-links";
-
 // https://astro.build/config
 export default defineConfig({
-  base: urlBase,
-  integrations: [
-    markdoc(),
-    ...(isDev ? [react(), keystatic()] : []),
-    relativeLinks(),
-  ],
+  integrations: [markdoc(), ...(isDev ? [react(), keystatic()] : [])],
   output: isDev ? "hybrid" : "static",
   site: "https://kristoff.dev",
 });
