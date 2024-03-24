@@ -16,7 +16,11 @@ export default defineMarkdocConfig({
     },
     ImagePopout: {
       render: component("./src/components/pagebuilder/ImagePopout.astro"),
-      attributes: {},
+      attributes: {
+        image: { type: String },
+        altText: { type: String },
+        caption: { type: String },
+      },
     },
     CodeEmbed: {
       render: component("./src/components/pagebuilder/CodeEmbed.astro"),
