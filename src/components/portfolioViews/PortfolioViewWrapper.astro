@@ -42,7 +42,7 @@ const {Container,Item}=componentMappings[validType];
 ---
 <Container>
 
-{projectList.map((item)=>{
-  return <Item />
+{projectList.map((item,index)=>{
+  return <Item itemData={item} itemIndex={index} />
 })}
 </Container>  
