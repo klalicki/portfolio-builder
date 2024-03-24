@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+const {props}=Astro;
+console.log('layout:',props.portfolioLayout)
+const allProjects = await getCollection('projects');
+import CardContainer from './card/CardContainer.astro';
+import CardItem from './card/CardItem.astro'
+import TileContainer  from './tile/TileContainer.astro'
+import TileItem  from './tile/TileItem.astro'
+
+
+const componentMappings = {
+  'cards':{Container:CardContainer,Item:CardItem},
+  'tiles':{Container:TileContainer,Item:TileItem}
+}
+
+let projectList:{
+    id: "an-actual-design-project.mdoc";
+    slug: "an-actual-design-project";
+    body: string;
+    collection: "projects";
+    data: any;
+}[]=[];
+
+if (props.projectSource.discriminant==="selected"){
+  projectList=props.projectSource.value.map((slug:string)=>{
+    return allProjects.find((project)=>{
+      return project.slug===slug
+    })
+  })
+} else {
+  //@ts-ignore;
+  projectList=allProjects;
+}
+let validType:"cards"|"tiles"="cards"
+if (Object.keys(componentMappings).includes(props.portfolioLayout)){
+validType=props.portfolioLayout
+}
+
+const {Container,Item}=componentMappings[validType];
+
+---
+<Container>
+
+{projectList.map((item)=>{
+  return <Item />
+})}
+</Container>  

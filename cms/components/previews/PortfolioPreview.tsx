@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { getCollection, getEntry } from "astro:content";
-import PortfolioView from "../../../src/components/portfolioViews/PortfolioView.astro";
+import PortfolioView from "../../../src/components/portfolioViews/PortfolioViewWrapper.astro";
 const PortfolioPreview = (props: {
   value: {
     readonly unique: string;
