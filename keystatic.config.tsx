@@ -100,6 +100,7 @@ export default config({
     homepage: singleton({
       label: "Homepage",
       entryLayout: "content",
+      previewUrl: "/",
       format: { contentField: "content" },
       path: "src/content/homepage/index",
       schema: {
