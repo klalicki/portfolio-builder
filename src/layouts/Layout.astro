@@ -13,7 +13,7 @@ const projects= await getCollection('projects');
 
 import { ViewTransitions } from 'astro:transitions';
 
-
+const isDev = process.env.NODE_ENV === "development";
 
 ---
 
@@ -40,6 +40,17 @@ import { ViewTransitions } from 'astro:transitions';
 			width: 100%;
 			max-width: 600px;
 		}
+		.floating-edit{
+			
+			
+			position: fixed;
+			transform:translateX(50%) translateX(-20px) rotate(-90deg) ;
+			right:0;
+		}
+		.floating-edit a{padding:.5rem;background-color: lightpink;
+			text-decoration: none;
+
+		}
 	
 	</style>
 	<body >
@@ -61,6 +72,11 @@ import { ViewTransitions } from 'astro:transitions';
 		<main transition:animate="slide" >
 <slot  />
 		</main>
+		{isDev && <div class="floating-edit">
+			<a href="/keystatic">			Click here to enter the site editor</a>
+
+		</div>}
+		
 		
 	</body>
 </html>
