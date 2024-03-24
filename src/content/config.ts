@@ -10,7 +10,6 @@ const projectCollection = defineCollection({
 });
 
 const pageCollection = defineCollection({
-  type: "data",
   schema: z.object({
     title: z.string(),
   }),
