@@ -59,7 +59,7 @@ export default config({
                 }),
               },
             }),
-            Image: block({
+            ImagePopout: block({
               label: "Image (better)",
               ContentView(props) {
                 console.log(props.value.image);
