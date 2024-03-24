@@ -29,6 +29,19 @@ import { ViewTransitions } from 'astro:transitions';
 
 		<ViewTransitions/>
 	</head>
+	<style is:global>
+		main{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		main > * {
+			display: block;
+			width: 100%;
+			max-width: 600px;
+		}
+	
+	</style>
 	<body >
 		<!-- basic nav that creates a link for each project in the projects collection -->
 		<header transition:animate="initial">

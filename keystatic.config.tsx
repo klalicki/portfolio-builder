@@ -4,6 +4,7 @@ import {
   collection,
   singleton,
   type BasicFormField,
+  BlockWrapper,
 } from "@keystatic/core";
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import * as customFields from "./fields";
@@ -42,6 +43,22 @@ export default config({
         content: fields.markdoc({
           label: "Content",
           components: {
+            CustomWidth: wrapper({
+              label: "Custom Width Container",
+              ContentView(props) {
+                return (
+                  <div style={{ maxWidth: props.value.width }}>
+                    {props.children}
+                  </div>
+                );
+              },
+              schema: {
+                width: customFields.cssUnit({
+                  label: "Max Width",
+                  defaultValue: "100vw",
+                }),
+              },
+            }),
             MultiColumn: repeating({
               label: "Multi-Column Layout",
               children: ["Column"],

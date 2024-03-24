@@ -1,6 +1,11 @@
 import { defineMarkdocConfig, component } from "@astrojs/markdoc/config";
 
 export default defineMarkdocConfig({
+  nodes: {
+    document: {
+      render: null, // default 'article'
+    },
+  },
   tags: {
     Column: {
       render: component("./src/components/pagebuilder/Column.astro"),
@@ -16,6 +21,13 @@ export default defineMarkdocConfig({
         gap: { type: String },
       },
     },
+    CustomWidth: {
+      render: component("./src/components/pagebuilder/CustomWidth.astro"),
+      attributes: {
+        width: { type: String },
+      },
+    },
+
     aside: {
       render: component("./src/components/Aside.astro"),
       attributes: {
