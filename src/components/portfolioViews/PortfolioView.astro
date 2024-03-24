@@ -1,38 +1,28 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 const {props}=Astro;
 console.log('props:',props)
 const allProjects = await getCollection('projects');
 
-let projectList=[];
+let projectList:{
+    id: "an-actual-design-project.mdoc";
+    slug: "an-actual-design-project";
+    body: string;
+    collection: "projects";
+    data: any;
+}[]=[];
 if (props.projectSource.discriminant==="selected"){
-  projectList=props.projectSource.value.map((slug)=>{
+  projectList=props.projectSource.value.map((slug:string)=>{
     return allProjects.find((project)=>{
       return project.slug===slug
     })
   })
 } else {
+  //@ts-ignore;
   projectList=allProjects;
-
-
 }
-
-// console.log(allProjects)
-// console.log(props.projectSource.discriminant)
-
-/* 
-import Layout from '../layouts/Layout.astro';
-
-const { slug } = Astro.params;
-if (!slug) throw new Error('Slug not found');
-const page = await getEntry('pages', slug);
-
-if (!page) throw new Error('No page found for this slug');
-const { Content } = await page.render();
-console.log(page); */
-
 ---
-<div><h2>pf</h2>
+
 {projectList.map((item)=>{
   return <div>{item.slug}</div>
 })}

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { getCollection, getEntry } from "astro:content";
-
-const PortfolioView = (props: {
+import PortfolioView from "../../../src/components/portfolioViews/PortfolioView.astro";
+const PortfolioPreview = (props: {
   value: {
     readonly unique: string;
     readonly portfolioLayout: "cards" | "tiles";
@@ -16,18 +16,11 @@ const PortfolioView = (props: {
         };
   };
 }) => {
-  useEffect(() => {
-    const getPosts = async () => {
-      const bla = await getCollection("projects");
-      console.log(bla);
-    };
-    getPosts();
-  });
   return (
     <div>
-      For now there's no easy way to view a preview of the portfolio page inside
-      this editor. :(
+      Alas, there is no easy way to actually preview this here. :( If you go to
+      the live page you can see it.
     </div>
   );
 };
-export default PortfolioView;
+export default PortfolioPreview;
