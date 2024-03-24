@@ -13,7 +13,7 @@ export default config({
   ui: {
     navigation: {
       Content: ["projects", "pages"],
-      Settings: ["menu"],
+      Settings: ["menu", "general"],
     },
   },
   storage: {
@@ -268,6 +268,10 @@ export default config({
     }),
   },
   singletons: {
+    general: singleton({
+      label: "General Settings",
+      schema: {},
+    }),
     menu: singleton({
       label: "Menu",
       schema: {
