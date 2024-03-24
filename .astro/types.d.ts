@@ -135,9 +135,9 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"homepage": {
-"homepage.mdoc.mdoc": {
-	id: "homepage.mdoc.mdoc";
-  slug: "homepagemdoc";
+"index.mdoc": {
+	id: "index.mdoc";
+  slug: "index";
   body: string;
   collection: "homepage";
   data: any
