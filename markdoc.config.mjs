@@ -43,6 +43,7 @@ export default defineMarkdocConfig({
     PortfolioView: {
       render: component("./src/components/portfolioViews/PortfolioView.astro"),
       attributes: {
+        unique: { type: String },
         portfolioLayout: { type: String },
         projectSource: {
           type: Object,

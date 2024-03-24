@@ -6,6 +6,7 @@ import PortfolioView from "./previews/PortfolioView";
 export const pageComponents = {
   PortfolioView: block({
     label: "Portfolio View",
+    ContentView: PortfolioView,
     schema: {
       unique: customFields.uniquify({ label: "unif", description: "unif" }),
       portfolioLayout: fields.select({

@@ -3,6 +3,20 @@ import { getCollection, getEntry } from 'astro:content';
 const {props}=Astro;
 console.log('props:',props)
 const allProjects = await getCollection('projects');
+
+let projectList=[];
+if (props.projectSource.discriminant==="selected"){
+  projectList=props.projectSource.value.map((slug)=>{
+    return allProjects.find((project)=>{
+      return project.slug===slug
+    })
+  })
+} else {
+  projectList=allProjects;
+
+
+}
+
 // console.log(allProjects)
 // console.log(props.projectSource.discriminant)
 
@@ -18,4 +32,9 @@ const { Content } = await page.render();
 console.log(page); */
 
 ---
-<div>PORTOFLIO</div>
+<div><h2>pf</h2>
+{projectList.map((item)=>{
+  return <div>{item.slug}</div>
+})}
+
+</div>
