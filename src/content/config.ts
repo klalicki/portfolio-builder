@@ -13,9 +13,6 @@ const pageCollection = defineCollection({
   type: "data",
   schema: z.object({
     title: z.string(),
-    blocks: z.array({
-      discriminant: z.string(),
-    }),
   }),
 });
 

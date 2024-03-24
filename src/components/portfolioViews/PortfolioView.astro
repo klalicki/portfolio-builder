@@ -1,0 +1,21 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+const {props}=Astro;
+console.log('props:',props)
+const allProjects = await getCollection('projects');
+// console.log(allProjects)
+// console.log(props.projectSource.discriminant)
+
+/* 
+import Layout from '../layouts/Layout.astro';
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Slug not found');
+const page = await getEntry('pages', slug);
+
+if (!page) throw new Error('No page found for this slug');
+const { Content } = await page.render();
+console.log(page); */
+
+---
+<div>PORTOFLIO</div>

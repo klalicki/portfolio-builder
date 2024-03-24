@@ -1,21 +1,18 @@
+import { useEffect } from "react";
+
 const PortfolioView = (props: {
   value: {
-    readonly layout: string;
-    readonly projectSource:
-      | {
-          readonly discriminant: "all";
-          readonly value: null;
-        }
-      | {
-          readonly discriminant: "selected";
-          readonly value: readonly (string | null)[];
-        };
+    layout: string | null;
+    projectSource: {
+      discriminant: string | null;
+      value: (string | null)[] | null;
+    };
   };
 }) => {
   return (
     <div>
-      portfolio layout is {props.value.layout}. Project source is{" "}
-      {props.value.projectSource.discriminant}
+      For now there's no easy way to view a preview of the portfolio page inside
+      this editor. :(
     </div>
   );
 };

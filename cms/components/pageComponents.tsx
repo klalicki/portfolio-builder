@@ -6,14 +6,16 @@ import PortfolioView from "./previews/PortfolioView";
 export const pageComponents = {
   PortfolioView: block({
     label: "Portfolio View",
-    ContentView: PortfolioView,
     schema: {
-      layout: fields.select({
+      unique: customFields.uniquify({ label: "unif", description: "unif" }),
+      portfolioLayout: fields.select({
         label: "Layout",
         description: "which layout should this portfolio view use?",
-        defaultValue: "tiles",
-        options: [{ label: "Tiles", value: "tiles" }],
-        
+        defaultValue: "cards",
+        options: [
+          { label: "Cards", value: "cards" },
+          { label: "Tiles", value: "tiles" },
+        ],
       }),
       projectSource: fields.conditional(
         fields.select({
@@ -25,7 +27,7 @@ export const pageComponents = {
           ],
         }),
         {
-          all: fields.empty(),
+          all: customFields.uniquify({ label: "unif", description: "unif" }),
           selected: fields.array(
             fields.relationship({
               label: "Select Projects",

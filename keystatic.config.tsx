@@ -8,7 +8,6 @@ import {
 } from "@keystatic/core";
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import * as customFields from "./cms/fields";
-import Image from "astro/components/Image.astro";
 import { standardComponents } from "./cms/components/standardComponents";
 import { pageComponents } from "./cms/components/pageComponents";
 export default config({
@@ -75,6 +74,7 @@ export default config({
     pages: collection({
       label: "Pages",
       slugField: "title",
+      previewUrl: "/{slug}",
       path: "src/content/pages/*",
       entryLayout: "content",
       format: { contentField: "content" },

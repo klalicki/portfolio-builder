@@ -40,6 +40,15 @@ export default defineMarkdocConfig({
         width: { type: String },
       },
     },
+    PortfolioView: {
+      render: component("./src/components/portfolioViews/PortfolioView.astro"),
+      attributes: {
+        portfolioLayout: { type: String },
+        projectSource: {
+          type: Object,
+        },
+      },
+    },
 
     aside: {
       render: component("./src/components/Aside.astro"),
