@@ -47,7 +47,7 @@ export default config({
               children: ["Column"],
               schema: {
                 justifyContent: fields.select({
-                  label: "Justify Items",
+                  label: "Justify Content",
                   description:
                     "if the screen is wider than the items, how are they aligned horizontally?",
                   defaultValue: "center",
@@ -55,6 +55,18 @@ export default config({
                     { label: "Left", value: "flex-start" },
                     { label: "Center", value: "center" },
                     { label: "Right", value: "flex-end" },
+                    {
+                      label: "Justify (space-between)",
+                      value: "space-between",
+                    },
+                    {
+                      label: "Space evenly",
+                      value: "space-evenly",
+                    },
+                    {
+                      label: "Equal space around",
+                      value: "space-around",
+                    },
                   ],
                 }),
                 gap: customFields.cssUnit({
@@ -82,10 +94,11 @@ export default config({
               label: "Column",
 
               schema: {
-                targetWidth: fields.text({
+                targetWidth: customFields.cssUnit({
                   label: "target width",
                   description:
-                    "the width that this column will 'try' to be if the screen is wide enough. This can be any valid CSS unit (px,rem,etc) ",
+                    "the width that this column will 'try' to be if the screen is wide enough.",
+                  defaultValue: "100px",
                 }),
                 flexGrow: fields.checkbox({
                   label: "Allow to grow",
