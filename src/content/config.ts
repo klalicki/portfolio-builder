@@ -14,8 +14,10 @@ const pageCollection = defineCollection({
     title: z.string(),
   }),
 });
+const homepageCollection = defineCollection({});
 
 export const collections = {
   pages: pageCollection,
   projects: projectCollection,
+  homepage: homepageCollection,
 };

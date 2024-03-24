@@ -101,6 +101,7 @@ export default config({
       label: "Homepage",
       entryLayout: "content",
       format: { contentField: "content" },
+      path: "src/content/homepage/homepage.mdoc",
       schema: {
         content: fields.markdoc({
           label: "Content",
