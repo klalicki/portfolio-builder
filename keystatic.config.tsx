@@ -10,6 +10,7 @@ import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import * as customFields from "./cms/fields";
 import Image from "astro/components/Image.astro";
 import { standardComponents } from "./cms/components/standardComponents";
+import { pageComponents } from "./cms/components/pageComponents";
 export default config({
   ui: {
     navigation: {
@@ -41,6 +42,17 @@ export default config({
           label: "Accent Color",
           defaultValue: "#ff0000",
         }),
+        publishStatus: fields.select({
+          label: "Published?",
+          description:
+            'Published means the page is publicly visible and will appear in the "all" portfolio type. Unpublished means the page is completely hidden. Unlisted means the page will be published, but will not be placed in any menus or portfolios unless specifically selected.',
+          defaultValue: "published",
+          options: [
+            { label: "Yes", value: "published" },
+            { label: "No", value: "unpublished" },
+            { label: "Unlisted", value: "unlisted" },
+          ],
+        }),
         content: fields.markdoc({
           label: "Content",
           components: {
@@ -66,69 +78,19 @@ export default config({
       path: "src/content/pages/*",
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
-        blocks: fields.blocks(
-          {
-            // First block option is just a markdoc field
-            text: {
-              label: "Text",
-              schema: fields.markdoc({
-                label: "Content",
-                components: {
-                  Columns: block({
-                    label: "Columns",
-                    schema: {
-                      columns: fields.array(
-                        fields.child({ kind: "block", placeholder: "col" }),
-                        { label: "Column!" }
-                      ),
-                    },
-                  }),
-                },
-                options: {
-                  image: {
-                    directory: "src/assets/images/pages",
-                    publicPath: "../../assets/images/pages/",
-                  },
-                },
-              }),
-            },
-            // Second block option is a link to a URL
-            portfolio: {
-              label: "Portfolio Feed",
-              schema: fields.object({
-                url: fields.text({ label: "URL" }),
-                mode: fields.conditional(
-                  fields.select({
-                    label: "Feed type",
-                    options: [
-                      { label: "All published projects", value: "all" },
-                      { label: "Select projects", value: "select" },
-                    ],
-                    defaultValue: "all",
-                  }),
-
-                  {
-                    select: fields.array(
-                      fields.relationship({
-                        label: "a",
-                        collection: "projects",
-                      }),
-                      {
-                        label: "choose a bla",
-                        itemLabel: (props) => {
-                          return props.value || "page";
-                        },
-                      }
-                    ),
-
-                    all: fields.empty(),
-                  }
-                ),
-              }),
+        content: fields.markdoc({
+          label: "Content",
+          components: {
+            ...standardComponents,
+            ...pageComponents,
+          },
+          options: {
+            image: {
+              directory: "src/assets/images/pages",
+              publicPath: "../../assets/images/pages/",
             },
           },
-          { label: "Blocks" }
-        ),
+        }),
       },
     }),
   },
