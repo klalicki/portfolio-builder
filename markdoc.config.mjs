@@ -11,7 +11,10 @@ export default defineMarkdocConfig({
     },
     MultiColumn: {
       render: component("./src/components/pagebuilder/MultiColumn.astro"),
-      attributes: {},
+      attributes: {
+        justifyContent: { type: String },
+        gap: { type: String },
+      },
     },
     aside: {
       render: component("./src/components/Aside.astro"),
