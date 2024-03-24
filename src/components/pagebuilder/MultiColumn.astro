@@ -1,6 +1,6 @@
 ---
 const {props}=Astro;
-const {justifyContent,gap}=props
+const {justifyContent,gap,alignItems}=props
 ---
 <style>
 .multicolumn_container{
@@ -8,6 +8,6 @@ const {justifyContent,gap}=props
   flex-wrap: wrap;
 }
 </style>
-<div class="multicolumn_container" style={{justifyContent:justifyContent,gap:gap}}>
+<div class="multicolumn_container" style={{justifyContent:justifyContent,gap:gap,alignItems:alignItems}}>
   <slot />
 </div>

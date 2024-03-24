@@ -59,6 +59,24 @@ export default config({
                 }),
               },
             }),
+            CodeEmbed: block({
+              label: "HTML Embed",
+              schema: {
+                content: customFields.codeEditor({
+                  label: "Code",
+                  description:
+                    "Use this component to place embed codes, etc. WARNING: don't paste sketchy code from the internet in here unless you know what it does!",
+                  defaultValue: "",
+                }),
+              },
+              ContentView(props) {
+                return (
+                  <div
+                    dangerouslySetInnerHTML={{ __html: props.value.content }}
+                  />
+                );
+              },
+            }),
             MultiColumn: repeating({
               label: "Multi-Column Layout",
               children: ["Column"],
@@ -86,6 +104,17 @@ export default config({
                     },
                   ],
                 }),
+                alignItems: fields.select({
+                  label: "Align Items",
+                  description:
+                    "If columns have different amounts of content, how are they aligned vertically?",
+                  defaultValue: "flex-start",
+                  options: [
+                    { label: "Top", value: "flex-start" },
+                    { label: "Bottom", value: "flex-end" },
+                    { label: "Center", value: "center" },
+                  ],
+                }),
                 gap: customFields.cssUnit({
                   label: "Gap",
                   description: "The gap between columns",
@@ -98,7 +127,7 @@ export default config({
                     style={{
                       display: "flex",
                       justifyContent: props.value.justifyContent,
-
+                      alignItems: props.value.alignItems,
                       gap: props.value.gap,
                       containerName: "col-container",
                       containerType: "normal",

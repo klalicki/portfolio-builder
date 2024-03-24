@@ -14,10 +14,15 @@ export default defineMarkdocConfig({
         flexGrow: { type: Boolean },
       },
     },
+    CodeEmbed: {
+      render: component("./src/components/pagebuilder/CodeEmbed.astro"),
+      attributes: { content: { type: String } },
+    },
     MultiColumn: {
       render: component("./src/components/pagebuilder/MultiColumn.astro"),
       attributes: {
         justifyContent: { type: String },
+        alignItems: { type: String },
         gap: { type: String },
       },
     },
