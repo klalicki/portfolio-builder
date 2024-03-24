@@ -81,6 +81,7 @@ export default config({
                     style={{
                       display: "flex",
                       justifyContent: props.value.justifyContent,
+
                       gap: props.value.gap,
                       containerName: "col-container",
                       containerType: "normal",
@@ -99,7 +100,9 @@ export default config({
                 return (
                   <div
                     style={{
-                      maxWidth: props.value.targetWidth,
+                      maxWidth: props.value.flexGrow
+                        ? "100%"
+                        : props.value.targetWidth,
                     }}
                   >
                     {props.children}
