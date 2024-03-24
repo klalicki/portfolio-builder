@@ -45,11 +45,54 @@ export default config({
             MultiColumn: repeating({
               label: "Multi-Column Layout",
               children: ["Column"],
-              schema: {},
+              schema: {
+                justifyContent: fields.select({
+                  label: "Justify Items",
+                  description:
+                    "if the screen is wider than the items, how are they aligned horizontally?",
+                  defaultValue: "center",
+                  options: [
+                    { label: "Left", value: "flex-start" },
+                    { label: "Center", value: "center" },
+                    { label: "Right", value: "flex-end" },
+                  ],
+                }),
+                gap: customFields.cssUnit({
+                  label: "Gap",
+                  description: "The gap between columns",
+                  defaultValue: "10px",
+                }),
+              },
+              ContentView(props) {
+                return (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: props.value.justifyContent,
+                      gap: props.value.gap,
+                    }}
+                  >
+                    {props.children}
+                  </div>
+                );
+              },
             }),
             Column: wrapper({
+              forSpecificLocations: true,
               label: "Column",
-              schema: {},
+
+              schema: {
+                targetWidth: fields.text({
+                  label: "target width",
+                  description:
+                    "the width that this column will 'try' to be if the screen is wide enough. This can be any valid CSS unit (px,rem,etc) ",
+                }),
+                flexGrow: fields.checkbox({
+                  label: "Allow to grow",
+                  description:
+                    "Allow this column to get larger than the target width if the screen is wide enough",
+                }),
+              },
             }),
           },
           options: {
@@ -86,7 +129,7 @@ export default config({
                     schema: {
                       columns: fields.array(
                         fields.child({ kind: "block", placeholder: "col" }),
-                        { label: "Column" }
+                        { label: "Column!" }
                       ),
                     },
                   }),

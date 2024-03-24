@@ -4,7 +4,10 @@ export default defineMarkdocConfig({
   tags: {
     Column: {
       render: component("./src/components/pagebuilder/Column.astro"),
-      attributes: {},
+      attributes: {
+        targetWidth: { type: String },
+        flexGrow: { type: Boolean },
+      },
     },
     MultiColumn: {
       render: component("./src/components/pagebuilder/MultiColumn.astro"),
