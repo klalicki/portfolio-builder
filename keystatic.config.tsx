@@ -8,7 +8,7 @@ import {
 } from "@keystatic/core";
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import * as customFields from "./cms/fields";
-
+import Image from "astro/components/Image.astro";
 export default config({
   ui: {
     navigation: {
@@ -56,6 +56,33 @@ export default config({
                 width: customFields.cssUnit({
                   label: "Max Width",
                   defaultValue: "100vw",
+                }),
+              },
+            }),
+            Image: block({
+              label: "Image (better)",
+              ContentView(props) {
+                console.log(props.value.image);
+                return (
+                  <div>{props.value.image && props.value.image.filename}</div>
+                );
+              },
+              schema: {
+                image: fields.image({
+                  label: "upload image",
+                  directory: "src/assets/images",
+                }),
+                altText: fields.text({
+                  label: "Alt Text",
+                  description:
+                    "A description of the image contents. This is important for accessibility, as it allows non-sighted users to understand the content of the image",
+                  defaultValue: "",
+                }),
+                caption: fields.text({
+                  label: "Caption",
+                  description:
+                    "An optional caption to display below the image. ",
+                  defaultValue: "",
                 }),
               },
             }),

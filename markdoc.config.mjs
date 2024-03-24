@@ -14,6 +14,10 @@ export default defineMarkdocConfig({
         flexGrow: { type: Boolean },
       },
     },
+    ImagePopout: {
+      render: component("./src/components/pagebuilder/ImagePopout.astro"),
+      attributes: {},
+    },
     CodeEmbed: {
       render: component("./src/components/pagebuilder/CodeEmbed.astro"),
       attributes: { content: { type: String } },
