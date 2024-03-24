@@ -134,32 +134,39 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"projects": {
+		"pages": {
+"index/content.mdoc": {
+	id: "index/content.mdoc";
+  slug: "index/content";
+  body: string;
+  collection: "pages";
+  data: any
+} & { render(): Render[".mdoc"] };
+};
+"projects": {
 "an-actual-design-project.mdoc": {
 	id: "an-actual-design-project.mdoc";
   slug: "an-actual-design-project";
   body: string;
   collection: "projects";
-  data: InferEntrySchema<"projects">
+  data: any
 } & { render(): Render[".mdoc"] };
 "you-wouldn-t-download-a-hedgehog.mdoc": {
 	id: "you-wouldn-t-download-a-hedgehog.mdoc";
   slug: "you-wouldn-t-download-a-hedgehog";
   body: string;
   collection: "projects";
-  data: InferEntrySchema<"projects">
+  data: any
 } & { render(): Render[".mdoc"] };
 };
 
 	};
 
 	type DataEntryMap = {
-		"pages": {
-};
-
+		
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("../src/content/config.js");
+	export type ContentConfig = never;
 }

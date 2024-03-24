@@ -76,6 +76,8 @@ export default config({
       label: "Pages",
       slugField: "title",
       path: "src/content/pages/*",
+      entryLayout: "content",
+      format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         content: fields.markdoc({
