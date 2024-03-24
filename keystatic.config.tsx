@@ -13,7 +13,7 @@ import { pageComponents } from "./cms/components/pageComponents";
 export default config({
   ui: {
     navigation: {
-      Content: ["projects", "pages"],
+      Content: ["projects", "pages", "homepage"],
       Settings: ["menu", "general"],
     },
   },
@@ -97,6 +97,26 @@ export default config({
     }),
   },
   singletons: {
+    homepage: singleton({
+      label: "Homepage",
+      entryLayout: "content",
+      format: { contentField: "content" },
+      schema: {
+        content: fields.markdoc({
+          label: "Content",
+          components: {
+            ...standardComponents,
+            ...pageComponents,
+          },
+          options: {
+            image: {
+              directory: "src/assets/images/pages",
+              publicPath: "../../assets/images/pages/",
+            },
+          },
+        }),
+      },
+    }),
     general: singleton({
       label: "General Settings",
       schema: {},
