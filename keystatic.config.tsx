@@ -94,8 +94,17 @@ export default config({
             Column: wrapper({
               forSpecificLocations: true,
               label: "Column",
+
               ContentView(props) {
-                return <div>{props.children}</div>;
+                return (
+                  <div
+                    style={{
+                      maxWidth: props.value.targetWidth,
+                    }}
+                  >
+                    {props.children}
+                  </div>
+                );
               },
               schema: {
                 targetWidth: customFields.cssUnit({
