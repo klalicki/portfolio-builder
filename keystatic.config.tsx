@@ -7,7 +7,7 @@ import {
   BlockWrapper,
 } from "@keystatic/core";
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
-import * as customFields from "./fields";
+import * as customFields from "./cms/fields";
 
 export default config({
   ui: {
