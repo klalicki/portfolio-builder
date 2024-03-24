@@ -1,12 +1,13 @@
----
-title: A new page
+title: homepage
 blocks:
   - discriminant: portfolio
     value:
-      url: asasdas
+      mode:
+        discriminant: all
+  - discriminant: text
+  - discriminant: portfolio
+    value:
       mode:
         discriminant: select
         value:
           - you-wouldn-t-download-a-hedgehog
-  - discriminant: text
----

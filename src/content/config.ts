@@ -4,11 +4,22 @@ const projectCollection = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      thumbnail: image(),
+      thumbnail: image().optional(),
       accent: z.string(),
     }),
 });
 
+const pageCollection = defineCollection({
+  type: "data",
+  schema: z.object({
+    title: z.string(),
+    blocks: z.array({
+      discriminant: z.string(),
+    }),
+  }),
+});
+
 export const collections = {
+  pages: pageCollection,
   projects: projectCollection,
 };

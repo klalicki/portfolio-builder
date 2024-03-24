@@ -9,6 +9,7 @@ import {
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import * as customFields from "./cms/fields";
 import Image from "astro/components/Image.astro";
+import { standardComponents } from "./cms/components/standardComponents";
 export default config({
   ui: {
     navigation: {
@@ -43,161 +44,8 @@ export default config({
         content: fields.markdoc({
           label: "Content",
           components: {
-            CustomWidth: wrapper({
-              label: "Custom Width Container",
-              ContentView(props) {
-                return (
-                  <div style={{ maxWidth: props.value.width }}>
-                    {props.children}
-                  </div>
-                );
-              },
-              schema: {
-                width: customFields.cssUnit({
-                  label: "Max Width",
-                  defaultValue: "100vw",
-                }),
-              },
-            }),
-            ImagePopout: block({
-              label: "Image (better)",
-              ContentView(props) {
-                console.log(props.value.image);
-                return (
-                  <div>{props.value.image && props.value.image.filename}</div>
-                );
-              },
-              schema: {
-                image: fields.image({
-                  label: "upload image",
-                  directory: "src/assets/images",
-                }),
-                altText: fields.text({
-                  label: "Alt Text",
-                  description:
-                    "A description of the image contents. This is important for accessibility, as it allows non-sighted users to understand the content of the image",
-                  defaultValue: "",
-                }),
-                caption: fields.text({
-                  label: "Caption",
-                  description:
-                    "An optional caption to display below the image. ",
-                  defaultValue: "",
-                }),
-              },
-            }),
-            CodeEmbed: block({
-              label: "HTML Embed",
-              schema: {
-                content: customFields.codeEditor({
-                  label: "Code",
-                  description:
-                    "Use this component to place embed codes, etc. WARNING: don't paste sketchy code from the internet in here unless you know what it does!",
-                  defaultValue: "",
-                }),
-              },
-              ContentView(props) {
-                return (
-                  <div
-                    dangerouslySetInnerHTML={{ __html: props.value.content }}
-                  />
-                );
-              },
-            }),
-            MultiColumn: repeating({
-              label: "Multi-Column Layout",
-              children: ["Column"],
-              schema: {
-                justifyContent: fields.select({
-                  label: "Justify Content",
-                  description:
-                    "if the screen is wider than the items, how are they aligned horizontally?",
-                  defaultValue: "center",
-                  options: [
-                    { label: "Left", value: "flex-start" },
-                    { label: "Center", value: "center" },
-                    { label: "Right", value: "flex-end" },
-                    {
-                      label: "Justify (space-between)",
-                      value: "space-between",
-                    },
-                    {
-                      label: "Space evenly",
-                      value: "space-evenly",
-                    },
-                    {
-                      label: "Equal space around",
-                      value: "space-around",
-                    },
-                  ],
-                }),
-                alignItems: fields.select({
-                  label: "Align Items",
-                  description:
-                    "If columns have different amounts of content, how are they aligned vertically?",
-                  defaultValue: "flex-start",
-                  options: [
-                    { label: "Top", value: "flex-start" },
-                    { label: "Bottom", value: "flex-end" },
-                    { label: "Center", value: "center" },
-                  ],
-                }),
-                gap: customFields.cssUnit({
-                  label: "Gap",
-                  description: "The gap between columns",
-                  defaultValue: "10px",
-                }),
-              },
-              ContentView(props) {
-                return (
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: props.value.justifyContent,
-                      alignItems: props.value.alignItems,
-                      gap: props.value.gap,
-                      containerName: "col-container",
-                      containerType: "normal",
-                    }}
-                  >
-                    {props.children}
-                  </div>
-                );
-              },
-            }),
-            Column: wrapper({
-              forSpecificLocations: true,
-              label: "Column",
-
-              ContentView(props) {
-                return (
-                  <div
-                    style={{
-                      maxWidth: props.value.flexGrow
-                        ? "100%"
-                        : props.value.targetWidth,
-                    }}
-                  >
-                    {props.children}
-                  </div>
-                );
-              },
-              schema: {
-                targetWidth: customFields.cssUnit({
-                  label: "target width",
-                  description:
-                    "the width that this column will 'try' to be if the screen is wide enough.",
-                  defaultValue: "100px",
-                }),
-                flexGrow: fields.checkbox({
-                  label: "Allow to grow",
-                  description:
-                    "Allow this column to get larger than the target width if the screen is wide enough",
-                }),
-              },
-            }),
+            ...standardComponents,
           },
-
           options: {
             image: {
               directory: "src/assets/images/pages",
@@ -216,7 +64,6 @@ export default config({
       label: "Pages",
       slugField: "title",
       path: "src/content/pages/*",
-      format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         blocks: fields.blocks(
@@ -282,15 +129,6 @@ export default config({
           },
           { label: "Blocks" }
         ),
-        content: fields.markdoc({
-          label: "Content",
-          options: {
-            image: {
-              directory: "src/assets/images/pages",
-              publicPath: "../../assets/images/pages/",
-            },
-          },
-        }),
       },
     }),
   },
