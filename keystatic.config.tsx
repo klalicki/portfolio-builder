@@ -82,6 +82,8 @@ export default config({
                       display: "flex",
                       justifyContent: props.value.justifyContent,
                       gap: props.value.gap,
+                      containerName: "col-container",
+                      containerType: "normal",
                     }}
                   >
                     {props.children}
@@ -92,7 +94,9 @@ export default config({
             Column: wrapper({
               forSpecificLocations: true,
               label: "Column",
-
+              ContentView(props) {
+                return <div>{props.children}</div>;
+              },
               schema: {
                 targetWidth: customFields.cssUnit({
                   label: "target width",
@@ -108,6 +112,7 @@ export default config({
               },
             }),
           },
+
           options: {
             image: {
               directory: "src/assets/images/pages",
