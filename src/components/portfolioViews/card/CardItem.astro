@@ -1,28 +1,29 @@
 ---
 import Image from "astro/components/Image.astro";
 const {props}=Astro
+const {title,url,thumbnail,accent}=Astro.props;
 
-const title=props.itemData.data.title;
-const url="/projects/"+props.itemData.slug
-const thumbnail=props.itemData.data.thumbnail
-console.log(thumbnail)
+// console.log(props)
 ---
 <style>
-  .card-item{
-
-  }
-  .card-image-container{
-    width:200px;
+.card-item{
+  width:400px;
+  padding:1rem;
+  border:2px solid greenyellow;
+}
+  .card-image{
+    width:100%;
     aspect-ratio: 3/2;
     object-fit: cover;
+
   }
 </style>
 <div class="card-item">
-  <div class="card-image-container" style={{backgroundColor:props.itemData.data.accent}}>
-{thumbnail ?<Image src={thumbnail} alt=""/>:<div class="card-bg-color" ></div>}
+  <div class="card-image-container" >
+{thumbnail ?<Image widths={[400]} class={"card-image"} src={thumbnail} alt=""/>:<div class="card-image" style={{backgroundColor:accent}}></div>}
   
   </div>
-  
-  {props.itemData.data.title}
+  <a href={url}> {title}</a>
+ 
   <slot />
 </div>

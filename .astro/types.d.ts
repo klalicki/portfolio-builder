@@ -144,13 +144,6 @@ declare module 'astro:content' {
 } & { render(): Render[".mdoc"] };
 };
 "pages": {
-"bla.mdoc": {
-	id: "bla.mdoc";
-  slug: "bla";
-  body: string;
-  collection: "pages";
-  data: InferEntrySchema<"pages">
-} & { render(): Render[".mdoc"] };
 };
 "projects": {
 "an-actual-design-project.mdoc": {

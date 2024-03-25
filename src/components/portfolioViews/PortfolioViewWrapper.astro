@@ -43,6 +43,7 @@ const {Container,Item}=componentMappings[validType];
 <Container>
 
 {projectList.map((item,index)=>{
-  return <Item itemData={item} itemIndex={index} />
+  console.log(item)
+  return <Item title={item.data.title} url={"/projects/" + item.slug} thumbnail={item.data.thumbnail || ""} index={index} accent={item.data.accent} />
 })}
 </Container>  

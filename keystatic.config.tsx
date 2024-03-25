@@ -121,7 +121,7 @@ export default config({
     }),
     general: singleton({
       label: "General Settings",
-      schema: {},
+      schema: { slug: customFields.slugPicker({ label: "sluggy" }) },
     }),
     menu: singleton({
       label: "Menu",
