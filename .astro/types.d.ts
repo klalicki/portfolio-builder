@@ -197,6 +197,11 @@ declare module 'astro:content' {
   collection: "settings";
   data: any
 };
+"sidebar": {
+	id: "sidebar";
+  collection: "settings";
+  data: any
+};
 };
 
 	};

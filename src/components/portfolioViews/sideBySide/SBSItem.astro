@@ -1,0 +1,45 @@
+---
+import Image from "astro/components/Image.astro";
+const {props}=Astro
+const {title,url,thumbnail,accent,index}=Astro.props;
+
+const isOdd=(index % 2);
+
+// console.log(props)
+---
+<style>
+.sbs-item{
+  display: flex;
+  /* controlled padding */
+
+.sbs-item-odd{
+  flex-direction: row-reverse;
+}
+.sbs-image-container{
+  height:100px; 
+  /* fontrolled height */
+}
+.sbs-image{
+  /* controlled aspect ratio,border style? */
+    height:100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+
+  }
+
+.sbs-text-panel{
+  /* controlled - flex positioning, text align,padding */
+}
+</style>
+<div class:list={["sbs-item",isOdd&&'sbs-item-odd']}>
+  <div class:list={["sbs-image-container"]} >
+{thumbnail ?<Image widths={[400]} class={"sbs-image"} src={thumbnail} alt=""/>:<div class="sbs-image" style={{backgroundColor:accent}}></div>}
+  
+  </div>
+  <div class="sbs-text-panel">
+  <a href={url}> {title}</a>
+
+  </div>
+ 
+  <slot />
+</div>

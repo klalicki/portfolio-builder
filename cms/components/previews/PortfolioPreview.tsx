@@ -4,7 +4,7 @@ import PortfolioView from "../../../src/components/portfolioViews/PortfolioViewW
 const PortfolioPreview = (props: {
   value: {
     readonly unique: string;
-    readonly portfolioLayout: "cards" | "tiles";
+    readonly portfolioLayout: "cards" | "tiles" | "sbs";
     readonly projectSource:
       | {
           readonly discriminant: "all";

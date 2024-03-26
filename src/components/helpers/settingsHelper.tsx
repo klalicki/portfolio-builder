@@ -8,8 +8,12 @@ const MenuSettings = settingsRaw.find((item) => {
 const GeneralSettings = settingsRaw.find((item) => {
   return item.id === "general";
 });
+const SidebarSettings = settingsRaw.find((item) => {
+  return item.id === "sidebar";
+});
 const settings = {
   general: GeneralSettings?.data,
   menu: MenuSettings?.data,
+  sidebar: SidebarSettings.data,
 };
 export default settings;

@@ -15,6 +15,7 @@ export default config({
     navigation: {
       Content: ["projects", "pages", "homepage"],
       Settings: ["menu", "general"],
+      Appearance: ["sidebarSettings"],
     },
   },
   storage: {
@@ -128,6 +129,16 @@ export default config({
               publicPath: "../../assets/images/pages/",
             },
           },
+        }),
+      },
+    }),
+    sidebarSettings: singleton({
+      label: "Sidebar Settings",
+      path: "src/content/settings/sidebar",
+      schema: {
+        sidebarWidth: customFields.cssUnit({
+          label: "sidebar width",
+          defaultValue: "300px",
         }),
       },
     }),

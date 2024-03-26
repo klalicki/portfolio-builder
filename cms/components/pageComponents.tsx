@@ -16,6 +16,7 @@ export const pageComponents = {
         options: [
           { label: "Cards", value: "cards" },
           { label: "Tiles", value: "tiles" },
+          { label: "Side by Side", value: "sbs" },
         ],
       }),
       projectSource: fields.conditional(

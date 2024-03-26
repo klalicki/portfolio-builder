@@ -1,11 +1,13 @@
 ---
 const {items}=Astro.props
+import settings from "../../helpers/settingsHelper"
+const sidebarWidth=settings.sidebar.sidebarWidth
 ---
 <style>
 </style>
-<style is:global>
+<style is:global define:vars={{sidebarWidth:sidebarWidth}}>
   .header-for-sidebar{
-    width:300px;
+    width:var(--sidebarWidth);
     background-color: yellow;
   }
   .body-for-sidebar{
@@ -14,5 +16,5 @@ const {items}=Astro.props
 </style>
 
 <div>
-  SIDEBAR
+  SIDEBAR {sidebarWidth}
 </div>
