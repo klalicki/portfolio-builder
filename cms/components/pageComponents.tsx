@@ -46,9 +46,9 @@ export const pageComponents = {
       ),
       cssOptions: customFields.cssMulti({
         label: "asst stuff",
-        parameters: [
-          { cssName: "item1", label: "Item 1", helper: "this is item 1" },
-          { cssName: "item2", label: "Item 2", helper: "this is item 2" },
+        params: [
+          { cssName: "item1", label: "Item 1", defaultVal: "la1" },
+          { cssName: "item2", label: "Item 2", defaultVal: "la2" },
         ],
       }),
     },
