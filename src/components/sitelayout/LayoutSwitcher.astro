@@ -28,16 +28,11 @@ let PageLayout;
 switch (settings.menu.position) {
   case "sidebar":
     PageLayout = SidebarPage;
-  default:
-    PageLayout = SidebarPage;
+  default: 
+    PageLayout =SidebarPage;
 }
 ---
 
-<style>
-  body {
-    padding: 0;
-    margin: 0;
-  }
-</style>
-
-
+<PageLayout menuItems={cleanedPages}>
+  <slot />
+</PageLayout>
