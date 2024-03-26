@@ -1,5 +1,19 @@
 ---
+import { getCollection } from "astro:content";
 
+const homepage = await getCollection('homepage') || [];
+const pages = await getCollection('pages') || [];
+const allPages = [...homepage,...pages]
+// console.log(allPages)
+const cleanedPages = allPages.map(page=>{
+  // console.log(page)
+  if (page.collection==='homepage'){
+return { url:'/',title: page.data.title||'Home'}
+  }
+  else{
+    return {url:'/'+page.slug+'/',title:page.data.title}
+  }
+})
 ---
 <style>
 .top-nav-container{
@@ -12,5 +26,10 @@
 </style>
 
 <header class="top-nav-container">
-
+<nav>
+  <!-- <h1>page</h1> -->
+  {cleanedPages.map(page=>{
+   return <a href={page.url}>{page.title || 'untitled'}</a>
+  })}
+</nav>
 </header>

@@ -104,6 +104,7 @@ export default config({
       format: { contentField: "content" },
       path: "src/content/homepage/index",
       schema: {
+        title: fields.text({ label: "Page Title" }),
         content: fields.markdoc({
           label: "Content",
           components: {
