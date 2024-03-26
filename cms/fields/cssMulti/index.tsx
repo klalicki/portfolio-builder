@@ -41,7 +41,7 @@ export function cssMulti({
         setIsSaved(true);
       };
 
-      const updateItem = (key, newValue) => {
+      const updateItem = (key: string, newValue: string) => {
         const tempWorkingObj = { ...workingObj };
         tempWorkingObj[key] = newValue;
         setWorkingObj(tempWorkingObj);
@@ -50,7 +50,7 @@ export function cssMulti({
       return (
         <FieldPrimitive label={label}>
           <div>
-            {isSaved ? "saved" : "not saved"}
+            {/* {isSaved ? "saved" : "not saved"} */}
             {parameters.map((item, index) => {
               return (
                 <div key={index}>
@@ -70,7 +70,6 @@ export function cssMulti({
                 </div>
               );
             })}
-            {/* <button onClick={pushUpstream}>SAVE</button> */}
           </div>
         </FieldPrimitive>
       );

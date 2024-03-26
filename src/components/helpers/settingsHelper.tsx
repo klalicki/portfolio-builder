@@ -14,6 +14,6 @@ const SidebarSettings = settingsRaw.find((item) => {
 const settings = {
   general: GeneralSettings?.data,
   menu: MenuSettings?.data,
-  sidebar: SidebarSettings.data,
+  sidebar: SidebarSettings?.data,
 };
 export default settings;
