@@ -8,6 +8,19 @@ Here is yet another project!
 
 bla bla bla
 
-# here's a header for y'all
+{% MultiColumn
+   justifyContent="center"
+   alignItems="flex-start"
+   flexDirection="row-reverse"
+   gap="10px" %}
+{% Column targetWidth="150px" flexGrow=false %}
+![](../../assets/images/pages/project-3/sample_1.jpg)
+{% /Column %}
 
-here
+{% Column targetWidth="600px" flexGrow=true %}
+## Branding
+
+\
+Branding serves as the cornerstone of any successful business strategy, encapsulating its identity, values, and unique selling proposition into a cohesive narrative. It fosters recognition, trust, and loyalty among consumers, distinguishing a company from its competitors in a crowded marketplace. A strong brand communicates reliability and quality, instilling confidence in the minds of consumers and influencing their purchasing decisions. Moreover, branding extends beyond mere products or services; it embodies the emotional connection between a company and its audience, cultivating lasting relationships that transcend transactions. Through effective branding, businesses can carve out their place in the market, establish credibility, and drive long-term growth and sustainability.
+{% /Column %}
+{% /MultiColumn %}

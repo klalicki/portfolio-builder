@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import settings from "../helpers/settingsHelper";
+const homepage = (await getCollection("homepage")) || [];
+const pages = (await getCollection("pages")) || [];
+// import templates
+import SidebarPage from "./Sidebar/SidebarNav.astro";
+
+console.log(settings);
+const cleanedPages = [...homepage, ...pages]
+  .map((page) => {
+    if (page.collection === "homepage") {
+      return { url: "/", title: page.data.title || "Home", showInMenu: true };
+    } else {
+      return {
+        url: "/" + page.slug + "/",
+        title: page.data.title,
+        showInMenu: page.data.publishStatus === "published",
+      };
+    }
+  })
+  .filter((page) => {
+    return page.showInMenu;
+  });
+
+// const MenuComponent = Sidebar;
+let PageLayout;
+switch (settings.menu.position) {
+  case "sidebar":
+    PageLayout = SidebarPage;
+  default:
+    PageLayout = SidebarPage;
+}
+---
+
+<style>
+  body {
+    padding: 0;
+    margin: 0;
+  }
+</style>
+
+

@@ -30,6 +30,7 @@ export default defineMarkdocConfig({
       render: component("./src/components/pagebuilder/MultiColumn.astro"),
       attributes: {
         justifyContent: { type: String },
+        flexDirection: { type: String },
         alignItems: { type: String },
         gap: { type: String },
       },

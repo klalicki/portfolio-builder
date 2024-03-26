@@ -78,6 +78,16 @@ export const standardComponents = {
           { label: "Center", value: "center" },
         ],
       }),
+      flexDirection: fields.select({
+        label: "Item Order",
+        description:
+          "When the columns are able to appear side-by-side, what order should they be in?",
+        defaultValue: "row",
+        options: [
+          { label: "Standard", value: "row" },
+          { label: "Reverse", value: "row-reverse" },
+        ],
+      }),
       gap: customFields.cssUnit({
         label: "Gap",
         description: "The gap between columns",
@@ -91,6 +101,7 @@ export const standardComponents = {
             display: "flex",
             justifyContent: props.value.justifyContent,
             alignItems: props.value.alignItems,
+            flexDirection: props.value.flexDirection,
             gap: props.value.gap,
             containerName: "col-container",
             containerType: "normal",
