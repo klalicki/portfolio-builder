@@ -44,6 +44,13 @@ export const pageComponents = {
           ),
         }
       ),
+      cssOptions: customFields.cssMulti({
+        label: "asst stuff",
+        parameters: [
+          { cssName: "item1", label: "Item 1", helper: "this is item 1" },
+          { cssName: "item2", label: "Item 2", helper: "this is item 2" },
+        ],
+      }),
     },
     // ContentView(props) {
     //   return <div dangerouslySetInnerHTML={{ __html: props.value.content }} />;

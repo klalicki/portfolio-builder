@@ -3,7 +3,7 @@ import { FieldPrimitive } from "@keystar/ui/field";
 
 import { Picker, Item } from "@keystar/ui/picker";
 import { NumberField } from "@keystar/ui/number-field";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 function parseAsNormalField(value: FormFieldStoredValue) {
   if (value === undefined) {
@@ -14,18 +14,6 @@ function parseAsNormalField(value: FormFieldStoredValue) {
   }
   return value;
 }
-
-const stringToUnits = (value: string) => {
-  const regex = /^(\d*\.*\d*)(\D*)$/;
-  const match = value.match(regex);
-  if (match) {
-    const number = parseFloat(match[1]);
-    const unit = match[2] || "px";
-    return { number, unit };
-  } else {
-    return { number: 0, unit: "px" };
-  }
-};
 
 export function cssMulti({
   parameters,
@@ -45,10 +33,12 @@ export function cssMulti({
     // and onChange is a function that takes one argument - the new value for the field
     Input(props) {
       const [isSaved, setIsSaved] = useState(true);
-      const [workingObj, setWorkingObj] = useState(JSON.parse(props.value));
-
+      const initialState = props.value || "{}";
+      const [workingObj, setWorkingObj] = useState(JSON.parse(initialState));
+      const uniqueId = useId();
       const pushUpstream = () => {
         props.onChange(JSON.stringify(workingObj));
+        setIsSaved(true);
       };
 
       const updateItem = (key, newValue) => {
@@ -60,27 +50,34 @@ export function cssMulti({
       return (
         <FieldPrimitive label={label}>
           <div>
+            {isSaved ? "saved" : "not saved"}
             {parameters.map((item, index) => {
               return (
                 <div key={index}>
+                  <label htmlFor={uniqueId + "-" + item.cssName + "-" + index}>
+                    {item.label}
+                  </label>
                   <input
+                    id={uniqueId + "-" + item.cssName + "-" + index}
                     type="text"
                     onChange={(e) => {
+                      setIsSaved(false);
                       updateItem(item.cssName, e.target.value);
                     }}
                     value={workingObj[item.cssName]}
+                    onBlur={pushUpstream}
                   />
                 </div>
               );
             })}
-            <button onClick={pushUpstream}>SAVE</button>
+            {/* <button onClick={pushUpstream}>SAVE</button> */}
           </div>
         </FieldPrimitive>
       );
     },
     // i think this is a function that sets the default value of the field - in this case falls back to blank if no defaultValue is given
     defaultValue() {
-      return defaultValue || "";
+      return "{}";
     },
     // i think this function decodes the value from a string into its working type
     parse(value) {
