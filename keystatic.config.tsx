@@ -133,10 +133,13 @@ export default config({
     }),
     general: singleton({
       label: "General Settings",
+      path: "src/content/settings/general",
+
       schema: { slug: customFields.slugPicker({ label: "sluggy" }) },
     }),
     menu: singleton({
       label: "Menu",
+      path: "src/content/settings/menu",
       schema: {
         position: fields.select({
           label: "Menu Position",

@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import '../styles.css'
 import { Image } from 'astro:assets';
-import TopNav from '../components/sitelayout/nav/NavItemProvider.astro';
+import TopNav from '../components/sitelayout/nav/MenuProvider.astro';
 export interface Props {
 	title: string;
 }
@@ -31,13 +31,14 @@ const isDev = process.env.NODE_ENV === "development";
 	</head>
 	<style is:global>
 		main{
-			display: flex;
-			flex-direction: column;
+			/* display: flex; */
+			/* flex-direction: column; */
 			align-items: center;
 		}
 		main > * {
 			display: block;
 			width: 100%;
+			margin:0 auto;
 			max-width: 600px;
 			 overflow-wrap: break-word;
 		}

@@ -1,9 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-
+import Sidebar from "./Sidebar.astro"
+import settings from "../../helpers/settingsHelper";
 const homepage = await getCollection('homepage') || [];
 const pages = await getCollection('pages') || [];
-
+console.log(settings)
 const cleanedPages = [...homepage,...pages].map(page=>{
   if (page.collection==='homepage'){
 return { url:'/',title: page.data.title||'Home', showInMenu:true}
@@ -12,23 +13,10 @@ return { url:'/',title: page.data.title||'Home', showInMenu:true}
     
     return {url:'/'+page.slug+'/',title:page.data.title, showInMenu:(page.data.publishStatus==="published")}
   }
-})
----
-<style>
-.top-nav-container{
-  background-color: yellow;
-  position: absolute;
-  top:0;
-  left:0;
-  right: 0;
-}
-</style>
+}).filter(page=>{return page.showInMenu});
 
-<header class="top-nav-container">
-<nav>
-  <!-- <h1>page</h1> -->
-  {cleanedPages.map(page=>{
-   return page.showInMenu && <a href={page.url}>{page.title || 'untitled'}</a>
-  })}
-</nav>
-</header>
+const menuComponent = Sidebar 
+
+---
+
+<menuComponent items={cleanedPages} />

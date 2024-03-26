@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 const {props}=Astro;
-console.log('layout:',props.portfolioLayout)
+// console.log('layout:',props.portfolioLayout)
 const allProjects = await getCollection('projects');
 import CardContainer from './card/CardContainer.astro';
 import CardItem from './card/CardItem.astro'
@@ -43,7 +43,7 @@ const {Container,Item}=componentMappings[validType];
 <Container>
 
 {projectList.map((item,index)=>{
-  console.log(item)
+  // console.log(item)
   return <Item title={item.data.title} url={"/projects/" + item.slug} thumbnail={item.data.thumbnail || ""} index={index} accent={item.data.accent} />
 })}
 </Container>  

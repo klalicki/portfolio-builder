@@ -8,7 +8,7 @@ const page = await getEntry('pages', slug);
 
 if (!page) throw new Error('No page found for this slug');
 const { Content } = await page.render();
-console.log(page);
+// console.log(page);
 
 // Generate static pages
 export async function getStaticPaths() {
