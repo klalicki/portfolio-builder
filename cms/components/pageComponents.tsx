@@ -19,31 +19,12 @@ export const pageComponents = {
           { label: "Side by Side", value: "sbs" },
         ],
       }),
-      projectSource: fields.conditional(
-        fields.select({
-          label: "Which projects to include",
-          defaultValue: "all",
-          options: [
-            { label: "All", value: "all" },
-            { label: "Selected", value: "selected" },
-          ],
-        }),
-        {
-          all: customFields.uniquify({ label: "unif", description: "unif" }),
-          selected: fields.array(
-            fields.relationship({
-              label: "Select Projects",
-              collection: "projects",
-            }),
-            {
-              label: "Project",
-              itemLabel(props) {
-                return props.value || "";
-              },
-            }
-          ),
-        }
-      ),
+
+      projectSource: fields.relationship({
+        label: "Portfolio Group",
+        collection: "portfolioGroups",
+      }),
+
       cssOptions: customFields.cssMulti({
         label: "asst stuff",
         params: [

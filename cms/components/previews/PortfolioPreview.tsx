@@ -5,15 +5,6 @@ const PortfolioPreview = (props: {
   value: {
     readonly unique: string;
     readonly portfolioLayout: "cards" | "tiles" | "sbs";
-    readonly projectSource:
-      | {
-          readonly discriminant: "all";
-          readonly value: string;
-        }
-      | {
-          readonly discriminant: "selected";
-          readonly value: readonly (string | null)[];
-        };
   };
 }) => {
   return (

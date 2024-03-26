@@ -1,6 +1,5 @@
 ---
 import SidebarNav from "./SidebarNav.astro";
-import menuItems from "../../helpers/menuItems";
 ---
 
 <style>
@@ -24,7 +23,7 @@ import menuItems from "../../helpers/menuItems";
 </style>
 <body>
   <header>
-    <SidebarNav items={menuItems} />
+    <SidebarNav/>
   </header>
   <main>
     <slot />

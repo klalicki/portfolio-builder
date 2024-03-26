@@ -14,7 +14,7 @@ export default config({
   ui: {
     navigation: {
       Content: ["projects", "pages", "homepage"],
-      Settings: ["menu", "general"],
+      Settings: ["menu", "general", "portfolioGroups"],
       Appearance: ["sidebarSettings"],
     },
   },
@@ -105,6 +105,41 @@ export default config({
             },
           },
         }),
+      },
+    }),
+    portfolioGroups: collection({
+      label: "Portfolio Groups",
+      slugField: "name",
+      format: { contentField: "emptyContent" },
+
+      schema: {
+        name: fields.text({ label: "Name" }),
+        emptyContent: fields.emptyDocument(),
+        projectSource: fields.conditional(
+          fields.select({
+            label: "Which projects to include",
+            defaultValue: "all",
+            options: [
+              { label: "All", value: "all" },
+              { label: "Selected", value: "selected" },
+            ],
+          }),
+          {
+            all: customFields.uniquify({ label: "unif", description: "unif" }),
+            selected: fields.array(
+              fields.relationship({
+                label: "Select Projects",
+                collection: "projects",
+              }),
+              {
+                label: "Project",
+                itemLabel(props) {
+                  return props.value || "";
+                },
+              }
+            ),
+          }
+        ),
       },
     }),
   },
