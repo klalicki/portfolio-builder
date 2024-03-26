@@ -1,9 +1,30 @@
 ---
-
+import SidebarNav from "./SidebarNav.astro";
+import menuItems from "../../helpers/menuItems";
 ---
+
+<style>
+  body {
+    padding: 0;
+  }
+  header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    background-color: lightblue;
+  }
+  main {
+    position: relative;
+    left: 300px;
+    width: calc(100% - 300px);
+    border: 2px solid red;
+  }
+</style>
 <body>
   <header>
-    <!-- <MenuComponent items={cleanedPages} /> -->
+    <SidebarNav items={menuItems} />
   </header>
   <main>
     <slot />

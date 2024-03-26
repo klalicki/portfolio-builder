@@ -1,20 +1,20 @@
 ---
-const {items}=Astro.props
-import settings from "../../helpers/settingsHelper"
-const sidebarWidth=settings.sidebar.sidebarWidth
+const { items } = Astro.props;
+import settings from "../../helpers/settingsHelper";
+const sidebarWidth = settings.sidebar.sidebarWidth;
+console.log(items);
 ---
-<style>
-</style>
-<style is:global define:vars={{sidebarWidth:sidebarWidth}}>
-  .header-for-sidebar{
+
+<style></style>
+<style is:global define:vars={{ sidebarWidth: sidebarWidth }}>
+  .header-for-sidebar {
     /* width:var(--sidebarWidth); */
     /* background-color: yellow; */
   }
-  .body-for-sidebar{
+  .body-for-sidebar {
     display: flex;
   }
 </style>
 
 <div>
-   {sidebarWidth}
 </div>
