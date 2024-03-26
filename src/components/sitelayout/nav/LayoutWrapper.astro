@@ -15,8 +15,23 @@ return { url:'/',title: page.data.title||'Home', showInMenu:true}
   }
 }).filter(page=>{return page.showInMenu});
 
-const menuComponent = Sidebar 
+const MenuComponent = Sidebar;
 
 ---
+<style>
+body{
+  padding:0;
+  margin:0;
+}
+</style>
 
-<menuComponent items={cleanedPages} />
+<body class={"body-for-"+settings.menu.position}>
+  <header class={"header-for-"+settings.menu.position}>
+    <MenuComponent items={cleanedPages} />
+  </header>
+  <main>
+    <slot/>
+  </main>
+</body>
+
+

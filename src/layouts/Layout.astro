@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import '../styles.css'
 import { Image } from 'astro:assets';
-import TopNav from '../components/sitelayout/nav/MenuProvider.astro';
+import LayoutWrapper from '../components/sitelayout/nav/LayoutWrapper.astro';
 export interface Props {
 	title: string;
 }
@@ -56,19 +56,15 @@ const isDev = process.env.NODE_ENV === "development";
 		}
 	
 	</style>
-	<body >
-		<!-- basic nav that creates a link for each project in the projects collection -->
-			<TopNav />
-	
-	
-		<main transition:animate="slide" >
+	<LayoutWrapper>
 <slot  />
-		</main>
+	</LayoutWrapper>
+	
+
 		{isDev && <div class="floating-edit">
 			<a href="/keystatic">			Click here to enter the site editor</a>
 
 		</div>}
 		
-		
-	</body>
+
 </html>

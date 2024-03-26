@@ -1,11 +1,18 @@
 ---
-
+const {items}=Astro.props
 ---
 <style>
-header{
-  
-}
 </style>
-<header>
+<style is:global>
+  .header-for-sidebar{
+    width:300px;
+    background-color: yellow;
+  }
+  .body-for-sidebar{
+    display: flex;
+  }
+</style>
 
-</header>
+<div>
+  SIDEBAR
+</div>
