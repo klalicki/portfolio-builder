@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import '../styles.css'
 import { Image } from 'astro:assets';
-
+import TopNav from '../components/sitelayout/nav/TopNav.astro';
 export interface Props {
 	title: string;
 }
@@ -57,19 +57,8 @@ const isDev = process.env.NODE_ENV === "development";
 	</style>
 	<body >
 		<!-- basic nav that creates a link for each project in the projects collection -->
-		<header transition:animate="initial">
-	<nav>
-			{projects.map((project)=>{
-				return <a href={`/projects/${project.slug}`}>
-					{project.data.thumbnail && <Image style={{width:'100px'}} src={project.data.thumbnail} 
-					widths={[240, 540, 720, project.data.thumbnail.width]}
-  sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${project.data.thumbnail.width}px`}
-	alt=""/>}
-					
-					{project.data.title}</a>
-			})}
-		</nav>
-		</header>
+			<TopNav />
+	
 	
 		<main transition:animate="slide" >
 <slot  />
