@@ -80,6 +80,17 @@ export default config({
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
+        publishStatus: fields.select({
+          label: "Published?",
+          description:
+            'Published means the page is publicly visible and will appear in the "all" portfolio type. Unpublished means the page is completely hidden. Unlisted means the page will be published, but will not be placed in any menus or portfolios unless specifically selected.',
+          defaultValue: "published",
+          options: [
+            { label: "Yes", value: "published" },
+            { label: "No", value: "unpublished" },
+            { label: "Unlisted", value: "unlisted" },
+          ],
+        }),
         content: fields.markdoc({
           label: "Content",
           components: {

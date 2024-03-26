@@ -6,10 +6,11 @@ const pages = await getCollection('pages') || [];
 
 const cleanedPages = [...homepage,...pages].map(page=>{
   if (page.collection==='homepage'){
-return { url:'/',title: page.data.title||'Home'}
+return { url:'/',title: page.data.title||'Home', showInMenu:true}
   }
   else{
-    return {url:'/'+page.slug+'/',title:page.data.title}
+    
+    return {url:'/'+page.slug+'/',title:page.data.title, showInMenu:(page.data.publishStatus==="published")}
   }
 })
 ---
@@ -27,7 +28,7 @@ return { url:'/',title: page.data.title||'Home'}
 <nav>
   <!-- <h1>page</h1> -->
   {cleanedPages.map(page=>{
-   return <a href={page.url}>{page.title || 'untitled'}</a>
+   return page.showInMenu && <a href={page.url}>{page.title || 'untitled'}</a>
   })}
 </nav>
 </header>

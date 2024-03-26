@@ -151,6 +151,13 @@ declare module 'astro:content' {
   collection: "pages";
   data: InferEntrySchema<"pages">
 } & { render(): Render[".mdoc"] };
+"here-s-an-unpublished-page.mdoc": {
+	id: "here-s-an-unpublished-page.mdoc";
+  slug: "here-s-an-unpublished-page";
+  body: string;
+  collection: "pages";
+  data: InferEntrySchema<"pages">
+} & { render(): Render[".mdoc"] };
 };
 "projects": {
 "an-actual-design-project.mdoc": {

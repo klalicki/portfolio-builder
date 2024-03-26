@@ -12,6 +12,7 @@ const projectCollection = defineCollection({
 const pageCollection = defineCollection({
   schema: z.object({
     title: z.string(),
+    publishStatus: z.optional(z.string()),
   }),
 });
 const homepageCollection = defineCollection({});
