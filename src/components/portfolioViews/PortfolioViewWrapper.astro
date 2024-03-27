@@ -1,51 +1,61 @@
 ---
-import { getCollection } from 'astro:content';
-const {props}=Astro;
+import { getCollection } from "astro:content";
+const { props } = Astro;
 // console.log('layout:',props.portfolioLayout)
-const allProjects = await getCollection('projects');
-import CardContainer from './card/CardContainer.astro';
-import CardItem from './card/CardItem.astro'
-import TileContainer  from './tile/TileContainer.astro'
-import TileItem  from './tile/TileItem.astro'
-import SBSContainer from './sideBySide/SBSContainer.astro';
-import SBSItem from './sideBySide/SBSItem.astro';
+const allProjects = await getCollection("projects");
+import CardContainer from "./card/CardContainer.astro";
+import CardItem from "./card/CardItem.astro";
+import TileContainer from "./tile/TileContainer.astro";
+import TileItem from "./tile/TileItem.astro";
+import SBSContainer from "./sideBySide/SBSContainer.astro";
+import SBSItem from "./sideBySide/SBSItem.astro";
 
 const componentMappings = {
-  'cards':{Container:CardContainer,Item:CardItem},
-  'tiles':{Container:TileContainer,Item:TileItem},
-  'sbs':{Container:SBSContainer,Item:SBSItem}
-}
+  cards: { Container: CardContainer, Item: CardItem },
+  tiles: { Container: TileContainer, Item: TileItem },
+  sbs: { Container: SBSContainer, Item: SBSItem },
+};
 
-let projectList:{
-    id: "an-actual-design-project.mdoc";
-    slug: "an-actual-design-project";
-    body: string;
-    collection: "projects";
-    data: any;
-}[]=[];
+let projectList: {
+  id: "an-actual-design-project.mdoc";
+  slug: "an-actual-design-project";
+  body: string;
+  collection: "projects";
+  data: any;
+}[] = [];
 
-if (props.projectSource.discriminant==="selected"){
-  projectList=props.projectSource.value.map((slug:string)=>{
-    return allProjects.find((project)=>{
-      return project.slug===slug
-    })
-  })
+const portfolioGroups = getCollection("portfolioGroups");
+if (props.projectSource.discriminant === "selected") {
+  projectList = props.projectSource.value.map((slug: string) => {
+    return allProjects.find((project) => {
+      return project.slug === slug;
+    });
+  });
 } else {
   //@ts-ignore;
-  projectList=allProjects;
+  projectList = allProjects;
 }
-let validType:"cards"|"tiles"|"sbs"="cards"
-if (Object.keys(componentMappings).includes(props.portfolioLayout)){
-validType=props.portfolioLayout
+let validType: "cards" | "tiles" | "sbs" = "cards";
+if (Object.keys(componentMappings).includes(props.portfolioLayout)) {
+  validType = props.portfolioLayout;
 }
 
-const {Container,Item}=componentMappings[validType];
-
+const { Container, Item } = componentMappings[validType];
 ---
-<Container>
 
-{projectList.map((item,index)=>{
-  // console.log(item)
-  return <Item title={item.data.title} url={"/projects/" + item.slug} thumbnail={item.data.thumbnail || ""} index={index} accent={item.data.accent} />
-})}
-</Container>  
+<Container>
+  {
+    projectList.map((item, index) => {
+      // console.log(item)
+      return (
+        <Item
+          title={item.data.title}
+          url={"/projects/" + item.slug}
+          thumbnail={item.data.thumbnail || ""}
+          index={index}
+          accent={item.data.accent}
+        />
+      );
+    })
+  }
+</Container>

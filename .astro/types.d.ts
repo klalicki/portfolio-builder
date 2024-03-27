@@ -159,6 +159,10 @@ declare module 'astro:content' {
   data: InferEntrySchema<"pages">
 } & { render(): Render[".mdoc"] };
 };
+"portfolioGroups": {
+};
+"projectGroups": {
+};
 "projects": {
 "an-actual-design-project.mdoc": {
 	id: "an-actual-design-project.mdoc";

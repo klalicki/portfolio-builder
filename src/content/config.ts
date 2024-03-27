@@ -16,9 +16,15 @@ const pageCollection = defineCollection({
   }),
 });
 const homepageCollection = defineCollection({});
-
+const projectGroupCollection = defineCollection({
+  schema: z.object({
+    discriminant: z.string(),
+    value: z.array(z.string()),
+  }),
+});
 export const collections = {
   pages: pageCollection,
   projects: projectCollection,
   homepage: homepageCollection,
+  portfolioGroups: projectGroupCollection,
 };

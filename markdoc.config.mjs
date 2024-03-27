@@ -49,7 +49,7 @@ export default defineMarkdocConfig({
         unique: { type: String },
         portfolioLayout: { type: String },
         projectSource: {
-          type: Object,
+          type: String,
         },
       },
     },
