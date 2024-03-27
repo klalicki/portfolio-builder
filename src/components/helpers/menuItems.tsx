@@ -5,6 +5,7 @@ const pages = (await getCollection("pages")) || [];
 
 const menuItems = [...homepage, ...pages]
   .map((page) => {
+    console.log(page);
     if (page.collection === "homepage") {
       return { url: "/", title: page.data.title || "Home", showInMenu: true };
     } else {

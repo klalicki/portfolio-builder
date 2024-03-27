@@ -8,11 +8,24 @@ const projectCollection = defineCollection({
       accent: z.string(),
     }),
 });
-
+/* 
+customNavigation:
+  discriminant: true
+  value:
+    - title: some projects
+      subItems: custom-group
+    - title: All Projects */
 const pageCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     publishStatus: z.optional(z.string()),
+    customNavigation: z.discriminatedUnion("discriminant", [
+      z.object({ discriminant: z.literal(false), value: z.string() }),
+      z.object({
+        discriminant: z.literal(true),
+        value: z.array(z.object({ title: z.string(), subItems: z.string() })),
+      }),
+    ]),
   }),
 });
 const homepageCollection = defineCollection({});

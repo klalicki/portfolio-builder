@@ -26,7 +26,7 @@ let projectList: {
 
 const portfolioGroups = await getCollection("portfolioGroups");
 // console.log(portfolioGroups);
-console.log(props);
+// console.log(props);
 const portfolioGroupId = "section-" + props.projectSource;
 const rawProjectSource = portfolioGroups.find((item) => {
   return item.slug === props.projectSource;
