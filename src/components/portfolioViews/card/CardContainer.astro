@@ -1,14 +1,14 @@
 ---
+const { props } = Astro;
 ---
+
 <style>
-.card-container{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-
-}
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 </style>
 
-<div class="card-container" style={{maxWidth:'100%'}}>
+<div id={props.containerId} class="card-container" style={{ maxWidth: "100%" }}>
   <slot />
 </div>

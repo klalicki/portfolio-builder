@@ -27,7 +27,7 @@ let projectList: {
 const portfolioGroups = await getCollection("portfolioGroups");
 // console.log(portfolioGroups);
 console.log(props);
-
+const portfolioGroupId = "section-" + props.projectSource;
 const rawProjectSource = portfolioGroups.find((item) => {
   return item.slug === props.projectSource;
 });
@@ -37,7 +37,7 @@ if (!rawProjectSource) {
 } else {
   projectSource = rawProjectSource.data.projectSource;
 }
-console.log("projectSource", projectSource);
+// console.log("projectSource", projectSource);
 
 if (projectSource.discriminant === "selected") {
   projectList = projectSource.value.map((slug: string) => {
@@ -57,7 +57,7 @@ if (Object.keys(componentMappings).includes(props.portfolioLayout)) {
 const { Container, Item } = componentMappings[validType];
 ---
 
-<Container>
+<Container containerId={portfolioGroupId}>
   {
     projectList.map((item, index) => {
       // console.log(item)

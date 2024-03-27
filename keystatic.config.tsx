@@ -92,6 +92,32 @@ export default config({
             { label: "Unlisted", value: "unlisted" },
           ],
         }),
+        customNavigation: fields.conditional(
+          fields.checkbox({ label: "special navigation" }),
+          {
+            false: customFields.uniquify({ label: "unique" }),
+            true: fields.array(
+              fields.object({
+                title: fields.text({ label: "Nav item label" }),
+                subItems: fields.relationship({
+                  label: "Nav sub-items",
+                  collection: "portfolioGroups",
+                }),
+              }),
+              {
+                itemLabel(props) {
+                  return (
+                    props.fields.title.value +
+                    (props.fields.subItems.value
+                      ? ` (sub-items: ${props.fields.subItems.value})`
+                      : "")
+                  );
+                },
+              }
+            ),
+          }
+        ),
+
         content: fields.markdoc({
           label: "Content",
           components: {

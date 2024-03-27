@@ -1,13 +1,15 @@
 ---
+const { props } = Astro;
 ---
+
 <style>
-.sbs-container{
-  display: flex;
-  flex-direction: column;
-  /* controlled gap */
-}
+  .sbs-container {
+    display: flex;
+    flex-direction: column;
+    /* controlled gap */
+  }
 </style>
 
-<div class="sbs-container" >
+<div id={props.containerId} class="sbs-container">
   <slot />
 </div>

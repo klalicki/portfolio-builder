@@ -151,9 +151,9 @@ declare module 'astro:content' {
   collection: "pages";
   data: InferEntrySchema<"pages">
 } & { render(): Render[".mdoc"] };
-"here-s-an-unpublished-page.mdoc": {
-	id: "here-s-an-unpublished-page.mdoc";
-  slug: "here-s-an-unpublished-page";
+"work.mdoc": {
+	id: "work.mdoc";
+  slug: "work";
   body: string;
   collection: "pages";
   data: InferEntrySchema<"pages">
