@@ -160,6 +160,20 @@ declare module 'astro:content' {
 } & { render(): Render[".mdoc"] };
 };
 "portfolioGroups": {
+"all.mdoc": {
+	id: "all.mdoc";
+  slug: "all";
+  body: string;
+  collection: "portfolioGroups";
+  data: InferEntrySchema<"portfolioGroups">
+} & { render(): Render[".mdoc"] };
+"custom-group.mdoc": {
+	id: "custom-group.mdoc";
+  slug: "custom-group";
+  body: string;
+  collection: "portfolioGroups";
+  data: InferEntrySchema<"portfolioGroups">
+} & { render(): Render[".mdoc"] };
 };
 "projectGroups": {
 };

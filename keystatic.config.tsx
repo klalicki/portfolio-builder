@@ -111,9 +111,10 @@ export default config({
       label: "Portfolio Groups",
       slugField: "name",
       format: { contentField: "emptyContent" },
-      // path: "src/content/settings/portfolioGroups/*",
+      path: "src/content/portfolioGroups/*",
       schema: {
-        name: fields.text({ label: "Name" }),
+        name: fields.slug({ name: { label: "Title" } }),
+        emptyContent: fields.emptyDocument(),
         projectSource: fields.conditional(
           fields.select({
             label: "Which projects to include",

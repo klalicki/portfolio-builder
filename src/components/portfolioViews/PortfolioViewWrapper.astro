@@ -24,7 +24,13 @@ let projectList: {
   data: any;
 }[] = [];
 
-const portfolioGroups = getCollection("portfolioGroups");
+const portfolioGroups = await getCollection("portfolioGroups");
+// console.log(portfolioGroups);
+console.log(props);
+const projectSource = portfolioGroups.find((item) => {
+  console.log(item);
+});
+
 if (props.projectSource.discriminant === "selected") {
   projectList = props.projectSource.value.map((slug: string) => {
     return allProjects.find((project) => {

@@ -18,8 +18,9 @@ const pageCollection = defineCollection({
 const homepageCollection = defineCollection({});
 const projectGroupCollection = defineCollection({
   schema: z.object({
-    discriminant: z.string(),
-    value: z.array(z.string()),
+    projectSource: z.object({
+      discriminant: z.string(),
+    }),
   }),
 });
 export const collections = {
