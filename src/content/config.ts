@@ -18,9 +18,13 @@ const pageCollection = defineCollection({
 const homepageCollection = defineCollection({});
 const projectGroupCollection = defineCollection({
   schema: z.object({
-    projectSource: z.object({
-      discriminant: z.string(),
-    }),
+    projectSource: z.discriminatedUnion("discriminant", [
+      z.object({ discriminant: z.literal("all"), value: z.string() }),
+      z.object({
+        discriminant: z.literal("selected"),
+        value: z.array(z.string()),
+      }),
+    ]),
   }),
 });
 export const collections = {

@@ -17,22 +17,30 @@ const componentMappings = {
 };
 
 let projectList: {
-  id: "an-actual-design-project.mdoc";
-  slug: "an-actual-design-project";
+  id: string;
+  slug: string;
   body: string;
-  collection: "projects";
+  collection: string;
   data: any;
 }[] = [];
 
 const portfolioGroups = await getCollection("portfolioGroups");
 // console.log(portfolioGroups);
 console.log(props);
-const projectSource = portfolioGroups.find((item) => {
-  console.log(item);
-});
 
-if (props.projectSource.discriminant === "selected") {
-  projectList = props.projectSource.value.map((slug: string) => {
+const rawProjectSource = portfolioGroups.find((item) => {
+  return item.slug === props.projectSource;
+});
+let projectSource: any = {};
+if (!rawProjectSource) {
+  projectSource.discriminant = "all";
+} else {
+  projectSource = rawProjectSource.data.projectSource;
+}
+console.log("projectSource", projectSource);
+
+if (projectSource.discriminant === "selected") {
+  projectList = projectSource.value.map((slug: string) => {
     return allProjects.find((project) => {
       return project.slug === slug;
     });
