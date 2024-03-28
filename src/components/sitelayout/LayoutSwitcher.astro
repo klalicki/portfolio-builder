@@ -3,15 +3,29 @@ import settings from "../helpers/settingsHelper";
 
 // import templates
 import SidebarPage from "./Sidebar/SidebarPage.astro";
+import TopbarPage from "./TopBar/TopbarPage.astro";
 
+console.log(settings.menu.position);
 // const MenuComponent = Sidebar;
 let PageLayout;
+let pageLayoutName;
 switch (settings.menu.position) {
   case "sidebar":
     PageLayout = SidebarPage;
+    pageLayoutName = "si";
+    break;
+  case "top":
+    console.log("using topbar");
+    PageLayout = TopbarPage;
+    pageLayoutName = "top!";
+    break;
   default:
     PageLayout = SidebarPage;
+    pageLayoutName = "si";
+
+    break;
 }
+console.log(PageLayout);
 ---
 
 <PageLayout>
