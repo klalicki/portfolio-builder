@@ -7,9 +7,37 @@ import {
   BlockWrapper,
 } from "@keystatic/core";
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
+
 import * as customFields from "./cms/fields";
 import { standardComponents } from "./cms/components/standardComponents";
 import { pageComponents } from "./cms/components/pageComponents";
+
+const customNavField = fields.conditional(
+  fields.checkbox({ label: "special navigation" }),
+  {
+    false: customFields.uniquify({ label: "unique" }),
+    true: fields.array(
+      fields.object({
+        title: fields.text({ label: "Nav item label" }),
+        subItems: fields.relationship({
+          label: "Nav sub-items",
+          collection: "portfolioGroups",
+        }),
+      }),
+      {
+        itemLabel(props) {
+          return (
+            props.fields.title.value +
+            (props.fields.subItems.value
+              ? ` (sub-items: ${props.fields.subItems.value})`
+              : "")
+          );
+        },
+      }
+    ),
+  }
+);
+
 export default config({
   ui: {
     navigation: {
@@ -92,31 +120,7 @@ export default config({
             { label: "Unlisted", value: "unlisted" },
           ],
         }),
-        customNavigation: fields.conditional(
-          fields.checkbox({ label: "special navigation" }),
-          {
-            false: customFields.uniquify({ label: "unique" }),
-            true: fields.array(
-              fields.object({
-                title: fields.text({ label: "Nav item label" }),
-                subItems: fields.relationship({
-                  label: "Nav sub-items",
-                  collection: "portfolioGroups",
-                }),
-              }),
-              {
-                itemLabel(props) {
-                  return (
-                    props.fields.title.value +
-                    (props.fields.subItems.value
-                      ? ` (sub-items: ${props.fields.subItems.value})`
-                      : "")
-                  );
-                },
-              }
-            ),
-          }
-        ),
+        customNavigation: customNavField,
 
         content: fields.markdoc({
           label: "Content",
@@ -178,6 +182,8 @@ export default config({
       path: "src/content/homepage/index",
       schema: {
         title: fields.text({ label: "Page Title" }),
+        customNavigation: customNavField,
+
         content: fields.markdoc({
           label: "Content",
           components: {
