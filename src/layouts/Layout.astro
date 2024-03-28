@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import "../styles.css";
 import LayoutSwitcher from "../components/sitelayout/LayoutSwitcher.astro";
+import FloatingEdit from "../components/sitelayout/FloatingEdit.astro";
 export interface Props {
   title: string;
 }
@@ -10,8 +11,6 @@ const { title } = Astro.props;
 const projects = await getCollection("projects");
 
 import { ViewTransitions } from "astro:transitions";
-
-const isDev = process.env.NODE_ENV === "development";
 ---
 
 <!doctype html>
@@ -43,29 +42,13 @@ const isDev = process.env.NODE_ENV === "development";
         max-width: 800px;
         overflow-wrap: break-word;
       }
-      .floating-edit {
-        position: fixed;
-        transform: translateX(50%) translateX(-20px) rotate(-90deg);
-        top: 50%;
-        right: 0;
-      }
-      .floating-edit a {
-        padding: 0.5rem;
-        background-color: lightpink;
-        text-decoration: none;
-      }
     </style></head
   >
 
   <LayoutSwitcher>
     <slot />
   </LayoutSwitcher>
+  <FloatingEdit />
 
-  {
-    isDev && (
-      <div class="floating-edit">
-        <a href="/keystatic"> Click here to enter the site editor</a>
-      </div>
-    )
-  }
+
 </html>
