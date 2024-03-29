@@ -4,24 +4,27 @@ const fullPath = Astro.url.pathname;
 console.log(Astro.params.slug);
 const isProject = fullPath.includes("/projects/");
 console.log(isProject);
-const editPath =
-  "/keystatic/collection/" +
-  (isProject ? "projects" : "pages") +
-  "/item/" +
-  Astro.params.slug;
+const isHomepage = typeof Astro.params.slug === "undefined";
+let editPath;
+if (isHomepage) {
+  editPath = "/keystatic/singleton/homepage";
+} else {
+  editPath =
+    "/keystatic/collection/" +
+    (isProject ? "projects" : "pages") +
+    "/item/" +
+    Astro.params.slug;
+}
 ---
 
 <style>
   .floating-edit {
-    position: fixed;
-    transform: translateX(50%) translateX(-20px) rotate(-90deg);
-    top: 50%;
-    right: 0;
+    font-size: 0.75rem;
   }
   .floating-edit a {
-    padding: 0.5rem;
+    /* padding: 0.5rem;
     background-color: lightpink;
-    text-decoration: none;
+    text-decoration: none; */
   }
 </style>
 {
