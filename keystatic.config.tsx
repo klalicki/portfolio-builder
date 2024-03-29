@@ -45,7 +45,7 @@ export default config({
     navigation: {
       Content: ["projects", "pages", "homepage"],
       Settings: ["menu", "general", "portfolioGroups"],
-      Appearance: ["sidebarSettings"],
+      Appearance: ["sidebarSettings", "portfolioLayouts"],
     },
   },
   storage: {
@@ -177,6 +177,7 @@ export default config({
     }),
   },
   singletons: {
+    portfolioLayouts: portfolioLayouts,
     homepage: singleton({
       label: "Homepage",
       entryLayout: "content",
