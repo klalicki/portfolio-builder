@@ -205,7 +205,7 @@ export default config({
     }),
     sidebarSettings: singleton({
       label: "Sidebar Settings",
-      path: "src/content/settings/sidebar",
+      path: "src/settings/sidebar",
       schema: {
         sidebarWidth: customFields.cssUnit({
           label: "sidebar width",
@@ -215,13 +215,13 @@ export default config({
     }),
     general: singleton({
       label: "General Settings",
-      path: "src/content/settings/general",
+      path: "src/settings/general",
 
       schema: { slug: customFields.slugPicker({ label: "sluggy" }) },
     }),
     menu: singleton({
       label: "Menu",
-      path: "src/content/settings/menu",
+      path: "src/settings/menu",
       schema: {
         position: fields.select({
           label: "Menu Position",

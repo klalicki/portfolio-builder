@@ -1,5 +1,7 @@
 import { getCollection } from "astro:content";
 
+import * as general from "../../settings/general.json";
+
 const settingsRaw = await getCollection("settings");
 // console.log(settingsRaw);
 const MenuSettings = settingsRaw.find((item) => {
