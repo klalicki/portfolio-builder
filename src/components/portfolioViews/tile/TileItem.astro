@@ -37,9 +37,11 @@ const { title, url, thumbnail, accent } = Astro.props;
     text-align: center;
     transition: opacity 0.3s;
   }
-  .portfolio-tile:hover .tile-hover-panel {
+  .portfolio-tile:hover .tile-hover-panel,
+  .tile-hover-panel:focus-within {
     opacity: 1;
   }
+
   .tile-hover-panel-link::after {
     content: "";
     position: absolute;
