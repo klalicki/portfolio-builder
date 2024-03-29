@@ -8,6 +8,8 @@ import {
 } from "@keystatic/core";
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
 
+import { portfolioLayouts } from "./cms/singletons/portfolioLayouts";
+
 import * as customFields from "./cms/fields";
 import { standardComponents } from "./cms/components/standardComponents";
 import { pageComponents } from "./cms/components/pageComponents";
@@ -43,7 +45,7 @@ export default config({
     navigation: {
       Content: ["projects", "pages", "homepage"],
       Settings: ["menu", "general", "portfolioGroups"],
-      Appearance: ["sidebarSettings"],
+      Appearance: ["sidebarSettings", "portfolioLayouts"],
     },
   },
   storage: {
@@ -59,7 +61,8 @@ export default config({
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
-
+        description: fields.text({ label: "Description" }),
+        line3: fields.text({ label: "optional 3rd line for portfolio pages" }),
         thumbnail: fields.image({
           label: "Thumbnail Image",
           directory: "src/assets/images/pages",
