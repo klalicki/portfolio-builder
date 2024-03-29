@@ -51,10 +51,10 @@ const menuItems = [...homepage, ...pages]
               };
             }
           );
-          console.log(projectNavItems);
-          console.log(customNavItem.title);
+          console.log("slugg: ", page.slug);
+          const workingSlug = page.slug === "index" ? "" : page.slug + "/";
           return {
-            url: "/" + page.slug + "/#section-" + customNavItem.subItems,
+            url: "/" + workingSlug + "#section-" + customNavItem.subItems,
             title: customNavItem.title || page.data.title || "Home",
             showInMenu: true,
             subItems: projectNavItems,
