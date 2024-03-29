@@ -13,7 +13,7 @@ export const portfolioLayouts = singleton({
       {
         textArea: fields.markdoc({
           label: "Custom Text Area",
-          loc
+
           components: { ...portfolioComponents },
         }),
       },

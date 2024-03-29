@@ -45,7 +45,7 @@ export default config({
     navigation: {
       Content: ["projects", "pages", "homepage"],
       Settings: ["menu", "general", "portfolioGroups"],
-      Appearance: ["sidebarSettings", "portfolioLayouts"],
+      Appearance: ["sidebarSettings"],
     },
   },
   storage: {

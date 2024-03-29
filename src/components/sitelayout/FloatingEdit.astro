@@ -1,5 +1,14 @@
 ---
 const isDev = process.env.NODE_ENV === "development";
+const fullPath = Astro.url.pathname;
+console.log(Astro.params.slug);
+const isProject = fullPath.includes("/projects/");
+console.log(isProject);
+const editPath =
+  "/keystatic/collection/" +
+  (isProject ? "projects" : "pages") +
+  "/item/" +
+  Astro.params.slug;
 ---
 
 <style>
@@ -18,7 +27,7 @@ const isDev = process.env.NODE_ENV === "development";
 {
   isDev && (
     <div class="floating-edit">
-      <a href="/keystatic"> Click here to enter the site editor</a>
+      <a href={editPath}> Edit this page</a>
     </div>
   )
 }
