@@ -19,7 +19,13 @@ const { title, url, thumbnail, accent } = Astro.props;
     object-fit: cover;
     height: auto;
     width: 100%;
-    aspect-ratio: 5/4;
+    height: 100%;
+    aspect-ratio: 4/3;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
   }
 
   .tile-hover-panel {
@@ -57,7 +63,7 @@ const { title, url, thumbnail, accent } = Astro.props;
 <article class="portfolio-tile">
   {
     thumbnail ? (
-      <Image widths={[400]} class={"tile-image"} src={thumbnail} alt="" />
+      <Image widths={[500]} class={"tile-image"} src={thumbnail} alt="" />
     ) : (
       <div class="tile-image" style={{ backgroundColor: accent }} />
     )
