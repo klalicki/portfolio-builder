@@ -1,8 +1,80 @@
 ---
-const {props}=Astro
+import Image from "astro/components/Image.astro";
+const { props } = Astro;
+const { title, url, thumbnail, accent } = Astro.props;
+
+// console.log(props)
 ---
 
-<div>
-  TILE ITEM
+<style>
+  .portfolio-tile {
+    position: relative;
+    width: 100%;
+    /* height: 100%; */
+    /* aspect-ratio: 5 / 4; */
+  }
+  .tile-image {
+    /* position: ; */
+
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+    aspect-ratio: 5/4;
+  }
+
+  .tile-hover-panel {
+    opacity: 0;
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: opacity 0.3s;
+  }
+  .portfolio-tile:hover .tile-hover-panel {
+    opacity: 1;
+  }
+  .tile-hover-panel-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  * {
+  }
+</style>
+<!-- <div class="card-item">
+  <div class="card-image-container">
+    {
+      thumbnail ? (
+        <Image widths={[400]} class={"card-image"} src={thumbnail} alt="" />
+      ) : (
+        <div class="card-image" style={{ backgroundColor: accent }} />
+      )
+    }
+  </div>
+  <a href={url}> {title}</a>
+
   <slot />
-</div>
+</div> -->
+
+<article class="portfolio-tile">
+  {
+    thumbnail ? (
+      <Image widths={[400]} class={"tile-image"} src={thumbnail} alt="" />
+    ) : (
+      <div class="tile-image" style={{ backgroundColor: accent }} />
+    )
+  }
+  <div class="tile-hover-panel">
+    <a class="tile-hover-panel-link" href={url}> {title}</a>
+  </div>
+</article>
