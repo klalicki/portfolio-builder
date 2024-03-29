@@ -51,13 +51,14 @@ const menuItems = [...homepage, ...pages]
               };
             }
           );
-          console.log("slugg: ", page.slug);
+
           const workingSlug = page.slug === "index" ? "" : page.slug + "/";
           return {
             url: "/" + workingSlug + "#section-" + customNavItem.subItems,
             title: customNavItem.title || page.data.title || "Home",
             showInMenu: true,
             subItems: projectNavItems,
+            groupID: page.slug + "-" + customNavItem.subItems,
           };
         }
       );

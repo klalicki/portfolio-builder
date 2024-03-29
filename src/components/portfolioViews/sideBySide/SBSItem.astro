@@ -18,24 +18,27 @@ const isOdd = index % 2;
     flex-direction: row-reverse;
   }
   .sbs-image-container {
-    height: 100px;
+    flex-grow: 0;
+
+    /* height: 100px; */
     /* fontrolled height */
   }
 
   .sbs-image-container,
   .sbs-text-panel {
-    flex-basis: 300px;
+    flex-basis: 250px;
   }
 
   .sbs-image {
     /* controlled aspect ratio,border style? */
-    height: 100%;
-    aspect-ratio: 3/2;
+    /* height: 100%; */
+    aspect-ratio: 3/ 2;
     object-fit: cover;
   }
 
   .sbs-text-panel {
     /* controlled - flex positioning, text align,padding */
+    flex-grow: 1;
   }
 </style>
 <div class:list={["sbs-item", isOdd && "sbs-item-odd"]}>

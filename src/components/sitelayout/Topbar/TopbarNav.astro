@@ -6,13 +6,22 @@ const sidebarWidth = settings.sidebar.sidebarWidth;
 ---
 
 <style>
-  .menu-main,
-  .menu-submenu {
+  .menu-main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 1rem;
   }
   .menu-submenu {
-    padding-left: 1rem;
+    position: absolute;
+    top: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: lightblue;
+    padding: 1rem;
+  }
+  .submenu-hidden {
+    display: none;
   }
 </style>
 <style is:global define:vars={{ sidebarWidth: sidebarWidth }}>
@@ -24,18 +33,51 @@ const sidebarWidth = settings.sidebar.sidebarWidth;
     display: flex;
   }
 </style>
+<script>
+  const buttons = document.querySelectorAll(".menu-dropdown");
+  // alert(buttons.length);
+  buttons.forEach((item) => {
+    item.addEventListener("click", () => {
+      const menuID = item.getAttribute("data-menu-id");
+      const isInitiallyHidden = document
+        .getElementById(menuID)
+        ?.classList.contains("submenu-hidden");
+      document.querySelectorAll(".menu-submenu").forEach((submenu) => {
+        submenu.classList.toggle("submenu-hidden", true);
+      });
+      document
+        .getElementById(menuID)
+        ?.classList.toggle("submenu-hidden", !isInitiallyHidden);
+    });
+  });
 
+  document.querySelector(".menu-main")?.addEventListener("blurCapture", () => {
+    alert("blur");
+  });
+</script>
 <nav class="menu-main">
   {
     menuItems.map((item) => {
       if (item.subItems.length > 0) {
         return (
           <>
-            <a href={item.url}>{item.title}</a>
-            <div class="menu-submenu">
-              {item.subItems.map((subItem) => {
-                return <a href={subItem.url}>{subItem.title}</a>;
-              })}
+            <div class="dropdown-group">
+              <div>
+                <a href={item.url}>{item.title}</a>
+                <button
+                  class="menu-dropdown"
+                  data-menu-id={item.groupID}
+                  aria-controls={item.groupID}
+                >
+                  E
+                </button>
+              </div>
+
+              <div class="menu-submenu submenu-hidden" id={item.groupID}>
+                {item.subItems.map((subItem) => {
+                  return <a href={subItem.url}>{subItem.title}</a>;
+                })}
+              </div>
             </div>
           </>
         );
@@ -45,3 +87,8 @@ const sidebarWidth = settings.sidebar.sidebarWidth;
     })
   }
 </nav>
+
+<!-- 
+  code to render submenu- add once i figure out an accessible dropdown
+ 
+ -->
