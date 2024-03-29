@@ -1,14 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
 
-
-const posts = await getCollection('homepage');
+const posts = await getCollection("homepage");
 // console.log('homepage',posts);
-const page=posts[0]
+const page = posts[0];
 const { Content } = await page.render();
+console.log("hometitle:", page.data.title);
 ---
 
-<Layout title="Keystatic & Astro's Content Collections">
+<Layout title={page.data.title || "Home"}>
   <Content />
 </Layout>
