@@ -13,12 +13,13 @@ const isOdd = index % 2;
     display: flex;
     flex-wrap: wrap;
     /* controlled padding */
+    border: 2px solid red;
   }
   .sbs-item-odd {
     flex-direction: row-reverse;
   }
   .sbs-image-container {
-    flex-grow: 0;
+    flex-grow: 1;
 
     /* height: 100px; */
     /* fontrolled height */
@@ -38,7 +39,12 @@ const isOdd = index % 2;
 
   .sbs-text-panel {
     /* controlled - flex positioning, text align,padding */
+    flex-basis: 300px;
     flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
   }
 </style>
 <div class:list={["sbs-item", isOdd && "sbs-item-odd"]}>
