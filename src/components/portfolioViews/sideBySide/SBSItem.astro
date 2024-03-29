@@ -11,6 +11,7 @@ const isOdd = index % 2;
 <style>
   .sbs-item {
     display: flex;
+    flex-wrap: wrap;
     /* controlled padding */
   }
   .sbs-item-odd {
@@ -20,6 +21,12 @@ const isOdd = index % 2;
     height: 100px;
     /* fontrolled height */
   }
+
+  .sbs-image-container,
+  .sbs-text-panel {
+    flex-basis: 300px;
+  }
+
   .sbs-image {
     /* controlled aspect ratio,border style? */
     height: 100%;
@@ -31,8 +38,7 @@ const isOdd = index % 2;
     /* controlled - flex positioning, text align,padding */
   }
 </style>
-<div class:list={["sbs-item", isOdd === 1 && "sbs-item-odd"]}>
-  {isOdd}
+<div class:list={["sbs-item", isOdd && "sbs-item-odd"]}>
   <div class:list={["sbs-image-container"]}>
     {
       thumbnail ? (
