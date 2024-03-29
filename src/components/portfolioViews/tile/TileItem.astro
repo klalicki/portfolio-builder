@@ -53,20 +53,6 @@ const { title, url, thumbnail, accent } = Astro.props;
   * {
   }
 </style>
-<!-- <div class="card-item">
-  <div class="card-image-container">
-    {
-      thumbnail ? (
-        <Image widths={[400]} class={"card-image"} src={thumbnail} alt="" />
-      ) : (
-        <div class="card-image" style={{ backgroundColor: accent }} />
-      )
-    }
-  </div>
-  <a href={url}> {title}</a>
-
-  <slot />
-</div> -->
 
 <article class="portfolio-tile">
   {
