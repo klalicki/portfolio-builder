@@ -1,12 +1,14 @@
 ---
 const { props } = Astro;
+import portfolioLayouts from "../../../settings/portfolioLayouts.json";
 ---
 
-<style>
+<style define:vars={{ itemGap: portfolioLayouts.sideBySide.itemGap }}>
   .sbs-container {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    gap: var(--itemGap);
     /* controlled gap */
   }
 </style>
