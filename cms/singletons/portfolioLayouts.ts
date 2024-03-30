@@ -8,7 +8,7 @@ import { portfolioComponents } from "../components/portfolioViewComponents";
 export const portfolioLayouts = singleton({
   label: "Portfolio Layout Settings",
   format: { data: "json" },
-  // path: "src/content/templateParts/",
+  path: "src/settings/portfolioLayouts",
   schema: {
     sideBySide: fields.object(
       {

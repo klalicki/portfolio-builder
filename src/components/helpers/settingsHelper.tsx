@@ -1,6 +1,7 @@
 import { getCollection } from "astro:content";
 
-import * as general from "../../settings/general.json";
+import general from "../../settings/general.json";
+console.log("general:", general);
 
 const settingsRaw = await getCollection("settings");
 // console.log(settingsRaw);

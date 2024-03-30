@@ -1,8 +1,5 @@
 ---
 import menuItems from "../../helpers/menuItems";
-
-import settings from "../../helpers/settingsHelper";
-const sidebarWidth = settings.sidebar.sidebarWidth;
 ---
 
 <style>
@@ -15,7 +12,7 @@ const sidebarWidth = settings.sidebar.sidebarWidth;
     padding-left: 1rem;
   }
 </style>
-<style is:global define:vars={{ sidebarWidth: sidebarWidth }}>
+<style is:global define:vars={{ sidebarWidth: "300px" }}>
   .header-for-sidebar {
     /* width:var(--sidebarWidth); */
     /* background-color: yellow; */
@@ -33,7 +30,7 @@ const sidebarWidth = settings.sidebar.sidebarWidth;
           <>
             <a href={item.url}>{item.title}</a>
             <div class="menu-submenu">
-              {item.subItems.map((subItem) => {
+              {item.subItems.map((subItem: { url: string; title: string }) => {
                 return <a href={subItem.url}>{subItem.title}</a>;
               })}
             </div>

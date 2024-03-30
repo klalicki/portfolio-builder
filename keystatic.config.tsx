@@ -9,6 +9,9 @@ import {
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
 
 import { portfolioLayouts } from "./cms/singletons/portfolioLayouts";
+import { menuConfig } from "./cms/singletons/menuConfig";
+import { generalSettings } from "./cms/singletons/generalSettings";
+import { sidebarSettings } from "./cms/singletons/sidebarSettings";
 
 import * as customFields from "./cms/fields";
 import { standardComponents } from "./cms/components/standardComponents";
@@ -178,6 +181,9 @@ export default config({
   },
   singletons: {
     portfolioLayouts: portfolioLayouts,
+    sidebarSettings: sidebarSettings,
+    general: generalSettings,
+    menu: menuConfig,
     homepage: singleton({
       label: "Homepage",
       entryLayout: "content",
@@ -200,41 +206,6 @@ export default config({
               publicPath: "../../assets/images/pages/",
             },
           },
-        }),
-      },
-    }),
-    sidebarSettings: singleton({
-      label: "Sidebar Settings",
-      path: "src/settings/sidebar",
-      schema: {
-        sidebarWidth: customFields.cssUnit({
-          label: "sidebar width",
-          defaultValue: "300px",
-        }),
-      },
-    }),
-    general: singleton({
-      label: "General Settings",
-      path: "src/settings/general",
-
-      schema: { slug: customFields.slugPicker({ label: "sluggy" }) },
-    }),
-    menu: singleton({
-      label: "Menu",
-      path: "src/settings/menu",
-      schema: {
-        position: fields.select({
-          label: "Menu Position",
-          options: [
-            { label: "Sidebar", value: "sidebar" },
-            { label: "Top bar", value: "top" },
-            {
-              label: "Sticky Topbar",
-              value: "sticky",
-            },
-            { label: "Hamburger", value: "hamburger" },
-          ],
-          defaultValue: "sidebar",
         }),
       },
     }),

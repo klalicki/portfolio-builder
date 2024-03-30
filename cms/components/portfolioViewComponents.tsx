@@ -7,7 +7,7 @@ import {
 
 import PortfolioPreview from "./previews/PortfolioPreview";
 
-const inlinePreview = (title) => {
+const inlinePreview = (title: string) => {
   return () => {
     return <span>{`{${title}}`}</span>;
   };
