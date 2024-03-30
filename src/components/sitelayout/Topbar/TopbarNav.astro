@@ -8,7 +8,15 @@ import settings from "../../helpers/settingsHelper";
 <style>
   /*  */
   .menu-main {
-  }
+    height: 45px;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top:0px;
+    background-color: aquamarine;
+    display: flex;
+    padding:0;
+justify-content: flex-end;  }
   .menu-main-group {
     position: fixed;
     top: 45px;
@@ -17,6 +25,7 @@ import settings from "../../helpers/settingsHelper";
     display: flex;
     flex-direction: column;
     background-color: lightblue;
+    z-index: 400;
   }
   .menu-submenu {
     display: flex;
@@ -25,11 +34,20 @@ import settings from "../../helpers/settingsHelper";
     font-size: 0.75rem;
     gap: 0.25rem;
   }
-  .menu-main button {
+  .menu-dropdown-button {
+    display: none;
+  }
+  .menu-toggle-button{
+
+  }
+  .menu-mobile-hidden{
     display: none;
   }
 
   @media screen and (min-width: 600px) {
+    .menu-mobile-hidden{
+      display: flex;
+    }
     .menu-main button {
       display: inline;
     }
@@ -71,9 +89,17 @@ import settings from "../../helpers/settingsHelper";
         ?.classList.toggle("submenu-hidden", !isInitiallyHidden);
     });
   });
+
+document.querySelector('#menu-toggle').addEventListener('click',()=>{
+  document.querySelector('.menu-main-group')?.classList.toggle('menu-mobile-hidden')
+})
+
 </script>
+
 <nav class="menu-main">
-  <div class="menu-main-group">
+  <button id="menu-toggle">Menu</button>
+
+<div class="menu-main-group menu-mobile-hidden">
     {
       menuItems.map((item) => {
         if (item.subItems.length > 0) {
@@ -83,7 +109,7 @@ import settings from "../../helpers/settingsHelper";
                 <div>
                   <a href={item.url}>{item.title}</a>
                   <button
-                    class="menu-dropdown"
+                    class="menu-dropdown-button"
                     data-menu-id={item.groupID}
                     aria-controls={item.groupID}
                   >
