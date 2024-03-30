@@ -4,12 +4,13 @@ const { props } = Astro;
 const { title, url, thumbnail, accent, index } = Astro.props;
 
 const isOdd = index % 2;
-import { portfolioLayouts } from "../../../../cms/singletons/portfolioLayouts";
-
+import portfolioLayouts from "../../../settings/portfolioLayouts.json";
 // console.log(props)
 ---
 
-<style define:vars={{tileAspectRatio:portfolioLayouts.entryLayout}}>
+<style
+  define:vars={{ tileAspectRatio: portfolioLayouts.sideBySide.tileAspectRatio }}
+>
   .sbs-item {
     display: flex;
     flex-wrap: wrap;
@@ -34,7 +35,7 @@ import { portfolioLayouts } from "../../../../cms/singletons/portfolioLayouts";
   .sbs-image {
     /* controlled aspect ratio,border style? */
     /* height: 100%; */
-    aspect-ratio: {{3/ 2}};
+    aspect-ratio: var(--tileAspectRatio);
     object-fit: cover;
     height: 100%;
     position: relative;
