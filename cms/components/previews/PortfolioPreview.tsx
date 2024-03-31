@@ -3,8 +3,8 @@ import { getCollection, getEntry } from "astro:content";
 import PortfolioView from "../../../src/components/portfolioViews/PortfolioViewWrapper.astro";
 const PortfolioPreview = (props: {
   value: {
-    readonly unique: string;
-    readonly portfolioLayout: "cards" | "tiles" | "sbs";
+    unique: string;
+    portfolioLayout: string;
   };
 }) => {
   return (

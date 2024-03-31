@@ -1,0 +1,54 @@
+---
+import Image from "astro/components/Image.astro";
+const { props } = Astro;
+const { title, url, thumbnail, accent } = Astro.props;
+
+// console.log(props)
+---
+
+<style>
+  .portfolio-tile {
+    aspect-ratio: 3 / 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .tile-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  .tile-hover-panel {
+    position: relative;
+    z-index: 10;
+    background-color: black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .tile-hover-panel-title {
+    color: white;
+  }
+</style>
+
+<article class="portfolio-tile">
+  {
+    thumbnail ? (
+      <Image widths={[500]} class={"tile-image"} src={thumbnail} alt="" />
+    ) : (
+      <div class="tile-image" style={{ backgroundColor: accent }} />
+    )
+  }
+  <div class="tile-hover-panel">
+    <h3 class="tile-hover-panel-title">{title}</h3>
+  </div>
+</article>
+
+<!-- 
+  watch this youtube video:
+  https://www.youtube.com/watch?v=5DEq5cWNYt8
+ -->

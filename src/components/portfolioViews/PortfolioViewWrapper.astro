@@ -9,11 +9,14 @@ import TileContainer from "./tile/TileContainer.astro";
 import TileItem from "./tile/TileItem.astro";
 import SBSContainer from "./sideBySide/SBSContainer.astro";
 import SBSItem from "./sideBySide/SBSItem.astro";
+import CoolTileContainer from "./coolTile/CoolTileContainer.astro";
+import CoolTileItem from "./coolTile/CoolTileItem.astro";
 
 const componentMappings = {
   cards: { Container: CardContainer, Item: CardItem },
   tiles: { Container: TileContainer, Item: TileItem },
   sbs: { Container: SBSContainer, Item: SBSItem },
+  coolTiles: { Container: CoolTileContainer, Item: CoolTileItem },
 };
 
 let projectList: {
@@ -23,8 +26,6 @@ let projectList: {
   collection: string;
   data: any;
 }[] = [];
-
-
 
 const portfolioGroups = await getCollection("portfolioGroups");
 // console.log(portfolioGroups);
@@ -51,7 +52,7 @@ if (projectSource.discriminant === "selected") {
   //@ts-ignore;
   projectList = allProjects;
 }
-let validType: "cards" | "tiles" | "sbs" = "cards";
+let validType: "cards" | "tiles" | "sbs" | "coolTiles" = "cards";
 if (Object.keys(componentMappings).includes(props.portfolioLayout)) {
   validType = props.portfolioLayout;
 }

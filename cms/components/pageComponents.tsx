@@ -17,6 +17,7 @@ export const pageComponents = {
           { label: "Cards", value: "cards" },
           { label: "Tiles", value: "tiles" },
           { label: "Side by Side", value: "sbs" },
+          { label: "Cool Tiles", value: "coolTiles" },
         ],
       }),
 

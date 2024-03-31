@@ -1,0 +1,14 @@
+---
+const { props } = Astro;
+---
+
+<style>
+  .tile-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+</style>
+
+<div id={props.containerId} class="tile-container" style={{ maxWidth: "100%" }}>
+  <slot />
+</div>
