@@ -2,7 +2,6 @@
 import Image from "astro/components/Image.astro";
 const { props } = Astro;
 const { title, url, thumbnail, accent, index } = Astro.props;
-
 const isOdd = index % 2;
 import portfolioLayouts from "../../../settings/portfolioLayouts.json";
 // console.log(props)
@@ -20,17 +19,6 @@ import portfolioLayouts from "../../../settings/portfolioLayouts.json";
   .sbs-item-odd {
     flex-direction: row-reverse;
   }
-  .sbs-image-container {
-    flex-grow: 1;
-
-    /* height: 100px; */
-    /* fontrolled height */
-  }
-
-  .sbs-image-container,
-  .sbs-text-panel {
-    flex-basis: 250px;
-  }
 
   .sbs-image {
     /* controlled aspect ratio,border style? */
@@ -40,11 +28,17 @@ import portfolioLayouts from "../../../settings/portfolioLayouts.json";
     height: 100%;
     position: relative;
   }
+  .sbs-image-container {
+    flex-grow: 1;
+    flex-basis: 250px;
+    /* height: 100px; */
+    /* fontrolled height */
+  }
 
   .sbs-text-panel {
     /* controlled - flex positioning, text align,padding */
-    flex-basis: 300px;
-    flex-grow: 1;
+    flex-basis: 10px;
+    flex-grow: 10000;
     display: flex;
     align-items: center;
     justify-content: center;

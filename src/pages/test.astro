@@ -1,20 +1,21 @@
 ---
-import { createReader } from "@keystatic/core/reader";
-import keystaticConfig from "../../keystatic.config";
-import { Markdoc } from "@astrojs/markdoc/config";
-const reader = createReader(process.cwd(), keystaticConfig);
-const page = await reader.collections.projects.read(
-  "you-wouldn-t-download-a-hedgehog"
-);
-// console.log(page);
-let rendered;
-const pageContent = await page?.content();
-// console.log(pageContent?.node.children);
-if (typeof pageContent?.node !== "undefined") {
-  const transformed = Markdoc.transform(pageContent?.node);
-  rendered = Markdoc.renderers.html(transformed);
-}
+const p = import("../../package.json");
+const breakpoint = "700px";
 ---
 
+<style
+  set:html={`
+@media screen and (min-width: ${breakpoint} ) {
+  h1 {
+    background-color: lightgreen;
+  }
+}
+`}
+></style>
+<style>
+  h1 {
+    color: blue;
+  }
+</style>
 <h1>Test Page</h1>
-<Fragment set:html={rendered} />
+{JSON.stringify(p)}
