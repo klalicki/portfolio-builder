@@ -26,6 +26,47 @@ const stringToUnits = (value: string) => {
   }
 };
 
+export function CSSUnitEditor(props: {
+  description: string;
+  label: string;
+  onChange: (val: any) => void;
+  value: string;
+}) {
+  const parsed = stringToUnits(props.value);
+  const units = [
+    { value: "px", label: "px" },
+    { value: "%", label: "%" },
+    { value: "vw", label: "vw" },
+    { value: "vh", label: "vh" },
+    { value: "em", label: "em" },
+    { value: "rem", label: "rem" },
+    { value: "ch", label: "ch" },
+  ];
+  return (
+    <FieldPrimitive description={props.description} label={props.label}>
+      <div style={{ display: "inline-flex", gap: ".5rem" }}>
+        <NumberField
+          label={"Value"}
+          value={parsed.number}
+          onChange={(e) => {
+            props.onChange(`${e}${parsed.unit}`);
+          }}
+        />
+        <Picker
+          label={"Unit"}
+          items={units}
+          selectedKey={parsed.unit}
+          onSelectionChange={(key) => {
+            props.onChange(`${parsed.number}${key}`);
+          }}
+        >
+          {(item) => <Item key={item.value}>{item.label}</Item>}
+        </Picker>
+      </div>
+    </FieldPrimitive>
+  );
+}
+
 export function cssUnit({
   label,
   defaultValue,

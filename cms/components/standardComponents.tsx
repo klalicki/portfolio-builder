@@ -1,6 +1,8 @@
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import * as customFields from "../fields";
 import { fields } from "@keystatic/core";
+import { CSSUnitEditor } from "../fields/cssUnit";
+import { useEffect, useRef } from "react";
 export const standardComponents = {
   ImagePopout: block({
     label: "Image (better)",
@@ -95,6 +97,10 @@ export const standardComponents = {
       }),
     },
     ContentView(props) {
+      const divRef = useRef(null);
+      useEffect(() => {
+        
+      })
       return (
         <div
           style={{
@@ -103,9 +109,9 @@ export const standardComponents = {
             alignItems: props.value.alignItems,
             flexDirection: props.value.flexDirection,
             gap: props.value.gap,
-            containerName: "col-container",
-            containerType: "normal",
+         
           }}
+          className="column-container-wrapper"
         >
           {props.children}
         </div>
@@ -117,12 +123,40 @@ export const standardComponents = {
     label: "Column",
 
     ContentView(props) {
+      const divRef = useRef(null);
+      useEffect(() => {
+        if (divRef.current !== null) {
+          let curNode = divRef.current;
+          for (let index = 0; index < 8; index++) {
+            if (curNode?.parentNode) {
+              curNode = curNode.parentNode;
+              // console.log(curNode);
+              if (
+                curNode?.tagName === "DIV" &&
+                curNode.classList.length === 0
+              ) {
+                console.log(curNode);
+
+                curNode.style.flexBasis = props.value.targetWidth;
+                curNode.style.flexGrow = props.value.flexGrow ? "1" : "0";
+                curNode.style.display = "flex";
+              }
+              // if (
+              //   curNode?.parentNode?.classList.contains(
+              //     "column-container-wrapper"
+              //   )
+              // ) {
+              //   curNode.style.flexBasis = props.value.targetWidth;
+              //   curNode.style.flexGrow = props.value.flexGrow ? "1" : "0";
+              //   curNode.style.display = "flex";
+              // }
+            }
+          }
+        }
+      }, [props.value]);
+
       return (
-        <div
-          style={{
-            maxWidth: props.value.flexGrow ? "100%" : props.value.targetWidth,
-          }}
-        >
+        <div ref={divRef} className="col-content-wrapper">
           {props.children}
         </div>
       );
