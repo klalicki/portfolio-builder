@@ -103,21 +103,25 @@ justify-content: flex-end;  }
 <script>
   const buttons = document.querySelectorAll(".menu-dropdown-button");
   // alert(buttons.length);
+  const hideAllMenus = ()=>{
+    document.querySelectorAll(".menu-submenu").forEach((submenu) => {
+        console.log(submenu);
+        submenu.classList.toggle("submenu-hidden", true);
+      });
+  }
   buttons.forEach((item) => {
     item.addEventListener("click", () => {
       const menuID = item.getAttribute("data-menu-id") || "";
       const isInitiallyHidden = document
         .getElementById(menuID)
         ?.classList.contains("submenu-hidden");
-      document.querySelectorAll(".menu-submenu").forEach((submenu) => {
-        console.log(submenu);
-        submenu.classList.toggle("submenu-hidden", true);
-      });
+      hideAllMenus();
       document
         .getElementById(menuID)
         ?.classList.toggle("submenu-hidden", !isInitiallyHidden);
     });
   });
+
 
 document.querySelector('#menu-toggle').addEventListener('click',()=>{
   document.querySelector('.menu-main-group')?.classList.toggle('menu-mobile-hidden')
