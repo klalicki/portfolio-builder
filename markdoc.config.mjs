@@ -35,6 +35,13 @@ export default defineMarkdocConfig({
         gap: { type: String },
       },
     },
+    SimpleMultiCol: {
+      render: component("./src/components/pagebuilder/SimpleMultiCol.astro"),
+    },
+    SimpleCol: {
+      render: component("./src/components/pagebuilder/SimpleCol.astro"),
+      attributes: { width: { type: Number } },
+    },
     CustomWidth: {
       render: component("./src/components/pagebuilder/CustomWidth.astro"),
       attributes: {
