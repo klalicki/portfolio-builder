@@ -97,10 +97,10 @@ export const standardComponents = {
       }),
     },
     ContentView(props) {
-      const divRef = useRef(null);
-      useEffect(() => {
-        
-      })
+      const flexCSS = `
+            .column-container-wrapper * {
+            border:1px solid red
+          }`;
       return (
         <div
           style={{
@@ -109,10 +109,12 @@ export const standardComponents = {
             alignItems: props.value.alignItems,
             flexDirection: props.value.flexDirection,
             gap: props.value.gap,
-         
+            flexWrap: "wrap",
+            position: "relative",
           }}
           className="column-container-wrapper"
         >
+          <style>{flexCSS}</style>
           {props.children}
         </div>
       );
@@ -121,46 +123,35 @@ export const standardComponents = {
   Column: wrapper({
     forSpecificLocations: true,
     label: "Column",
-
-    ContentView(props) {
-      const divRef = useRef(null);
-      useEffect(() => {
-        if (divRef.current !== null) {
-          let curNode = divRef.current;
-          for (let index = 0; index < 8; index++) {
-            if (curNode?.parentNode) {
-              curNode = curNode.parentNode;
-              // console.log(curNode);
-              if (
-                curNode?.tagName === "DIV" &&
-                curNode.classList.length === 0
-              ) {
-                console.log(curNode);
-
-                curNode.style.flexBasis = props.value.targetWidth;
-                curNode.style.flexGrow = props.value.flexGrow ? "1" : "0";
-                curNode.style.display = "flex";
-              }
-              // if (
-              //   curNode?.parentNode?.classList.contains(
-              //     "column-container-wrapper"
-              //   )
-              // ) {
-              //   curNode.style.flexBasis = props.value.targetWidth;
-              //   curNode.style.flexGrow = props.value.flexGrow ? "1" : "0";
-              //   curNode.style.display = "flex";
-              // }
-            }
-          }
-        }
-      }, [props.value]);
-
+    NodeView(props) {
       return (
-        <div ref={divRef} className="col-content-wrapper">
+        <div
+          style={{
+            flexBasis: props.value.targetWidth,
+            flexGrow: props.value.flexGrow ? "1" : "0",
+          }}
+        >
           {props.children}
         </div>
       );
     },
+    // ContentView(props) {
+
+    //   const styleProps = {};
+    //   if (props.value.flexGrow) {
+    //     styleProps.minWidth = props.value.targetWidth;
+    //     styleProps.maxWidth = "100%";
+    //   } else {
+    //     styleProps.width = props.value.targetWidth;
+    //     styleProps.maxWidth = "100%";
+    //   }
+
+    //   return (
+    //     <div ref={divRef} style={styleProps} className="col-content-wrapper">
+    //       {props.children}
+    //     </div>
+    //   );
+    // },
     schema: {
       targetWidth: customFields.cssUnit({
         label: "target width",
