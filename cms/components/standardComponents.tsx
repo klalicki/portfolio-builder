@@ -45,6 +45,12 @@ export const standardComponents = {
   SimpleMultiCol: repeating({
     label: "Simple (12-col) Multi-Column Layout",
     children: ["SimpleCol"],
+    validation: {
+      children: {
+        min: 1,
+        max: 5,
+      },
+    },
     schema: {},
     ContentView(props) {
       return (
@@ -77,7 +83,7 @@ export const standardComponents = {
       return (
         <div
           style={{
-            width: `${(100 / 13) * (props.value.width || 6)}cqw`,
+            width: `${(100 / 14) * (props.value.width || 6)}cqw`,
           }}
         >
           {props.children}
