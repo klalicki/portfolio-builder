@@ -42,6 +42,49 @@ export const standardComponents = {
       return <div dangerouslySetInnerHTML={{ __html: props.value.content }} />;
     },
   }),
+  SimpleMultiCol: repeating({
+    label: "Simple (12-col) Multi-Column Layout",
+    children: ["SimpleCol"],
+    schema: {},
+    ContentView(props) {
+      return (
+        <div
+          className="column-container-wrapper"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            containerName: "simple-col-container",
+            containerType: "inline-size",
+          }}
+        >
+          {props.children}
+        </div>
+      );
+    },
+  }),
+
+  SimpleCol: wrapper({
+    forSpecificLocations: true,
+    label: "Col",
+    schema: {
+      width: fields.number({
+        label: "Column Width (2-12)",
+        validation: { isRequired: true, min: 2, max: 12 },
+        defaultValue: 6,
+      }),
+    },
+    ContentView(props) {
+      return (
+        <div
+          style={{
+            width: `${(100 / 13) * (props.value.width || 6)}cqw`,
+          }}
+        >
+          {props.children}
+        </div>
+      );
+    },
+  }),
   MultiColumn: repeating({
     label: "Multi-Column Layout",
     children: ["Column"],
@@ -109,20 +152,7 @@ export const standardComponents = {
 
                     }`;
       return (
-        <div
-          style={
-            {
-              // display: "flex",
-              // justifyContent: props.value.justifyContent,
-              // alignItems: props.value.alignItems,
-              // flexDirection: props.value.flexDirection,
-              // gap: props.value.gap,
-              // flexWrap: "wrap",
-              // position: "relative",
-            }
-          }
-          className="column-container-wrapper"
-        >
+        <div className="column-container-wrapper">
           <style>{flexCSS}</style>
           {props.children}
         </div>
