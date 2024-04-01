@@ -2,7 +2,7 @@ import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import * as customFields from "../fields";
 import { fields } from "@keystatic/core";
 import { CSSUnitEditor } from "../fields/cssUnit";
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 export const standardComponents = {
   ImagePopout: block({
     label: "Image (better)",
@@ -98,20 +98,29 @@ export const standardComponents = {
     },
     ContentView(props) {
       const flexCSS = `
-            .column-container-wrapper * {
-            border:1px solid red
-          }`;
+            .column-container-wrapper > span > span{
+            display:flex;
+            justify-content:${props.value.justifyContent};
+            align-items: ${props.value.alignItems};
+            flex-direction: ${props.value.flexDirection};
+            gap:${props.value.gap};
+            flex-wrap:wrap;
+            position:relative;
+
+                    }`;
       return (
         <div
-          style={{
-            display: "flex",
-            justifyContent: props.value.justifyContent,
-            alignItems: props.value.alignItems,
-            flexDirection: props.value.flexDirection,
-            gap: props.value.gap,
-            flexWrap: "wrap",
-            position: "relative",
-          }}
+          style={
+            {
+              // display: "flex",
+              // justifyContent: props.value.justifyContent,
+              // alignItems: props.value.alignItems,
+              // flexDirection: props.value.flexDirection,
+              // gap: props.value.gap,
+              // flexWrap: "wrap",
+              // position: "relative",
+            }
+          }
           className="column-container-wrapper"
         >
           <style>{flexCSS}</style>
@@ -123,35 +132,22 @@ export const standardComponents = {
   Column: wrapper({
     forSpecificLocations: true,
     label: "Column",
-    NodeView(props) {
+
+    ContentView(props) {
+      const itemID = useId();
+      const cssStyles = `.column-container-wrapper > span > span > div:has(#${CSS.escape(
+        itemID
+      )}){
+        flex-basis:${props.value.targetWidth};
+        flex-grow:${props.value.flexGrow ? "1" : "0"}
+      }`;
       return (
-        <div
-          style={{
-            flexBasis: props.value.targetWidth,
-            flexGrow: props.value.flexGrow ? "1" : "0",
-          }}
-        >
+        <div id={itemID} className="col-content-wrapper">
+          <style>{cssStyles}</style>
           {props.children}
         </div>
       );
     },
-    // ContentView(props) {
-
-    //   const styleProps = {};
-    //   if (props.value.flexGrow) {
-    //     styleProps.minWidth = props.value.targetWidth;
-    //     styleProps.maxWidth = "100%";
-    //   } else {
-    //     styleProps.width = props.value.targetWidth;
-    //     styleProps.maxWidth = "100%";
-    //   }
-
-    //   return (
-    //     <div ref={divRef} style={styleProps} className="col-content-wrapper">
-    //       {props.children}
-    //     </div>
-    //   );
-    // },
     schema: {
       targetWidth: customFields.cssUnit({
         label: "target width",
