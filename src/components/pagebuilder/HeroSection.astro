@@ -2,6 +2,8 @@
 const { props } = Astro;
 const imagePath = "../../assets/images" + props.image;
 import Image from "astro/components/Image.astro";
+import { getImage } from "astro:assets";
+import { GetImageResult } from "astro";
 console.log(props);
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
@@ -13,23 +15,27 @@ if (!images[imagePath])
   );
 
 const imageSrc = images[imagePath]();
+const fancyImage = await getImage({ src: images[imagePath](), width: 1200 });
+console.log(fancyImage);
 ---
 
 <style>
-  .hero-section-bg-img {
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
+  .hero-section-wrapper {
     width: 100%;
-    height: 100%;
+    height: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
   }
   .hero-section-container {
-    width: 100%;
-    min-height: 300px;
+    height: 300px;
     position: relative;
     display: flex;
     padding: 2rem;
+    background-size: cover;
+    background-attachment: fixed;
   }
   .hero-section-content-panel {
     background-color: white;
@@ -38,9 +44,13 @@ const imageSrc = images[imagePath]();
     min-width: 200px;
   }
 </style>
-<div class="hero-section-container">
-  <Image class={"hero-section-bg-img"} src={imageSrc} alt="" inferSize={true} />
-  <div class="hero-section-content-panel">
-    <slot />
+<div class="hero-section-wrapper">
+  <div
+    class="hero-section-container"
+    style={{ backgroundImage: `url(${fancyImage.src})` }}
+  >
+    <div class="hero-section-content-panel">
+      <slot />
+    </div>
   </div>
 </div>
