@@ -4,6 +4,16 @@ import { fields } from "@keystatic/core";
 import { CSSUnitEditor } from "../fields/cssUnit";
 import { useEffect, useId, useRef } from "react";
 export const standardComponents = {
+  HeroSection: wrapper({
+    label: "Hero Section",
+    schema: {
+      image: fields.image({
+        label: "Background Image",
+        directory: "src/assets/images",
+        publicPath: "src/assets/images/",
+      }),
+    },
+  }),
   ImagePopout: block({
     label: "Image (better)",
     ContentView(props) {

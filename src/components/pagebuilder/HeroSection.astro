@@ -1,0 +1,18 @@
+---
+const { props } = Astro;
+console.log(props);
+import Image from "astro/components/Image.astro";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{jpeg,jpg,png,gif}"
+);
+if (!images[props.image])
+  throw new Error(
+    `"${props.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+  );
+---
+
+<div style={{ width: "100%", height: "300px", backgroundColor: "yellow" }}>
+  <Image src={props.image} alt="" />
+  <slot />
+</div>

@@ -14,6 +14,12 @@ export default defineMarkdocConfig({
         flexGrow: { type: Boolean },
       },
     },
+    HeroSection: {
+      render: component("./src/components/pagebuilder/HeroSection.astro"),
+      attributes: {
+        image: { type: String },
+      },
+    },
     ImagePopout: {
       render: component("./src/components/pagebuilder/ImagePopout.astro"),
       attributes: {
