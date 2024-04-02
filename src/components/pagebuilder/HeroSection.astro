@@ -1,18 +1,46 @@
 ---
 const { props } = Astro;
-console.log(props);
+const imagePath = "../../assets/images" + props.image;
 import Image from "astro/components/Image.astro";
-
+console.log(props);
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/*.{jpeg,jpg,png,gif}"
+  "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
 );
-if (!images[props.image])
+console.log(images);
+if (!images[imagePath])
   throw new Error(
     `"${props.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
   );
+
+const imageSrc = images[imagePath]();
 ---
 
-<div style={{ width: "100%", height: "300px", backgroundColor: "yellow" }}>
-  <Image src={props.image} alt="" />
-  <slot />
+<style>
+  .hero-section-bg-img {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .hero-section-container {
+    width: 100%;
+    min-height: 300px;
+    position: relative;
+    display: flex;
+    padding: 2rem;
+  }
+  .hero-section-content-panel {
+    background-color: white;
+    position: relative;
+    padding: 1rem;
+    min-width: 200px;
+  }
+</style>
+<div class="hero-section-container">
+  <Image class={"hero-section-bg-img"} src={imageSrc} alt="" inferSize={true} />
+  <div class="hero-section-content-panel">
+    <slot />
+  </div>
 </div>

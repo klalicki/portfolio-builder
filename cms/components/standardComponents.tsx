@@ -10,7 +10,7 @@ export const standardComponents = {
       image: fields.image({
         label: "Background Image",
         directory: "src/assets/images",
-        publicPath: "src/assets/images/",
+        publicPath: "",
       }),
     },
   }),
