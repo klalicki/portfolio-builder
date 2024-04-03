@@ -1,9 +1,15 @@
-import { defineMarkdocConfig, component } from "@astrojs/markdoc/config";
+import { defineMarkdocConfig, component, nodes } from "@astrojs/markdoc/config";
 
 export default defineMarkdocConfig({
   nodes: {
     document: {
       render: null, // default 'article'
+    },
+    image: {
+      ...nodes.image,
+      render: component(
+        "./src/components/pagebuilder/MarkdocImageReplace.astro"
+      ),
     },
   },
   tags: {
