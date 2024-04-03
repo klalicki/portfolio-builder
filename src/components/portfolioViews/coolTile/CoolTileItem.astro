@@ -1,43 +1,43 @@
 ---
 import Image from "astro/components/Image.astro";
+import { getImage } from "astro:assets";
 const { props } = Astro;
 const { title, url, thumbnail, accent } = Astro.props;
 
-// console.log(props)
+const fancyImage = await getImage({ src: thumbnail, width: 1200 });
 ---
 
 <style>
   .portfolio-tile {
     aspect-ratio: 3 / 2;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
     overflow: hidden;
-  }
-  .tile-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
   }
 
   .tile-hover-panel {
-    position: relative;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.642);
     padding: 0.5rem;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    transform: scale(0.9);
+    transform-origin: 50% 120% 0;
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.5s;
+    transition: all 0.3s ease;
   }
-  .portfolio-tile:hover .tile-hover-panel {
+
+  .portfolio-tile:hover .tile-hover-panel,
+  .portfolio-tile:focus-within .tile-hover-panel {
+    transform: scale(1);
     opacity: 1;
-    transform: none;
+  }
+
+  .portfolio-tile:hover {
+    /* transform: scale(1.05); */
   }
   .tile-hover-panel-title {
     color: white;
@@ -45,15 +45,15 @@ const { title, url, thumbnail, accent } = Astro.props;
 </style>
 
 <article class="portfolio-tile">
-  {
+  <!-- {
     thumbnail ? (
       <Image widths={[500]} class={"tile-image"} src={thumbnail} alt="" />
     ) : (
       <div class="tile-image" style={{ backgroundColor: accent }} />
     )
-  }
+  } -->
   <div class="tile-hover-panel">
-    <h3 class="tile-hover-panel-title">{title}</h3>
+    <a class="tile-hover-panel-title" href={url}>{title}</a>
   </div>
 </article>
 
