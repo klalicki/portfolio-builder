@@ -13,11 +13,47 @@ if (!images[imagePath])
   throw new Error(
     `"${props.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
   );
-
-
 ---
 
-<figure>
-  <Image src={images[imagePath]()} alt={props.altText} />
+<script>
+  document.querySelectorAll(".image-popout-container").forEach((element) => {
+    element.addEventListener("click", (e: any) => {
+      if (e?.target?.parentElement) {
+      }
+      e.target.parentElement.classList.toggle("image-popout-expanded");
+    });
+  });
+</script>
+<style>
+  .image-popout-container {
+    transition: 0.5s all;
+  }
+  .image-popout-expanded {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    z-index: 1000;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: all 0.5s;
+  }
+  .image-popout-expanded .image-popout-img {
+    object-fit: contain;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<figure class="image-popout-container">
+  <Image
+    class="image-popout-img"
+    src={images[imagePath]()}
+    alt={props.altText}
+  />
   {props.caption && <figcaption>{props.caption}</figcaption>}
 </figure>
