@@ -1,4 +1,9 @@
 {
+  "coolTile": {
+    "tileAspectRatio": "1/1",
+    "itemGap": "0px",
+    "targetWidth": 450
+  },
   "sideBySide": {
     "tileAspectRatio": "4/3",
     "itemGap": "0px"

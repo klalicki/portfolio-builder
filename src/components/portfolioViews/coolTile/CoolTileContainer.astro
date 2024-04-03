@@ -1,11 +1,19 @@
 ---
 const { props } = Astro;
+import { settings } from "../../helpers/settingsHelper";
+const tileSettings = settings.portfolioLayouts.coolTile;
 ---
 
-<style>
+<style
+  define:vars={{
+    tileWidth: tileSettings.targetWidth,
+    tileGap: tileSettings.itemGap,
+  }}
+>
   .tile-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--tileWidth), 1fr));
+    gap: var(--tileGap);
   }
 </style>
 

@@ -1,17 +1,22 @@
 ---
 import Image from "astro/components/Image.astro";
 import { getImage } from "astro:assets";
-const { props } = Astro;
 const { title, url, thumbnail, accent } = Astro.props;
+import { settings } from "../../helpers/settingsHelper";
+const tileSettings = settings.portfolioLayouts.coolTile;
 
-const fancyImage = await getImage({ src: thumbnail, width: 1200 });
+const fancyImage = await getImage({
+  src: thumbnail,
+  width: tileSettings.targetWidth,
+});
 ---
 
-<style>
+<style define:vars={{ tileRatio: tileSettings.tileAspectRatio }}>
   .portfolio-tile {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: var(--tileRatio);
     position: relative;
     overflow: hidden;
+    background-size: cover;
   }
 
   .tile-hover-panel {
@@ -44,7 +49,10 @@ const fancyImage = await getImage({ src: thumbnail, width: 1200 });
   }
 </style>
 
-<article class="portfolio-tile">
+<article
+  class="portfolio-tile"
+  style={{ backgroundColor: accent, backgroundImage: `url(${fancyImage.src})` }}
+>
   <!-- {
     thumbnail ? (
       <Image widths={[500]} class={"tile-image"} src={thumbnail} alt="" />
