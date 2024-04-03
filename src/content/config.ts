@@ -4,6 +4,7 @@ const projectCollection = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      hideTitle: z.optional(z.boolean()),
       thumbnail: image().optional(),
       accent: z.string(),
     }),
@@ -12,6 +13,7 @@ const projectCollection = defineCollection({
 const pageCollection = defineCollection({
   schema: z.object({
     title: z.string(),
+    hideTitle: z.optional(z.boolean()),
     publishStatus: z.optional(z.string()),
     customNavigation: z.discriminatedUnion("discriminant", [
       z.object({ discriminant: z.literal(false), value: z.string() }),

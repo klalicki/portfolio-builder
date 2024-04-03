@@ -10,7 +10,7 @@ const imageProps = await getImage({
 });
 console.log(imageProps);
 const srcRatio = imageProps.attributes.width / imageProps.attributes.height;
-const neededWidth = srcRatio * tileSettings.targetWidth * 2;
+const neededWidth = srcRatio * tileSettings.minTileWidth * 2;
 
 const fancyImage = await getImage({
   src: thumbnail,

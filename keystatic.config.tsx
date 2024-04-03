@@ -12,7 +12,7 @@ import { portfolioLayouts } from "./cms/singletons/portfolioLayouts";
 import { menuConfig } from "./cms/singletons/menuConfig";
 import { generalSettings } from "./cms/singletons/generalSettings";
 import { sidebarSettings } from "./cms/singletons/sidebarSettings";
-
+import { pageArea } from "./cms/singletons/pageAreaSettings";
 import * as customFields from "./cms/fields";
 import { standardComponents } from "./cms/components/standardComponents";
 import { pageComponents } from "./cms/components/pageComponents";
@@ -48,7 +48,7 @@ export default config({
     navigation: {
       Content: ["projects", "pages", "homepage"],
       Settings: ["menu", "general", "portfolioGroups"],
-      Appearance: ["sidebarSettings", "portfolioLayouts"],
+      Appearance: ["pageArea", "sidebarSettings", "portfolioLayouts"],
     },
   },
   storage: {
@@ -68,7 +68,7 @@ export default config({
           label: "Hide Title",
           defaultValue: false,
           description:
-            "Hide the default title element at the top of this page. Useful if you are inserting the title in a more custom way, such as with the Hero component. NOTE: if you check this box, you should include a Heading 1 with a title elsewhere on the page, for accessibility reasons!",
+            "Remove default title element from this page (make sure to include a Heading 1 near the top of the page for accessibility!)",
         }),
         description: fields.text({ label: "Description" }),
         line3: fields.text({ label: "optional 3rd line for portfolio pages" }),
@@ -117,6 +117,12 @@ export default config({
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
+        hideTitle: fields.checkbox({
+          label: "Hide Title",
+          defaultValue: false,
+          description:
+            "Remove default title element from this page (make sure to include a Heading 1 near the top of the page for accessibility!)",
+        }),
         publishStatus: fields.select({
           label: "Published?",
           description:
@@ -186,6 +192,7 @@ export default config({
     sidebarSettings: sidebarSettings,
     general: generalSettings,
     menu: menuConfig,
+    pageArea: pageArea,
     homepage: singleton({
       label: "Homepage",
       entryLayout: "content",
@@ -194,6 +201,12 @@ export default config({
       path: "src/content/homepage/index",
       schema: {
         title: fields.text({ label: "Page Title" }),
+        hideTitle: fields.checkbox({
+          label: "Hide Title",
+          defaultValue: false,
+          description:
+            "Remove default title element from this page (make sure to include a Heading 1 near the top of the page for accessibility!)",
+        }),
         customNavigation: customNavField,
 
         content: fields.markdoc({

@@ -1,16 +1,9 @@
 ---
-import { getCollection } from "astro:content";
-import "../styles.css";
 import LayoutSwitcher from "../components/sitelayout/LayoutSwitcher.astro";
 import FloatingEdit from "../components/sitelayout/FloatingEdit.astro";
-export interface Props {
-  title: string;
-}
-
 const { title } = Astro.props;
-const projects = await getCollection("projects");
-
 import { ViewTransitions } from "astro:transitions";
+import { settings } from "../components/helpers/settingsHelper";
 ---
 
 <!doctype html>
@@ -24,22 +17,55 @@ import { ViewTransitions } from "astro:transitions";
     <title>{title}</title>
 
     <ViewTransitions />
-    <style is:global>
+    <style
+      is:global
+      define:vars={{
+        maxPageContentWidth: settings.pageArea.pageWidth,
+      }}
+    >
+      html {
+        margin: auto;
+        padding: 0;
+        line-height: 1.25;
+        font-size: 1.25rem;
+        font-family: sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 1rem 0 1rem;
+      }
+
+      p,
+      ul,
+      ol {
+        margin-bottom: 1rem;
+        color: #1d1d1d;
+      }
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+
       * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
       }
       main {
-        /* display: flex; */
-        /* flex-direction: column; */
         align-items: center;
       }
       main > * {
         display: block;
         width: 100%;
         margin: 0 auto;
-        max-width: 800px;
+        max-width: var(--maxPageContentWidth);
+
         overflow-wrap: break-word;
       }
     </style></head

@@ -17,6 +17,6 @@ export async function getStaticPaths() {
 ---
 
 <Layout title={page.data.title}>
-  <h1>{page.data.title}</h1>
+  {!page.data.hideTitle && <h1>{page.data.title}</h1>}
   <Content />
 </Layout>

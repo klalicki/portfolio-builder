@@ -8,7 +8,7 @@ const post = await getEntry("projects", slug);
 if (!post) throw new Error("No post found for this slug");
 const { Content } = await post.render();
 // console.log(post);
-console.log("title:" + post.data.title);
+console.log(post.data);
 // Generate static pages
 export async function getStaticPaths() {
   const posts = await getCollection("projects");
@@ -17,6 +17,6 @@ export async function getStaticPaths() {
 ---
 
 <Layout title={post.data.title}>
-  <h1>{post.data.title}</h1>
+  {!post.data.hideTitle && <h1>{post.data.title}</h1>}
   <Content />
 </Layout>
