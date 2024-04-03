@@ -2,7 +2,7 @@ import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import * as customFields from "../fields";
 import { fields } from "@keystatic/core";
 import { CSSUnitEditor } from "../fields/cssUnit";
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 export const standardComponents = {
   HeroSection: wrapper({
@@ -24,6 +24,37 @@ export const standardComponents = {
         defaultValue: "100%",
       }),
       parallax: fields.checkbox({ label: "Parallax scroll effect" }),
+    },
+    ContentView(props) {
+      const [imageDataUrl, setImageDataUrl] = useState<any>(null);
+
+      useEffect(() => {
+        if (props?.value?.image?.data) {
+          const u8intArray = props?.value?.image?.data;
+
+          const blob = new Blob([u8intArray], { type: "image/png" });
+          const reader = new FileReader();
+          reader.onload = () => {
+            setImageDataUrl(reader.result);
+          };
+          reader.readAsDataURL(blob);
+        }
+      }, []);
+
+      return (
+        <div
+          style={{
+            backgroundImage: `url(${imageDataUrl})`,
+            height: props.value.height,
+            maxWidth: props.value.width,
+            backgroundSize: "cover",
+            display: "flex",
+            padding: "2rem",
+          }}
+        >
+          <div style={{ backgroundColor: "white" }}>{props.children}</div>
+        </div>
+      );
     },
   }),
   ImagePopout: block({
