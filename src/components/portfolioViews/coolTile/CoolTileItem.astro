@@ -13,6 +13,7 @@ const { title, url, thumbnail, accent } = Astro.props;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    overflow: hidden;
   }
   .tile-image {
     position: absolute;
@@ -22,13 +23,21 @@ const { title, url, thumbnail, accent } = Astro.props;
     bottom: 0;
     z-index: -1;
   }
+
   .tile-hover-panel {
     position: relative;
     z-index: 10;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.642);
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s;
+  }
+  .portfolio-tile:hover .tile-hover-panel {
+    opacity: 1;
+    transform: none;
   }
   .tile-hover-panel-title {
     color: white;
