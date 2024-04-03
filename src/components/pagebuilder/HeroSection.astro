@@ -3,26 +3,31 @@ const { props } = Astro;
 const imagePath = "../../assets/images" + props.image;
 import Image from "astro/components/Image.astro";
 import { getImage } from "astro:assets";
-import { GetImageResult } from "astro";
+
 console.log(props);
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
 );
-console.log(images);
+// console.log(images);
 if (!images[imagePath])
   throw new Error(
     `"${props.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
   );
 
-const imageSrc = images[imagePath]();
 const fancyImage = await getImage({ src: images[imagePath](), width: 1200 });
-console.log(fancyImage);
+// console.log(fancyImage);
+const parallaxSelector = {
+  backgroundAttachment: "scroll",
+};
+if (props.parallax) {
+  parallaxSelector.backgroundAttachment = "fixed";
+}
 ---
 
-<style>
+<style define:vars={{ heroWidth: props.width, heroHeight: props.height }}>
   .hero-section-wrapper {
-    width: 100%;
-    height: 300px;
+    max-width: var(--heroWidth);
+    height: var(--heroHeight);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -30,13 +35,13 @@ console.log(fancyImage);
     justify-content: flex-start;
   }
   .hero-section-container {
-    height: 300px;
     width: 100%;
+    height: var(--heroHeight);
     position: relative;
     display: flex;
     padding: 2rem;
-    background-size: 100% auto;
-    background-attachment: fixed;
+    background-size: cover;
+    /* background-attachment: fixed; */
   }
   .hero-section-content-panel {
     background-color: white;
@@ -48,7 +53,7 @@ console.log(fancyImage);
 <div class="hero-section-wrapper">
   <div
     class="hero-section-container"
-    style={{ backgroundImage: `url(${fancyImage.src})` }}
+    style={{ backgroundImage: `url(${fancyImage.src})`, ...parallaxSelector }}
   >
     <div class="hero-section-content-panel">
       <slot />

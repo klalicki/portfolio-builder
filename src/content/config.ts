@@ -8,13 +8,7 @@ const projectCollection = defineCollection({
       accent: z.string(),
     }),
 });
-/* 
-customNavigation:
-  discriminant: true
-  value:
-    - title: some projects
-      subItems: custom-group
-    - title: All Projects */
+
 const pageCollection = defineCollection({
   schema: z.object({
     title: z.string(),

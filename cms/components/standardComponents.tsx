@@ -3,6 +3,7 @@ import * as customFields from "../fields";
 import { fields } from "@keystatic/core";
 import { CSSUnitEditor } from "../fields/cssUnit";
 import { useEffect, useId, useRef } from "react";
+
 export const standardComponents = {
   HeroSection: wrapper({
     label: "Hero Section",
@@ -12,6 +13,17 @@ export const standardComponents = {
         directory: "src/assets/images",
         publicPath: "",
       }),
+      height: customFields.cssUnit({
+        label: "Height",
+        description: "height of this section",
+        defaultValue: "300px",
+      }),
+      width: customFields.cssUnit({
+        label: "Width",
+        description: "Maximum width for this section",
+        defaultValue: "100%",
+      }),
+      parallax: fields.checkbox({ label: "Parallax scroll effect" }),
     },
   }),
   ImagePopout: block({

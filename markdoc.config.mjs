@@ -1,4 +1,4 @@
-import { nodes, defineMarkdocConfig, component } from "@astrojs/markdoc/config";
+import { defineMarkdocConfig, component } from "@astrojs/markdoc/config";
 
 export default defineMarkdocConfig({
   nodes: {
@@ -18,6 +18,9 @@ export default defineMarkdocConfig({
       render: component("./src/components/pagebuilder/HeroSection.astro"),
       attributes: {
         image: { type: String },
+        width: { type: String },
+        height: { type: String },
+        parallax: { type: Boolean },
       },
     },
     ImagePopout: {
