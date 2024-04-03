@@ -2,8 +2,7 @@
 const { props } = Astro;
 const imagePath = "../../assets/images" + props.image;
 import Image from "astro/components/Image.astro";
-import { getImage } from "astro:assets";
-
+import { settings } from "../helpers/settingsHelper";
 console.log(props);
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
@@ -54,6 +53,7 @@ if (!images[imagePath])
     class="image-popout-img"
     src={images[imagePath]()}
     alt={props.altText}
+    width={settings.pageArea.images.optimizationWidth}
   />
   {props.caption && <figcaption>{props.caption}</figcaption>}
 </figure>

@@ -23,5 +23,12 @@ export const pageArea = singleton({
       },
       { label: "Page Area Padding" }
     ),
+    images: fields.object({
+      optimizationWidth: fields.number({
+        label: "Image Optimization Width",
+        description:
+          "Uploaded images are automatically resized to improve performance. This is the width they are automatically scaled to. This should be greater than your page content width, or else images may appear blurry",
+      }),
+    }),
   },
 });

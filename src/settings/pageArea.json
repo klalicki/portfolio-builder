@@ -3,5 +3,8 @@
   "padding": {
     "horizontal": "1rem",
     "vertical": "1rem"
+  },
+  "images": {
+    "optimizationWidth": 700
   }
 }
