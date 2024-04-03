@@ -1,8 +1,9 @@
 {
   "coolTile": {
-    "tileAspectRatio": "1/1",
-    "itemGap": "0px",
-    "targetWidth": 450
+    "tileAspectRatio": "3/2",
+    "itemGap": "20px",
+    "minTileWidth": 300,
+    "containerWidth": "1000px"
   },
   "sideBySide": {
     "tileAspectRatio": "4/3",

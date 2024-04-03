@@ -6,17 +6,25 @@ const tileSettings = settings.portfolioLayouts.coolTile;
 
 <style
   define:vars={{
-    tileWidth: tileSettings.targetWidth + "px",
+    minTileWidth: tileSettings.minTileWidth + "px",
+
     tileGap: tileSettings.itemGap,
   }}
 >
   .tile-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--tileWidth), 1fr));
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(var(--minTileWidth, 100%)), 1fr)
+    );
     gap: var(--tileGap);
   }
 </style>
 
-<div id={props.containerId} class="tile-container" style={{ maxWidth: "100%" }}>
+<div
+  id={props.containerId}
+  class="tile-container"
+  style={{ maxWidth: tileSettings.containerWidth }}
+>
   <slot />
 </div>

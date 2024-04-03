@@ -24,11 +24,16 @@ export const portfolioLayouts = singleton({
           description: "The gap between projects in this layout",
           defaultValue: "0px",
         }),
-        targetWidth: fields.number({
+        minTileWidth: fields.number({
           label: "Tile Width (px)",
           description:
-            "The width the tiles will try to be if there is enough space",
+            "The minimum width the tiles will be before wrapping to another line",
           validation: { isRequired: true, max: 1200, min: 0 },
+        }),
+        containerWidth: customFields.cssUnit({
+          label: "Container Width",
+          description: "The maximum width the portfolio group can be",
+          defaultValue: "1000px",
         }),
       },
 
