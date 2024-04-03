@@ -1,4 +1,9 @@
-import { block, repeating, wrapper } from "@keystatic/core/content-components";
+import {
+  block,
+  inline,
+  repeating,
+  wrapper,
+} from "@keystatic/core/content-components";
 import * as customFields from "../fields";
 import { fields } from "@keystatic/core";
 import { CSSUnitEditor } from "../fields/cssUnit";
@@ -58,15 +63,37 @@ export const standardComponents = {
     },
   }),
   ImagePopout: block({
-    label: "Image (better)",
+    label: "Image (with Popout)",
     ContentView(props) {
-      console.log(props.value.image);
-      return <div>{props.value.image && props.value.image.filename}</div>;
+      const [imageDataUrl, setImageDataUrl] = useState<any>(null);
+
+      useEffect(() => {
+        const fetchImage = async () => {
+          if (props?.value?.image?.data) {
+            const u8intArray = props?.value?.image?.data;
+            // console.log(u8intArray);
+            const blob = new Blob([u8intArray], { type: "image/png" });
+            const reader = new FileReader();
+            reader.onload = () => {
+              setImageDataUrl(reader.result);
+            };
+            reader.readAsDataURL(blob);
+          }
+        };
+        fetchImage();
+      }, []);
+
+      return (
+        <div>
+          <img src={imageDataUrl} alt="" />
+        </div>
+      );
     },
     schema: {
       image: fields.image({
         label: "upload image",
         directory: "src/assets/images",
+        publicPath: "",
       }),
       altText: fields.text({
         label: "Alt Text",

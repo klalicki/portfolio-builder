@@ -64,6 +64,12 @@ export default config({
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
+        hideTitle: fields.checkbox({
+          label: "Hide Title",
+          defaultValue: false,
+          description:
+            "Hide the default title element at the top of this page. Useful if you are inserting the title in a more custom way, such as with the Hero component. NOTE: if you check this box, you should include a Heading 1 with a title elsewhere on the page, for accessibility reasons!",
+        }),
         description: fields.text({ label: "Description" }),
         line3: fields.text({ label: "optional 3rd line for portfolio pages" }),
         thumbnail: fields.image({
@@ -101,11 +107,7 @@ export default config({
         }),
       },
     }),
-    tags: collection({
-      label: "Tags",
-      slugField: "tag",
-      schema: { tag: fields.slug({ name: { label: "Tag" } }) },
-    }),
+
     pages: collection({
       label: "Pages",
       slugField: "title",
