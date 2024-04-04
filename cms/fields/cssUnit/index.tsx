@@ -71,10 +71,12 @@ export function cssUnit({
   label,
   defaultValue,
   description,
+  limitUnits,
 }: {
   label: string;
   defaultValue?: string;
   description?: string;
+  limitUnits?: string[];
 }): BasicFormField<string> {
   return {
     // not sure what this one does? why is its only value 'form'?
@@ -95,7 +97,14 @@ export function cssUnit({
         { value: "em", label: "em" },
         { value: "rem", label: "rem" },
         { value: "ch", label: "ch" },
-      ];
+      ].filter((item) => {
+        if (!limitUnits || limitUnits.length === 0) {
+          return true;
+        } else {
+          return limitUnits.includes(item.label);
+        }
+      });
+
       return (
         <FieldPrimitive description={description} label={label}>
           <div style={{ display: "inline-flex", gap: ".5rem" }}>

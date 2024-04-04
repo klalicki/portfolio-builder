@@ -23,6 +23,7 @@ export const portfolioLayouts = singleton({
           label: "Gap",
           description: "The gap between projects in this layout",
           defaultValue: "0px",
+          limitUnits: ["px", "rem", "em"],
         }),
         minTileWidth: fields.number({
           label: "Tile Width (px)",
