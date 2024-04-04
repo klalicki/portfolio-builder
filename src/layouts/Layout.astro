@@ -22,6 +22,7 @@ import { settings } from "../components/helpers/settingsHelper";
       is:global
       define:vars={{
         maxPageContentWidth: settings.pageArea.pageWidth,
+        standardPadding: settings.pageArea.padding.horizontal,
       }}
     >
       html {
@@ -68,6 +69,7 @@ import { settings } from "../components/helpers/settingsHelper";
         width: 100%;
         margin-left: auto;
         margin-right: auto;
+        padding: 0 var(--standardPadding);
         max-width: var(--maxPageContentWidth);
         overflow-wrap: break-word;
       }
