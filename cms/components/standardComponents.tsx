@@ -33,6 +33,15 @@ export const standardComponents = {
         description: "Width of the overlay panel",
         defaultValue: "250px",
       }),
+      panelColor: customFields.colorPicker({
+        label: "Background color for panel",
+        defaultValue: "#ffffff",
+      }),
+      textColor: customFields.colorPicker({
+        label: "Text color for panel",
+        defaultValue: "#000000",
+      }),
+
       parallax: fields.checkbox({ label: "Parallax scroll effect" }),
     },
     ContentView(props) {
@@ -66,9 +75,11 @@ export const standardComponents = {
         >
           <div
             style={{
-              backgroundColor: "white",
+              backgroundColor: props.value.panelColor,
               maxWidth: props.value.panelWidth,
               padding: "1rem",
+              // @ts-ignore
+              "--kui-color-foreground-neutral-emphasis": props.value.textColor,
             }}
           >
             {props.children}
