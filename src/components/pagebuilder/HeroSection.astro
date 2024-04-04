@@ -27,11 +27,17 @@ if (props.parallax) {
 }
 ---
 
-{
-  props.parallax && (
-    <script>import simpleParallax from 'simple-parallax-js';</script>
-  )
-}
+<script>
+  const elements = document.querySelectorAll(".hero-image-parallax");
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    elements.forEach((element) => {
+      const offset = (scrollY - element.scrollTop) * 0.5;
+      const clampedOffset = Math.min(element.clientHeight, offset);
+      element.style.setProperty("--parallaxOffset", `${-clampedOffset}px`);
+    });
+  });
+</script>
 
 <style
   define:vars={{
@@ -49,19 +55,17 @@ if (props.parallax) {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    overflow: hidden;
   }
   .hero-section-image {
     width: 100%;
-    height: var(--heroHeight);
-    object-fit: cover;
+    height: calc(var(--heroHeight) * 1.5);
+
     position: absolute;
-    left: 0;
-    top: 0;
-    border: 1px solid red;
+
     /* padding: 2rem; */
-    /* background-size: cover;
-    background-position: center; */
-    /* background-attachment: fixed; */
+    object-fit: cover;
+    transform: translateY(var(--parallaxOffset));
     z-index: -1;
   }
   .hero-section-content-panel {
@@ -86,9 +90,14 @@ if (props.parallax) {
       <slot />
     </div>
   </div>
-  <MarkdocImageReplace class={"hero-section-image"} src={imagePath} alt="" />
+  <MarkdocImageReplace
+    class:list={["hero-section-image", props.parallax && "hero-image-parallax"]}
+    width="1800"
+    src={imagePath}
+    alt=""
+  />
   <!-- <div
-    class="hero-section-image"
-    style={{ backgroundImage: `url(${fancyImage.src})`, ...parallaxSelector }}
+    class:list={["hero-section-image", props.parallax && "hero-image-parallax"]}
+    style={{ backgroundImage: `url(${fancyImage.src})` }}
   > -->
 </div>
