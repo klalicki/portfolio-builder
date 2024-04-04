@@ -6,7 +6,7 @@ import { getImage } from "astro:assets";
 import { settings } from "../helpers/settingsHelper";
 const pageWidth = settings.pageArea.pageWidth;
 const sidePadding = settings.pageArea.padding.horizontal;
-import MarkdocImageReplace from "./MarkdocImageReplace.astro";
+import OptimizedImage from "./OptimizedImage.astro";
 console.log(props);
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
@@ -90,9 +90,8 @@ if (props.parallax) {
       <slot />
     </div>
   </div>
-  <MarkdocImageReplace
+  <OptimizedImage
     class:list={["hero-section-image", props.parallax && "hero-image-parallax"]}
-    width="1800"
     src={imagePath}
     alt=""
   />

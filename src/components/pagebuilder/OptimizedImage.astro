@@ -1,0 +1,21 @@
+---
+const { props } = Astro;
+const imagePath = props.src;
+import Image from "astro/components/Image.astro";
+import { settings } from "../helpers/settingsHelper";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
+);
+if (!images[imagePath])
+  throw new Error(
+    `"${props.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+  );
+---
+
+<Image
+  {...props}
+  src={images[imagePath]()}
+  alt={props.alt}
+  widths={[400, 800, 1600]}
+/>
