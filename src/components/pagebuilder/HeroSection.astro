@@ -34,6 +34,7 @@ if (props.parallax) {
     elements.forEach((element) => {
       const offset = (scrollY - element.scrollTop) * 0.5;
       const clampedOffset = Math.min(element.clientHeight, offset);
+      // @ts-ignore
       element.style.setProperty("--parallaxOffset", `${-clampedOffset}px`);
     });
   });
