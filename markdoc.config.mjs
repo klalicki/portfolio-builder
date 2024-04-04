@@ -25,6 +25,7 @@ export default defineMarkdocConfig({
       attributes: {
         image: { type: String },
         width: { type: String },
+        panelWidth: { type: String },
         height: { type: String },
         parallax: { type: Boolean },
       },

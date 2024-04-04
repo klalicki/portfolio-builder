@@ -28,6 +28,11 @@ export const standardComponents = {
         description: "Maximum width for this section",
         defaultValue: "100%",
       }),
+      panelWidth: customFields.cssUnit({
+        label: "Panel Width",
+        description: "Width of the overlay panel",
+        defaultValue: "250px",
+      }),
       parallax: fields.checkbox({ label: "Parallax scroll effect" }),
     },
     ContentView(props) {
@@ -54,10 +59,20 @@ export const standardComponents = {
             maxWidth: props.value.width,
             backgroundSize: "cover",
             display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "center",
             padding: "2rem",
           }}
         >
-          <div style={{ backgroundColor: "white" }}>{props.children}</div>
+          <div
+            style={{
+              backgroundColor: "white",
+              maxWidth: props.value.panelWidth,
+              padding: "1rem",
+            }}
+          >
+            {props.children}
+          </div>
         </div>
       );
     },
