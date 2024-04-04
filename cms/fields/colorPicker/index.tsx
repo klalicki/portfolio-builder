@@ -1,6 +1,10 @@
 import type { BasicFormField, FormFieldStoredValue } from "@keystatic/core";
 import { FieldPrimitive } from "@keystar/ui/field";
-import { HexColorPicker, HexColorInput } from "react-colorful";
+import {
+  HexColorPicker,
+  HexAlphaColorPicker,
+  HexColorInput,
+} from "react-colorful";
 function parseAsNormalField(value: FormFieldStoredValue) {
   if (value === undefined) {
     return "";
@@ -40,8 +44,16 @@ export function colorPicker({
               gap: "1rem",
             }}
           >
-            <HexColorPicker color={props.value} onChange={props.onChange} />
-            <HexColorInput color={props.value} name={label+' hex'} onChange={props.onChange} />
+            <HexAlphaColorPicker
+              color={props.value}
+              onChange={props.onChange}
+            />
+            <HexColorInput
+              color={props.value}
+              name={label + " hex"}
+              alpha={true}
+              onChange={props.onChange}
+            />
           </div>
 
           {/* <input
