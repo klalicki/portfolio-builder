@@ -6,6 +6,7 @@ const posts = await getCollection("homepage");
 // console.log('homepage',posts);
 const page = posts[0];
 const { Content } = await page.render();
+console.log("hometitle:", page.data.title);
 ---
 
 <Layout title={page.data.title || "Home"}>

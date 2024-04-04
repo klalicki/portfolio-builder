@@ -48,21 +48,11 @@ jobs:
       - name: Install dependencies
         run: npm i
         working-directory: ${{ env.BUILD_PATH }}
-      - name: Load Build Cache
-        uses: actions/cache/restore@v4
-        with:
-          path: dist
-          key: astro-cache
       - name: Build with Astro
         run: |
           npm run astro build \
             --site "${{ steps.pages.outputs.origin }}"
         working-directory: ${{ env.BUILD_PATH }}
-      - name: Save Build Cache
-        uses: actions/cache/save@v4
-        with:
-          path: dist
-          key: astro-cache
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

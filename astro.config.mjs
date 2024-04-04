@@ -13,8 +13,6 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   integrations: [markdoc(), ...(isDev ? [react(), keystatic()] : [])],
-  experimental: {
-    contentCollectionCache: true,
-  },
+
   output: isDev ? "hybrid" : "static",
 });

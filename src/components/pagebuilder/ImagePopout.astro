@@ -3,11 +3,11 @@ const { props } = Astro;
 const imagePath = "../../assets/images" + props.image;
 import Image from "astro/components/Image.astro";
 import { settings } from "../helpers/settingsHelper";
-// console.log(props);
+console.log(props);
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
 );
-// console.log(images);
+console.log(images);
 if (!images[imagePath])
   throw new Error(
     `"${props.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`

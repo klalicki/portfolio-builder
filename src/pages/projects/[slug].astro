@@ -8,6 +8,7 @@ const post = await getEntry("projects", slug);
 if (!post) throw new Error("No post found for this slug");
 const { Content } = await post.render();
 // console.log(post);
+console.log(post.data);
 // Generate static pages
 export async function getStaticPaths() {
   const posts = await getCollection("projects");

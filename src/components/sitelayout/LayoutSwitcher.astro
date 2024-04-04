@@ -5,6 +5,7 @@ import settings from "../../settings/menu.json";
 import SidebarPage from "./Sidebar/SidebarPage.astro";
 import TopbarPage from "./Topbar/TopbarPage.astro";
 
+console.log(settings.position);
 
 let PageLayout;
 switch (settings.position) {
@@ -12,6 +13,7 @@ switch (settings.position) {
     PageLayout = SidebarPage;
     break;
   case "top":
+    console.log("using topbar");
     PageLayout = TopbarPage;
     break;
   default:
