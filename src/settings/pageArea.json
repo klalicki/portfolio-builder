@@ -5,6 +5,7 @@
     "vertical": "1rem"
   },
   "images": {
+    "displayWidth": "800px",
     "optimizationWidth": 700
   }
 }

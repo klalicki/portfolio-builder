@@ -28,6 +28,8 @@ export default defineMarkdocConfig({
         panelWidth: { type: String },
         height: { type: String },
         parallax: { type: Boolean },
+        panelColor: { type: String },
+        textColor: { type: String },
       },
     },
     ImagePopout: {

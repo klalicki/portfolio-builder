@@ -47,6 +47,8 @@ if (props.parallax) {
     pageWidth,
     sidePadding,
     panelWidth: props.panelWidth,
+    panelColor: props.panelColor,
+    textColor: props.textColor,
   }}
 >
   .hero-section-wrapper {
@@ -70,7 +72,9 @@ if (props.parallax) {
     z-index: -1;
   }
   .hero-section-content-panel {
-    background-color: white;
+    background-color: var(--panelColor);
+    color: var(--textColor);
+
     /* position: relative; */
     padding: 1rem;
     max-width: var(--panelWidth);

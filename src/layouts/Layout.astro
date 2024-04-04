@@ -28,6 +28,7 @@ const fontLinks = Object.values(settings.fonts)
       define:vars={{
         maxPageContentWidth: settings.pageArea.pageWidth,
         standardPadding: settings.pageArea.padding.horizontal,
+        maxImageWidth: settings.pageArea.images.displayWidth,
       }}
     >
       html {
@@ -77,6 +78,9 @@ const fontLinks = Object.values(settings.fonts)
         padding: 0 var(--standardPadding);
         max-width: var(--maxPageContentWidth);
         overflow-wrap: break-word;
+      }
+      .md-default-image {
+        max-width: var(--maxImageWidth);
       }
     </style></head
   >

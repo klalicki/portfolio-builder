@@ -13,9 +13,11 @@ if (!images[imagePath])
   );
 ---
 
-<Image
-  {...props}
-  src={images[imagePath]()}
-  alt={props.alt}
-  width={settings.pageArea.images.optimizationWidth}
-/>
+<div class="md-default-image">
+  <Image
+    {...props}
+    src={images[imagePath]()}
+    alt={props.alt}
+    width={settings.pageArea.images.optimizationWidth}
+  />
+</div>

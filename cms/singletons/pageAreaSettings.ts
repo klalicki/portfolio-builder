@@ -24,6 +24,12 @@ export const pageArea = singleton({
       { label: "Page Area Padding" }
     ),
     images: fields.object({
+      displayWidth: customFields.cssUnit({
+        label: "Image Width",
+        description:
+          "The width that default images are displayed at in project pages.",
+        defaultValue: "900px",
+      }),
       optimizationWidth: fields.number({
         label: "Image Optimization Width",
         description:
