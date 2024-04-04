@@ -29,14 +29,21 @@ const fontLinks = Object.values(settings.fonts)
         maxPageContentWidth: settings.pageArea.pageWidth,
         standardPadding: settings.pageArea.padding.horizontal,
         maxImageWidth: settings.pageArea.images.displayWidth,
+        fontStack1: settings.fonts.font1.fontFamily,
+        fontStack2: settings.fonts.font2.fontFamily,
+        fontStack3: settings.fonts.font3.fontFamily,
+        // rootFontSize: settings.fonts.sizes.rootSize,
       }}
     >
+      :root {
+      }
+
       html {
         margin: auto;
         padding: 0;
         line-height: 1.25;
         font-size: 1.25rem;
-        font-family: sans-serif;
+        font-family: var(--fontStack1);
       }
 
       h1,
