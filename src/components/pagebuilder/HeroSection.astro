@@ -6,7 +6,7 @@ import { getImage } from "astro:assets";
 import { settings } from "../helpers/settingsHelper";
 const pageWidth = settings.pageArea.pageWidth;
 const sidePadding = settings.pageArea.padding.horizontal;
-
+import MarkdocImageReplace from "./MarkdocImageReplace.astro";
 console.log(props);
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
@@ -27,6 +27,12 @@ if (props.parallax) {
 }
 ---
 
+{
+  props.parallax && (
+    <script>import simpleParallax from 'simple-parallax-js';</script>
+  )
+}
+
 <style
   define:vars={{
     heroWidth: props.width,
@@ -41,21 +47,22 @@ if (props.parallax) {
     height: var(--heroHeight);
     position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: center;
   }
-  .hero-section-container {
+  .hero-section-image {
     width: 100%;
     height: var(--heroHeight);
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 1px solid red;
     /* padding: 2rem; */
-    background-size: cover;
-    background-position: center;
+    /* background-size: cover;
+    background-position: center; */
     /* background-attachment: fixed; */
+    z-index: -1;
   }
   .hero-section-content-panel {
     background-color: white;
@@ -69,17 +76,19 @@ if (props.parallax) {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
+    position: relative;
   }
 </style>
 <div class="hero-section-wrapper">
-  <div
-    class="hero-section-container"
-    style={{ backgroundImage: `url(${fancyImage.src})`, ...parallaxSelector }}
-  >
-    <div class="hero-section-content-wrapper">
-      <div class="hero-section-content-panel">
-        <slot />
-      </div>
+  <div class="hero-section-content-wrapper">
+    <div class="hero-section-content-panel">
+      <slot />
     </div>
   </div>
+  <MarkdocImageReplace class={"hero-section-image"} src={imagePath} alt="" />
+  <!-- <div
+    class="hero-section-image"
+    style={{ backgroundImage: `url(${fancyImage.src})`, ...parallaxSelector }}
+  > -->
 </div>
