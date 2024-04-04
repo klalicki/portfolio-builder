@@ -1,0 +1,14 @@
+{
+  "font1": {
+    "htmlLink": "<link href=\"https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap\" rel=\"stylesheet\">",
+    "fontFamily": "\"DM Sans\", sans-serif"
+  },
+  "font2": {
+    "htmlLink": "<link rel=\"stylesheet\" href=\"https://use.typekit.net/rdp4yol.css\">",
+    "fontFamily": "\"jali-latin-variable\", sans-serif"
+  },
+  "font3": {
+    "htmlLink": "<link href=\"https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap\" rel=\"stylesheet\">\n",
+    "fontFamily": "\"Rubik Scribble\", system-ui"
+  }
+}

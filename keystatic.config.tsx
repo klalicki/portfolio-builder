@@ -13,6 +13,7 @@ import { menuConfig } from "./cms/singletons/menuConfig";
 import { generalSettings } from "./cms/singletons/generalSettings";
 import { sidebarSettings } from "./cms/singletons/sidebarSettings";
 import { pageArea } from "./cms/singletons/pageAreaSettings";
+import { fonts } from "./cms/singletons/fonts";
 import * as customFields from "./cms/fields";
 import { standardComponents } from "./cms/components/standardComponents";
 import { pageComponents } from "./cms/components/pageComponents";
@@ -48,7 +49,7 @@ export default config({
     navigation: {
       Content: ["projects", "pages", "homepage"],
       Settings: ["menu", "general", "portfolioGroups"],
-      Appearance: ["pageArea", "sidebarSettings", "portfolioLayouts"],
+      Appearance: ["pageArea", "sidebarSettings", "portfolioLayouts", "fonts"],
     },
   },
   storage: {
@@ -193,6 +194,7 @@ export default config({
     general: generalSettings,
     menu: menuConfig,
     pageArea: pageArea,
+    fonts: fonts,
     homepage: singleton({
       label: "Homepage",
       entryLayout: "content",

@@ -4,6 +4,12 @@ import FloatingEdit from "../components/sitelayout/FloatingEdit.astro";
 const { title } = Astro.props;
 import { ViewTransitions } from "astro:transitions";
 import { settings } from "../components/helpers/settingsHelper";
+
+const fontLinks = Object.values(settings.fonts)
+  .map((fontObj) => {
+    return fontObj.htmlLink;
+  })
+  .join("");
 ---
 
 <!doctype html>
@@ -15,9 +21,8 @@ import { settings } from "../components/helpers/settingsHelper";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-
     <ViewTransitions />
-
+    <Fragment set:html={fontLinks} />
     <style
       is:global
       define:vars={{

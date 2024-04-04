@@ -16,10 +16,16 @@ export function codeEditor({
   label,
   defaultValue,
   description,
+  height,
+  wrap,
+  editorOptions,
 }: {
   label: string;
   defaultValue?: string;
   description?: string;
+  height?: string;
+  wrap?: boolean;
+  editorOptions?: {};
 }): BasicFormField<string> {
   return {
     // not sure what this one does? why is its only value 'form'?
@@ -35,13 +41,15 @@ export function codeEditor({
         <FieldPrimitive description={description} label={label}>
           <Editor
             value={props.value}
-            height={"50vh"}
+            height={height || "50vh"}
             defaultLanguage="html"
             theme="vs-dark"
             options={{
+              wordWrap: wrap ? "on" : "off",
               minimap: {
                 enabled: false,
               },
+              ...editorOptions,
             }}
             onChange={(newVal) => {
               if (newVal) {
