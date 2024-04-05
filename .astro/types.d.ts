@@ -190,6 +190,13 @@ declare module 'astro:content' {
   collection: "projects";
   data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
+"eco-essence.mdoc": {
+	id: "eco-essence.mdoc";
+  slug: "eco-essence";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdoc"] };
 "project-3.mdoc": {
 	id: "project-3.mdoc";
   slug: "project-3";
