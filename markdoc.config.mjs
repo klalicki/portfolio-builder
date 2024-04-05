@@ -13,6 +13,12 @@ export default defineMarkdocConfig({
     },
   },
   tags: {
+    CustomCSSWrapper: {
+      render: component("./src/components/pagebuilder/CustomCSSWrapper.astro"),
+      attributes: {
+        customCSS: { type: String },
+      },
+    },
     Column: {
       render: component("./src/components/pagebuilder/Column.astro"),
       attributes: {

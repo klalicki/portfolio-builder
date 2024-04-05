@@ -324,7 +324,15 @@ export const standardComponents = {
       customCSS: customFields.codeEditor({ label: "Custom CSS Code" }),
     },
     ContentView(props) {
-      return <div>{props.children}</div>;
+      const divRef = useRef(null);
+
+      useEffect(() => {
+        if (divRef.current) {
+          divRef.current?.setAttribute("style", props.value.customCSS);
+        }
+      }, [props.value.customCSS]);
+
+      return <div ref={divRef}>{props.children}</div>;
     },
   }),
 };
