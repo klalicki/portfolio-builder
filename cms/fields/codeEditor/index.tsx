@@ -1,7 +1,7 @@
 import Editor from "@monaco-editor/react";
 import type { BasicFormField, FormFieldStoredValue } from "@keystatic/core";
 import { FieldPrimitive } from "@keystar/ui/field";
-import { HexColorPicker, HexColorInput } from "react-colorful";
+
 function parseAsNormalField(value: FormFieldStoredValue) {
   if (value === undefined) {
     return "";
@@ -9,7 +9,7 @@ function parseAsNormalField(value: FormFieldStoredValue) {
   if (typeof value !== "string") {
     throw new Error("Must be a string");
   }
-  return value;
+  return atob(value);
 }
 
 export function codeEditor({
@@ -72,7 +72,7 @@ export function codeEditor({
     },
     // i think this function takes the value from its working type and encodes it into a string?
     serialize(value) {
-      return { value: value === "" ? "" : value };
+      return { value: value === "" ? "" : btoa(value) };
     },
     validate(value) {
       return value;

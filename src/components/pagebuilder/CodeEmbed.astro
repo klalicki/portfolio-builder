@@ -1,5 +1,6 @@
 ---
-const {props}=Astro;
-const {content}=props;
+const { props } = Astro;
+const { content } = props;
 ---
-<div set:html={content}></div>
+
+<div set:html={atob(content)} />
