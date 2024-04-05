@@ -1,6 +1,6 @@
 {
   "coolTile": {
-    "tileAspectRatio": "3/2",
+    "tileAspectRatio": "1",
     "itemGap": "1rem",
     "minTileWidth": 450,
     "containerWidth": "1000%"

@@ -8,10 +8,10 @@ publishStatus: published
 {% HeroSection
    image="/you-wouldn-t-download-a-hedgehog/hedgehog-banner.jpg"
    height="400px"
-   width="100%"
+   width="950px"
    panelWidth="300px"
-   panelColor="#ffffff9e"
-   textColor="#030090"
+   panelColor="#000959c2"
+   textColor="#ffffff"
    parallax=true %}
 # you wouldn't download a HEDGEHOG
 {% /HeroSection %}
@@ -28,6 +28,10 @@ While hedgehogs make fantastic pets, it's essential to remember that they requir
 
 ![Hedgehog in their enclosure](../../assets/images/pages/you-wouldn-t-download-a-hedgehog/hedgehog-habitat.jpg)
 
+{% ImagePopout
+   image="/you-wouldn-t-download-a-hedgehog/screenshot1.png"
+   altText="an image" /%}
+
 Creating the perfect habitat for your hedgehog is key to ensuring their well-being. Consider providing a spacious enclosure with plenty of hiding spots, bedding material, and a wheel for exercise. Adding tunnels and enrichment toys can also keep your hedgehog mentally stimulated and happy.
 
 ### **Social Media and Hedgehog Communities**
@@ -38,6 +42,10 @@ In today's digital age, connecting with fellow hedgehog enthusiasts has never be
 
 Joining hedgehog communities on social media platforms can provide valuable support and resources for hedgehog owners. From adorable photos to helpful tips, these online communities offer a wealth of information and camaraderie.
 
+{% ImagePopout
+   image="/you-wouldn-t-download-a-hedgehog/IMG_20160416_180436.jpg"
+   altText="mountain" /%}
+
 ### **The Importance of Education and Outreach**
 
 Educating others about hedgehog welfare is essential for ensuring the long-term health and happiness of these beloved animals. Whether through online forums, local workshops, or educational outreach programs, spreading awareness about proper hedgehog care can make a significant difference in the lives of these creatures. By working together, we can create a brighter future for hedgehogs everywhere.
@@ -46,22 +54,34 @@ Educating others about hedgehog welfare is essential for ensuring the long-term 
 
 Educational outreach programs play a vital role in spreading awareness about proper hedgehog care. By sharing information and resources, we can help create a better understanding of these unique animals and promote responsible pet ownership.
 
-{% CustomWidth width="90vw" %}
 {% MultiColumn
    justifyContent="center"
    alignItems="center"
-   flexDirection="row"
-   gap="25px" %}
-{% Column targetWidth="300px" flexGrow=true %}
-### This is a Real Hedgehog
-
-![](../../assets/images/pages/you-wouldn-t-download-a-hedgehog/thumbnail.jpg)
-{% /Column %}
-
-{% Column targetWidth="300px" flexGrow=true %}
+   flexDirection="row-reverse"
+   gap="20px" %}
+{% Column targetWidth="300px" flexGrow=false %}
 ### This is a Downloaded Hedgehog
 
 ![](../../assets/images/pages/you-wouldn-t-download-a-hedgehog/dreamstime_s_280673852.jpg)
 {% /Column %}
+
+{% Column targetWidth="300px" flexGrow=false %}
+Here's a caption for this image of a downlaoded hedgehog
+{% /Column %}
 {% /MultiColumn %}
-{% /CustomWidth %}
+
+{% MultiColumn
+   justifyContent="center"
+   alignItems="center"
+   flexDirection="row"
+   gap="20px" %}
+{% Column targetWidth="300px" flexGrow=false %}
+### This is a Downloaded Hedgehog
+
+![](../../assets/images/pages/you-wouldn-t-download-a-hedgehog/dreamstime_s_280673852.jpg)
+{% /Column %}
+
+{% Column targetWidth="300px" flexGrow=false %}
+Here's a caption for this image of a downlaoded hedgehog
+{% /Column %}
+{% /MultiColumn %}

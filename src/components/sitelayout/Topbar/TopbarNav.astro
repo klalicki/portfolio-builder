@@ -101,7 +101,7 @@ justify-content: flex-end;  }
 </style>
 
 <script>
-  const buttons = document.querySelectorAll(".menu-dropdown-button");
+ 
   // alert(buttons.length);
   const hideAllMenus = ()=>{
     document.querySelectorAll(".menu-submenu").forEach((submenu) => {
@@ -109,6 +109,8 @@ justify-content: flex-end;  }
         submenu.classList.toggle("submenu-hidden", true);
       });
   }
+  document.addEventListener("astro:page-load", () => {   
+  const buttons = document.querySelectorAll(".menu-dropdown-button");
   buttons.forEach((item) => {
     item.addEventListener("click", () => {
       const menuID = item.getAttribute("data-menu-id") || "";
@@ -125,6 +127,7 @@ justify-content: flex-end;  }
 
 document.querySelector('#menu-toggle')?.addEventListener('click',()=>{
   document.querySelector('.menu-main-group')?.classList.toggle('menu-mobile-hidden')
+})
 })
 
 </script>
