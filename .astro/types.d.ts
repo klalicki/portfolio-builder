@@ -149,14 +149,14 @@ declare module 'astro:content' {
   slug: "about";
   body: string;
   collection: "pages";
-  data: any
+  data: InferEntrySchema<"pages">
 } & { render(): Render[".mdoc"] };
 "work.mdoc": {
 	id: "work.mdoc";
   slug: "work";
   body: string;
   collection: "pages";
-  data: any
+  data: InferEntrySchema<"pages">
 } & { render(): Render[".mdoc"] };
 };
 "portfolioGroups": {
@@ -165,14 +165,14 @@ declare module 'astro:content' {
   slug: "all";
   body: string;
   collection: "portfolioGroups";
-  data: any
+  data: InferEntrySchema<"portfolioGroups">
 } & { render(): Render[".mdoc"] };
 "custom-group.mdoc": {
 	id: "custom-group.mdoc";
   slug: "custom-group";
   body: string;
   collection: "portfolioGroups";
-  data: any
+  data: InferEntrySchema<"portfolioGroups">
 } & { render(): Render[".mdoc"] };
 };
 "projects": {
@@ -181,42 +181,42 @@ declare module 'astro:content' {
   slug: "an-actual-design-project";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "apryl-s-project.mdoc": {
 	id: "apryl-s-project.mdoc";
   slug: "apryl-s-project";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "custom-html-page.mdoc": {
 	id: "custom-html-page.mdoc";
   slug: "custom-html-page";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "eco-essence.mdoc": {
 	id: "eco-essence.mdoc";
   slug: "eco-essence";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "project-3.mdoc": {
 	id: "project-3.mdoc";
   slug: "project-3";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "you-wouldn-t-download-a-hedgehog.mdoc": {
 	id: "you-wouldn-t-download-a-hedgehog.mdoc";
   slug: "you-wouldn-t-download-a-hedgehog";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 };
 
@@ -228,5 +228,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("../src/content/config.js");
 }

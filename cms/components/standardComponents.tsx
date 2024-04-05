@@ -321,20 +321,10 @@ export const standardComponents = {
   CustomCSSWrapper: wrapper({
     label: "Custom CSS Container",
     schema: {
-      customClass: fields.text({ label: "Custom CSS Class" }),
-      customID: fields.text({ label: "Custom CSS ID" }),
       customCSS: customFields.codeEditor({ label: "Custom CSS Code" }),
     },
     ContentView(props) {
-      return (
-        <div
-          className={props.value.customClass}
-          id={props.value.customID}
-          style={props.value.customCSS}
-        >
-          {props.children}
-        </div>
-      );
+      return <div>{props.children}</div>;
     },
   }),
 };
