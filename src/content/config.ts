@@ -4,6 +4,8 @@ const projectCollection = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      line2: z.string().optional(),
+      line3: z.string().optional(),
       hideTitle: z.optional(z.boolean()),
       thumbnail: image().optional(),
       accent: z.string(),

@@ -124,6 +124,8 @@ export default config({
           description:
             "Remove default title element from this page (make sure to include a Heading 1 near the top of the page for accessibility!)",
         }),
+        line2: fields.text({ label: "Line 2 text for portfolio views" }),
+        line3: fields.text({ label: "Line 3 text for portfolio views" }),
         publishStatus: fields.select({
           label: "Published?",
           description:

@@ -32,7 +32,9 @@ export function uniquify({
     // and onChange is a function that takes one argument - the new value for the field
     Input(props) {
       useEffect(() => {
-        props.onChange(Date.now().toString());
+        if (!props.value) {
+          props.onChange(Date.now().toString());
+        }
       }, []);
       return <></>;
     },
