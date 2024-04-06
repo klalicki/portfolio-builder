@@ -6,11 +6,11 @@ export function typeProps({ label }: { label: string }) {
       fontFamily: fields.select({
         label: "Font Family",
         options: [
-          { label: "Font 1", value: "font1" },
-          { label: "Font 2", value: "font2" },
-          { label: "Font 2", value: "font3" },
+          { label: "Font 1", value: "fontStack1" },
+          { label: "Font 2", value: "fontStack2" },
+          { label: "Font 3", value: "fontStack3" },
         ],
-        defaultValue: "font1",
+        defaultValue: "fontStack1",
       }),
       fontWeight: fields.select({
         label: "Font Weight",
@@ -46,6 +46,6 @@ export function typeProps({ label }: { label: string }) {
     },
     { label: label, layout: [4, 4, 4, 4, 4, 4] }
   );
-  console.log(typeOptionsObj);
+  // console.log(typeOptionsObj);
   return typeOptionsObj;
 }

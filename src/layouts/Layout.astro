@@ -12,13 +12,22 @@ const fontLinks = Object.values(settings.fonts)
   .join("");
 
 const fontRules: { [key: string]: string } = {};
+const fontFamilyMapping: { [key: string]: string } = {
+  font1: "var(--fontStack1)",
+  font2: "var(--fontStack2)",
+  font3: "var(--fontStack3)",
+};
 const fontSpecs = settings.typeOptions;
 const fontSpecSets = Object.entries(fontSpecs);
 fontSpecSets.forEach((pair) => {
   const fontVars = Object.entries(pair[1]);
   fontVars.forEach((fontVarPair) => {
-    const varName = pair[0] + "-" + fontVarPair[0];
-    fontRules[varName] = fontVarPair[1];
+    const keyName = pair[0] + "-" + fontVarPair[0];
+    if (fontVarPair[0] === "fontFamily") {
+      fontRules[keyName] = `var(--${fontVarPair[1]})`;
+    } else {
+      fontRules[keyName] = fontVarPair[1];
+    }
   });
 });
 console.log(fontRules);
@@ -59,22 +68,6 @@ console.log(fontRules);
         font-family: var(--fontStack1);
       }
 
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        margin: 1rem 0 1rem;
-      }
-
-      p,
-      ul,
-      ol {
-        margin-bottom: 1em;
-        margin-top: 1em;
-      }
-
       img {
         height: auto;
         width: 100%;
@@ -101,6 +94,14 @@ console.log(fontRules);
       }
       .md-default-image {
         max-width: var(--maxImageWidth);
+      }
+
+      h1 {
+        font-family: var(--h1-fontFamily);
+        font-size: var(--h1-fontSize);
+        margin-top: var(--h1-marginTop);
+        margin-bottom: var(--h1-marginBottom);
+        color: var(--h1-color);
       }
     </style>
   </head>
