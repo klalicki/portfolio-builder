@@ -3,7 +3,6 @@ const { props } = Astro;
 const imagePath = "../../assets/images" + props.image;
 import Image from "astro/components/Image.astro";
 import { settings } from "../helpers/settingsHelper";
-import SimpleLightbox from 'simple-lightbox'
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
 );
@@ -13,9 +12,7 @@ if (!images[imagePath])
   );
 ---
 
-<script>
-  import {SimpleLightbox}
-</script>
+<script></script>
 <style>
   .image-popout-container {
     transition: 0.5s all;
