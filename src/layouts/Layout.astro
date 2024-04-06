@@ -47,9 +47,6 @@ console.log(fontRules);
     <style
       is:global
       define:vars={{
-        maxPageContentWidth: settings.pageArea.pageWidth,
-        standardPadding: settings.pageArea.padding.horizontal,
-        maxImageWidth: settings.pageArea.images.displayWidth,
         fontStack1: settings.fonts.font1.fontFamily,
         fontStack2: settings.fonts.font2.fontFamily,
         fontStack3: settings.fonts.font3.fontFamily,
@@ -57,15 +54,41 @@ console.log(fontRules);
         // rootFontSize: settings.fonts.sizes.rootSize,
       }}
     >
-      :root {
+      h1 {
+        font-family: var(--h1-fontFamily);
+        font-size: var(--h1-fontSize);
+        margin-top: var(--h1-marginTop);
+        margin-bottom: var(--h1-marginBottom);
+        color: var(--font-color-override, --h1-color);
       }
-
+      h2 {
+        font-family: var(--h2-fontFamily);
+        font-size: var(--h2-fontSize);
+        margin-top: var(--h2-marginTop);
+        margin-bottom: var(--h2-marginBottom);
+        color: var(--font-color-override, --h2-color);
+      }
+      p {
+        font-family: var(--p-fontFamily);
+        font-size: var(--p-fontSize);
+        margin-top: var(--p-marginTop);
+        margin-bottom: var(--p-marginBottom);
+        color: var(--font-color-override, --p-color);
+      }
+    </style>
+    <style
+      define:vars={{
+        maxPageContentWidth: settings.pageArea.pageWidth,
+        standardPadding: settings.pageArea.padding.horizontal,
+        maxImageWidth: settings.pageArea.images.displayWidth,
+      }}
+      is:global
+    >
       html {
         margin: auto;
         padding: 0;
         line-height: 1.25;
         font-size: 1.25rem;
-        font-family: var(--fontStack1);
       }
 
       img {
@@ -94,14 +117,6 @@ console.log(fontRules);
       }
       .md-default-image {
         max-width: var(--maxImageWidth);
-      }
-
-      h1 {
-        font-family: var(--h1-fontFamily);
-        font-size: var(--h1-fontSize);
-        margin-top: var(--h1-marginTop);
-        margin-bottom: var(--h1-marginBottom);
-        color: var(--h1-color);
       }
     </style>
   </head>

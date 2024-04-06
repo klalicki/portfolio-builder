@@ -2,7 +2,7 @@
   "h1": {
     "fontFamily": "fontStack3",
     "fontWeight": "700",
-    "fontSize": "24px",
+    "fontSize": "36px",
     "color": "#000000",
     "marginTop": "1rem",
     "marginBottom": "2rem"
@@ -16,9 +16,9 @@
     "marginBottom": "0px"
   },
   "p": {
-    "fontFamily": "fontStack3",
+    "fontFamily": "fontStack1",
     "fontWeight": "400",
-    "fontSize": "9px",
+    "fontSize": "18px",
     "color": "#000000",
     "marginTop": "0px",
     "marginBottom": "0px"
