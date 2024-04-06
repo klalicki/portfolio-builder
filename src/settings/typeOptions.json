@@ -1,5 +1,8 @@
 {
-  "general": {},
+  "general": {
+    "baseFontSizeSm": "16px",
+    "baseFontSizeLg": "20px"
+  },
   "h1": {
     "fontFamily": "fontStack3",
     "fontWeight": "700",
