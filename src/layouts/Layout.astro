@@ -75,6 +75,12 @@ console.log(fontRules);
         margin-bottom: var(--p-marginBottom);
         color: var(--font-color-override, --p-color);
       }
+      *:first-child {
+        margin-top: 0;
+      }
+      *:last-child {
+        margin-bottom: 0;
+      }
     </style>
     <style
       define:vars={{
