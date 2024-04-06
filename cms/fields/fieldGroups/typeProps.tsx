@@ -12,6 +12,16 @@ export function typeProps({ label }: { label: string }) {
         ],
         defaultValue: "font1",
       }),
+      fontWeight: fields.select({
+        label: "Font Weight",
+
+        options: [
+          { label: "Light", value: "200" },
+          { label: "Regular", value: "400" },
+          { label: "Bold", value: "700" },
+        ],
+        defaultValue: "400",
+      }),
       fontSize: cssUnit({
         label: "Font Size",
         isCompact: true,
@@ -30,7 +40,7 @@ export function typeProps({ label }: { label: string }) {
         limitUnits: ["px", "em", "rem"],
       }),
     },
-    { label: label }
+    { label: label, layout: [4, 4, 4, 4, 4, 4] }
   );
   console.log(typeOptionsObj);
   return typeOptionsObj;
