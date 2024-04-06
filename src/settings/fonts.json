@@ -1,14 +1,14 @@
 {
   "font1": {
-    "htmlLink": "<link href=\"https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap\" rel=\"stylesheet\">",
-    "fontFamily": "\"EB Garamond\", serif;"
+    "htmlLink": "PGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1FQitHYXJhbW9uZDppdGFsLHdnaHRAMCw0MDAuLjgwMDsxLDQwMC4uODAwJmRpc3BsYXk9c3dhcCIgcmVsPSJzdHlsZXNoZWV0Ij4=",
+    "fontFamily": "\"EB Garamond\", serif"
   },
   "font2": {
-    "htmlLink": "<link rel=\"stylesheet\" href=\"https://use.typekit.net/rdp4yol.css\">",
+    "htmlLink": "PGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3VzZS50eXBla2l0Lm5ldC9yZHA0eW9sLmNzcyI+",
     "fontFamily": "\"jali-latin-variable\", sans-serif"
   },
   "font3": {
-    "htmlLink": "<link href=\"https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap\" rel=\"stylesheet\">\n",
+    "htmlLink": "PGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1SdWJpaytTY3JpYmJsZSZkaXNwbGF5PXN3YXAiIHJlbD0ic3R5bGVzaGVldCI+",
     "fontFamily": "\"Rubik Scribble\", system-ui"
   }
 }

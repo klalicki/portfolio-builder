@@ -21,8 +21,12 @@ export const typeOptions = singleton({
       },
       { label: "General Settings", layout: [6, 6] }
     ),
+    p: typeProps({ label: "Body Text" }),
     h1: typeProps({ label: "Heading 1" }),
     h2: typeProps({ label: "Heading 2" }),
-    p: typeProps({ label: "Body Text" }),
+    h3: typeProps({ label: "Heading 3" }),
+    h4: typeProps({ label: "Heading 4" }),
+    h5: typeProps({ label: "Heading 5" }),
+    h6: typeProps({ label: "Heading 6" }),
   },
 });
