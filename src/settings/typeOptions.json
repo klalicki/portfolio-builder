@@ -1,8 +1,24 @@
 {
   "h1": {
     "fontFamily": "font1",
-    "fontWeight": "400",
+    "fontWeight": "700",
+    "fontSize": "24px",
+    "color": "#000000",
+    "marginTop": "0px",
+    "marginBottom": "0px"
+  },
+  "h2": {
+    "fontFamily": "font2",
+    "fontWeight": "700",
     "fontSize": "18px",
+    "color": "#000000",
+    "marginTop": "0px",
+    "marginBottom": "0px"
+  },
+  "p": {
+    "fontFamily": "font1",
+    "fontWeight": "400",
+    "fontSize": "9px",
     "color": "#000000",
     "marginTop": "0px",
     "marginBottom": "0px"

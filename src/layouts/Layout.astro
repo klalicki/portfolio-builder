@@ -10,6 +10,18 @@ const fontLinks = Object.values(settings.fonts)
     return fontObj.htmlLink;
   })
   .join("");
+
+const fontRules: { [key: string]: string } = {};
+const fontSpecs = settings.typeOptions;
+const fontSpecSets = Object.entries(fontSpecs);
+fontSpecSets.forEach((pair) => {
+  const fontVars = Object.entries(pair[1]);
+  fontVars.forEach((fontVarPair) => {
+    const varName = pair[0] + "-" + fontVarPair[0];
+    fontRules[varName] = fontVarPair[1];
+  });
+});
+console.log(fontRules);
 ---
 
 <!doctype html>
@@ -32,6 +44,7 @@ const fontLinks = Object.values(settings.fonts)
         fontStack1: settings.fonts.font1.fontFamily,
         fontStack2: settings.fonts.font2.fontFamily,
         fontStack3: settings.fonts.font3.fontFamily,
+        ...fontRules,
         // rootFontSize: settings.fonts.sizes.rootSize,
       }}
     >

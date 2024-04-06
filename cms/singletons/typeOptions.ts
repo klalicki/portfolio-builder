@@ -6,5 +6,7 @@ export const typeOptions = singleton({
   path: "src/settings/typeOptions",
   schema: {
     h1: typeProps({ label: "Heading 1" }),
+    h2: typeProps({ label: "Heading 2" }),
+    p: typeProps({ label: "Body Text" }),
   },
 });
