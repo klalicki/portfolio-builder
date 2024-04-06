@@ -26,6 +26,7 @@ fontSpecSets.forEach((pair) => {
     if (fontVarPair[0] === "fontFamily") {
       fontRules[keyName] = `var(--${fontVarPair[1]})`;
     } else {
+      // @ts-ignore
       fontRules[keyName] = fontVarPair[1];
     }
   });
@@ -60,6 +61,7 @@ console.log(fontRules);
         margin-top: var(--h1-marginTop);
         margin-bottom: var(--h1-marginBottom);
         color: var(--font-color-override, --h1-color);
+        line-height: var(--h1-lineHeight);
       }
       h2 {
         font-family: var(--h2-fontFamily);
@@ -67,6 +69,7 @@ console.log(fontRules);
         margin-top: var(--h2-marginTop);
         margin-bottom: var(--h2-marginBottom);
         color: var(--font-color-override, --h2-color);
+        line-height: var(--h2-lineHeight);
       }
       h3 {
         font-family: var(--h3-fontFamily);
@@ -74,6 +77,7 @@ console.log(fontRules);
         margin-top: var(--h3-marginTop);
         margin-bottom: var(--h3-marginBottom);
         color: var(--font-color-override, --h3-color);
+        line-height: var(--h3-lineHeight);
       }
       h4 {
         font-family: var(--h4-fontFamily);
@@ -81,6 +85,7 @@ console.log(fontRules);
         margin-top: var(--h4-marginTop);
         margin-bottom: var(--h4-marginBottom);
         color: var(--font-color-override, --h4-color);
+        line-height: var(--h4-lineHeight);
       }
       h5 {
         font-family: var(--h5-fontFamily);
@@ -88,6 +93,7 @@ console.log(fontRules);
         margin-top: var(--h5-marginTop);
         margin-bottom: var(--h5-marginBottom);
         color: var(--font-color-override, --h5-color);
+        line-height: var(--h5-lineHeight);
       }
 
       p {
@@ -96,6 +102,7 @@ console.log(fontRules);
         margin-top: var(--p-marginTop);
         margin-bottom: var(--p-marginBottom);
         color: var(--font-color-override, --p-color);
+        line-height: var(--p-lineHeight);
       }
       *:first-child {
         margin-top: 0;

@@ -1,8 +1,10 @@
 {
+  "general": {},
   "h1": {
     "fontFamily": "fontStack3",
     "fontWeight": "700",
     "fontSize": "36px",
+    "lineHeight": 1.5,
     "color": "#000000",
     "marginTop": "1rem",
     "marginBottom": "2rem"
@@ -11,6 +13,7 @@
     "fontFamily": "fontStack2",
     "fontWeight": "700",
     "fontSize": "18px",
+    "lineHeight": 1.25,
     "color": "#000000",
     "marginTop": "0px",
     "marginBottom": "0px"
@@ -19,6 +22,7 @@
     "fontFamily": "fontStack1",
     "fontWeight": "400",
     "fontSize": "18px",
+    "lineHeight": 1.5,
     "color": "#000000",
     "marginTop": "0.5em",
     "marginBottom": "0.5em"

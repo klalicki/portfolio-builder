@@ -27,6 +27,7 @@ export function typeProps({ label }: { label: string }) {
         isCompact: true,
         limitUnits: ["px", "rem"],
       }),
+      lineHeight: fields.number({ label: "Line Height", defaultValue: 1.25 }),
       color: colorPicker({
         label: "Text Color",
         compact: true,
@@ -44,7 +45,7 @@ export function typeProps({ label }: { label: string }) {
         limitUnits: ["px", "em", "rem"],
       }),
     },
-    { label: label, layout: [4, 4, 4, 4, 4, 4] }
+    { label: label, layout: [3, 3, 4, 2, 4, 4, 4] }
   );
   // console.log(typeOptionsObj);
   return typeOptionsObj;
