@@ -1,0 +1,100 @@
+---
+import { settings } from "../helpers/settingsHelper";
+
+const fontLinks = Object.values(settings.fonts)
+  .map((fontObj) => {
+    return fontObj.htmlLink;
+  })
+  .join("");
+
+const fontRules: { [key: string]: string } = {};
+const fontFamilyMapping: { [key: string]: string } = {
+  font1: "var(--fontStack1)",
+  font2: "var(--fontStack2)",
+  font3: "var(--fontStack3)",
+};
+const fontSpecs = settings.typeOptions;
+const fontSpecSets = Object.entries(fontSpecs);
+fontSpecSets.forEach((pair) => {
+  const fontVars = Object.entries(pair[1]);
+  fontVars.forEach((fontVarPair) => {
+    const keyName = pair[0] + "-" + fontVarPair[0];
+    if (fontVarPair[0] === "fontFamily") {
+      fontRules[keyName] = `var(--${fontVarPair[1]})`;
+    } else {
+      // @ts-ignore
+      fontRules[keyName] = fontVarPair[1];
+    }
+  });
+});
+console.log(fontRules);
+---
+
+<Fragment set:html={fontLinks} />
+
+<style
+  is:global
+  define:vars={{
+    fontStack1: settings.fonts.font1.fontFamily,
+    fontStack2: settings.fonts.font2.fontFamily,
+    fontStack3: settings.fonts.font3.fontFamily,
+    ...fontRules,
+    // rootFontSize: settings.fonts.sizes.rootSize,
+  }}
+>
+  h1 {
+    font-family: var(--h1-fontFamily);
+    font-size: var(--h1-fontSize);
+    margin-top: var(--h1-marginTop);
+    margin-bottom: var(--h1-marginBottom);
+    color: var(--font-color-override, --h1-color);
+    line-height: var(--h1-lineHeight);
+  }
+  h2 {
+    font-family: var(--h2-fontFamily);
+    font-size: var(--h2-fontSize);
+    margin-top: var(--h2-marginTop);
+    margin-bottom: var(--h2-marginBottom);
+    color: var(--font-color-override, --h2-color);
+    line-height: var(--h2-lineHeight);
+  }
+  h3 {
+    font-family: var(--h3-fontFamily);
+    font-size: var(--h3-fontSize);
+    margin-top: var(--h3-marginTop);
+    margin-bottom: var(--h3-marginBottom);
+    color: var(--font-color-override, --h3-color);
+    line-height: var(--h3-lineHeight);
+  }
+  h4 {
+    font-family: var(--h4-fontFamily);
+    font-size: var(--h4-fontSize);
+    margin-top: var(--h4-marginTop);
+    margin-bottom: var(--h4-marginBottom);
+    color: var(--font-color-override, --h4-color);
+    line-height: var(--h4-lineHeight);
+  }
+  h5 {
+    font-family: var(--h5-fontFamily);
+    font-size: var(--h5-fontSize);
+    margin-top: var(--h5-marginTop);
+    margin-bottom: var(--h5-marginBottom);
+    color: var(--font-color-override, --h5-color);
+    line-height: var(--h5-lineHeight);
+  }
+
+  p {
+    font-family: var(--p-fontFamily);
+    font-size: var(--p-fontSize);
+    margin-top: var(--p-marginTop);
+    margin-bottom: var(--p-marginBottom);
+    color: var(--font-color-override, --p-color);
+    line-height: var(--p-lineHeight);
+  }
+  *:first-child {
+    margin-top: 0;
+  }
+  *:last-child {
+    margin-bottom: 0;
+  }
+</style>
