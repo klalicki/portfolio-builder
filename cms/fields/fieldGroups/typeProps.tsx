@@ -27,7 +27,11 @@ export function typeProps({ label }: { label: string }) {
         isCompact: true,
         limitUnits: ["px", "rem"],
       }),
-      color: colorPicker({ label: "Text Color", defaultValue: "#000000" }),
+      color: colorPicker({
+        label: "Text Color",
+        compact: true,
+        defaultValue: "#000000",
+      }),
       marginTop: cssUnit({
         label: "Space Above",
         isCompact: true,

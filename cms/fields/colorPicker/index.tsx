@@ -19,10 +19,12 @@ export function colorPicker({
   label,
   defaultValue,
   description,
+  compact,
 }: {
   label: string;
   defaultValue?: string;
   description?: string;
+  compact?: boolean;
 }): BasicFormField<string> {
   return {
     // not sure what this one does? why is its only value 'form'?
@@ -40,14 +42,25 @@ export function colorPicker({
             style={{
               display: "inline-flex",
               alignSelf: "flex-start",
-              flexDirection: "column",
-              gap: "1rem",
+              flexDirection: compact ? "row" : "column",
+              gap: ".5rem",
             }}
           >
-            <HexAlphaColorPicker
-              color={props.value}
-              onChange={props.onChange}
-            />
+            {compact ? (
+              <input 
+                type="color"
+                value={props.value}
+                onChange={(e) => {
+                  props.onChange(e.target.value);
+                }}
+              ></input>
+            ) : (
+              <HexAlphaColorPicker
+                color={props.value}
+                onChange={props.onChange}
+              />
+            )}
+
             <HexColorInput
               color={props.value}
               name={label + " hex"}
