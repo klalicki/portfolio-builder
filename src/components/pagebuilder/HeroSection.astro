@@ -25,6 +25,7 @@ const parallaxSelector = {
 if (props.parallax) {
   parallaxSelector.backgroundAttachment = "fixed";
 }
+console.log(props.showPanel);
 ---
 
 <script>
@@ -46,9 +47,9 @@ if (props.parallax) {
     heroHeight: props.height,
     pageWidth,
     sidePadding,
-    panelWidth: props.panelWidth,
-    panelColor: props.panelColor,
-    textColor: props.textColor,
+    panelWidth: props.showPanel.value.panelWidth,
+    panelColor: props.showPanel.value.panelColor,
+    textColor: props.showPanel.value.textColor,
   }}
 >
   .hero-section-wrapper {
@@ -63,7 +64,6 @@ if (props.parallax) {
   .hero-section-image {
     width: 100%;
     height: calc(var(--heroHeight) * 1.5);
-
     position: absolute;
 
     /* padding: 2rem; */
@@ -93,18 +93,19 @@ if (props.parallax) {
   }
 </style>
 <div class="hero-section-wrapper">
-  <div class="hero-section-content-wrapper">
-    <div class="hero-section-content-panel">
-      <slot />
-    </div>
-  </div>
+  {
+    props.showPanel.discriminant && (
+      <div class="hero-section-content-wrapper">
+        <div class="hero-section-content-panel">
+          <slot />
+        </div>
+      </div>
+    )
+  }
+
   <OptimizedImage
     class:list={["hero-section-image", props.parallax && "hero-image-parallax"]}
     src={imagePath}
     alt=""
   />
-  <!-- <div
-    class:list={["hero-section-image", props.parallax && "hero-image-parallax"]}
-    style={{ backgroundImage: `url(${fancyImage.src})` }}
-  > -->
 </div>

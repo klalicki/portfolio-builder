@@ -27,7 +27,6 @@ fontSpecSets.forEach((pair) => {
     }
   });
 });
-console.log(fontRules);
 ---
 
 <!doctype html>
@@ -54,7 +53,6 @@ console.log(fontRules);
         margin: auto;
         padding: 0;
         line-height: 1.25;
-        font-size: 1.25rem;
         font-family: var(--p-fontFamily);
       }
 
@@ -95,6 +93,14 @@ console.log(fontRules);
         // rootFontSize: settings.fonts.sizes.rootSize,
       }}
     >
+      html {
+        font-size: var(--general-baseFontSizeSm);
+      }
+      @media screen and (min-width: 768px) {
+        html {
+          font-size: var(--general-baseFontSizeLg);
+        }
+      }
       h1 {
         font-family: var(--h1-fontFamily);
         font-size: var(--h1-fontSize);

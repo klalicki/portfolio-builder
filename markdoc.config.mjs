@@ -31,11 +31,12 @@ export default defineMarkdocConfig({
       attributes: {
         image: { type: String },
         width: { type: String },
-        panelWidth: { type: String },
+        // panelWidth: { type: String },
+        showPanel: { type: Object },
         height: { type: String },
         parallax: { type: Boolean },
-        panelColor: { type: String },
-        textColor: { type: String },
+        // panelColor: { type: String },
+        // textColor: { type: String },
       },
     },
     ImagePopout: {

@@ -28,21 +28,31 @@ export const standardComponents = {
         description: "Maximum width for this section",
         defaultValue: "100%",
       }),
-      panelWidth: customFields.cssUnit({
-        label: "Panel Width",
-        description: "Width of the overlay panel",
-        defaultValue: "250px",
-      }),
-      panelColor: customFields.colorPicker({
-        label: "Background color for panel",
-        defaultValue: "#ffffff",
-      }),
-      textColor: customFields.colorPicker({
-        label: "Text color for panel",
-        defaultValue: "#000000",
-      }),
-
       parallax: fields.checkbox({ label: "Parallax scroll effect" }),
+      showPanel: fields.conditional(
+        fields.checkbox({ label: "show content panel?" }),
+        {
+          false: customFields.uniquify({ label: "uniquify" }),
+          true: fields.object(
+            {
+              panelWidth: customFields.cssUnit({
+                label: "Panel Width",
+                description: "Width of the overlay panel",
+                defaultValue: "250px",
+              }),
+              panelColor: customFields.colorPicker({
+                label: "Background color for panel",
+                defaultValue: "#ffffff",
+              }),
+              textColor: customFields.colorPicker({
+                label: "Text color for panel",
+                defaultValue: "#000000",
+              }),
+            },
+            { layout: [12, 6, 6] }
+          ),
+        }
+      ),
     },
     ContentView(props) {
       const [imageDataUrl, setImageDataUrl] = useState<any>(null);
@@ -71,19 +81,24 @@ export const standardComponents = {
             justifyContent: "flex-start",
             alignItems: "center",
             padding: "2rem",
+            color: props.value.showPanel.value?.textColor,
           }}
         >
-          <div
-            style={{
-              backgroundColor: props.value.panelColor,
-              maxWidth: props.value.panelWidth,
-              padding: "1rem",
-              // @ts-ignore
-              "--kui-color-foreground-neutral-emphasis": props.value.textColor,
-            }}
-          >
-            {props.children}
-          </div>
+          {props.value.showPanel.discriminant && (
+            <div
+              style={{
+                backgroundColor: props.value.showPanel.value?.panelColor,
+                maxWidth: props.value.showPanel.value?.panelWidth,
+                padding: "1rem",
+                color: props.value.showPanel.value?.textColor,
+                // @ts-ignore
+                "--kui-color-foreground-neutral-emphasis":
+                  props.value.showPanel.value?.textColor,
+              }}
+            >
+              {props.children}
+            </div>
+          )}
         </div>
       );
     },

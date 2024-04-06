@@ -3,6 +3,7 @@ const { props } = Astro;
 const imagePath = "../../assets/images" + props.image;
 import Image from "astro/components/Image.astro";
 import { settings } from "../helpers/settingsHelper";
+import SimpleLightbox from 'simple-lightbox'
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
 );
@@ -13,13 +14,7 @@ if (!images[imagePath])
 ---
 
 <script>
-  document.querySelectorAll(".image-popout-container").forEach((element) => {
-    element.addEventListener("click", (e: any) => {
-      if (e?.target?.parentElement) {
-      }
-      e.target.parentElement.classList.toggle("image-popout-expanded");
-    });
-  });
+  import {SimpleLightbox}
 </script>
 <style>
   .image-popout-container {
