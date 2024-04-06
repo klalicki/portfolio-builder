@@ -12,11 +12,7 @@ const fontLinks = Object.values(settings.fonts)
   .join("");
 
 const fontRules: { [key: string]: string } = {};
-const fontFamilyMapping: { [key: string]: string } = {
-  font1: "var(--fontStack1)",
-  font2: "var(--fontStack2)",
-  font3: "var(--fontStack3)",
-};
+
 const fontSpecs = settings.typeOptions;
 const fontSpecSets = Object.entries(fontSpecs);
 fontSpecSets.forEach((pair) => {
