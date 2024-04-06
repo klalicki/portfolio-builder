@@ -1,0 +1,10 @@
+{
+  "h1": {
+    "fontFamily": "font1",
+    "fontWeight": "400",
+    "fontSize": "18px",
+    "color": "#000000",
+    "marginTop": "0px",
+    "marginBottom": "0px"
+  }
+}
