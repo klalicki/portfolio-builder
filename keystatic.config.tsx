@@ -19,7 +19,11 @@ import { standardComponents } from "./cms/components/standardComponents";
 import { pageComponents } from "./cms/components/pageComponents";
 
 const customNavField = fields.conditional(
-  fields.checkbox({ label: "special navigation" }),
+  fields.checkbox({
+    label: "Show Sub-Items in Nav",
+    description:
+      "Use this option to show project pages beneath this page in the site navigation",
+  }),
   {
     false: customFields.uniquify({ label: "unique" }),
     true: fields.array(
@@ -71,8 +75,8 @@ export default config({
           description:
             "Remove default title element from this page (make sure to include a Heading 1 near the top of the page for accessibility!)",
         }),
-        description: fields.text({ label: "Description" }),
-        line3: fields.text({ label: "optional 3rd line for portfolio pages" }),
+        line2: fields.text({ label: "Line 2 text for portfolio views" }),
+        line3: fields.text({ label: "Line 3 text for portfolio views" }),
         thumbnail: fields.image({
           label: "Thumbnail Image",
           directory: "src/assets/images/pages",
