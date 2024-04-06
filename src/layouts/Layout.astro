@@ -42,7 +42,49 @@ console.log(fontRules);
     <ViewTransitions />
 
     <Fragment set:html={fontLinks} />
+    <style
+      define:vars={{
+        maxPageContentWidth: settings.pageArea.pageWidth,
+        standardPadding: settings.pageArea.padding.horizontal,
+        maxImageWidth: settings.pageArea.images.displayWidth,
+      }}
+      is:global
+    >
+      html {
+        margin: auto;
+        padding: 0;
+        line-height: 1.25;
+        font-size: 1.25rem;
+        font-family: var(--p-fontFamily);
+      }
 
+      img {
+        height: auto;
+        width: 100%;
+      }
+
+      :where(*) {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      main {
+        align-items: center;
+        position: relative;
+      }
+      main > * {
+        display: block;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 var(--standardPadding);
+        max-width: var(--maxPageContentWidth);
+        overflow-wrap: break-word;
+      }
+      .md-default-image {
+        max-width: var(--maxImageWidth);
+      }
+    </style>
     <style
       is:global
       define:vars={{
@@ -107,50 +149,6 @@ console.log(fontRules);
       }
       *:last-child {
         margin-bottom: 0;
-      }
-    </style>
-    <style
-      define:vars={{
-        maxPageContentWidth: settings.pageArea.pageWidth,
-        standardPadding: settings.pageArea.padding.horizontal,
-        maxImageWidth: settings.pageArea.images.displayWidth,
-      }}
-      is:global
-    >
-      html {
-        margin: auto;
-        padding: 0;
-        line-height: 1.25;
-        font-size: 1.25rem;
-        font-family: var(--p-fontFamily);
-      }
-
-      img {
-        height: auto;
-        width: 100%;
-      }
-
-      * {
-        padding: 0;
-        margin: 0;
-
-        box-sizing: border-box;
-      }
-      main {
-        align-items: center;
-        position: relative;
-      }
-      main > * {
-        display: block;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 var(--standardPadding);
-        max-width: var(--maxPageContentWidth);
-        overflow-wrap: break-word;
-      }
-      .md-default-image {
-        max-width: var(--maxImageWidth);
       }
     </style>
   </head>
