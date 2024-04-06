@@ -12,14 +12,21 @@ export function typeProps({ label }: { label: string }) {
         ],
         defaultValue: "font1",
       }),
-      fontSize: cssUnit({ label: "Font Size", limitUnits: ["px", "rem"] }),
+      fontSize: cssUnit({
+        label: "Font Size",
+        isCompact: true,
+        limitUnits: ["px", "rem"],
+      }),
       color: colorPicker({ label: "Text Color", defaultValue: "#000000" }),
       marginTop: cssUnit({
         label: "Space Above",
+        isCompact: true,
+
         limitUnits: ["px", "em", "rem"],
       }),
       marginBottom: cssUnit({
-        label: "Space Above",
+        label: "Space Below",
+        isCompact: true,
         limitUnits: ["px", "em", "rem"],
       }),
     },

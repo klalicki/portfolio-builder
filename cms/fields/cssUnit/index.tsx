@@ -72,11 +72,13 @@ export function cssUnit({
   defaultValue,
   description,
   limitUnits,
+  isCompact,
 }: {
   label: string;
   defaultValue?: string;
   description?: string;
   limitUnits?: string[];
+  isCompact?: boolean;
 }): BasicFormField<string> {
   return {
     // not sure what this one does? why is its only value 'form'?
@@ -109,15 +111,16 @@ export function cssUnit({
         <FieldPrimitive description={description} label={label}>
           <div style={{ display: "inline-flex", gap: ".5rem" }}>
             <NumberField
-              label={"Value"}
+              {...(!isCompact && { label: "Value" })}
               value={parsed.number}
               onChange={(e) => {
                 props.onChange(`${e}${parsed.unit}`);
               }}
             />
             <Picker
-              label={"Unit"}
+              {...(!isCompact && { label: "Units" })}
               items={units}
+              // width={"150px"}
               selectedKey={parsed.unit}
               onSelectionChange={(key) => {
                 props.onChange(`${parsed.number}${key}`);

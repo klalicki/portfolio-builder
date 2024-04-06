@@ -12,6 +12,7 @@ import { portfolioLayouts } from "./cms/singletons/portfolioLayouts";
 import { menuConfig } from "./cms/singletons/menuConfig";
 import { generalSettings } from "./cms/singletons/generalSettings";
 import { sidebarSettings } from "./cms/singletons/sidebarSettings";
+import { typeOptions } from "./cms/singletons/typeOptions";
 import { pageArea } from "./cms/singletons/pageAreaSettings";
 import { fonts } from "./cms/singletons/fonts";
 import * as customFields from "./cms/fields";
@@ -53,7 +54,13 @@ export default config({
     navigation: {
       Content: ["projects", "pages", "homepage"],
       Settings: ["menu", "general", "portfolioGroups"],
-      Appearance: ["pageArea", "sidebarSettings", "portfolioLayouts", "fonts"],
+      Appearance: [
+        "pageArea",
+        "sidebarSettings",
+        "portfolioLayouts",
+        "fonts",
+        "typeOptions",
+      ],
     },
   },
   storage: {
@@ -195,6 +202,7 @@ export default config({
     }),
   },
   singletons: {
+    typeOptions: typeOptions,
     portfolioLayouts: portfolioLayouts,
     sidebarSettings: sidebarSettings,
     general: generalSettings,
