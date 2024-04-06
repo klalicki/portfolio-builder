@@ -325,13 +325,11 @@ export const standardComponents = {
     },
     ContentView(props) {
       const divRef = useRef(null);
-
       useEffect(() => {
         if (divRef.current) {
           divRef.current?.setAttribute("style", props.value.customCSS);
         }
       }, [props.value.customCSS]);
-
       return <div ref={divRef}>{props.children}</div>;
     },
   }),

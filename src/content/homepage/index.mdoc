@@ -15,6 +15,15 @@ customNavigation:
    projectSource="all" /%}
 
 {% CustomCSSWrapper
-   customCSS="cGFkZGluZzozcmVtOwpiYWNrZ3JvdW5kLWNvbG9yOmRhcmtncmVlbjsKY29sb3I6d2hpdGU7CndpZHRoOmF1dG87" %}
+   customCSS="cGFkZGluZzozcmVtOwpiYWNrZ3JvdW5kLWNvbG9yOmRhcmtibHVlOwpjb2xvcjp3aGl0ZTsKYm9yZGVyLXJhZGl1czouNXJlbTsKYm9yZGVyOjFweCBzb2xpZCB3aGl0ZQo=" %}
+# This is a wrapper component
+
+I can put any elements i want inside it.
+
+{% CustomCSSWrapper
+   customCSS="YmFja2dyb3VuZC1jb2xvcjpibHVlOwpib3JkZXItcmFkaXVzOi41cmVtOwpwYWRkaW5nOjFyZW07" %}
+I can even nest other custom components inside it
+{% /CustomCSSWrapper %}
+
 Some content
 {% /CustomCSSWrapper %}
