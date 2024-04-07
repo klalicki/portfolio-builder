@@ -15,7 +15,7 @@ const tileSettings = settings.portfolioLayouts.coolTile;
     display: grid;
     grid-template-columns: repeat(
       auto-fit,
-      minmax(min(var(--minTileWidth, 100%)), 1fr)
+      minmax(min(var(--minTileWidth), 100%), 1fr)
     );
     gap: var(--tileGap);
   }
