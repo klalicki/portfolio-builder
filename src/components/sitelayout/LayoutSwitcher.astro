@@ -5,10 +5,9 @@ import settings from "../../settings/menu.json";
 import SidebarPage from "./Sidebar/SidebarPage.astro";
 import TopbarPage from "./Topbar/TopbarPage.astro";
 
-
 let PageLayout;
-switch (settings.position) {
-  case "sidebar":
+switch (settings.position.discriminant) {
+  case "side":
     PageLayout = SidebarPage;
     break;
   case "top":
