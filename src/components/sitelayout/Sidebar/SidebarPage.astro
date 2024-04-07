@@ -6,6 +6,17 @@ import SidebarNav from "./SidebarNav.astro";
   main {
     padding-top: 45px;
   }
+  header {
+    background-color: lightblue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45px;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+  }
 
   @media screen and (min-width: 768px) {
     main {
@@ -20,7 +31,7 @@ import SidebarNav from "./SidebarNav.astro";
       top: 0;
       bottom: 0;
       width: 300px;
-      background-color: lightblue;
+
       display: flex;
       overflow-y: scroll;
     }
