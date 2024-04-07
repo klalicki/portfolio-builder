@@ -67,6 +67,8 @@ const { Container, Item } = componentMappings[validType];
       return (
         <Item
           title={item.data.title}
+          line2={item.data.line2}
+          line3={item.data.line3}
           url={"/projects/" + item.slug}
           thumbnail={item.data.thumbnail || ""}
           index={index}
