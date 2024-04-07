@@ -16,6 +16,7 @@ import SidebarNav from "./SidebarNav.astro";
     display: flex;
     align-items: stretch;
     justify-content: stretch;
+    z-index: 10;
   }
 
   @media screen and (min-width: 768px) {
@@ -23,6 +24,7 @@ import SidebarNav from "./SidebarNav.astro";
       position: relative;
       left: 300px;
       width: calc(100% - 300px);
+
       padding-top: 0;
     }
     header {
@@ -31,7 +33,7 @@ import SidebarNav from "./SidebarNav.astro";
       top: 0;
       bottom: 0;
       width: 300px;
-
+      height: 100%;
       display: flex;
       overflow-y: scroll;
     }
