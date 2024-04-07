@@ -18,7 +18,6 @@ const menuItemCount = menuItems.length;
     display: flex;
     padding: 0;
     justify-content: flex-end;
-    z-index: 10000;
   }
   .menu-main-group {
     position: fixed;
@@ -28,6 +27,8 @@ const menuItemCount = menuItems.length;
     display: flex;
     flex-direction: column;
     background-color: lightblue;
+    overflow: hidden;
+    z-index: -10;
   }
   .menu-submenu {
     display: flex;
@@ -39,7 +40,6 @@ const menuItemCount = menuItems.length;
     z-index: -100;
   }
   .menu-submenu a {
-    
   }
   .menu-dropdown-button {
     display: none;
