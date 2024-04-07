@@ -1,3 +1,5 @@
 {
-  "position": "top"
+  "position": {
+    "discriminant": "top"
+  }
 }

@@ -5,18 +5,16 @@ export const menuConfig = singleton({
   format: { data: "json" },
   path: "src/settings/menu",
   schema: {
-    position: fields.select({
-      label: "Menu Position",
-      options: [
-        { label: "Sidebar", value: "sidebar" },
-        { label: "Top bar", value: "top" },
-        {
-          label: "Sticky Topbar",
-          value: "sticky",
-        },
-        { label: "Hamburger", value: "hamburger" },
-      ],
-      defaultValue: "sidebar",
-    }),
+    position: fields.conditional(
+      fields.select({
+        label: "Menu Position",
+        options: [
+          { label: "Side", value: "side" },
+          { label: "Top", value: "top" },
+        ],
+        defaultValue: "side",
+      }),
+      { side: fields.empty(), top: fields.empty() }
+    ),
   },
 });
