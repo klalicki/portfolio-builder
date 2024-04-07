@@ -1,4 +1,5 @@
 import { singleton, fields } from "@keystatic/core";
+import { customFields } from "../fields";
 
 export const menuConfig = singleton({
   label: "Menu",
@@ -14,7 +15,15 @@ export const menuConfig = singleton({
         ],
         defaultValue: "side",
       }),
-      { side: fields.empty(), top: fields.empty() }
+      {
+        side: fields.object({
+          layout: fields.object(
+            { width: customFields.cssUnit({ label: "Width" }) },
+            { label: "Layout" }
+          ),
+        }),
+        top: fields.empty(),
+      }
     ),
   },
 });

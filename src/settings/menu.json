@@ -1,5 +1,10 @@
 {
   "position": {
-    "discriminant": "side"
+    "discriminant": "side",
+    "value": {
+      "layout": {
+        "width": "400px"
+      }
+    }
   }
 }
