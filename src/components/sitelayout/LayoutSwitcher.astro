@@ -21,5 +21,64 @@ switch (settings.position.discriminant) {
 ---
 
 <PageLayout>
+  <script>
+    // alert(buttons.length);
+    const hideAllMenus = () => {
+      document.querySelectorAll(".menu-submenu").forEach((submenu) => {
+        submenu.classList.toggle("submenu-hidden", true);
+      });
+    };
+    const hideMobileMenu = () => {
+      document
+        .querySelector(".menu-main-group")
+        ?.classList.toggle("menu-mobile-hidden", true);
+    };
+    // hide the menu upon clicking outside of it
+    window.addEventListener("click", (event) => {
+      //@ts-ignore not sure why i need this but i do
+      if (!document.querySelector(".menu-main")?.contains(event.target)) {
+        hideAllMenus();
+        hideMobileMenu();
+      }
+    });
+
+    document.addEventListener("astro:page-load", () => {
+      // add event listener to the dropdown buttons to open/close the menus
+      const buttons = document.querySelectorAll(".menu-dropdown-button");
+
+      buttons.forEach((item) => {
+        item.addEventListener("click", () => {
+          const menuID = item.getAttribute("data-menu-id") || "";
+          const isInitiallyHidden = document
+            .getElementById(menuID)
+            ?.classList.contains("submenu-hidden");
+          hideAllMenus();
+          document
+            .getElementById(menuID)
+            ?.classList.toggle("submenu-hidden", !isInitiallyHidden);
+        });
+      });
+      // add event listener to open menus on hover
+      const menuHoverTriggers = document.querySelectorAll(
+        ".dropdown-button-wrapper > a"
+      );
+      menuHoverTriggers.forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+          const menuID = item.getAttribute("data-menu-id") || "";
+
+          hideAllMenus();
+          document
+            .getElementById(menuID)
+            ?.classList.toggle("submenu-hidden", false);
+        });
+      });
+
+      document.querySelector("#menu-toggle")?.addEventListener("click", () => {
+        document
+          .querySelector(".menu-main-group")
+          ?.classList.toggle("menu-mobile-hidden");
+      });
+    });
+  </script>
   <slot />
 </PageLayout>

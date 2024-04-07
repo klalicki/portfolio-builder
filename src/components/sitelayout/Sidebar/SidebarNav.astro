@@ -9,11 +9,15 @@ const menuItemCount = menuItems.length;
 <style>
   /*  */
   .menu-main {
-    position: absolute;
     /* background-color: aquamarine; */
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
     padding: 0;
-    justify-content: flex-end;
+    position: relative;
+    width: 100%;
+    height: 100%;
     z-index: 10;
   }
   .menu-main-group {
@@ -43,7 +47,13 @@ const menuItemCount = menuItems.length;
   .menu-dropdown-button {
     display: none;
   }
-  .menu-toggle-button {
+  .menu-mobile-bar {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+  }
+  .site-title {
+    flex-grow: 1;
   }
   .menu-mobile-hidden {
     transform: translateY(-50px);
@@ -54,6 +64,14 @@ const menuItemCount = menuItems.length;
   }
 
   @media screen and (min-width: 768px) {
+    .site-title {
+      display: none;
+    }
+    .menu-mobile-bar {
+      display: none;
+      align-items: stretch;
+      justify-content: flex-end;
+    }
     .menu-mobile-hidden {
       display: flex;
       opacity: 1;
@@ -140,7 +158,10 @@ const menuItemCount = menuItems.length;
 </style>
 
 <nav class="menu-main">
-  <button id="menu-toggle">Menu</button>
+  <div class="menu-mobile-bar">
+    <p class="site-title">Site Title</p>
+    <button id="menu-toggle">Menu</button>
+  </div>
 
   <div class="menu-main-group menu-mobile-hidden">
     {
