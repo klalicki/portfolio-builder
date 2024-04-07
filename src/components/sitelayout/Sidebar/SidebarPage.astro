@@ -1,8 +1,10 @@
 ---
 import SidebarNav from "./SidebarNav.astro";
+import { settings } from "../../helpers/settingsHelper";
 ---
 
-<style>
+<style define:vars={{ sidebarWidth: settings.menu.position.value.layout.width }}
+>
   main {
     padding-top: 45px;
   }
@@ -22,8 +24,8 @@ import SidebarNav from "./SidebarNav.astro";
   @media screen and (min-width: 768px) {
     main {
       position: relative;
-      left: 300px;
-      width: calc(100% - 300px);
+      left: var(--sidebarWidth, 300px);
+      width: calc(100% - var(--sidebarWidth, 300px));
       padding-top: 0;
     }
     header {
@@ -31,7 +33,7 @@ import SidebarNav from "./SidebarNav.astro";
       left: 0;
       top: 0;
       bottom: 0;
-      width: 300px;
+      width: var(--sidebarWidth, 300px);
       height: 100%;
       display: flex;
       overflow-y: auto;
