@@ -27,10 +27,11 @@ const stringToUnits = (value: string) => {
 };
 
 export function CSSUnitEditor(props: {
-  description: string;
+  description?: string;
   label: string;
   onChange: (val: any) => void;
   value: string;
+  limitUnits?: string[];
 }) {
   const parsed = stringToUnits(props.value);
   const units = [
@@ -41,20 +42,27 @@ export function CSSUnitEditor(props: {
     { value: "em", label: "em" },
     { value: "rem", label: "rem" },
     { value: "ch", label: "ch" },
-  ];
+  ].filter((item) => {
+    if (!props.limitUnits || props.limitUnits.length === 0) {
+      return true;
+    } else {
+      return props.limitUnits.includes(item.label);
+    }
+  });
   return (
     <FieldPrimitive description={props.description} label={props.label}>
       <div style={{ display: "inline-flex", gap: ".5rem" }}>
         <NumberField
-          label={"Value"}
+          // label={"Value"}
           value={parsed.number}
           onChange={(e) => {
             props.onChange(`${e}${parsed.unit}`);
           }}
         />
         <Picker
-          label={"Unit"}
+          // label={"Unit"}
           items={units}
+          // width={1}
           selectedKey={parsed.unit}
           onSelectionChange={(key) => {
             props.onChange(`${parsed.number}${key}`);

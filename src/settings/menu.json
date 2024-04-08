@@ -3,7 +3,7 @@
     "discriminant": "side",
     "value": {
       "layout": {
-        "width": "clamp(10px, 10%, 10%)"
+        "width": "clamp(13em, 10%, 8px)"
       }
     }
   }

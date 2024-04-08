@@ -1,8 +1,11 @@
 import type { BasicFormField, FormFieldStoredValue } from "@keystatic/core";
 import { FieldPrimitive } from "@keystar/ui/field";
-
+import { Checkbox } from "@keystar/ui/checkbox";
 import { Picker, Item } from "@keystar/ui/picker";
 import { NumberField } from "@keystar/ui/number-field";
+import { Text } from "@keystar/ui/typography";
+import { Grid, Flex } from "@keystar/ui/layout";
+
 import { useEffect, useState } from "react";
 import { CSSUnitEditor } from "../cssUnit";
 function parseAsNormalField(value: FormFieldStoredValue) {
@@ -112,6 +115,45 @@ export function cssFlex({
 
       return (
         <div>
+          <Flex gap={"large"}>
+            <Grid columnGap={"medium"} rowGap={"medium"}>
+              <CSSUnitEditor
+                value="10vh"
+                label="Target Value"
+                onChange={(e) => {}}
+              ></CSSUnitEditor>
+            </Grid>
+
+            <Grid columnGap={"medium"} rowGap={"small"}>
+              <Checkbox isSelected={limitMin} onChange={setLimitMin}>
+                <Text>Limit Minimum</Text>
+              </Checkbox>
+              {limitMin && (
+                <CSSUnitEditor
+                  value={minValue}
+                  label=""
+                  onChange={setMinValue}
+                  limitUnits={["px", "em", "rem"]}
+                ></CSSUnitEditor>
+              )}
+            </Grid>
+
+            <Grid columnGap={"medium"} rowGap={"small"}>
+              <Checkbox isSelected={limitMax} onChange={setLimitMax}>
+                <Text>Limit Maximum</Text>
+              </Checkbox>
+
+              {limitMax && (
+                <CSSUnitEditor
+                  value={maxValue}
+                  label=""
+                  onChange={setMaxValue}
+                  limitUnits={["px", "em", "rem"]}
+                ></CSSUnitEditor>
+              )}
+            </Grid>
+          </Flex>
+
           <p>{`clamp(${minValue}, ${targetValue}, ${maxValue})`}</p>
         </div>
       );
