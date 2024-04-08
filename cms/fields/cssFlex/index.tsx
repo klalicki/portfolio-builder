@@ -83,15 +83,14 @@ export function cssFlex({
           setMinValue(matches[1]);
           setTargetValue(matches[2]);
           setMaxValue(matches[3]);
-          // setDisableMin(matches[1] === matches[2]);
-          // setDisableMax(matches[2] === matches[3]);
+          setLimitMin(matches[1] !== matches[2]);
+          setLimitMax(matches[2] !== matches[3]);
         }
       };
       // useEffect hook to parse initial value and call onChange
       useEffect(() => {
         parseClampFunction(value);
-        // onChange(value); // Call onChange with initial value
-
+      
         // Set disable checkboxes based on whether the input values are equal
         if (minValue !== targetValue) {
           setLimitMin(true);
@@ -111,15 +110,6 @@ export function cssFlex({
       // useEffect hook to parse initial value and call onChange
       useEffect(() => {
         parseClampFunction(value);
-        // onChange(value); // Call onChange with initial value
-
-        console.log({
-          minValue,
-          maxValue,
-          targetValue,
-          limitMax,
-          limitMin,
-        });
       }, [value]);
 
       useEffect(() => {
