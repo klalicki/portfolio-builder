@@ -4,7 +4,7 @@
     "value": {
       "u": "1712548018851",
       "layout": {
-        "width": "clamp(250px, 14vw, 500px)"
+        "width": "clamp(30px, 14vw, 14vw)"
       }
     }
   }

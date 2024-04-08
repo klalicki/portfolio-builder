@@ -90,7 +90,7 @@ export function cssFlex({
       // useEffect hook to parse initial value and call onChange
       useEffect(() => {
         parseClampFunction(value);
-        onChange(value); // Call onChange with initial value
+        // onChange(value); // Call onChange with initial value
 
         // Set disable checkboxes based on whether the input values are equal
         if (minValue !== targetValue) {
@@ -111,7 +111,7 @@ export function cssFlex({
       // useEffect hook to parse initial value and call onChange
       useEffect(() => {
         parseClampFunction(value);
-        onChange(value); // Call onChange with initial value
+        // onChange(value); // Call onChange with initial value
 
         console.log({
           minValue,
