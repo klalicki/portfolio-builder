@@ -2,8 +2,9 @@
   "position": {
     "discriminant": "side",
     "value": {
+      "u": "1712548018851",
       "layout": {
-        "width": "clamp(13em, 10%, 8px)"
+        "width": "clamp(250px, 14vw, 500px)"
       }
     }
   }

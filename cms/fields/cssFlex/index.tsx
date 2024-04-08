@@ -87,7 +87,6 @@ export function cssFlex({
           // setDisableMax(matches[2] === matches[3]);
         }
       };
-
       // useEffect hook to parse initial value and call onChange
       useEffect(() => {
         parseClampFunction(value);
@@ -107,20 +106,38 @@ export function cssFlex({
           limitMax,
           limitMin,
         });
+      }, []);
+
+      // useEffect hook to parse initial value and call onChange
+      useEffect(() => {
+        parseClampFunction(value);
+        onChange(value); // Call onChange with initial value
+
+        console.log({
+          minValue,
+          maxValue,
+          targetValue,
+          limitMax,
+          limitMin,
+        });
       }, [value]);
 
       useEffect(() => {
-        onChange(`clamp(${minValue}, ${targetValue}, ${maxValue})`);
-      }, [minValue, maxValue, targetValue]);
+        onChange(
+          `clamp(${limitMin ? minValue : targetValue}, ${targetValue}, ${
+            limitMax ? maxValue : targetValue
+          })`
+        );
+      }, [minValue, maxValue, targetValue, limitMax, limitMin]);
 
       return (
         <div>
           <Flex gap={"large"}>
             <Grid columnGap={"medium"} rowGap={"medium"}>
               <CSSUnitEditor
-                value="10vh"
+                value={targetValue}
                 label="Target Value"
-                onChange={(e) => {}}
+                onChange={setTargetValue}
               ></CSSUnitEditor>
             </Grid>
 
@@ -154,7 +171,7 @@ export function cssFlex({
             </Grid>
           </Flex>
 
-          <p>{`clamp(${minValue}, ${targetValue}, ${maxValue})`}</p>
+          <p>{value}</p>
         </div>
       );
     },

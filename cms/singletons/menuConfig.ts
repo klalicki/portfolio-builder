@@ -17,12 +17,15 @@ export const menuConfig = singleton({
       }),
       {
         side: fields.object({
+          u: customFields.uniquify({ label: "u" }),
           layout: fields.object(
             { width: customFields.cssFlex({ label: "Width" }) },
             { label: "Layout" }
           ),
         }),
-        top: fields.empty(),
+        top: fields.object({
+          u: customFields.uniquify({ label: "u" }),
+        }),
       }
     ),
   },
