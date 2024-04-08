@@ -18,7 +18,7 @@ export const menuConfig = singleton({
       {
         side: fields.object({
           layout: fields.object(
-            { width: customFields.cssUnit({ label: "Width" }) },
+            { width: customFields.cssFlex({ label: "Width" }) },
             { label: "Layout" }
           ),
         }),

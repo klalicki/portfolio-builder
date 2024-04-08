@@ -3,9 +3,10 @@ export { colorPicker } from "./colorPicker";
 export { cssMulti } from "./cssMulti";
 export { codeEditor } from "./codeEditor";
 export { uniquify } from "./uniquify";
-
+export { cssFlex } from "./cssFlex";
 export { slugPicker } from "./slugPicker";
 
+import { cssFlex } from "./cssFlex";
 import { cssUnit } from "./cssUnit";
 import { colorPicker } from "./colorPicker";
 import { cssMulti } from "./cssMulti";
@@ -20,4 +21,5 @@ export const customFields = {
   codeEditor,
   uniquify,
   slugPicker,
+  cssFlex,
 };
