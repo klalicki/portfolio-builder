@@ -1,13 +1,46 @@
 {
   "coolTile": {
-    "containerWidth": "100vw",
-    "containerPadding": "0px",
-    "itemGap": "1rem",
-    "tileAspectRatio": "1",
-    "minTileWidth": 350,
-    "overlayColor": "#000000c2",
-    "useProjectAccentColors": true,
-    "projectAccentColorOpacity": 100
+    "container": {
+      "width": "900px",
+      "padding": "1rem",
+      "gap": "1rem"
+    },
+    "tiles": {
+      "aspectRatio": "4/3",
+      "minWidth": 400,
+      "overlayColor": "#000000",
+      "useProjectColor": false,
+      "overlayOpacity": 70
+    },
+    "typography": {
+      "title": {
+        "fontFamily": "fontStack1",
+        "fontWeight": "400",
+        "fontSize": "2rem",
+        "lineHeight": 1.25,
+        "color": "#ffffff",
+        "marginTop": "0rem",
+        "marginBottom": "0.25rem"
+      },
+      "line2": {
+        "fontFamily": "fontStack1",
+        "fontWeight": "400",
+        "fontSize": "1.33rem",
+        "lineHeight": 1.25,
+        "color": "#ffffff",
+        "marginTop": "0rem",
+        "marginBottom": "0.25rem"
+      },
+      "line3": {
+        "fontFamily": "fontStack1",
+        "fontWeight": "400",
+        "fontSize": "1rem",
+        "lineHeight": 1.25,
+        "color": "#ffffff",
+        "marginTop": "0rem",
+        "marginBottom": "0.25rem"
+      }
+    }
   },
   "sideBySide": {
     "tileAspectRatio": "4/3",

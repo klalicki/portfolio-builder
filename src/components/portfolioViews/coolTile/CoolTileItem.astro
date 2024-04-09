@@ -3,6 +3,7 @@ import { getImage } from "astro:assets";
 const { title, line2, line3, url, thumbnail, accent } = Astro.props;
 import { settings } from "../../helpers/settingsHelper";
 import { colord } from "colord";
+
 const tileSettings = settings.portfolioLayouts.coolTile;
 let fancyImage = { src: "" };
 if (thumbnail) {
@@ -11,7 +12,7 @@ if (thumbnail) {
   });
   // console.log(imageProps);
   const srcRatio = imageProps.attributes.width / imageProps.attributes.height;
-  const neededWidth = srcRatio * tileSettings.minTileWidth * 2;
+  const neededWidth = srcRatio * tileSettings.tiles.minWidth * 2;
 
   fancyImage = await getImage({
     src: thumbnail,
@@ -19,13 +20,14 @@ if (thumbnail) {
   });
 }
 const overlayColor = colord(
-  tileSettings.useProjectAccentColors ? accent : tileSettings.overlayColor
+  tileSettings.tiles.useProjectColor ? accent : tileSettings.tiles.overlayColor
 )
-  .alpha(tileSettings.projectAccentColorOpacity / 100)
+  .alpha(tileSettings.tiles.overlayOpacity / 100)
   .toHex();
 ---
 
-<style define:vars={{ tileRatio: tileSettings.tileAspectRatio, overlayColor }}>
+<style define:vars={{ tileRatio: tileSettings.tiles.aspectRatio, overlayColor }}
+>
   .portfolio-tile {
     aspect-ratio: var(--tileRatio);
     position: relative;
@@ -75,6 +77,32 @@ const overlayColor = colord(
     top: 0;
     height: 100%;
   }
+  /* typography */
+  .tile-hover-panel-title {
+    font-family: var(--title-fontFamily);
+    font-size: var(--title-fontSize);
+    margin-top: var(--title-marginTop);
+    margin-bottom: var(--title-marginBottom);
+    color: var(--title-color);
+    line-height: var(--title-lineHeight);
+  }
+  .tile-hover-panel-line2 {
+    font-family: var(--line2-fontFamily);
+    font-size: var(--line2-fontSize);
+    margin-top: var(--line2-marginTop);
+    margin-bottom: var(--line2-marginBottom);
+    color: var(--line2-color);
+    line-height: var(--line2-lineHeight);
+  }
+  .tile-hover-panel-line3 {
+    font-family: var(--line3-fontFamily);
+    font-size: var(--line3-fontSize);
+    margin-top: var(--line3-marginTop);
+    margin-bottom: var(--line3-marginBottom);
+    color: var(--line3-color);
+    line-height: var(--line3-lineHeight);
+  }
+
   @media (any-hover: none) {
     .tile-hover-panel {
       transform: scale(1);

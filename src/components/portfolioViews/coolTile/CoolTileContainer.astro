@@ -2,13 +2,18 @@
 const { props } = Astro;
 import { settings } from "../../helpers/settingsHelper";
 const tileSettings = settings.portfolioLayouts.coolTile;
+import { fontRules } from "../../helpers/fontRuleBuilder";
+// @ts-ignore
+const rules = fontRules(tileSettings.typography);
+console.log(rules);
 ---
 
 <style
   define:vars={{
-    minTileWidth: tileSettings.minTileWidth + "px",
-    containerPadding: tileSettings.containerPadding,
-    tileGap: tileSettings.itemGap,
+    minTileWidth: tileSettings.tiles.minWidth + "px",
+    containerPadding: tileSettings.container.padding,
+    tileGap: tileSettings.container.gap,
+    ...rules,
   }}
 >
   .tile-container {
@@ -25,7 +30,7 @@ const tileSettings = settings.portfolioLayouts.coolTile;
 <div
   id={props.containerId}
   class="tile-container"
-  style={{ maxWidth: tileSettings.containerWidth }}
+  style={{ maxWidth: tileSettings.container.width }}
 >
   <slot />
 </div>
