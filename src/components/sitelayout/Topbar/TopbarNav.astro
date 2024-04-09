@@ -12,7 +12,12 @@ const menuItemCount = menuItems.length;
     menuDropdownColor: settings.menu.appearance.dropdownColor,
   }}
 >
-  /*  */
+  .top-bar-text-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
   .menu-main {
     height: 45px;
     position: fixed;
@@ -84,7 +89,8 @@ const menuItemCount = menuItems.length;
       background: none;
     }
     .menu-main {
-      justify-content: center;
+      flex-grow: 1;
+      justify-content: space-between;
       position: relative;
       z-index: 100;
     }
@@ -134,7 +140,9 @@ const menuItemCount = menuItems.length;
 </style>
 
 <nav class="menu-main">
-  <p class="site-title">Site Title</p>
+  <div class="top-bar-text-wrapper">
+    <p class="top-bar-text">Site Title</p>
+  </div>
 
   <button id="menu-toggle"
     ><span class="material-icons-outlined">menu</span></button
@@ -143,7 +151,7 @@ const menuItemCount = menuItems.length;
   <div class="menu-main-group menu-mobile-hidden">
     {
       menuItems.map((item, index) => {
-        const isRightSide = index * 2 > menuItemCount;
+        const isRightSide = (index + 1) * 2 >= menuItemCount;
         if (item.subItems.length > 0) {
           return (
             <>
@@ -183,8 +191,3 @@ const menuItemCount = menuItems.length;
     }
   </div>
 </nav>
-
-<!-- 
-  code to render submenu- add once i figure out an accessible dropdown
- 
- -->
