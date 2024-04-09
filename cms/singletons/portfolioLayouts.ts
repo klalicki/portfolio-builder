@@ -13,44 +13,49 @@ export const portfolioLayouts = singleton({
   schema: {
     coolTile: fields.object(
       {
-        tileAspectRatio: fields.text({
-          label: "Tile Aspect Ratio",
-          description:
-            "This can be either a number (1 is square, higher than 1 is a horizontal rectangle), or a ratio ie 3/2",
-          defaultValue: "3/2",
+        containerWidth: customFields.cssUnit({
+          label: "Container Width",
+          description: "The maximum width the portfolio group can be",
+          defaultValue: "1000px",
+          isCompact: true,
+        }),
+        containerPadding: customFields.cssUnit({
+          label: "Container Padding",
+          description: "The space around the edge of the portfolio grid",
+          defaultValue: "1rem",
+          limitUnits: ["px", "rem", "em"],
+          isCompact: true,
         }),
         itemGap: customFields.cssUnit({
           label: "Gap",
           description: "The gap between projects in this layout",
           defaultValue: "0px",
           limitUnits: ["px", "rem", "em"],
+          isCompact: true,
         }),
+        tileAspectRatio: fields.text({
+          label: "Tile Aspect Ratio",
+          description:
+            "This can be either a number (1 is square, higher than 1 is a horizontal rectangle), or a ratio ie 3/2",
+          defaultValue: "3/2",
+        }),
+
         // minTileWidth: customFields.cssFlex({ label: "Tile Width" }),
         minTileWidth: fields.number({
           label: "min tile Width (px)",
-          description:
-            "The minimum width the tiles will be before wrapping to another line",
+          description: "The minimum width the tiles will be",
           validation: { isRequired: true, max: 1200, min: 0 },
         }),
-        maxTileWidth: fields.number({
-          label: "max tile Width (px)",
-          description:
-            "The minimum width the tiles will be before wrapping to another line",
-          validation: { isRequired: true, max: 1200, min: 0 },
+        overlayColor: customFields.colorPicker({
+          label: "Overlay Color",
+          defaultValue: "#000000B3",
         }),
-        containerWidth: customFields.cssUnit({
-          label: "Container Width",
-          description: "The maximum width the portfolio group can be",
-          defaultValue: "1000px",
-        }),
-        containerPadding: customFields.cssUnit({
-          label: "Container Padding",
-          defaultValue: "1rem",
-          limitUnits: ["px", "rem", "em"],
+        useProjectAccentColors: fields.checkbox({
+          label: "Use Project Accent Color",
         }),
       },
 
-      { label: "Cool Tile layout" }
+      { label: "Cool Tile layout", layout: [4, 4, 4, 3, 3, 3, 3] }
     ),
     sideBySide: fields.object(
       {

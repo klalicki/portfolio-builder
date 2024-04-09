@@ -3,7 +3,7 @@
     "tileAspectRatio": "1",
     "itemGap": "1rem",
     "minTileWidth": 350,
-    "maxTileWidth": 700,
+
     "containerWidth": "100vw",
     "containerPadding": "0px"
   },
