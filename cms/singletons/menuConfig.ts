@@ -49,5 +49,10 @@ export const menuConfig = singleton({
         allowAlpha: true,
       }),
     }),
+    typography: fields.object({
+      menuMain: customFields.typeProps({ label: "Main menu items" }),
+      menuSub: customFields.typeProps({ label: "Sub-items" }),
+      menuText: customFields.typeProps({ label: "Menu Bar text" }),
+    }),
   },
 });

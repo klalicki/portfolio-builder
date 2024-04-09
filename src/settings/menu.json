@@ -9,5 +9,36 @@
     "topBarHeight": "90px",
     "backgroundColor": "#d4d4d4b3",
     "dropdownColor": "#95e9ff"
+  },
+  "typography": {
+    "menuMain": {
+      "fontFamily": "fontStack1",
+      "fontWeight": "400",
+      "fontStyle": "normal",
+      "fontSize": "1.5rem",
+      "lineHeight": 1,
+      "color": "#000000",
+      "marginTop": "0px",
+      "marginBottom": "0px"
+    },
+    "menuSub": {
+      "fontFamily": "fontStack1",
+      "fontWeight": "400",
+      "fontStyle": "normal",
+      "fontSize": "",
+      "color": "",
+      "marginTop": "",
+      "marginBottom": ""
+    },
+    "menuText": {
+      "fontFamily": "fontStack3",
+      "fontWeight": "400",
+      "fontStyle": "normal",
+      "fontSize": "2rem",
+      "lineHeight": 1,
+      "color": "#ff0000",
+      "marginTop": "0px",
+      "marginBottom": "0px"
+    }
   }
 }

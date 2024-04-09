@@ -3,15 +3,57 @@ import type { string } from "astro/zod";
 import menuItems from "../../helpers/menuItems";
 
 import { settings } from "../../helpers/settingsHelper";
+import { fontRules } from "../../helpers/fontRuleBuilder";
+
 const menuItemCount = menuItems.length;
+const fontSettings = fontRules(settings.menu.typography);
 ---
 
 <style
   define:vars={{
     menuBackgroundColor: settings.menu.appearance.backgroundColor,
     menuDropdownColor: settings.menu.appearance.dropdownColor,
+    ...fontSettings,
   }}
 >
+  /* type stuff */
+  .top-bar-text {
+    font-family: var(--menuText-fontFamily);
+    font-size: var(--menuText-fontSize);
+    font-weight: var(--menuText-fontWeight);
+    font-style: var(--menuText-fontStyle);
+    margin-top: var(--menuText-marginTop);
+    margin-bottom: var(--menuText-marginBottom);
+    color: var(--menuText-color);
+    line-height: var(--menuText-lineHeight);
+  }
+  .menu-item {
+    font-family: var(--menuMain-fontFamily);
+    font-size: var(--menuMain-fontSize);
+    font-weight: var(--menuMain-fontWeight);
+    font-style: var(--menuMain-fontStyle);
+    margin-top: var(--menuMain-marginTop);
+    margin-bottom: var(--menuMain-marginBottom);
+    color: var(--menuMain-color);
+    line-height: var(--menuMain-lineHeight);
+  }
+  .submenu-item {
+    font-family: var(--menuSub-fontFamily);
+    font-size: var(--menuSub-fontSize);
+    font-weight: var(--menuSub-fontWeight);
+    font-style: var(--menuSub-fontStyle);
+    margin-top: var(--menuSub-marginTop);
+    margin-bottom: var(--menuSub-marginBottom);
+    color: var(--menuSub-color);
+    line-height: var(--menuSub-lineHeight);
+  }
+
+  .menu-item,
+  .submenu-item {
+    text-decoration: none;
+  }
+  /* end type stuff */
+
   .top-bar-text-wrapper {
     flex-grow: 1;
     display: flex;
@@ -179,7 +221,11 @@ const menuItemCount = menuItems.length;
                 ]}
               >
                 <div class="dropdown-button-wrapper">
-                  <a href={item.url} data-menu-id={item.groupID}>
+                  <a
+                    class="menu-item"
+                    href={item.url}
+                    data-menu-id={item.groupID}
+                  >
                     {item.title}
                   </a>
                   <button
@@ -195,7 +241,11 @@ const menuItemCount = menuItems.length;
                   <div class="menu-submenu-item-wrapper">
                     {item.subItems.map(
                       (subItem: { url: string; title: string }) => {
-                        return <a href={subItem.url}>{subItem.title}</a>;
+                        return (
+                          <a class="submenu-item" href={subItem.url}>
+                            {subItem.title}
+                          </a>
+                        );
                       }
                     )}
                   </div>
