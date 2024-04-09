@@ -1,11 +1,13 @@
 {
   "coolTile": {
-    "tileAspectRatio": "1",
-    "itemGap": "1rem",
-    "minTileWidth": 350,
-
     "containerWidth": "100vw",
-    "containerPadding": "0px"
+    "containerPadding": "0px",
+    "itemGap": "1rem",
+    "tileAspectRatio": "1",
+    "minTileWidth": 350,
+    "overlayColor": "#000000c2",
+    "useProjectAccentColors": true,
+    "projectAccentColorOpacity": 100
   },
   "sideBySide": {
     "tileAspectRatio": "4/3",

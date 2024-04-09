@@ -20,11 +20,13 @@ export function colorPicker({
   defaultValue,
   description,
   compact,
+  allowAlpha,
 }: {
   label: string;
   defaultValue?: string;
   description?: string;
   compact?: boolean;
+  allowAlpha?: boolean;
 }): BasicFormField<string> {
   return {
     // not sure what this one does? why is its only value 'form'?
@@ -47,24 +49,26 @@ export function colorPicker({
             }}
           >
             {compact ? (
-              <input 
+              <input
                 type="color"
                 value={props.value}
                 onChange={(e) => {
                   props.onChange(e.target.value);
                 }}
               ></input>
-            ) : (
+            ) : allowAlpha ? (
               <HexAlphaColorPicker
                 color={props.value}
                 onChange={props.onChange}
               />
+            ) : (
+              <HexColorPicker color={props.value} onChange={props.onChange} />
             )}
 
             <HexColorInput
               color={props.value}
               name={label + " hex"}
-              alpha={true}
+              alpha={allowAlpha}
               onChange={props.onChange}
             />
           </div>

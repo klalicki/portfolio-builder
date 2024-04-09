@@ -48,14 +48,19 @@ export const portfolioLayouts = singleton({
         }),
         overlayColor: customFields.colorPicker({
           label: "Overlay Color",
-          defaultValue: "#000000B3",
+          defaultValue: "#000000",
+          compact: true,
         }),
         useProjectAccentColors: fields.checkbox({
           label: "Use Project Accent Color",
         }),
+        projectAccentColorOpacity: fields.number({
+          label: "Overlay Opacity %",
+          validation: { min: 0, max: 100 },
+        }),
       },
 
-      { label: "Cool Tile layout", layout: [4, 4, 4, 3, 3, 3, 3] }
+      { label: "Cool Tile layout", layout: [4, 4, 4, 3, 1, 4, 3, 1] }
     ),
     sideBySide: fields.object(
       {

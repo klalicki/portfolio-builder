@@ -2,6 +2,7 @@
 import { getImage } from "astro:assets";
 const { title, line2, line3, url, thumbnail, accent } = Astro.props;
 import { settings } from "../../helpers/settingsHelper";
+import { colord } from "colord";
 const tileSettings = settings.portfolioLayouts.coolTile;
 let fancyImage = { src: "" };
 if (thumbnail) {
@@ -17,9 +18,14 @@ if (thumbnail) {
     width: neededWidth,
   });
 }
+const overlayColor = colord(
+  tileSettings.useProjectAccentColors ? accent : tileSettings.overlayColor
+)
+  .alpha(tileSettings.projectAccentColorOpacity / 100)
+  .toHex();
 ---
 
-<style define:vars={{ tileRatio: tileSettings.tileAspectRatio }}>
+<style define:vars={{ tileRatio: tileSettings.tileAspectRatio, overlayColor }}>
   .portfolio-tile {
     aspect-ratio: var(--tileRatio);
     position: relative;
@@ -53,7 +59,7 @@ if (thumbnail) {
     opacity: 1;
   }
   .tile-hover-panel-items {
-    background-color: rgba(0, 0, 0, 0.642);
+    background-color: var(--overlayColor, rgba(0, 0, 0, 0.642));
     padding: 0.5rem;
   }
   .tile-hover-panel-title {
@@ -79,7 +85,10 @@ if (thumbnail) {
 
 <article
   class="portfolio-tile"
-  style={{ backgroundColor: accent, backgroundImage: `url(${fancyImage.src})` }}
+  style={{
+    backgroundColor: "darkgray",
+    backgroundImage: `url(${fancyImage.src})`,
+  }}
 >
   <div class="tile-hover-panel">
     <div class="tile-hover-panel-items">
