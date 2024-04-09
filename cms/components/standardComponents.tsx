@@ -9,19 +9,19 @@ import * as customFields from "../fields";
 import { fields } from "@keystatic/core";
 import { CSSUnitEditor } from "../fields/cssUnit";
 import { useEffect, useId, useRef, useState } from "react";
+import { Icon } from "@keystar/ui/icon";
+import { underlineIcon } from "@keystar/ui/icon/icons/underlineIcon";
 
 export const standardComponents = {
   underline: mark({
     label: "Underline",
-    icon: <div></div>,
+    icon: underlineIcon,
     schema: {},
+    style: {
+      textDecorationLine: "underline",
+    },
   }),
-  // SplashContainer: wrapper({
-  //   label: "Splash Container",
-  //   schema: {
-  //     color: customFields.colorPicker({ label: "Background Color" }),
-  //   },
-  // }),
+
   HeroSection: wrapper({
     label: "Hero Section",
     schema: {
