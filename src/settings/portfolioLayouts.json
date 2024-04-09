@@ -14,9 +14,9 @@
     },
     "typography": {
       "title": {
-        "fontFamily": "fontStack1",
-        "fontWeight": "400",
-        "fontSize": "2rem",
+        "fontFamily": "fontStack2",
+        "fontWeight": "700",
+        "fontSize": "1.5rem",
         "lineHeight": 1.25,
         "color": "#ffffff",
         "marginTop": "0rem",
@@ -25,7 +25,7 @@
       "line2": {
         "fontFamily": "fontStack1",
         "fontWeight": "400",
-        "fontSize": "1.33rem",
+        "fontSize": "1rem",
         "lineHeight": 1.25,
         "color": "#ffffff",
         "marginTop": "0rem",
@@ -34,7 +34,7 @@
       "line3": {
         "fontFamily": "fontStack1",
         "fontWeight": "400",
-        "fontSize": "1rem",
+        "fontSize": "0.75rem",
         "lineHeight": 1.25,
         "color": "#ffffff",
         "marginTop": "0rem",
