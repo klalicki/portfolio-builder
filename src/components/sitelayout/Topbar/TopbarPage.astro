@@ -16,12 +16,13 @@ import { settings } from "../../helpers/settingsHelper";
     position: sticky;
     left: 0;
     top: 0;
-    height: var(--menuHeight);
+    min-height: var(--menuHeight);
+
     right: 0;
     background-color: var(--menuBackgroundColor);
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
 
     z-index: 10;
   }

@@ -56,17 +56,18 @@ const fontSettings = fontRules(settings.menu.typography);
 
   .top-bar-text-wrapper {
     flex-grow: 1;
+    flex-basis: content;
+    flex-shrink: 10;
     display: flex;
     align-items: center;
     padding: 0 0.5rem;
   }
 
   .menu-main {
-    height: var(--menuHeight);
-    position: fixed;
+    /* position: fixed;
     left: 0px;
     right: 0px;
-    top: 0px;
+    top: 0px; */
 
     display: flex;
     padding: 0;
@@ -132,6 +133,10 @@ const fontSettings = fontRules(settings.menu.typography);
     .menu-main-group {
       display: flex;
       align-items: stretch;
+      justify-content: flex-end;
+      flex-basis: content;
+      flex-shrink: 0;
+      flex-wrap: wrap;
       flex-direction: row;
       gap: 1rem;
       overflow: visible;
@@ -144,10 +149,11 @@ const fontSettings = fontRules(settings.menu.typography);
       position: relative;
       z-index: 100;
     }
+
     .menu-submenu {
       position: absolute;
       overflow: hidden;
-      top: var(--menuHeight);
+      top: 100%;
       transition: all 0.3s;
       gap: 1rem;
     }
@@ -199,9 +205,13 @@ const fontSettings = fontRules(settings.menu.typography);
 </style>
 
 <nav class="menu-main">
-  <div class="top-bar-text-wrapper">
-    <p class="top-bar-text">Site Title</p>
-  </div>
+  {
+    settings.menu.position.value.menuBarText && (
+      <div class="top-bar-text-wrapper">
+        <p class="top-bar-text">{settings.menu.position.value.menuBarText}</p>
+      </div>
+    )
+  }
 
   <button id="menu-toggle"
     ><span class="material-icons-outlined">menu</span></button
