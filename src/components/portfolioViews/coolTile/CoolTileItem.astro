@@ -1,6 +1,6 @@
 ---
 import { getImage } from "astro:assets";
-const { title, url, thumbnail, accent } = Astro.props;
+const { title, line2, line3, url, thumbnail, accent } = Astro.props;
 import { settings } from "../../helpers/settingsHelper";
 const tileSettings = settings.portfolioLayouts.coolTile;
 let fancyImage = { src: "" };
@@ -37,11 +37,13 @@ if (thumbnail) {
     background-color: rgba(0, 0, 0, 0.642);
     padding: 0.5rem;
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     transform: scale(0.9);
     transform-origin: 50% 120% 0;
     opacity: 0;
     transition: all 0.3s ease;
+    /* transform: scale(1);
+    opacity: 1; */
   }
 
   .portfolio-tile:hover .tile-hover-panel,
@@ -52,6 +54,16 @@ if (thumbnail) {
 
   .tile-hover-panel-title {
     color: white;
+    text-decoration: none;
+  }
+  .tile-hover-panel-title::after {
+    content: "";
+    position: absolute;
+
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
   }
   @media (any-hover: none) {
     .tile-hover-panel {
@@ -65,15 +77,10 @@ if (thumbnail) {
   class="portfolio-tile"
   style={{ backgroundColor: accent, backgroundImage: `url(${fancyImage.src})` }}
 >
-  <!-- {
-    thumbnail ? (
-      <Image widths={[500]} class={"tile-image"} src={thumbnail} alt="" />
-    ) : (
-      <div class="tile-image" style={{ backgroundColor: accent }} />
-    )
-  } -->
   <div class="tile-hover-panel">
     <a class="tile-hover-panel-title" href={url}>{title}</a>
+    <p class="tile-hover-panel-line2">{line2}</p>
+    <p class="tile-hover-panel-line3">{line3}</p>
   </div>
 </article>
 

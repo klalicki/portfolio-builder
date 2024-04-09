@@ -25,8 +25,15 @@ export const portfolioLayouts = singleton({
           defaultValue: "0px",
           limitUnits: ["px", "rem", "em"],
         }),
+        // minTileWidth: customFields.cssFlex({ label: "Tile Width" }),
         minTileWidth: fields.number({
-          label: "Tile Width (px)",
+          label: "min tile Width (px)",
+          description:
+            "The minimum width the tiles will be before wrapping to another line",
+          validation: { isRequired: true, max: 1200, min: 0 },
+        }),
+        maxTileWidth: fields.number({
+          label: "max tile Width (px)",
           description:
             "The minimum width the tiles will be before wrapping to another line",
           validation: { isRequired: true, max: 1200, min: 0 },
@@ -35,6 +42,11 @@ export const portfolioLayouts = singleton({
           label: "Container Width",
           description: "The maximum width the portfolio group can be",
           defaultValue: "1000px",
+        }),
+        containerPadding: customFields.cssUnit({
+          label: "Container Padding",
+          defaultValue: "1rem",
+          limitUnits: ["px", "rem", "em"],
         }),
       },
 
