@@ -93,8 +93,8 @@ const overlayColor = colord(
   <div class="tile-hover-panel">
     <div class="tile-hover-panel-items">
       <a class="tile-hover-panel-title" href={url}>{title}</a>
-      <p class="tile-hover-panel-line2">{line2}</p>
-      <p class="tile-hover-panel-line3">{line3}</p>
+      {line2 && <p class="tile-hover-panel-line2">{line2}</p>}
+      {line3 && <p class="tile-hover-panel-line3">{line3}</p>}
     </div>
   </div>
 </article>
