@@ -16,6 +16,7 @@
       "title": {
         "fontFamily": "fontStack2",
         "fontWeight": "700",
+        "fontStyle": "italic",
         "fontSize": "1.5rem",
         "lineHeight": 1.25,
         "color": "#ffffff",
@@ -25,6 +26,7 @@
       "line2": {
         "fontFamily": "fontStack1",
         "fontWeight": "400",
+        "fontStyle": "normal",
         "fontSize": "1rem",
         "lineHeight": 1.25,
         "color": "#ffffff",
@@ -34,6 +36,7 @@
       "line3": {
         "fontFamily": "fontStack1",
         "fontWeight": "400",
+        "fontStyle": "normal",
         "fontSize": "0.75rem",
         "lineHeight": 1.25,
         "color": "#ffffff",

@@ -27,11 +27,20 @@ export function typeProps({ label }: { label: string }) {
         ],
         defaultValue: "400",
       }),
+      fontStyle: fields.select({
+        label: "Font Style",
+        options: [
+          { label: "Regular", value: "normal" },
+          { label: "Italic", value: "italic" },
+        ],
+        defaultValue: "normal",
+      }),
       fontSize: cssUnit({
         label: "Font Size",
         isCompact: true,
         limitUnits: ["px", "rem"],
       }),
+
       lineHeight: fields.number({ label: "Line Height", defaultValue: 1.25 }),
       color: colorPicker({
         label: "Text Color",
@@ -50,7 +59,7 @@ export function typeProps({ label }: { label: string }) {
         limitUnits: ["px", "em", "rem"],
       }),
     },
-    { label: label, layout: [3, 3, 4, 2, 4, 4, 4] }
+    { label: label, layout: [2, 2, 2, 4, 2, 4, 4, 4] }
   );
   // console.log(typeOptionsObj);
   return typeOptionsObj;
