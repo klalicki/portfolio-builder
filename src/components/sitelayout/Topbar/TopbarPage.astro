@@ -6,16 +6,17 @@ import { settings } from "../../helpers/settingsHelper";
 <style
   define:vars={{
     menuBackgroundColor: settings.menu.appearance.backgroundColor,
+    menuHeight: settings.menu.appearance.topBarHeight,
   }}
 >
   body {
     padding: 0;
   }
   header {
-    position: fixed;
+    position: sticky;
     left: 0;
     top: 0;
-    height: 45px;
+    height: var(--menuHeight);
     right: 0;
     background-color: var(--menuBackgroundColor);
     display: flex;
@@ -25,7 +26,6 @@ import { settings } from "../../helpers/settingsHelper";
     z-index: 10;
   }
   main {
-    padding-top: 45px;
   }
 </style>
 <body>

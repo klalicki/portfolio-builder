@@ -25,6 +25,7 @@ export const menuConfig = singleton({
         }),
         top: fields.object({
           u: customFields.uniquify({ label: "u" }),
+
           menuBarText: fields.text({
             label: "Menu Bar Text",
             description:
@@ -34,6 +35,11 @@ export const menuConfig = singleton({
       }
     ),
     appearance: fields.object({
+      topBarHeight: customFields.cssUnit({
+        label: "minimum height for menu when it appears as a top bar",
+        defaultValue: "45px",
+        limitUnits: ["px", "rem"],
+      }),
       backgroundColor: customFields.colorPicker({
         label: "Background Color",
         allowAlpha: true,

@@ -6,6 +6,7 @@
     }
   },
   "appearance": {
+    "topBarHeight": "90px",
     "backgroundColor": "#d4d4d4b3",
     "dropdownColor": "#95e9ff"
   }
