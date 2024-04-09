@@ -5,6 +5,18 @@ export default defineMarkdocConfig({
     document: {
       render: null, // default 'article'
     },
+    strong: {
+      ...nodes.strong,
+      render: component("./src/components/basicTags/bold.astro"),
+    },
+    em: {
+      ...nodes.em,
+      render: component("./src/components/basicTags/italic.astro"),
+    },
+    s: {
+      ...nodes.s,
+      render: component("./src/components/basicTags/strikethrough.astro"),
+    },
     image: {
       ...nodes.image,
       render: component(
@@ -13,6 +25,9 @@ export default defineMarkdocConfig({
     },
   },
   tags: {
+    underline: {
+      render: component("./src/components/basicTags/underline.astro"),
+    },
     CustomCSSWrapper: {
       render: component("./src/components/pagebuilder/CustomCSSWrapper.astro"),
       attributes: {

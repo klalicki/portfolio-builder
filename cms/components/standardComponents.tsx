@@ -1,6 +1,7 @@
 import {
   block,
   inline,
+  mark,
   repeating,
   wrapper,
 } from "@keystatic/core/content-components";
@@ -10,6 +11,17 @@ import { CSSUnitEditor } from "../fields/cssUnit";
 import { useEffect, useId, useRef, useState } from "react";
 
 export const standardComponents = {
+  underline: mark({
+    label: "Underline",
+    icon: <div></div>,
+    schema: {},
+  }),
+  // SplashContainer: wrapper({
+  //   label: "Splash Container",
+  //   schema: {
+  //     color: customFields.colorPicker({ label: "Background Color" }),
+  //   },
+  // }),
   HeroSection: wrapper({
     label: "Hero Section",
     schema: {

@@ -6,6 +6,7 @@
   "p": {
     "fontFamily": "fontStack1",
     "fontWeight": "400",
+    "fontStyle": "normal",
     "fontSize": "1rem",
     "lineHeight": 1.5,
     "color": "#000000",
@@ -15,6 +16,7 @@
   "h1": {
     "fontFamily": "fontStack3",
     "fontWeight": "700",
+    "fontStyle": "normal",
     "fontSize": "2rem",
     "lineHeight": 1.5,
     "color": "#000000",
@@ -24,6 +26,7 @@
   "h2": {
     "fontFamily": "fontStack2",
     "fontWeight": "700",
+    "fontStyle": "normal",
     "fontSize": "1.5rem",
     "lineHeight": 1.25,
     "color": "#000000",
@@ -33,6 +36,7 @@
   "h3": {
     "fontFamily": "fontStack2",
     "fontWeight": "700",
+    "fontStyle": "normal",
     "fontSize": "1.17NaNrem",
     "lineHeight": 0,
     "color": "",
@@ -42,6 +46,7 @@
   "h4": {
     "fontFamily": "fontStack2",
     "fontWeight": "700",
+    "fontStyle": "normal",
     "fontSize": "1NaNrem",
     "lineHeight": 1.25,
     "color": "",
@@ -51,6 +56,7 @@
   "h5": {
     "fontFamily": "fontStack1",
     "fontWeight": "700",
+    "fontStyle": "normal",
     "fontSize": "0.83rem",
     "lineHeight": 1.25,
     "color": "",
@@ -60,6 +66,7 @@
   "h6": {
     "fontFamily": "fontStack1",
     "fontWeight": "700",
+    "fontStyle": "normal",
     "fontSize": "0.75rem",
     "lineHeight": 1.25,
     "color": "",
