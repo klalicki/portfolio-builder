@@ -28,5 +28,11 @@ export const menuConfig = singleton({
         }),
       }
     ),
+    appearance: fields.object({
+      backgroundColor: customFields.colorPicker({
+        label: "Background Color",
+        allowAlpha: true,
+      }),
+    }),
   },
 });

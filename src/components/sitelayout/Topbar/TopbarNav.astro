@@ -6,7 +6,11 @@ import { settings } from "../../helpers/settingsHelper";
 const menuItemCount = menuItems.length;
 ---
 
-<style>
+<style
+  define:vars={{
+    menuBackgroundColor: settings.menu.appearance.backgroundColor,
+  }}
+>
   /*  */
   .menu-main {
     height: 45px;
@@ -14,7 +18,7 @@ const menuItemCount = menuItems.length;
     left: 0px;
     right: 0px;
     top: 0px;
-    background-color: aquamarine;
+
     display: flex;
     padding: 0;
     justify-content: flex-end;
@@ -26,7 +30,7 @@ const menuItemCount = menuItems.length;
     right: 0px;
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
+    /* background-color: var(--menuBackgroundColor); */
     overflow: hidden;
     z-index: -10;
     transform: none;
@@ -74,6 +78,7 @@ const menuItemCount = menuItems.length;
       align-items: stretch;
       flex-direction: row;
       gap: 1rem;
+      overflow: visible;
       position: static;
     }
     .menu-main {
@@ -88,7 +93,7 @@ const menuItemCount = menuItems.length;
       display: inline-flex;
       flex-direction: column;
       gap: 1rem;
-      background-color: lightblue;
+      background-color: var(--menuBackgroundColor);
       padding: 0.5rem;
       transition: all 0.3s;
     }

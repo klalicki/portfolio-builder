@@ -1,11 +1,11 @@
 {
   "position": {
-    "discriminant": "side",
+    "discriminant": "top",
     "value": {
-      "u": "1712548018851",
-      "layout": {
-        "width": "clamp(350px, 25vw, 500px)"
-      }
+      "u": "1712695511964"
     }
+  },
+  "appearance": {
+    "backgroundColor": "#6b6b6bb3"
   }
 }

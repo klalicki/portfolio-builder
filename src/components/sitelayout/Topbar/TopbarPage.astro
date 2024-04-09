@@ -1,8 +1,13 @@
 ---
 import TopbarNav from "./TopbarNav.astro";
+import { settings } from "../../helpers/settingsHelper";
 ---
 
-<style>
+<style
+  define:vars={{
+    menuBackgroundColor: settings.menu.appearance.backgroundColor,
+  }}
+>
   body {
     padding: 0;
   }
@@ -12,7 +17,7 @@ import TopbarNav from "./TopbarNav.astro";
     top: 0;
     height: 45px;
     right: 0;
-    background-color: lightblue;
+    background-color: var(--menuBackgroundColor);
     display: flex;
     flex-direction: column;
     align-items: center;

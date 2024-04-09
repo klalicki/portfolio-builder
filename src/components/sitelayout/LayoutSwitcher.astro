@@ -23,9 +23,15 @@ switch (settings.position.discriminant) {
 <PageLayout>
   <script>
     // alert(buttons.length);
+    const setChildrenHidden = (element: Element, isHidden: boolean) => {
+      Array.from(element.children).forEach((item) => {
+        item.tabIndex = isHidden ? -1 : 0;
+      });
+    };
     const hideAllMenus = () => {
       document.querySelectorAll(".menu-submenu").forEach((submenu) => {
         submenu.classList.toggle("submenu-hidden", true);
+        setChildrenHidden(submenu, true);
       });
     };
     const hideMobileMenu = () => {
@@ -34,9 +40,20 @@ switch (settings.position.discriminant) {
         ?.classList.toggle("menu-mobile-hidden", true);
     };
     // hide the menu upon clicking outside of it
+
     window.addEventListener("click", (event) => {
       //@ts-ignore not sure why i need this but i do
       if (!document.querySelector(".menu-main")?.contains(event.target)) {
+        hideAllMenus();
+        hideMobileMenu();
+      }
+    });
+    window.addEventListener("focusout", (event) => {
+      //@ts-ignore not sure why i need this but i do
+
+      if (
+        !document.querySelector(".menu-main")?.contains(event.relatedTarget)
+      ) {
         hideAllMenus();
         hideMobileMenu();
       }
@@ -56,6 +73,7 @@ switch (settings.position.discriminant) {
           document
             .getElementById(menuID)
             ?.classList.toggle("submenu-hidden", !isInitiallyHidden);
+          setChildrenHidden(document.getElementById(menuID), false);
         });
       });
       // add event listener to open menus on hover
