@@ -6,6 +6,7 @@
     }
   },
   "appearance": {
-    "backgroundColor": "#6b6b6bb3"
+    "backgroundColor": "#d4d4d4b3",
+    "dropdownColor": "#95e9ff"
   }
 }

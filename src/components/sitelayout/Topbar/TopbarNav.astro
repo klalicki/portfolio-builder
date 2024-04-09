@@ -9,6 +9,7 @@ const menuItemCount = menuItems.length;
 <style
   define:vars={{
     menuBackgroundColor: settings.menu.appearance.backgroundColor,
+    menuDropdownColor: settings.menu.appearance.dropdownColor,
   }}
 >
   /*  */
@@ -30,7 +31,7 @@ const menuItemCount = menuItems.length;
     right: 0px;
     display: flex;
     flex-direction: column;
-    /* background-color: var(--menuBackgroundColor); */
+    background-color: var(--menuDropdownColor);
     overflow: hidden;
     z-index: -10;
     transform: none;
@@ -80,6 +81,7 @@ const menuItemCount = menuItems.length;
       gap: 1rem;
       overflow: visible;
       position: static;
+      background: none;
     }
     .menu-main {
       justify-content: center;
@@ -93,7 +95,7 @@ const menuItemCount = menuItems.length;
       display: inline-flex;
       flex-direction: column;
       gap: 1rem;
-      background-color: var(--menuBackgroundColor);
+      background-color: var(--menuDropdownColor);
       padding: 0.5rem;
       transition: all 0.3s;
     }
@@ -115,6 +117,8 @@ const menuItemCount = menuItems.length;
     }
     .menu-dropdown-button {
       min-width: 30px;
+      border: none;
+      background-color: transparent;
     }
     .dropdown-group-right .menu-submenu {
       right: 0;
@@ -156,7 +160,7 @@ const menuItemCount = menuItems.length;
                     data-menu-id={item.groupID}
                     aria-controls={item.groupID}
                   >
-                    E
+                    <span class="material-icons-outlined">arrow_drop_down</span>
                   </button>
                 </div>
 

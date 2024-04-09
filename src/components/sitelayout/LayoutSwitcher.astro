@@ -78,7 +78,7 @@ switch (settings.position.discriminant) {
       });
       // add event listener to open menus on hover
       const menuHoverTriggers = document.querySelectorAll(
-        ".dropdown-button-wrapper > a"
+        ".dropdown-button-wrapper > *"
       );
       menuHoverTriggers.forEach((item) => {
         item.addEventListener("mouseenter", () => {

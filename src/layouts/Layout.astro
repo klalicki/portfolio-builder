@@ -39,7 +39,10 @@ fontSpecSets.forEach((pair) => {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
-
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <Fragment set:html={fontLinks} />
     <style
       define:vars={{
@@ -83,6 +86,7 @@ fontSpecSets.forEach((pair) => {
         max-width: var(--maxImageWidth);
       }
     </style>
+
     <style
       is:global
       define:vars={{
@@ -93,6 +97,35 @@ fontSpecSets.forEach((pair) => {
         // rootFontSize: settings.fonts.sizes.rootSize,
       }}
     >
+      /* google fonts icon stuff */
+
+      .material-icons,
+      .material-icons-outlined {
+        font-family: "Material Icons";
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px; /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+
+        /* Support for all WebKit browsers. */
+        -webkit-font-smoothing: antialiased;
+        /* Support for Safari and Chrome. */
+        text-rendering: optimizeLegibility;
+
+        /* Support for Firefox. */
+        -moz-osx-font-smoothing: grayscale;
+
+        /* Support for IE. */
+        font-feature-settings: "liga";
+      }
+      /* end google fonts icon stuff */
+
       html {
         font-size: var(--general-baseFontSizeSm);
       }

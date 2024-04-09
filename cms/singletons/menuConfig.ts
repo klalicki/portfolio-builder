@@ -33,6 +33,10 @@ export const menuConfig = singleton({
         label: "Background Color",
         allowAlpha: true,
       }),
+      dropdownColor: customFields.colorPicker({
+        label: "Dropdown Color",
+        allowAlpha: true,
+      }),
     }),
   },
 });
