@@ -53,6 +53,20 @@ const fontSettings = fontRules(settings.menu.typography);
     line-height: var(--menuSub-lineHeight);
   }
 
+  /* skip link */
+  .skip-link {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    background-color: white;
+    color: black;
+    padding: 1rem;
+  }
+  .skip-link:focus {
+    pointer-events: all;
+    opacity: 1;
+  }
+
   .menu-item,
   .submenu-item {
     text-decoration: none;
@@ -278,6 +292,7 @@ const fontSettings = fontRules(settings.menu.typography);
       </div>
     )
   }
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <button id="menu-toggle"
     ><span class="material-icons-outlined">menu</span></button

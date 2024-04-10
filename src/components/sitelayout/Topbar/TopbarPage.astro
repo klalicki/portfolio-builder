@@ -14,7 +14,7 @@ import { settings } from "../../helpers/settingsHelper";
     padding: 0;
   }
   header {
-    position: sticky;
+    position: fixed;
     left: 0;
     top: 0;
     min-height: var(--menuHeight);
@@ -30,13 +30,14 @@ import { settings } from "../../helpers/settingsHelper";
     z-index: 10;
   }
   main {
+    margin-top: var(--menuHeight);
   }
 </style>
 <body>
   <header>
     <TopbarNav />
   </header>
-  <main>
+  <main id="main-content">
     <slot />
   </main>
 </body>
