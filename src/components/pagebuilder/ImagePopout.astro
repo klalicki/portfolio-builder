@@ -3,16 +3,35 @@ const { props } = Astro;
 const imagePath = "../../assets/images" + props.image;
 import Image from "astro/components/Image.astro";
 import { settings } from "../helpers/settingsHelper";
+import { getImage } from "astro:assets";
+import "glightbox/dist/css/glightbox.min.css";
+
+let imageSrc = "";
+
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
+  "./../../**/*.{jpeg,jpg,png,gif}"
 );
-if (!images[imagePath])
-  throw new Error(
-    `"${props.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
-  );
+console.log(images);
+
+if (!images[imagePath]) {
+}
+if (images && images[imagePath]) {
+  const fancyImage = await getImage({
+    src: images[imagePath](),
+
+    format: "png",
+  });
+  imageSrc = fancyImage.src;
+}
 ---
 
-<script></script>
+<script>
+  import GLightbox from "glightbox";
+  document.addEventListener("astro:page-load", () => {
+    // This only runs once.
+    const glb = GLightbox({});
+  });
+</script>
 <style>
   .image-popout-container {
     transition: 0.5s all;
@@ -38,12 +57,14 @@ if (!images[imagePath])
   }
 </style>
 
-<figure class="image-popout-container">
-  <Image
-    class="image-popout-img"
-    src={images[imagePath]()}
-    alt={props.altText}
-    width={settings.pageArea.images.optimizationWidth}
-  />
+<figure class="image-popout-container popoout-collapsed">
+  <a href={imageSrc} class="glightbox">
+    <Image
+      class="image-popout-img"
+      src={images[imagePath]()}
+      alt={props.altText}
+      width={settings.pageArea.images.optimizationWidth}
+    /></a
+  >
   {props.caption && <figcaption>{props.caption}</figcaption>}
 </figure>
