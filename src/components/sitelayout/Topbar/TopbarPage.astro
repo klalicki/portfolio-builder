@@ -1,15 +1,18 @@
 ---
 import TopbarNav from "./TopbarNav.astro";
 import { settings } from "../../helpers/settingsHelper";
-const menuBg = settings.menu.position.value.hideBar
-  ? "transparent"
-  : settings.menu.colors.backgroundColor;
+const menuBg =
+  settings.menu.position.value.hideBar &&
+  settings.menu.position.value.alwaysDropdown
+    ? "transparent"
+    : settings.menu.colors.backgroundColor;
 ---
 
 <style
   define:vars={{
     menuBackgroundColor: menuBg,
     menuHeight: settings.menu.sizes.topBarHeight,
+    blurStyle: settings.menu.appearance.blurBehind ? "blur(10px)" : "none",
   }}
 >
   body {
@@ -23,6 +26,7 @@ const menuBg = settings.menu.position.value.hideBar
 
     right: 0;
     background-color: var(--menuBackgroundColor);
+    backdrop-filter: var(--blurStyle);
     display: flex;
     flex-direction: column;
     align-items: stretch;

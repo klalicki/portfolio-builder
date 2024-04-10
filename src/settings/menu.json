@@ -9,17 +9,17 @@
     }
   },
   "appearance": {
-    "blurBehind": false
+    "blurBehind": true
   },
   "sizes": {
     "topBarHeight": "90px",
     "topBarPadding": "1rem"
   },
   "colors": {
-    "backgroundColor": "#c7c7c7cc",
-    "menuHoverColor": "#ff4b4bab",
-    "dropdownColor": "#94eaffd9",
-    "dropdownHoverColor": "#ffffff"
+    "backgroundColor": "#000c4a8a",
+    "menuHoverColor": "#383affab",
+    "dropdownColor": "#001895cc",
+    "dropdownHoverColor": "#383affab"
   },
   "typography": {
     "menuMain": {
@@ -28,7 +28,7 @@
       "fontStyle": "normal",
       "fontSize": "2rem",
       "lineHeight": 1,
-      "color": "#000000",
+      "color": "#ffffff",
       "marginTop": "0px",
       "marginBottom": "0px"
     },
@@ -38,7 +38,7 @@
       "fontStyle": "normal",
       "fontSize": "1rem",
       "lineHeight": 1,
-      "color": "",
+      "color": "#ffffff",
       "marginTop": "0px",
       "marginBottom": "0px"
     },
@@ -48,7 +48,7 @@
       "fontStyle": "normal",
       "fontSize": "2rem",
       "lineHeight": 1,
-      "color": "#ff0000",
+      "color": "#ffffff",
       "marginTop": "0px",
       "marginBottom": "0px"
     }

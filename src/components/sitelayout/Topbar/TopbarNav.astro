@@ -150,6 +150,9 @@ is:global
 
 }
 
+#menu-toggle, .menu-dropdown-button {
+  color: var(--menuMain-color)
+}
 
 .menu-hide-bar .menu-main-group{
   pointer-events: all;
@@ -167,7 +170,7 @@ is:global
   }
  
 </style>
-{settings.menu.position.value.hideBar&& (<style>
+{settings.menu.position.value.hideBar&&settings.menu.position.value.alwaysDropdown && (<style>
   header{
     pointer-events: none;
   }
@@ -267,7 +270,7 @@ is:global
   
   }</style>}
 
-<nav class:list={["menu-main",settings.menu.position.value.hideBar&&"menu-hide-bar"]}>
+<nav class:list={["menu-main",settings.menu.position.value.hideBar&&settings.menu.position.value.alwaysDropdown &&"menu-hide-bar"]}>
   {
     settings.menu.position.value.menuBarText && !settings.menu.position.value.hideBar && (
       <div class="top-bar-text-wrapper">
