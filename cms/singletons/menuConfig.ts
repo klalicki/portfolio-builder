@@ -36,7 +36,6 @@ export const menuConfig = singleton({
             description:
               "Use the mobile-style (hamburger) navigation regardless of screen size",
           }),
-          
         }),
       }
     ),
@@ -47,6 +46,11 @@ export const menuConfig = singleton({
       topBarHeight: customFields.cssUnit({
         label: "minimum height for menu when it appears as a top bar",
         defaultValue: "45px",
+        limitUnits: ["px", "rem"],
+      }),
+      topBarPadding: customFields.cssUnit({
+        label: "Padding on sides of Top Bar",
+        defaultValue: "0.5rem",
         limitUnits: ["px", "rem"],
       }),
       // hamburgerSize: customFields.cssUnit({ label: "Hamburger Button Size" }),

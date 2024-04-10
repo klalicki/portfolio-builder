@@ -151,13 +151,6 @@ declare module 'astro:content' {
   collection: "pages";
   data: InferEntrySchema<"pages">
 } & { render(): Render[".mdoc"] };
-"work.mdoc": {
-	id: "work.mdoc";
-  slug: "work";
-  body: string;
-  collection: "pages";
-  data: InferEntrySchema<"pages">
-} & { render(): Render[".mdoc"] };
 };
 "portfolioGroups": {
 "all.mdoc": {

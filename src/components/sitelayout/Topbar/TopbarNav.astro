@@ -11,6 +11,7 @@ const fontSettings = fontRules(settings.menu.typography);
 
 <style
   define:vars={{
+    topBarSidePadding: settings.menu.sizes.topBarPadding,
     menuBackgroundColor: settings.menu.colors.backgroundColor,
     menuDropdownColor: settings.menu.colors.dropdownColor,
     mainHoverColor: settings.menu.colors.menuHoverColor,
@@ -65,6 +66,7 @@ const fontSettings = fontRules(settings.menu.typography);
     display: flex;
     align-items: center;
     padding: 0 0.5rem;
+    padding-left: var(--topBarSidePadding);
   }
 
   .menu-main {
@@ -163,20 +165,33 @@ const fontSettings = fontRules(settings.menu.typography);
     position: fixed;
     top: 0;
   }
+  /* This section controls the layout on desktop */
 
   @media screen and (min-width: 768px) {
+    /* unhides mobile menu */
     .menu-switchable .menu-mobile-hidden {
       display: flex;
       opacity: 1;
       pointer-events: all;
       transform: none;
     }
+    /* hides hamburger */
     .menu-switchable #menu-toggle {
       display: none;
     }
+    /* shows dropdown buttons */
     .menu-switchable.menu-main button {
       display: inline;
     }
+    /* positions the site name and group of menu items */
+    .menu-switchable.menu-main {
+      flex-grow: 1;
+      justify-content: space-between;
+      position: relative;
+      z-index: 100;
+    }
+
+    /* this group contains the 'main' menu items */
     .menu-switchable .menu-main-group {
       display: flex;
       align-items: stretch;
@@ -189,12 +204,7 @@ const fontSettings = fontRules(settings.menu.typography);
       overflow: visible;
       position: static;
       background: none;
-    }
-    .menu-switchable.menu-main {
-      flex-grow: 1;
-      justify-content: space-between;
-      position: relative;
-      z-index: 100;
+      padding-right: var(--topBarSidePadding);
     }
 
     .menu-switchable .menu-submenu {
@@ -217,6 +227,7 @@ const fontSettings = fontRules(settings.menu.typography);
       padding: 0.5rem;
       min-width: max-content;
     }
+
     .menu-switchable .dropdown-group {
       position: relative;
       display: flex;
@@ -325,7 +336,12 @@ const fontSettings = fontRules(settings.menu.typography);
             </>
           );
         } else {
-          return <a href={item.url}>{item.title}</a>;
+          return (
+            <div class="dropdown-button-wrapper">
+            <a class="menu-item" href={item.url}>
+              {item.title}
+            </a></div>
+          );
         }
       })
     }
