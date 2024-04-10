@@ -30,13 +30,14 @@ import { settings } from "../../helpers/settingsHelper";
     z-index: 10;
   }
   main {
-    margin-top: var(--menuHeight);
+    padding-top: var(--menuHeight);
   }
 </style>
 <body>
   <header>
     <TopbarNav />
   </header>
+  <div class="nav-spacer"></div>
   <main id="main-content">
     <slot />
   </main>

@@ -24,7 +24,8 @@ switch (settings.position.discriminant) {
   <script>
     // alert(buttons.length);
     const setChildrenHidden = (element: Element, isHidden: boolean) => {
-      Array.from(element.children).forEach((item) => {
+      Array.from(element.firstElementChild.children).forEach((item) => {
+        console.log(item);
         item.tabIndex = isHidden ? -1 : 0;
       });
     };
