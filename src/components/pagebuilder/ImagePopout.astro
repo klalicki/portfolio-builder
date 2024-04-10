@@ -30,46 +30,48 @@ if (images && images[imagePath]) {
 
 <script>
   import GLightbox from "glightbox";
-  const glb = GLightbox({});
+  const glb = GLightbox({ skin: "custom" });
   document.addEventListener("astro:page-load", () => {
     // This only runs once.
     glb.reload();
   });
 </script>
 <style>
-  .image-popout-container {
-    transition: 0.5s all;
+  .image-popout {
+    display: flex;
+    flex-direction: column;
   }
-  .image-popout-expanded {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    max-width: 100vw;
-    max-height: 100vh;
-    z-index: 1000;
-    padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.7);
-    transition: all 0.5s;
+  .image-popout > a {
+    cursor: zoom-in;
   }
-  .image-popout-expanded .image-popout-img {
-    object-fit: contain;
-    position: relative;
-    width: 100%;
-    height: 100%;
+
+  .image-popout figcaption {
+    font-style: italic;
+    padding: 1rem;
+    padding-top: 0.5rem;
   }
 </style>
 
-<figure class="image-popout-container popoout-collapsed">
+<!-- you can use this style tag to style the lightbox popup -->
+<style is:global>
+  .glightbox-custom .gdesc-inner {
+    background-color: white;
+    padding: 1rem;
+    font-family: var(--p-fontFamily);
+    font-style: italic;
+  }
+</style>
+
+<figure class="image-popout">
   <a
     href={imageSrc}
     data-sizes="(max-width: 512px) 512px, (max-width: 1024px) 1024px, (max-width: 2048px) 2048px, 4096px"
     data-srcset={imageSrcSet}
+    data-description={props.caption}
     class="glightbox"
   >
     <Image
-      class="image-popout-img"
+      class=""
       src={images[imagePath]()}
       alt={props.altText}
       format="webp"
