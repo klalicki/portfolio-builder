@@ -5,8 +5,8 @@ import { settings } from "../../helpers/settingsHelper";
 
 <style
   define:vars={{
-    menuBackgroundColor: settings.menu.appearance.backgroundColor,
-    menuHeight: settings.menu.appearance.topBarHeight,
+    menuBackgroundColor: settings.menu.colors.backgroundColor,
+    menuHeight: settings.menu.sizes.topBarHeight,
   }}
 >
   body {
@@ -21,8 +21,9 @@ import { settings } from "../../helpers/settingsHelper";
     right: 0;
     background-color: var(--menuBackgroundColor);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: stretch;
+    justify-content: center;
 
     z-index: 10;
   }

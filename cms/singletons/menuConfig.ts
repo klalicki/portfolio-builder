@@ -34,21 +34,35 @@ export const menuConfig = singleton({
         }),
       }
     ),
-    appearance: fields.object({
+    sizes: fields.object({
       topBarHeight: customFields.cssUnit({
         label: "minimum height for menu when it appears as a top bar",
         defaultValue: "45px",
         limitUnits: ["px", "rem"],
       }),
-      backgroundColor: customFields.colorPicker({
-        label: "Background Color",
-        allowAlpha: true,
-      }),
-      dropdownColor: customFields.colorPicker({
-        label: "Dropdown Color",
-        allowAlpha: true,
-      }),
     }),
+    colors: fields.object(
+      {
+        backgroundColor: customFields.colorPicker({
+          label: "Background Color",
+          allowAlpha: true,
+        }),
+        mainHoverColor: customFields.colorPicker({
+          label: "Main Hover Color",
+          allowAlpha: true,
+        }),
+
+        dropdownColor: customFields.colorPicker({
+          label: "Dropdown Color",
+          allowAlpha: true,
+        }),
+        dropdownHoverColor: customFields.colorPicker({
+          label: "Dropdown Hover Color",
+          allowAlpha: true,
+        }),
+      },
+      { layout: [3, 3, 3, 3] }
+    ),
     typography: fields.object({
       menuMain: customFields.typeProps({ label: "Main menu items" }),
       menuSub: customFields.typeProps({ label: "Sub-items" }),
