@@ -6,7 +6,15 @@ const { props } = Astro;
 console.log(props.items);
 ---
 
-<div>
+<style>
+  .image-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+</style>
+
+<div class="image-gallery">
   {
     props.items.map((item) => {
       return (
@@ -16,6 +24,7 @@ console.log(props.items);
           image={item.image}
           caption={item.caption}
           hideCaption={true}
+          forceAspectRatio="3/2"
         />
       );
     })

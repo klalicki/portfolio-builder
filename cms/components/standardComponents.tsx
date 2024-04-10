@@ -37,6 +37,41 @@ export const standardComponents = {
         })
       ),
     },
+    ContentView(props) {
+      const [imageDataUrl, setImageDataUrl] = useState({});
+
+      const fetchImages = async () => {
+        const updatedImageDataUrl = {};
+        for (const [index, item] of props.value.items.entries()) {
+          if (item.image?.data) {
+            const u8intArray = item.image.data;
+            const blob = new Blob([u8intArray], { type: "image/png" });
+            const reader = new FileReader();
+            reader.onload = () => {
+              updatedImageDataUrl[index] = reader.result;
+              setImageDataUrl((prevData) => ({
+                ...prevData,
+                ...updatedImageDataUrl,
+              }));
+            };
+            reader.readAsDataURL(blob);
+          }
+        }
+      };
+
+      // Trigger image fetching when the component mounts
+      useEffect(() => {
+        fetchImages();
+      }, []);
+
+      return (
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
+          {Object.values(imageDataUrl).map((url, index) => (
+            <img key={index} src={url} alt={`Image ${index}`} />
+          ))}
+        </div>
+      );
+    },
   }),
 
   underline: mark({

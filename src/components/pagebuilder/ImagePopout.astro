@@ -8,7 +8,7 @@ import { getRandomString } from "../helpers/getRandomString";
 
 import "glightbox/dist/css/glightbox.min.css";
 
-console.log(Astro);
+console.log(Astro.props);
 let imageSrc = "";
 let imageSrcSet = "";
 
@@ -28,6 +28,11 @@ if (images && images[imagePath]) {
   // console.log(fancyImage.srcSet.values[0]);
   imageSrc = fancyImage.src;
   imageSrcSet = fancyImage.srcSet.attribute;
+}
+const styleAttrs: { [key: string]: string } = {};
+if (props.forceAspectRatio) {
+  styleAttrs.aspectRatio = props.forceAspectRatio;
+  styleAttrs.objectFit = "cover";
 }
 ---
 
@@ -151,12 +156,16 @@ if (images && images[imagePath]) {
     class="glightbox"
   >
     <Image
-      class=""
+      style={styleAttrs}
       src={images[imagePath]()}
       alt={props.altText || ""}
       format="webp"
       width={settings.pageArea.images.optimizationWidth}
     /></a
   >
-  {!props.hideCaption && props.caption && <figcaption>{props.caption}</figcaption>}
+  {
+    !props.hideCaption && props.caption && (
+      <figcaption>{props.caption}</figcaption>
+    )
+  }
 </figure>
