@@ -39,6 +39,7 @@ const fontSettings = fontRules(settings.menu.typography);
     margin-top: var(--menuMain-marginTop);
     margin-bottom: var(--menuMain-marginBottom);
     color: var(--menuMain-color);
+    color: var(--menuSub-color);
     line-height: var(--menuMain-lineHeight);
   }
   .submenu-item {
@@ -194,6 +195,9 @@ const fontSettings = fontRules(settings.menu.typography);
       position: static;
       background: none;
       padding-right: var(--topBarSidePadding);
+    }
+    .menu-item {
+      color: var(--menuMain-color);
     }
 
     .menu-switchable .menu-submenu {
