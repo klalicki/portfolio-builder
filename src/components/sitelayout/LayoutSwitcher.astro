@@ -43,7 +43,7 @@ switch (settings.position.discriminant) {
 
     window.addEventListener("click", (event) => {
       //@ts-ignore not sure why i need this but i do
-      if (!document.querySelector(".menu-main-group")?.contains(event.target)) {
+      if (!document.querySelector(".menu-main")?.contains(event.target)) {
         hideAllMenus();
         hideMobileMenu();
       }
@@ -61,7 +61,7 @@ switch (settings.position.discriminant) {
       }
     });
 
-    document.addEventListener("astro:page-load", () => {
+    document.addEventListener("load", () => {
       // add event listener to the dropdown buttons to open/close the menus
       const buttons = document.querySelectorAll(".menu-dropdown-button");
 

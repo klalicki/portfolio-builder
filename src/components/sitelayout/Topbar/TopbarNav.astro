@@ -79,18 +79,26 @@ const fontSettings = fontRules(settings.menu.typography);
     padding: 0;
     justify-content: flex-end;
   }
+
   .menu-main-group {
     position: fixed;
     top: var(--menuHeight);
     left: 0px;
     right: 0px;
-    max-height: calc(100vh - var(--menuHeight));
+    /* max-height: calc(100vh - var(--menuHeight)); */
     display: flex;
     flex-direction: column;
     background-color: var(--menuDropdownColor);
     overflow: auto;
-    z-index: -10;
+    z-index: 0;
     transform: none;
+    transition: all 0.3s;
+  }
+  .menu-mobile-hidden {
+    transform: translateY(-50px);
+    /* overflow: hidden; */
+    opacity: 0;
+    pointer-events: none;
     transition: all 0.3s;
   }
 
@@ -128,13 +136,6 @@ const fontSettings = fontRules(settings.menu.typography);
   #menu-toggle span {
     font-size: calc(var(--menuHeight) * 0.75);
   }
-  .menu-mobile-hidden {
-    transform: translateY(-50px);
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s;
-  }
 
   .menu-item:hover,
   .submenu-item:hover,
@@ -152,19 +153,6 @@ const fontSettings = fontRules(settings.menu.typography);
     color: var(--menuMain-color);
   }
 
-  .menu-hide-bar .menu-main-group {
-    pointer-events: all;
-  }
-  .menu-hide-bar .menu-mobile-hidden {
-    pointer-events: none;
-  }
-  .menu-hide-bar #menu-toggle {
-    pointer-events: all;
-  }
-  .menu-hide-bar .menu-main-group {
-    position: fixed;
-    top: 0;
-  }
   /* This section controls the layout on desktop */
 
   @media screen and (min-width: 768px) {
@@ -338,9 +326,10 @@ const fontSettings = fontRules(settings.menu.typography);
         } else {
           return (
             <div class="dropdown-button-wrapper">
-            <a class="menu-item" href={item.url}>
-              {item.title}
-            </a></div>
+              <a class="menu-item" href={item.url}>
+                {item.title}
+              </a>
+            </div>
           );
         }
       })
