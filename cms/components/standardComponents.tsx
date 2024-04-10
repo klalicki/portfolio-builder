@@ -16,6 +16,34 @@ export const standardComponents = {
   ImageGallery: block({
     label: "Image Gallery",
     schema: {
+      options: fields.object(
+        {
+          width: customFields.cssUnit({
+            label: "Width",
+            description: "Maximum width for this section",
+            defaultValue: "100%",
+            isCompact: true,
+          }),
+          gap: customFields.cssUnit({
+            label: "Gap",
+            description: "The space between items in the grid",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          imageSize: customFields.cssUnit({
+            label: "Image Width",
+            description: "the width of each item in this gallery",
+            isCompact: true,
+            limitUnits: ["px", "rem", "%", "em"],
+          }),
+          aspectRatio: fields.text({
+            label: "Aspect Ratio",
+            description: "The aspect ratio of the gallery tiles (ie 3/2)",
+            defaultValue: "1/1",
+          }),
+        },
+        { layout: [6, 6, 6, 6] }
+      ),
       items: fields.array(
         fields.object({
           image: fields.image({
@@ -36,6 +64,7 @@ export const standardComponents = {
           }),
         }),
         {
+          label: "Gallery Items",
           itemLabel(props) {
             console.log(props);
             return (
@@ -75,22 +104,35 @@ export const standardComponents = {
       }, []);
 
       return (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
-          {Object.values(imageDataUrl).map((url, index) =>
-            url ? (
-              <img
-                style={{ aspectRatio: "3/2", objectFit: "cover" }}
-                key={index}
-                src={url}
-                alt={`Image ${index}`}
-              />
-            ) : (
-              <div>
-                The image has been placed. Once you save the page, you will see
-                it here.
-              </div>
-            )
-          )}
+        <div>
+          Note: the images in the preview of this component will not update
+          until you save the page!
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: `repeat(auto-fit, minmax(min(${props.value.options.imageSize}, 100%), 1fr))`,
+              gap: props.value.options.gap,
+            }}
+          >
+            {Object.values(imageDataUrl).map((url, index) =>
+              url ? (
+                <img
+                  style={{
+                    aspectRatio: props.value.options.aspectRatio,
+                    objectFit: "cover",
+                  }}
+                  key={index}
+                  src={url}
+                  alt={`Image ${index}`}
+                />
+              ) : (
+                <div>
+                  The image has been placed. Once you save the page, you will
+                  see it here.
+                </div>
+              )
+            )}
+          </div>{" "}
         </div>
       );
     },
