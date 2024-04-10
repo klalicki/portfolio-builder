@@ -61,7 +61,7 @@ switch (settings.position.discriminant) {
       }
     });
 
-    document.addEventListener("load", () => {
+    document.addEventListener("astro:page-load", () => {
       // add event listener to the dropdown buttons to open/close the menus
       const buttons = document.querySelectorAll(".menu-dropdown-button");
 
