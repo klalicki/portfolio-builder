@@ -47,7 +47,7 @@ export const menuConfig = singleton({
           label: "Background Color",
           allowAlpha: true,
         }),
-        mainHoverColor: customFields.colorPicker({
+        menuHoverColor: customFields.colorPicker({
           label: "Main Hover Color",
           allowAlpha: true,
         }),

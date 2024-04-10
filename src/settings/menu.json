@@ -6,10 +6,14 @@
       "menuBarText": "The Site Has a Lot of Text in the Title"
     }
   },
-  "sizes": { "topBarHeight": "90px" },
+  "sizes": {
+    "topBarHeight": "90px"
+  },
   "colors": {
-    "backgroundColor": "#d4d4d4b3",
-    "dropdownColor": "#95e9ff"
+    "backgroundColor": "#c8c8c8b3",
+    "menuHoverColor": "#ff4b4bab",
+    "dropdownColor": "#94eaffd9",
+    "dropdownHoverColor": "#ffffff"
   },
   "typography": {
     "menuMain": {

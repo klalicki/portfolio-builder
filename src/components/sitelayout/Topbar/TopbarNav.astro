@@ -13,6 +13,8 @@ const fontSettings = fontRules(settings.menu.typography);
   define:vars={{
     menuBackgroundColor: settings.menu.colors.backgroundColor,
     menuDropdownColor: settings.menu.colors.dropdownColor,
+    mainHoverColor: settings.menu.colors.menuHoverColor,
+    dropdownHoverColor: settings.menu.colors.dropdownHoverColor,
     ...fontSettings,
   }}
 >
@@ -117,6 +119,13 @@ const fontSettings = fontRules(settings.menu.typography);
     transition: all 0.3s;
   }
 
+  .menu-item:hover,
+  .submenu-item:hover,
+  .menu-item:focus,
+  .submenu-item:focus {
+    background-color: var(--dropdownHoverColor);
+  }
+
   @media screen and (min-width: 768px) {
     .menu-mobile-hidden {
       display: flex;
@@ -200,6 +209,11 @@ const fontSettings = fontRules(settings.menu.typography);
       opacity: 0;
       pointer-events: none;
       transition: all 0.3s;
+    }
+
+    .menu-item:hover,
+    .menu-item:focus {
+      background-color: var(--mainHoverColor);
     }
   }
 </style>
