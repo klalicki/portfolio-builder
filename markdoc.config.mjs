@@ -54,6 +54,10 @@ export default defineMarkdocConfig({
         // textColor: { type: String },
       },
     },
+    ImageGallery: {
+      render: component("./src/components/pagebuilder/ImageGallery.astro"),
+      attributes: { items: { type: Array } },
+    },
     ImagePopout: {
       render: component("./src/components/pagebuilder/ImagePopout.astro"),
       attributes: {

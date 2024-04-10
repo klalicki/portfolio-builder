@@ -4,15 +4,18 @@ const imagePath = "../../assets/images" + props.image;
 import Image from "astro/components/Image.astro";
 import { settings } from "../helpers/settingsHelper";
 import { getImage } from "astro:assets";
+import { getRandomString } from "../helpers/getRandomString";
+
 import "glightbox/dist/css/glightbox.min.css";
 
+console.log(Astro);
 let imageSrc = "";
 let imageSrcSet = "";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../**/*.{jpeg,jpg,png,gif}"
 );
-console.log(images);
+// console.log(images);
 
 if (!images[imagePath]) {
 }
@@ -22,7 +25,7 @@ if (images && images[imagePath]) {
     widths: [512, 1024, 2048, 4096],
     format: "webp",
   });
-  console.log(fancyImage.srcSet.values[0]);
+  // console.log(fancyImage.srcSet.values[0]);
   imageSrc = fancyImage.src;
   imageSrcSet = fancyImage.srcSet.attribute;
 }
@@ -144,15 +147,16 @@ if (images && images[imagePath]) {
     data-sizes="(max-width: 512px) 512px, (max-width: 1024px) 1024px, (max-width: 2048px) 2048px, 4096px"
     data-srcset={imageSrcSet}
     data-description={props.caption}
+    data-gallery={props.galleryID || getRandomString()}
     class="glightbox"
   >
     <Image
       class=""
       src={images[imagePath]()}
-      alt={props.altText}
+      alt={props.altText || ""}
       format="webp"
       width={settings.pageArea.images.optimizationWidth}
     /></a
   >
-  {props.caption && <figcaption>{props.caption}</figcaption>}
+  {!props.hideCaption && props.caption && <figcaption>{props.caption}</figcaption>}
 </figure>

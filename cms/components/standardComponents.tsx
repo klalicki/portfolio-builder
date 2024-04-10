@@ -13,6 +13,32 @@ import { Icon } from "@keystar/ui/icon";
 import { underlineIcon } from "@keystar/ui/icon/icons/underlineIcon";
 
 export const standardComponents = {
+  ImageGallery: block({
+    label: "Image Gallery",
+    schema: {
+      items: fields.array(
+        fields.object({
+          image: fields.image({
+            label: "upload image",
+            directory: "src/assets/images",
+            publicPath: "",
+          }),
+          altText: fields.text({
+            label: "Alt Text",
+            description:
+              "A description of the image contents. This is important for accessibility, as it allows non-sighted users to understand the content of the image",
+            defaultValue: "",
+          }),
+          caption: fields.text({
+            label: "Caption",
+            description: "An optional caption to display below the image. ",
+            defaultValue: "",
+          }),
+        })
+      ),
+    },
+  }),
+
   underline: mark({
     label: "Underline",
     icon: underlineIcon,

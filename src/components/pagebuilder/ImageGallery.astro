@@ -1,0 +1,23 @@
+---
+import ImagePopout from "./ImagePopout.astro";
+import { getRandomString } from "../helpers/getRandomString";
+const galleryID = getRandomString();
+const { props } = Astro;
+console.log(props.items);
+---
+
+<div>
+  {
+    props.items.map((item) => {
+      return (
+        <ImagePopout
+          galleryID={galleryID}
+          altText={item.altText}
+          image={item.image}
+          caption={item.caption}
+          hideCaption={true}
+        />
+      );
+    })
+  }
+</div>
