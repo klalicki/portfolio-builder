@@ -44,18 +44,19 @@ switch (settings.position.discriminant) {
 
     window.addEventListener("click", (event) => {
       //@ts-ignore not sure why i need this but i do
-      if (!document.querySelector(".menu-main-group")?.contains(event.target)) {
+      if (
+        !document.querySelector(".menu-main-group")?.contains(event.target) &&
+        !document.querySelector("#menu-toggle")?.contains(event.target)
+      ) {
         hideAllMenus();
         hideMobileMenu();
       }
     });
     window.addEventListener("focusout", (event) => {
       //@ts-ignore not sure why i need this but i do
-
+      // console.log(event.relatedTarget);
       if (
-        !document
-          .querySelector(".menu-main-group")
-          ?.contains(event.relatedTarget)
+        !document.querySelector(".menu-main")?.contains(event.relatedTarget)
       ) {
         hideAllMenus();
         hideMobileMenu();
