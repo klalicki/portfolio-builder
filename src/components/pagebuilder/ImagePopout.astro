@@ -7,6 +7,7 @@ import { getImage } from "astro:assets";
 import "glightbox/dist/css/glightbox.min.css";
 
 let imageSrc = "";
+let imageSrcSet = "";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../**/*.{jpeg,jpg,png,gif}"
@@ -18,10 +19,12 @@ if (!images[imagePath]) {
 if (images && images[imagePath]) {
   const fancyImage = await getImage({
     src: images[imagePath](),
-
-    format: "png",
+    widths: [512, 1024, 2048, 4096],
+    format: "webp",
   });
+  console.log(fancyImage.srcSet.values[0]);
   imageSrc = fancyImage.src;
+  imageSrcSet = fancyImage.srcSet.attribute;
 }
 ---
 
@@ -59,11 +62,17 @@ if (images && images[imagePath]) {
 </style>
 
 <figure class="image-popout-container popoout-collapsed">
-  <a href={imageSrc} class="glightbox">
+  <a
+    href={imageSrc}
+    data-sizes="(max-width: 512px) 512px, (max-width: 1024px) 1024px, (max-width: 2048px) 2048px, 4096px"
+    data-srcset={imageSrcSet}
+    class="glightbox"
+  >
     <Image
       class="image-popout-img"
       src={images[imagePath]()}
       alt={props.altText}
+      format="webp"
       width={settings.pageArea.images.optimizationWidth}
     /></a
   >

@@ -31,11 +31,6 @@ export const menuConfig = singleton({
         top: fields.object({
           u: customFields.uniquify({ label: "u" }),
 
-          menuBarText: fields.text({
-            label: "Menu Bar Text",
-            description:
-              "The line of text that appears on the left side of the menu bar. Probably your name",
-          }),
           alwaysDropdown: fields.checkbox({
             label: "Always use Dropdown",
             description:
