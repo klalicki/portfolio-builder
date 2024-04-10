@@ -7,8 +7,10 @@ export const generalSettings = singleton({
   schema: {
     favicon: fields.image({
       label: "Favicon",
+      description:
+        "Upload a favicon for this page - it will automatically be resized to the correct size",
       directory: "src/assets/images/general",
-      publicPath: "../../assets/images/general/",
+      publicPath: "../assets/images/general/",
     }),
   },
 });
