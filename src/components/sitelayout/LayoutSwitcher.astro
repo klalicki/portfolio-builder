@@ -44,7 +44,7 @@ switch (settings.position.discriminant) {
 
     window.addEventListener("click", (event) => {
       //@ts-ignore not sure why i need this but i do
-      if (!document.querySelector(".menu-main")?.contains(event.target)) {
+      if (!document.querySelector(".menu-main-group")?.contains(event.target)) {
         hideAllMenus();
         hideMobileMenu();
       }

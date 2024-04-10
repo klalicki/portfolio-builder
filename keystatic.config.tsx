@@ -52,8 +52,8 @@ const customNavField = fields.conditional(
 export default config({
   ui: {
     navigation: {
-      Content: ["projects", "pages", "homepage"],
-      Settings: ["menu", "general", "portfolioGroups"],
+      Content: ["projects", "pages", "homepage", "portfolioGroups"],
+      Settings: ["menu", "general"],
       Appearance: [
         "pageArea",
         "sidebarSettings",
