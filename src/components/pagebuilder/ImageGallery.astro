@@ -8,12 +8,27 @@ console.log(props.items);
 
 <style>
   .image-gallery {
+    max-width: var(--sectionWidth);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(var(--galleryImageWidth), 100%), 1fr)
+    );
+    gap: var(--galleryGap);
+    padding: 0 var(--galleryGap);
+    margin-top: var(--galleryGap);
+    margin-bottom: var(--galleryGap);
   }
 </style>
 
-<div class="image-gallery">
+<div
+  class="image-gallery"
+  style={{
+    "--sectionWidth": props.options.width,
+    "--galleryGap": props.options.gap,
+    "--galleryImageWidth": props.options.imageSize,
+  }}
+>
   {
     props.items.map((item) => {
       return (
@@ -23,7 +38,7 @@ console.log(props.items);
           image={item.image}
           caption={item.caption}
           hideCaption={true}
-          forceAspectRatio="3/2"
+          forceAspectRatio={props.options.aspectRatio || "3/2"}
         />
       );
     })
