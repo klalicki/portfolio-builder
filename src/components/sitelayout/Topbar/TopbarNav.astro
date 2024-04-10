@@ -107,9 +107,21 @@ const fontSettings = fontRules(settings.menu.typography);
     display: none;
   }
   #menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: none;
     background: transparent;
-    padding: 0 0.5rem;
+    width:calc(var(--menuHeight));
+        align-self: stretch;
+        min-height: var(--menuHeight); 
+
+    /* aspect-ratio: 1/1; */
+  }
+  #menu-toggle span{
+    font-size:calc(var(--menuHeight) * .75);
+
   }
   .menu-mobile-hidden {
     transform: translateY(-50px);
@@ -126,7 +138,16 @@ const fontSettings = fontRules(settings.menu.typography);
     background-color: var(--dropdownHoverColor);
   }
 
-  @media screen and (min-width: 768px) {
+    #menu-toggle:hover,
+#menu-toggle:focus{
+  background-color: var(--mainHoverColor);
+
+}
+
+ 
+</style>
+{!settings.menu.position.value.alwaysDropdown && <style>
+   @media screen and (min-width: 768px) {
     .menu-mobile-hidden {
       display: flex;
       opacity: 1;
@@ -215,8 +236,7 @@ const fontSettings = fontRules(settings.menu.typography);
     .menu-item:focus {
       background-color: var(--mainHoverColor);
     }
-  }
-</style>
+  }</style>}
 
 <nav class="menu-main">
   {

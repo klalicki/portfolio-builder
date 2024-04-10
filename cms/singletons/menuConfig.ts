@@ -31,6 +31,16 @@ export const menuConfig = singleton({
             description:
               "The line of text that appears on the left side of the menu bar. Probably your name",
           }),
+          alwaysDropdown: fields.checkbox({
+            label: "Always use Dropdown",
+            description:
+              "Use the mobile-style (hamburger) navigation regardless of screen size",
+          }),
+          hideBar: fields.checkbox({
+            label: "Hide Menu Bar",
+            description:
+              "Hide the menu bar when in dropdown mode, leaving just the hamburger button",
+          }),
         }),
       }
     ),
@@ -40,6 +50,7 @@ export const menuConfig = singleton({
         defaultValue: "45px",
         limitUnits: ["px", "rem"],
       }),
+      // hamburgerSize: customFields.cssUnit({ label: "Hamburger Button Size" }),
     }),
     colors: fields.object(
       {

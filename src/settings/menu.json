@@ -3,14 +3,15 @@
     "discriminant": "top",
     "value": {
       "u": "1712695511964",
-      "menuBarText": "The Site Has a Lot of Text in the Title"
+      "alwaysDropdown": true,
+      "hideBar": true
     }
   },
   "sizes": {
     "topBarHeight": "90px"
   },
   "colors": {
-    "backgroundColor": "#c8c8c8b3",
+    "backgroundColor": "#c7c7c700",
     "menuHoverColor": "#ff4b4bab",
     "dropdownColor": "#94eaffd9",
     "dropdownHoverColor": "#ffffff"
