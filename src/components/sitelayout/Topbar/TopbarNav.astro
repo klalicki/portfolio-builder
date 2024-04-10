@@ -4,22 +4,21 @@ import menuItems from "../../helpers/menuItems";
 
 import { settings } from "../../helpers/settingsHelper";
 import { fontRules } from "../../helpers/fontRuleBuilder";
-
+import { formatCssRules } from "../../helpers/formatCssRules";
 const menuItemCount = menuItems.length;
 const fontSettings = fontRules(settings.menu.typography);
+const cssRules = {
+  topBarSidePadding: settings.menu.sizes.topBarPadding,
+  menuBackgroundColor: settings.menu.colors.backgroundColor,
+  menuDropdownColor: settings.menu.colors.dropdownColor,
+  mainHoverColor: settings.menu.colors.menuHoverColor,
+  dropdownHoverColor: settings.menu.colors.dropdownHoverColor,
+  blurStyle: settings.menu.appearance.blurBehind ? "blur(100px)" : "none",
+  ...fontSettings,
+};
 ---
 
-<style
-  define:vars={{
-    topBarSidePadding: settings.menu.sizes.topBarPadding,
-    menuBackgroundColor: settings.menu.colors.backgroundColor,
-    menuDropdownColor: settings.menu.colors.dropdownColor,
-    mainHoverColor: settings.menu.colors.menuHoverColor,
-    dropdownHoverColor: settings.menu.colors.dropdownHoverColor,
-    blurStyle: settings.menu.appearance.blurBehind ? "blur(100px)" : "none",
-    ...fontSettings,
-  }}
->
+<style>
   /* type stuff */
   .top-bar-text {
     font-family: var(--menuText-fontFamily);
@@ -279,6 +278,7 @@ const fontSettings = fontRules(settings.menu.typography);
 </style>
 
 <nav
+  style={formatCssRules(cssRules)}
   class:list={[
     "menu-main",
     settings.menu.position.value.alwaysDropdown && "menu-hide-bar",
