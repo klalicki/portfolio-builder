@@ -68,6 +68,7 @@ fontSpecSets.forEach((pair) => {
       define:vars={{
         maxPageContentWidth: settings.pageArea.pageWidth,
         standardPadding: settings.pageArea.padding.horizontal,
+        verticalPadding: settings.pageArea.padding.vertical,
         maxImageWidth: settings.pageArea.images.displayWidth,
       }}
       is:global
@@ -92,6 +93,8 @@ fontSpecSets.forEach((pair) => {
       main {
         align-items: center;
         position: relative;
+        padding-top: var(--verticalPadding);
+        padding-bottom: var(--verticalPadding);
       }
       main > * {
         display: block;
