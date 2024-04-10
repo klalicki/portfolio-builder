@@ -16,7 +16,7 @@
     "topBarHeight": "60px",
     "topBarPadding": "1rem",
     "menuPadding": "1rem",
-    "subItemIndent": "0px"
+    "subItemIndent": "10px"
   },
   "colors": {
     "backgroundColor": "#9cacff87",

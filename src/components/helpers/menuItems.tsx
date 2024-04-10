@@ -33,14 +33,12 @@ const getProjectList = (portfolioGroupSlug: string) => {
 
 const menuItems = [...homepage, ...pages]
   .flatMap((page) => {
-
-
     if (page.data?.customNavigation?.discriminant) {
       // page has customNav;
       const customNav = page.data.customNavigation.value;
-    
+
       return customNav.map(
-        (customNavItem: { title: string; subItems: string }) => {
+        (customNavItem: { title: string; subItems: string }, itemIndex) => {
           const projects = getProjectList(customNavItem.subItems);
 
           const projectNavItems = projects.map(
@@ -54,7 +52,13 @@ const menuItems = [...homepage, ...pages]
 
           const workingSlug = page.slug === "index" ? "" : page.slug + "/";
           return {
-            url: "/" + workingSlug + "#section-" + customNavItem.subItems,
+            url:
+              "/" +
+              workingSlug +
+              (itemIndex === 0
+                ? "#main-content"
+                : "#section-" + customNavItem.subItems),
+
             title: customNavItem.title || page.data.title || "Home",
             showInMenu: true,
             subItems: projectNavItems,
