@@ -3,8 +3,8 @@
     "discriminant": "top",
     "value": {
       "u": "1712695511964",
-      "alwaysDropdown": true,
-      "hideBar": true
+      "alwaysDropdown": false,
+      "hideBar": false
     }
   },
   "appearance": {
