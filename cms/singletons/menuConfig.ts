@@ -44,6 +44,9 @@ export const menuConfig = singleton({
         }),
       }
     ),
+    appearance: fields.object({
+      blurBehind: fields.checkbox({ label: "Blur behind menu" }),
+    }),
     sizes: fields.object({
       topBarHeight: customFields.cssUnit({
         label: "minimum height for menu when it appears as a top bar",

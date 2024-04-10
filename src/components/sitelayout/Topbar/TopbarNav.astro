@@ -84,11 +84,12 @@ const fontSettings = fontRules(settings.menu.typography);
     display: flex;
     flex-direction: column;
     background-color: var(--menuDropdownColor);
-    overflow: hidden;
+    overflow: auto;
     z-index: -10;
     transform: none;
     transition: all 0.3s;
   }
+  
 
   .menu-submenu {
     overflow: hidden;
@@ -126,7 +127,7 @@ const fontSettings = fontRules(settings.menu.typography);
   }
   .menu-mobile-hidden {
     transform: translateY(-50px);
-  
+    overflow: hidden;
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s;

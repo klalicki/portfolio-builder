@@ -1,11 +1,14 @@
 ---
 import TopbarNav from "./TopbarNav.astro";
 import { settings } from "../../helpers/settingsHelper";
+const menuBg = settings.menu.position.value.hideBar
+  ? "transparent"
+  : settings.menu.colors.backgroundColor;
 ---
 
 <style
   define:vars={{
-    menuBackgroundColor: settings.menu.colors.backgroundColor,
+    menuBackgroundColor: menuBg,
     menuHeight: settings.menu.sizes.topBarHeight,
   }}
 >

@@ -7,11 +7,14 @@
       "hideBar": true
     }
   },
+  "appearance": {
+    "blurBehind": false
+  },
   "sizes": {
     "topBarHeight": "90px"
   },
   "colors": {
-    "backgroundColor": "#c7c7c700",
+    "backgroundColor": "#c7c7c7cc",
     "menuHoverColor": "#ff4b4bab",
     "dropdownColor": "#94eaffd9",
     "dropdownHoverColor": "#ffffff"
