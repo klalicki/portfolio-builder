@@ -3,6 +3,7 @@
     "discriminant": "top",
     "value": {
       "u": "1712695511964",
+      "menuBarText": "Your Name Here",
       "alwaysDropdown": false,
       "hideBar": false
     }
@@ -11,7 +12,8 @@
     "blurBehind": false
   },
   "sizes": {
-    "topBarHeight": "90px"
+    "topBarHeight": "90px",
+    "topBarPadding": "1rem"
   },
   "colors": {
     "backgroundColor": "#c7c7c7cc",

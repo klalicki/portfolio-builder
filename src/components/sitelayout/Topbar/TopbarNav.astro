@@ -16,6 +16,7 @@ is:global
     menuDropdownColor: settings.menu.colors.dropdownColor,
     mainHoverColor: settings.menu.colors.menuHoverColor,
     dropdownHoverColor: settings.menu.colors.dropdownHoverColor,
+    menuSidePadding:settings.menu.sizes.topBarPadding,
     ...fontSettings,
   }}
 >
@@ -64,6 +65,7 @@ is:global
     display: flex;
     align-items: center;
     padding: 0 0.5rem;
+    padding-left:var(--menuSidePadding);
   }
 
   .menu-main {
@@ -79,6 +81,7 @@ is:global
   .menu-main-group {
     position: fixed;
     top: var(--menuHeight);
+    padding-right: var(--menuSidePadding);
     left: 0px;
     right: 0px;
     bottom:0;
@@ -157,6 +160,7 @@ is:global
   .menu-hide-bar #menu-toggle{
     pointer-events: all;
   }
+
   .menu-hide-bar .menu-main-group{
     position: fixed;
     top:0;
@@ -259,11 +263,13 @@ is:global
     .menu-item:focus {
       background-color: var(--mainHoverColor);
     }
+
+  
   }</style>}
 
 <nav class:list={["menu-main",settings.menu.position.value.hideBar&&"menu-hide-bar"]}>
   {
-    settings.menu.position.value.menuBarText && (
+    settings.menu.position.value.menuBarText && !settings.menu.position.value.hideBar && (
       <div class="top-bar-text-wrapper">
         <p class="top-bar-text">{settings.menu.position.value.menuBarText}</p>
       </div>

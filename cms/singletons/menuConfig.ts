@@ -39,7 +39,7 @@ export const menuConfig = singleton({
           hideBar: fields.checkbox({
             label: "Hide Menu Bar",
             description:
-              "Hide the menu bar when in dropdown mode, leaving just the hamburger button",
+              "Hide the menu bar when in dropdown mode, leaving just the hamburger button. Note - make sure to also check 'Always Dropdown' if you're using this, or else it will get broken",
           }),
         }),
       }
@@ -52,6 +52,11 @@ export const menuConfig = singleton({
         label: "minimum height for menu when it appears as a top bar",
         defaultValue: "45px",
         limitUnits: ["px", "rem"],
+      }),
+      topBarPadding: customFields.cssUnit({
+        label: "Top Bar Side Padding",
+        description: "The empty space on either side of the top bar",
+        limitUnits: ["px", "rem", "em"],
       }),
       // hamburgerSize: customFields.cssUnit({ label: "Hamburger Button Size" }),
     }),
