@@ -3,13 +3,17 @@ import SidebarNav from "./SidebarNav.astro";
 import { settings } from "../../helpers/settingsHelper";
 ---
 
-<style define:vars={{ sidebarWidth: settings.menu.position.value.layout.width }}
+<style
+  define:vars={{
+    sidebarWidth: settings.menu.position.value.layout.width,
+    menuBackgroundColor: settings.menu.colors.backgroundColor,
+  }}
 >
   main {
     padding-top: 45px;
   }
   header {
-    background-color: lightblue;
+    background-color: var(--menuBackgroundColor);
     position: fixed;
     top: 0;
     left: 0;
@@ -44,7 +48,7 @@ import { settings } from "../../helpers/settingsHelper";
   <header>
     <SidebarNav />
   </header>
-  <main>
+  <main id="main-content">
     <slot />
   </main>
 </body>

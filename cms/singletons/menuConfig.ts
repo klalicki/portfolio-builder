@@ -6,6 +6,11 @@ export const menuConfig = singleton({
   format: { data: "json" },
   path: "src/settings/menu",
   schema: {
+    siteTitle: fields.text({
+      label: "Site Title",
+      description:
+        "This appears on all menu types at the top left of the menu area",
+    }),
     position: fields.conditional(
       fields.select({
         label: "Menu Position",
@@ -47,22 +52,30 @@ export const menuConfig = singleton({
         label: "minimum height for menu when it appears as a top bar",
         defaultValue: "45px",
         limitUnits: ["px", "rem"],
+        isCompact: true,
       }),
       topBarPadding: customFields.cssUnit({
         label: "Padding on sides of Top Bar",
         defaultValue: "0.5rem",
         limitUnits: ["px", "rem"],
+        isCompact: true,
+      }),
+      menuPadding: customFields.cssUnit({
+        label: "Padding around Menu Items",
+        defaultValue: "1rem",
+        limitUnits: ["px", "rem"],
+        isCompact: true,
       }),
       // hamburgerSize: customFields.cssUnit({ label: "Hamburger Button Size" }),
     }),
     colors: fields.object(
       {
         backgroundColor: customFields.colorPicker({
-          label: "Background Color",
+          label: "Side/Top bar Background",
           allowAlpha: true,
         }),
         menuHoverColor: customFields.colorPicker({
-          label: "Main Hover Color",
+          label: "Side/Top bar Hover",
           allowAlpha: true,
         }),
 

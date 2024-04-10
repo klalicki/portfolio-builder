@@ -1,10 +1,12 @@
 {
+  "siteTitle": "Your Name Here",
   "position": {
-    "discriminant": "top",
+    "discriminant": "side",
     "value": {
-      "u": "1712695511964",
-      "menuBarText": "A Designer",
-      "alwaysDropdown": false
+      "u": "1712753932685",
+      "layout": {
+        "width": "clamp(400px, 400px, 400px)"
+      }
     }
   },
   "appearance": {
@@ -12,7 +14,8 @@
   },
   "sizes": {
     "topBarHeight": "60px",
-    "topBarPadding": "1rem"
+    "topBarPadding": "3rem",
+    "menuPadding": "1rem"
   },
   "colors": {
     "backgroundColor": "#9cacff87",
