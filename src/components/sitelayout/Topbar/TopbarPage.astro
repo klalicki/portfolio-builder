@@ -8,6 +8,7 @@ import { settings } from "../../helpers/settingsHelper";
     menuBackgroundColor: settings.menu.colors.backgroundColor,
     menuHeight: settings.menu.sizes.topBarHeight,
     blurStyle: settings.menu.appearance.blurBehind ? "blur(10px)" : "none",
+    verticalPadding: settings.pageArea.padding.vertical,
   }}
 >
   body {
@@ -30,7 +31,7 @@ import { settings } from "../../helpers/settingsHelper";
     z-index: 10;
   }
   main {
-    padding-top: var(--menuHeight);
+    padding-top: calc(var(--menuHeight) + var(--verticalPadding));
   }
 </style>
 <body>

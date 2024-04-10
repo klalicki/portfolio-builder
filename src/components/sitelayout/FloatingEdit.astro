@@ -20,11 +20,11 @@ if (isHomepage) {
 <style>
   .floating-edit {
     font-size: 0.75rem;
-    position: relative;
-    height: 0;
-    top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+    position: fixed;
+
+    bottom: 1rem;
+    right: 1rem;
+
     text-align: right;
     z-index: 9999;
     pointer-events: none;
@@ -34,9 +34,11 @@ if (isHomepage) {
     padding: 0.5em;
     background-color: white;
     text-decoration: none;
-    border: 1px solid black;
+    border: 3px solid black;
+    color: black;
     border-radius: 0.5em;
     pointer-events: all;
+    font-size: 2rem;
   }
   .floating-edit a:hover {
     background-color: lightblue;
