@@ -27,9 +27,10 @@ if (images && images[imagePath]) {
 
 <script>
   import GLightbox from "glightbox";
+  const glb = GLightbox({});
   document.addEventListener("astro:page-load", () => {
     // This only runs once.
-    const glb = GLightbox({});
+    glb.reload();
   });
 </script>
 <style>
