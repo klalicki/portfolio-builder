@@ -36,11 +36,7 @@ export const menuConfig = singleton({
             description:
               "Use the mobile-style (hamburger) navigation regardless of screen size",
           }),
-          hideBar: fields.checkbox({
-            label: "Hide Menu Bar",
-            description:
-              "Hide the menu bar when in dropdown mode, leaving just the hamburger button",
-          }),
+          
         }),
       }
     ),
