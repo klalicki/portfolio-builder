@@ -7,10 +7,12 @@ import { settings } from "../../helpers/settingsHelper";
   define:vars={{
     sidebarWidth: settings.menu.position.value.layout.width,
     menuBackgroundColor: settings.menu.colors.backgroundColor,
+    menuHeight: settings.menu.sizes.topBarHeight,
+    blurStyle: settings.menu.appearance.blurBehind ? "blur(10px)" : "none",
   }}
 >
   main {
-    padding-top: 45px;
+    padding-top: var(--menuHeight);
   }
   header {
     background-color: var(--menuBackgroundColor);
@@ -18,11 +20,12 @@ import { settings } from "../../helpers/settingsHelper";
     top: 0;
     left: 0;
     right: 0;
-    height: 45px;
+    height: var(--menuHeight);
     display: flex;
     align-items: stretch;
     justify-content: stretch;
     z-index: 10;
+    backdrop-filter: var(--blurStyle);
   }
 
   @media screen and (min-width: 768px) {

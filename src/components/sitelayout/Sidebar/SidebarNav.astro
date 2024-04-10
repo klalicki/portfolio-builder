@@ -17,6 +17,7 @@ const fontSettings = fontRules(settings.menu.typography);
     menuDropdownColor: settings.menu.colors.dropdownColor,
     mainHoverColor: settings.menu.colors.menuHoverColor,
     dropdownHoverColor: settings.menu.colors.dropdownHoverColor,
+    subItemIndent: settings.menu.sizes.subItemIndent,
     blurStyle: settings.menu.appearance.blurBehind ? "blur(100px)" : "none",
     ...fontSettings,
   }}
@@ -107,12 +108,6 @@ const fontSettings = fontRules(settings.menu.typography);
     transform: none;
     transition: all 0.3s;
   }
-  .menu-mobile-hidden {
-    transform: translateY(-50px);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s;
-  }
 
   .menu-submenu {
     overflow: hidden;
@@ -120,9 +115,8 @@ const fontSettings = fontRules(settings.menu.typography);
   }
   .menu-submenu-item-wrapper {
     display: flex;
-
     flex-direction: column;
-    padding-left: 1rem;
+    padding-left: var(--subItemIndent);
     font-size: 0.75rem;
     gap: 0.25rem;
   }
@@ -139,10 +133,10 @@ const fontSettings = fontRules(settings.menu.typography);
     align-items: center;
     border: none;
     background: transparent;
-    width: calc(var(--menuHeight));
+    width: var(--menuHeight);
     align-self: stretch;
     min-height: var(--menuHeight);
-
+    flex-shrink: 0;
     /* aspect-ratio: 1/1; */
   }
   #menu-toggle span {
@@ -177,25 +171,16 @@ const fontSettings = fontRules(settings.menu.typography);
     height: 100%;
     z-index: 10;
   }
-  .menu-main-group {
-    position: fixed;
-    top: 45px;
-    left: 0px;
-    right: 0px;
-    display: flex;
-    flex-direction: column;
 
-    overflow: hidden;
-    z-index: -10;
-    transform: none;
+  .menu-mobile-hidden {
+    transform: translateX(50px);
+    opacity: 0;
+    pointer-events: none;
     transition: all 0.3s;
   }
   .menu-submenu {
     display: flex;
     flex-direction: column;
-    padding-left: 1rem;
-    font-size: 0.75rem;
-    gap: 0.25rem;
     overflow: hidden;
     z-index: -100;
   }

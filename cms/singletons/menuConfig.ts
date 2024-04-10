@@ -66,6 +66,10 @@ export const menuConfig = singleton({
         limitUnits: ["px", "rem"],
         isCompact: true,
       }),
+      subItemIndent: customFields.cssUnit({
+        label: "Sub-item Indent",
+        description: "Indent project pages when they are displayed",
+      }),
       // hamburgerSize: customFields.cssUnit({ label: "Hamburger Button Size" }),
     }),
     colors: fields.object(

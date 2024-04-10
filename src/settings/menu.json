@@ -14,8 +14,9 @@
   },
   "sizes": {
     "topBarHeight": "60px",
-    "topBarPadding": "3rem",
-    "menuPadding": "1rem"
+    "topBarPadding": "1rem",
+    "menuPadding": "1rem",
+    "subItemIndent": "0px"
   },
   "colors": {
     "backgroundColor": "#9cacff87",
@@ -31,8 +32,8 @@
       "fontSize": "1.5rem",
       "lineHeight": 1,
       "color": "#0a0057",
-      "marginTop": "0px",
-      "marginBottom": "0px"
+      "marginTop": "0.5rem",
+      "marginBottom": "0.5rem"
     },
     "menuSub": {
       "fontFamily": "fontStack1",
