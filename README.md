@@ -46,4 +46,8 @@ In the CMS, there are three types of pages you can edit. All three provide an ed
 
 This project uses a flexible system of pages and projects to organize content, focused around the organization needs of artists and designers. Here's how it works:
 
-- **Portfolio Groups**: This site allows you to organize your projects into groups. There is a default 'all' group that shows all projects, but you can create additional groups to organize your work. For example, you could have a group for 'Illustration' and a group for 'Design', or you could even create a custom group of projects that you want to share for a specific occasion.
+- **Portfolio Groups**: This site allows you to organize your projects into groups. There is a default 'all' group that shows all projects, but you can create additional groups to organize your work. For example, you could have a group for 'Illustration' and a group for 'Design', or you could even create a custom group of projects that you want to share for a specific occasion. In each portfolio group, you can select which projects you want to include, and the order in which they will be displayed. _Note: Creating a portfolio group doesn't automatically add it to the navigation menu. You will still need to add it in one or both of the following places:_
+
+  - **Portfolio View component**: This is the component you can place in a page to display a grid of projects. You can select which portfolio group to display, and customize the layout of the grid. You can place multiple Portfolio View components on a single page to show different groups of projects. _Note: This component is only available in Pages and the Homepage, not Projects_ 
+
+  - **Navigation Menu (Show Sub-items in Nav)**: If you want the portfolio items to show up in the site menu, you can check the 'Show Sub-items in Nav' box on a page, which will allow you to select one or multiple portfolio groups to show in the navigation menu.
