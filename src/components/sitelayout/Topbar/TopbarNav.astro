@@ -15,6 +15,7 @@ const fontSettings = fontRules(settings.menu.typography);
     menuDropdownColor: settings.menu.colors.dropdownColor,
     mainHoverColor: settings.menu.colors.menuHoverColor,
     dropdownHoverColor: settings.menu.colors.dropdownHoverColor,
+    blurStyle: settings.menu.appearance.blurBehind ? "blur(100px)" : "none",
     ...fontSettings,
   }}
 >
@@ -53,6 +54,7 @@ const fontSettings = fontRules(settings.menu.typography);
   .menu-item,
   .submenu-item {
     text-decoration: none;
+    display: block;
   }
   /* end type stuff */
 
@@ -80,7 +82,7 @@ const fontSettings = fontRules(settings.menu.typography);
     top: var(--menuHeight);
     left: 0px;
     right: 0px;
-  
+    max-height: calc(100vh - var(--menuHeight));
     display: flex;
     flex-direction: column;
     background-color: var(--menuDropdownColor);
@@ -89,7 +91,6 @@ const fontSettings = fontRules(settings.menu.typography);
     transform: none;
     transition: all 0.3s;
   }
-  
 
   .menu-submenu {
     overflow: hidden;
@@ -97,6 +98,7 @@ const fontSettings = fontRules(settings.menu.typography);
   }
   .menu-submenu-item-wrapper {
     display: flex;
+
     flex-direction: column;
     padding-left: 1rem;
     font-size: 0.75rem;
@@ -115,15 +117,14 @@ const fontSettings = fontRules(settings.menu.typography);
     align-items: center;
     border: none;
     background: transparent;
-    width:calc(var(--menuHeight));
-        align-self: stretch;
-        min-height: var(--menuHeight); 
+    width: calc(var(--menuHeight));
+    align-self: stretch;
+    min-height: var(--menuHeight);
 
     /* aspect-ratio: 1/1; */
   }
-  #menu-toggle span{
-    font-size:calc(var(--menuHeight) * .75);
-
+  #menu-toggle span {
+    font-size: calc(var(--menuHeight) * 0.75);
   }
   .menu-mobile-hidden {
     transform: translateY(-50px);
@@ -140,44 +141,43 @@ const fontSettings = fontRules(settings.menu.typography);
     background-color: var(--dropdownHoverColor);
   }
 
-    #menu-toggle:hover
-{
-  background-color: var(--mainHoverColor);
+  #menu-toggle:hover {
+    background-color: var(--mainHoverColor);
+  }
 
-}
+  #menu-toggle,
+  .menu-dropdown-button {
+    color: var(--menuMain-color);
+  }
 
-#menu-toggle, .menu-dropdown-button {
-  color: var(--menuMain-color)
-}
-
-.menu-hide-bar .menu-main-group{
-  pointer-events: all;
-}
-.menu-hide-bar .menu-mobile-hidden{
-  pointer-events: none;
-}
-  .menu-hide-bar #menu-toggle{
+  .menu-hide-bar .menu-main-group {
     pointer-events: all;
   }
-  .menu-hide-bar .menu-main-group{
+  .menu-hide-bar .menu-mobile-hidden {
+    pointer-events: none;
+  }
+  .menu-hide-bar #menu-toggle {
+    pointer-events: all;
+  }
+  .menu-hide-bar .menu-main-group {
     position: fixed;
-    top:0;
+    top: 0;
   }
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     .menu-switchable .menu-mobile-hidden {
       display: flex;
       opacity: 1;
       pointer-events: all;
       transform: none;
     }
-  .menu-switchable   #menu-toggle {
+    .menu-switchable #menu-toggle {
       display: none;
     }
- .menu-switchable.menu-main button {
+    .menu-switchable.menu-main button {
       display: inline;
     }
- .menu-switchable    .menu-main-group {
+    .menu-switchable .menu-main-group {
       display: flex;
       align-items: stretch;
       justify-content: flex-end;
@@ -190,58 +190,61 @@ const fontSettings = fontRules(settings.menu.typography);
       position: static;
       background: none;
     }
-   .menu-switchable.menu-main {
+    .menu-switchable.menu-main {
       flex-grow: 1;
       justify-content: space-between;
       position: relative;
       z-index: 100;
     }
 
-  .menu-switchable   .menu-submenu {
+    .menu-switchable .menu-submenu {
       position: absolute;
       overflow: hidden;
       top: 100%;
       transition: all 0.3s;
       gap: 1rem;
     }
-  .menu-switchable   .menu-submenu-item-wrapper {
-      display: inline-flex;
+    .menu-switchable .menu-submenu-item-wrapper {
+      display: flex;
       flex-direction: column;
-      padding: 0.5rem;
+      align-items: stretch;
+      padding: 0;
       transition: all 0.3s;
       background-color: var(--menuDropdownColor);
+      backdrop-filter: var(--blurStyle);
     }
-  .menu-switchable   .menu-submenu-item-wrapper a {
-      width: max-content;
+    .menu-switchable .menu-submenu-item-wrapper a {
+      padding: 0.5rem;
+      min-width: max-content;
     }
-  .menu-switchable   .dropdown-group {
+    .menu-switchable .dropdown-group {
       position: relative;
       display: flex;
       /* border: 1px solid red; */
     }
-  .menu-switchable   .dropdown-button-wrapper {
+    .menu-switchable .dropdown-button-wrapper {
       /* border: 1px solid red; */
       display: flex;
     }
-  .menu-switchable   .dropdown-button-wrapper a {
+    .menu-switchable .dropdown-button-wrapper a {
       align-self: center;
       padding: 3px;
     }
-  .menu-switchable   .menu-dropdown-button {
+    .menu-switchable .menu-dropdown-button {
       min-width: 30px;
       border: none;
       background-color: transparent;
     }
-   .menu-switchable  .dropdown-group-right .menu-submenu {
+    .menu-switchable .dropdown-group-right .menu-submenu {
       right: 0;
     }
-   .menu-switchable  .submenu-hidden {
+    .menu-switchable .submenu-hidden {
       height: 0px;
       opacity: 0;
       pointer-events: none;
       transition: all 0.3s;
     }
-   .menu-switchable  .submenu-hidden .menu-submenu-item-wrapper {
+    .menu-switchable .submenu-hidden .menu-submenu-item-wrapper {
       transform: translateY(-50px);
       height: 0px;
       opacity: 0;
@@ -249,20 +252,20 @@ const fontSettings = fontRules(settings.menu.typography);
       transition: all 0.3s;
     }
 
-   .menu-switchable  .menu-item:hover,
-   .menu-switchable  .menu-item:focus {
+    .menu-switchable .menu-item:hover,
+    .menu-switchable .menu-item:focus {
       background-color: var(--mainHoverColor);
     }
   }
 </style>
-{settings.menu.position.value.hideBar && (<style>
-  header{
-    pointer-events: none;
-  }
 
-  </style>)}
-
-<nav class:list={["menu-main",settings.menu.position.value.hideBar&&settings.menu.position.value.alwaysDropdown &&"menu-hide-bar", !settings.menu.position.value.alwaysDropdown&&'menu-switchable']}>
+<nav
+  class:list={[
+    "menu-main",
+    settings.menu.position.value.alwaysDropdown && "menu-hide-bar",
+    !settings.menu.position.value.alwaysDropdown && "menu-switchable",
+  ]}
+>
   {
     settings.menu.position.value.menuBarText && (
       <div class="top-bar-text-wrapper">

@@ -3,12 +3,12 @@
     "discriminant": "top",
     "value": {
       "u": "1712695511964",
-      "menuBarText": "what happens if you put a LOT of text in this field?",
-      "alwaysDropdown": true
+      "menuBarText": "your name here",
+      "alwaysDropdown": false
     }
   },
   "appearance": {
-    "blurBehind": false
+    "blurBehind": true
   },
   "sizes": {
     "topBarHeight": "90px"
