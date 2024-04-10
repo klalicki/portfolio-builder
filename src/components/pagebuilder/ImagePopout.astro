@@ -54,11 +54,87 @@ if (images && images[imagePath]) {
 
 <!-- you can use this style tag to style the lightbox popup -->
 <style is:global>
+  .glightbox-custom .gslide-description {
+    background: #fff;
+  }
+
+  .glightbox-custom .gdesc-inner {
+    padding: 22px 20px;
+  }
+
+  .glightbox-custom .gslide-title {
+    font-size: 1em;
+    font-weight: normal;
+    font-family: arial;
+    color: #000;
+    margin-bottom: 19px;
+    line-height: 1.4em;
+  }
+
+  .glightbox-custom .gslide-desc {
+    font-size: 0.86em;
+    margin-bottom: 0;
+    font-family: arial;
+    line-height: 1.4em;
+  }
+
+  .glightbox-custom .gslide-video {
+    background: #000;
+  }
+
+  .glightbox-custom .gprev,
+  .glightbox-custom .gnext,
+  .glightbox-custom .gclose {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+  }
+
+  .glightbox-custom .gprev path,
+  .glightbox-custom .gnext path,
+  .glightbox-custom .gclose path {
+    fill: #fff;
+  }
+
+  .glightbox-custom .gprev {
+    position: absolute;
+    top: -100%;
+    left: 30px;
+    width: 40px;
+    height: 50px;
+  }
+
+  .glightbox-custom .gnext {
+    position: absolute;
+    top: -100%;
+    right: 30px;
+    width: 40px;
+    height: 50px;
+  }
+
+  .glightbox-custom .gclose {
+    width: 35px;
+    height: 35px;
+    top: 15px;
+    right: 10px;
+    position: absolute;
+  }
+
+  .glightbox-custom .gclose svg {
+    width: 18px;
+    height: auto;
+  }
+
+  .glightbox-custom .gclose:hover {
+    opacity: 1;
+  }
   .glightbox-custom .gdesc-inner {
     background-color: white;
     padding: 1rem;
-    font-family: var(--p-fontFamily);
+
     font-style: italic;
+  }
+  .glightbox-custom .gdesc-inner .gslide-desc {
+    font-family: var(--p-fontFamily);
   }
 </style>
 

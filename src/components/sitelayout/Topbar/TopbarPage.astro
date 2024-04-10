@@ -1,16 +1,16 @@
 ---
 import TopbarNav from "./TopbarNav.astro";
 import { settings } from "../../helpers/settingsHelper";
+import { formatCssRules } from "../../helpers/formatCssRules";
+const cssRules = formatCssRules({
+  menuBackgroundColor: settings.menu.colors.backgroundColor,
+  menuHeight: settings.menu.sizes.topBarHeight,
+  blurStyle: settings.menu.appearance.blurBehind ? "blur(10px)" : "none",
+  verticalPadding: settings.pageArea.padding.vertical,
+});
 ---
 
-<style
-  define:vars={{
-    menuBackgroundColor: settings.menu.colors.backgroundColor,
-    menuHeight: settings.menu.sizes.topBarHeight,
-    blurStyle: settings.menu.appearance.blurBehind ? "blur(10px)" : "none",
-    verticalPadding: settings.pageArea.padding.vertical,
-  }}
->
+<style>
   body {
     padding: 0;
   }
@@ -34,7 +34,7 @@ import { settings } from "../../helpers/settingsHelper";
     padding-top: calc(var(--menuHeight) + var(--verticalPadding));
   }
 </style>
-<body>
+<body style={cssRules}>
   <header>
     <TopbarNav />
   </header>
