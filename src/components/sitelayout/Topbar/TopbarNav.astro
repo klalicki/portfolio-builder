@@ -145,9 +145,13 @@ const fontSettings = fontRules(settings.menu.typography);
 
 }
 
+
 .menu-hide-bar .menu-main-group{
-    pointer-events:initial;
-  }
+  pointer-events: all;
+}
+.menu-hide-bar .menu-mobile-hidden{
+  pointer-events: none;
+}
   .menu-hide-bar #menu-toggle{
     pointer-events: all;
   }
