@@ -34,7 +34,17 @@ export const standardComponents = {
             description: "An optional caption to display below the image. ",
             defaultValue: "",
           }),
-        })
+        }),
+        {
+          itemLabel(props) {
+            console.log(props);
+            return (
+              props.fields.caption.value ||
+              props.fields.altText.value ||
+              `Item ${props?.key}`
+            );
+          },
+        }
       ),
     },
     ContentView(props) {
@@ -66,9 +76,21 @@ export const standardComponents = {
 
       return (
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
-          {Object.values(imageDataUrl).map((url, index) => (
-            <img key={index} src={url} alt={`Image ${index}`} />
-          ))}
+          {Object.values(imageDataUrl).map((url, index) =>
+            url ? (
+              <img
+                style={{ aspectRatio: "3/2", objectFit: "cover" }}
+                key={index}
+                src={url}
+                alt={`Image ${index}`}
+              />
+            ) : (
+              <div>
+                The image has been placed. Once you save the page, you will see
+                it here.
+              </div>
+            )
+          )}
         </div>
       );
     },
