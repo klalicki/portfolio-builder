@@ -54,11 +54,12 @@ export const portfolioLayouts = singleton({
               description: "The minimum width the tiles will be",
               validation: { isRequired: true, max: 1200, min: 0 },
             }),
-            overlayPadding: customFields.cssUnit({
+            overlayInset: customFields.cssUnit({
               isCompact: true,
-              label: "Overlay Padding",
+              label: "Overlay Inset",
               defaultValue: "1rem",
             }),
+
             overlayColor: customFields.colorPicker({
               label: "Overlay Color",
               defaultValue: "#000000",
@@ -67,12 +68,18 @@ export const portfolioLayouts = singleton({
             useProjectColor: fields.checkbox({
               label: "Use Project Accent Color",
             }),
+            overlayPadding: customFields.cssUnit({
+              isCompact: true,
+              label: "Overlay Padding",
+              defaultValue: "1rem",
+            }),
+
             overlayOpacity: fields.number({
               label: "Overlay Opacity %",
               validation: { min: 0, max: 100 },
             }),
           },
-          { layout: [6, 6, 3, 3, 2, 4] }
+          { layout: [4, 3, 5, 3, 2, 4, 3] }
         ),
 
         typography: fields.object(

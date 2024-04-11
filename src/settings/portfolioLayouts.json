@@ -8,9 +8,10 @@
     "tiles": {
       "aspectRatio": "4/3",
       "minWidth": 400,
-      "overlayPadding": "2rem",
+      "overlayInset": "1rem",
       "overlayColor": "#000000",
       "useProjectColor": false,
+      "overlayPadding": "2rem",
       "overlayOpacity": 70
     },
     "typography": {
