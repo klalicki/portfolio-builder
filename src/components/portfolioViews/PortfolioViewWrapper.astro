@@ -43,14 +43,25 @@ if (!rawProjectSource) {
 // console.log("projectSource", projectSource);
 
 if (projectSource.discriminant === "selected") {
-  projectList = projectSource.value.map((slug: string) => {
-    return allProjects.find((project) => {
-      return project.slug === slug;
+  projectList = projectSource.value
+    .map((slug: string) => {
+      return allProjects.find((project) => {
+        return project.slug === slug;
+      });
+    })
+    .filter((item) => {
+      const isUnpublished = item.data.publishStatus === "unpublished";
+      return !isUnpublished;
     });
-  });
 } else {
   //@ts-ignore;
-  projectList = allProjects;
+  projectList = allProjects.filter((item) => {
+    const isHidden =
+      item.data.publishStatus === "unpublished" ||
+      item.data.publishStatus === "unlisted";
+
+    return !isHidden;
+  });
 }
 let validType: "cards" | "tiles" | "sbs" | "coolTiles" = "cards";
 if (Object.keys(componentMappings).includes(props.portfolioLayout)) {
