@@ -10,6 +10,7 @@ import { fields } from "@keystatic/core";
 import { CSSUnitEditor } from "../fields/cssUnit";
 import { useEffect, useId, useRef, useState } from "react";
 import { moveHorizontalIcon } from "@keystar/ui/icon/icons/moveHorizontalIcon";
+import { codeSquareIcon } from "@keystar/ui/icon/icons/codeSquareIcon";
 import { underlineIcon } from "@keystar/ui/icon/icons/underlineIcon";
 import { paintbrush2Icon } from "@keystar/ui/icon/icons/paintbrush2Icon";
 import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
@@ -322,6 +323,7 @@ export const standardComponents = {
   }),
   CodeEmbed: block({
     label: "HTML Embed",
+    icon: codeSquareIcon,
     schema: {
       content: customFields.codeEditor({
         label: "Code",
