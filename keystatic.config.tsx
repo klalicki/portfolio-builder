@@ -151,7 +151,7 @@ export default config({
         sortID: fields.number({
           label: "Sort ID",
           description:
-            "this number is used to figure out the order for the All Projects portfolio group",
+            "this number is used to figure out the order for the site menu",
         }),
         publishStatus: fields.select({
           label: "Published?",
@@ -242,7 +242,7 @@ export default config({
         sortID: fields.number({
           label: "Sort ID",
           description:
-            "this number is used to figure out the order for the All Projects portfolio group",
+            "this number is used to figure out the order for the site menu",
         }),
         customNavigation: customNavField,
 
