@@ -26,8 +26,7 @@ const overlayColor = colord(
   .toHex();
 ---
 
-<style define:vars={{ tileRatio: tileSettings.tiles.aspectRatio, overlayColor }}
->
+<style define:vars={{ overlayColor }}>
   .portfolio-tile {
     aspect-ratio: var(--tileRatio);
     position: relative;
@@ -62,7 +61,7 @@ const overlayColor = colord(
   }
   .tile-hover-panel-items {
     background-color: var(--overlayColor, rgba(0, 0, 0, 0.642));
-    padding: 0.5rem;
+    padding: var(--overlayPadding);
   }
   .tile-hover-panel-title {
     color: white;

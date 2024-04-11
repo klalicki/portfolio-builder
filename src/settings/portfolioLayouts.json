@@ -8,6 +8,7 @@
     "tiles": {
       "aspectRatio": "4/3",
       "minWidth": 400,
+      "overlayPadding": "2rem",
       "overlayColor": "#000000",
       "useProjectColor": false,
       "overlayOpacity": 70

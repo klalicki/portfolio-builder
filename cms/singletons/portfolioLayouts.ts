@@ -54,6 +54,11 @@ export const portfolioLayouts = singleton({
               description: "The minimum width the tiles will be",
               validation: { isRequired: true, max: 1200, min: 0 },
             }),
+            overlayPadding: customFields.cssUnit({
+              isCompact: true,
+              label: "Overlay Padding",
+              defaultValue: "1rem",
+            }),
             overlayColor: customFields.colorPicker({
               label: "Overlay Color",
               defaultValue: "#000000",
@@ -67,7 +72,7 @@ export const portfolioLayouts = singleton({
               validation: { min: 0, max: 100 },
             }),
           },
-          { layout: [6, 6, 3, 2, 7] }
+          { layout: [6, 6, 3, 3, 2, 4] }
         ),
 
         typography: fields.object(
@@ -81,7 +86,7 @@ export const portfolioLayouts = singleton({
       },
 
       {
-        label: "Cool Tile layout",
+        label: "'Cool Tile' Layout",
       }
     ),
     sideBySide: fields.object(
