@@ -68,13 +68,7 @@ export function cssFlex({
         if (maxValue !== targetValue) {
           setLimitMax(true);
         }
-        console.log({
-          minValue,
-          maxValue,
-          targetValue,
-          limitMax,
-          limitMin,
-        });
+        
       }, []);
 
       // useEffect hook to parse initial value and call onChange
