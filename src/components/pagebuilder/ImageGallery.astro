@@ -29,17 +29,19 @@ const { props } = Astro;
   }}
 >
   {
-    props.items.map((item) => {
-      return (
-        <ImagePopout
-          galleryID={galleryID}
-          altText={item.altText}
-          image={item.image}
-          caption={item.caption}
-          hideCaption={true}
-          forceAspectRatio={props.options.aspectRatio || "3/2"}
-        />
-      );
-    })
+    props.items.map(
+      (item: { altText: string; image: any; caption: string }) => {
+        return (
+          <ImagePopout
+            galleryID={galleryID}
+            altText={item.altText}
+            image={item.image}
+            caption={item.caption}
+            hideCaption={true}
+            forceAspectRatio={props.options.aspectRatio || "3/2"}
+          />
+        );
+      }
+    )
   }
 </div>

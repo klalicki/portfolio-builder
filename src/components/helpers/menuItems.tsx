@@ -45,7 +45,10 @@ const menuItems = [...homepage, ...pages]
       const customNav = page.data.customNavigation.value;
 
       return customNav.map(
-        (customNavItem: { title: string; subItems: string }, itemIndex) => {
+        (
+          customNavItem: { title: string; subItems: string },
+          itemIndex: number
+        ) => {
           const projects = getProjectList(customNavItem.subItems);
 
           const projectNavItems = projects
@@ -65,7 +68,7 @@ const menuItems = [...homepage, ...pages]
                 };
               }
             )
-            .filter((item) => {
+            .filter((item: { showInMenu: boolean }) => {
               return item.showInMenu;
             });
 

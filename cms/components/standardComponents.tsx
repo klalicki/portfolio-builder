@@ -69,6 +69,7 @@ export const standardComponents = {
             return (
               props.fields.caption.value ||
               props.fields.altText.value ||
+              // @ts-ignore
               `Item ${props?.key}`
             );
           },
@@ -76,10 +77,14 @@ export const standardComponents = {
       ),
     },
     ContentView(props) {
-      const [imageDataUrl, setImageDataUrl] = useState({});
+      const [imageDataUrl, setImageDataUrl] = useState<{
+        [key: string | number]: any;
+      }>({});
 
       const fetchImages = async () => {
-        const updatedImageDataUrl = {};
+        const updatedImageDataUrl: {
+          [key: string | number]: any;
+        } = {};
         for (const [index, item] of props.value.items.entries()) {
           if (item.image?.data) {
             const u8intArray = item.image.data;
@@ -217,6 +222,7 @@ export const standardComponents = {
             justifyContent: "flex-start",
             alignItems: "center",
             padding: "2rem",
+            // @ts-ignore
             color: props.value.showPanel.value?.textColor,
           }}
         >
@@ -475,10 +481,10 @@ export const standardComponents = {
       customCSS: customFields.codeEditor({ label: "Custom CSS Code" }),
     },
     ContentView(props) {
-      const divRef = useRef(null);
+      const divRef = useRef<HTMLDivElement>(null); // Add type assertion
       useEffect(() => {
         if (divRef.current) {
-          divRef.current?.setAttribute("style", props.value.customCSS);
+          divRef.current.setAttribute("style", props.value.customCSS); // Fix the problem
         }
       }, [props.value.customCSS]);
       return <div ref={divRef}>{props.children}</div>;

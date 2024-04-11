@@ -24,9 +24,14 @@ switch (settings.position.discriminant) {
   <script>
     // alert(buttons.length);
     const setChildrenHidden = (element: Element, isHidden: boolean) => {
-      Array.from(element.firstElementChild.children).forEach((item) => {
-        item.tabIndex = isHidden ? -1 : 0;
-      });
+      if (element.firstElementChild) {
+        Array.from(element.firstElementChild.children).forEach(
+          (item: Element) => {
+            // @ts-ignore
+            item.tabIndex = isHidden ? -1 : 0;
+          }
+        );
+      }
     };
     const hideAllMenus = () => {
       document.querySelectorAll(".menu-submenu").forEach((submenu) => {

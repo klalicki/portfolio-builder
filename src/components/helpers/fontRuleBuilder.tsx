@@ -1,6 +1,4 @@
-export const fontRules = (specs: {
-  [key: string]: { [key: string]: string };
-}) => {
+export const fontRules = (specs: { [key: string]: { [key: string]: any } }) => {
   const fontRules: { [key: string]: string } = {};
 
   const fontSpecs = specs;
