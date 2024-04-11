@@ -2,6 +2,6 @@
 const { props } = Astro;
 ---
 
-<div style={atob(props.customCSS)}>
+<div class:list={[props.customClass]} style={atob(props.customCSS)}>
   <slot />
 </div>

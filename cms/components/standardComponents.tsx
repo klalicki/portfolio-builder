@@ -511,6 +511,7 @@ export const standardComponents = {
     label: "Custom CSS Container",
     schema: {
       customCSS: customFields.codeEditor({ label: "Custom CSS Code" }),
+      customClass: customFields.customClass,
     },
     ContentView(props) {
       const divRef = useRef<HTMLDivElement>(null); // Add type assertion
