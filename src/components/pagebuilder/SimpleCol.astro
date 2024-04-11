@@ -17,6 +17,9 @@ const colWidth = (props.width / 12) * 100 + "%";
     }
   }
 </style>
-<div class="simple-col" style={{ "--colFlexBasis": colWidth }}>
+<div
+  class:list={["simple-col", props.customClass]}
+  style={{ "--colFlexBasis": colWidth }}
+>
   <slot />
 </div>

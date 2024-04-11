@@ -369,6 +369,7 @@ export const standardComponents = {
         validation: { isRequired: true, min: 2, max: 12 },
         defaultValue: 6,
       }),
+      customClass: customFields.customClass,
     },
     ContentView(props) {
       return (
