@@ -436,6 +436,7 @@ export const standardComponents = {
         description: "The gap between columns",
         defaultValue: "10px",
       }),
+      customClass: customFields.customClass,
     },
     ContentView(props) {
       const flexCSS = `
