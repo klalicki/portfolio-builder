@@ -32,6 +32,17 @@ Homepage: [http://localhost:4321](http://localhost:4321)
 
 It's most effective to have two browser windows open side by side, one for the Admin UI and one for the homepage. This way you can see changes in real-time as you make them in the Admin UI. The Admin UI does show a preview of content as you edit, but it's not 100% accurate to the live site.
 
+### Working in Git
+
+On this project, you will be working in Git, a version control system that allows you to keep track of changes to your site as you make them. This is important because it allows you to save your work, collaborate with others, and revert changes if something goes wrong.
+
+A 'commit' in Git is like a snapshot of your entire site at a specific point in time. You can make a commit whenever you want to save your work. It's a good idea to make a commit whenever you make a significant change, like adding a new page or editing a large block of text. If you make a change that completely breaks your site, you can revert to a previous commit to undo the changes. A commit is stored with a short message that describes the changes you made.
+
+To make a commit, you can use the Codespaces 'Source Control' panel on the left side. This panel shows all the files that have changed since the last commit. You don't need to worry about the list of files, just write a short message in the text box describing the changes you have made, and then click the checkmark button to commit. 
+
+Sometimes, the 'commit' button will change to a 'push' button. When you click 'push', it will send all your commits back to GitHub, and will cause the live site to update with your changes. Make sure to click 'push' when you are done working on your site for the day, so that your changes are saved and visible to others. 
+
+
 ## Editing Content
 
 In the CMS, there are three types of pages you can edit. All three provide an editor that allows you to add text, images, and other content to the page. You can also add special blocks, including column layouts, HTML embeds, and image galleries.

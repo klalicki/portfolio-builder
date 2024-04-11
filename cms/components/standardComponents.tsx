@@ -66,7 +66,6 @@ export const standardComponents = {
         {
           label: "Gallery Items",
           itemLabel(props) {
-            console.log(props);
             return (
               props.fields.caption.value ||
               props.fields.altText.value ||
