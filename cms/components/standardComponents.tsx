@@ -11,8 +11,32 @@ import { CSSUnitEditor } from "../fields/cssUnit";
 import { useEffect, useId, useRef, useState } from "react";
 import { Icon } from "@keystar/ui/icon";
 import { underlineIcon } from "@keystar/ui/icon/icons/underlineIcon";
+import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 
 export const standardComponents = {
+  FileLink: inline({
+    label: "Link to File",
+    icon: fileIcon,
+    schema: {
+      text: fields.text({ label: "Link text" }),
+      cssClass: fields.text({
+        label: "Custom CSS class",
+        description: "assign this element a CSS class to style yourself",
+      }),
+      filePath: fields.file({
+        label: "UploadFile",
+        directory: "public/files",
+        publicPath: "files",
+      }),
+    },
+    NodeView(props) {
+      return (
+        <a href={"#"} style={{ border: "1px dashed red" }}>
+          {props.value.text}
+        </a>
+      );
+    },
+  }),
   ImageGallery: block({
     label: "Image Gallery",
     schema: {

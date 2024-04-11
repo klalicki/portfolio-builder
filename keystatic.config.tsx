@@ -124,6 +124,8 @@ export default config({
             ...standardComponents,
           },
           options: {
+            table: false,
+
             image: {
               directory: "src/assets/images/pages",
               publicPath: "../../assets/images/pages/",
@@ -173,6 +175,8 @@ export default config({
             ...pageComponents,
           },
           options: {
+            table: false,
+
             image: {
               directory: "src/assets/images/pages",
               publicPath: "../../assets/images/pages/",
@@ -253,6 +257,8 @@ export default config({
             ...pageComponents,
           },
           options: {
+            table: false,
+
             image: {
               directory: "src/assets/images/pages",
               publicPath: "../../assets/images/pages/",

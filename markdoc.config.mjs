@@ -34,6 +34,14 @@ export default defineMarkdocConfig({
         customCSS: { type: String },
       },
     },
+    FileLink: {
+      render: component("./src/components/pagebuilder/FileLink.astro"),
+      attributes: {
+        text: { type: String },
+        cssClass: { type: String },
+        filePath: { type: String },
+      },
+    },
     Column: {
       render: component("./src/components/pagebuilder/Column.astro"),
       attributes: {
