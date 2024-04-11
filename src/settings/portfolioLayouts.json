@@ -6,7 +6,7 @@
       "fontStyle": "italic",
       "fontSize": "1.5rem",
       "lineHeight": 1.25,
-      "color": "#ffffff",
+      "color": "#0830fd",
       "marginTop": "0rem",
       "marginBottom": "0.25rem"
     },
@@ -16,7 +16,7 @@
       "fontStyle": "normal",
       "fontSize": "1rem",
       "lineHeight": 1.25,
-      "color": "#ffffff",
+      "color": "#000000",
       "marginTop": "0rem",
       "marginBottom": "0.25rem"
     },
@@ -26,7 +26,7 @@
       "fontStyle": "normal",
       "fontSize": "0.75rem",
       "lineHeight": 1.25,
-      "color": "#ffffff",
+      "color": "#000000",
       "marginTop": "0rem",
       "marginBottom": "0.25rem"
     }
@@ -41,8 +41,8 @@
       "aspectRatio": "4/3",
       "minWidth": 300,
       "overlayInset": "1rem",
-      "overlayColor": "#000000",
-      "useProjectColor": false,
+      "overlayColor": "#ffffff",
+      "useProjectColor": true,
       "overlayPadding": "2rem",
       "overlayOpacity": 70
     }
@@ -59,7 +59,7 @@
     },
     "image": {
       "aspectRatio": "3/2",
-      "imageBorderRadius": "0.25rem"
+      "borderRadius": "0.25rem"
     }
   },
   "sideBySide": {

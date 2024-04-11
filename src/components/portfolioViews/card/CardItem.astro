@@ -1,40 +1,76 @@
 ---
-import { getImage } from "astro:assets";
+import { Image } from "astro:assets";
 const { title, line2, line3, url, thumbnail, accent } = Astro.props;
 import { settings } from "../../helpers/settingsHelper";
 import { colord } from "colord";
 
 const tileSettings = settings.portfolioLayouts.coolTile;
-let fancyImage = { src: "" };
-if (thumbnail) {
-  const imageProps = await getImage({
-    src: thumbnail,
-  });
-  // console.log(imageProps);
-  const srcRatio = imageProps.attributes.width / imageProps.attributes.height;
-  const neededWidth = srcRatio * tileSettings.tiles.minWidth * 2;
-
-  fancyImage = await getImage({
-    src: thumbnail,
-    width: neededWidth,
-  });
-}
-const overlayColor = colord(
-  tileSettings.tiles.useProjectColor ? accent : tileSettings.tiles.overlayColor
-)
-  .alpha(tileSettings.tiles.overlayOpacity / 100)
-  .toHex();
 ---
 
-<style></style>
+<style>
+  .portfolio-card {
+    padding: var(--cardPadding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--cardGap);
+    background-color: var(--cardBGColor);
+    border-radius: var(--cardBorderRadius);
+    transition: all 0.3s;
+  }
+  .portfolio-card:hover {
+    background-color: var(--cardHoverColor);
+  }
+  .card-image {
+    aspect-ratio: var(--cardAspectRatio);
+  }
+
+  .card-text-panel-title {
+    font-family: var(--title-fontFamily);
+    font-size: var(--title-fontSize);
+    font-weight: var(--title-fontWeight);
+    font-style: var(--title-fontStyle);
+    margin-top: var(--title-marginTop);
+    margin-bottom: var(--title-marginBottom);
+    color: var(--title-color);
+    line-height: var(--title-lineHeight);
+    text-decoration: none;
+  }
+  .card-text-panel-line2 {
+    font-family: var(--line2-fontFamily);
+    font-size: var(--line2-fontSize);
+    font-weight: var(--line2-fontWeight);
+    font-style: var(--line2-fontStyle);
+
+    margin-top: var(--line2-marginTop);
+    margin-bottom: var(--line2-marginBottom);
+    color: var(--line2-color);
+    line-height: var(--line2-lineHeight);
+  }
+  .card-text-panel-line3 {
+    font-family: var(--line3-fontFamily);
+    font-size: var(--line3-fontSize);
+    font-weight: var(--line3-fontWeight);
+    font-style: var(--line3-fontStyle);
+
+    margin-top: var(--line3-marginTop);
+    margin-bottom: var(--line3-marginBottom);
+    color: var(--line3-color);
+    line-height: var(--line3-lineHeight);
+  }
+</style>
 
 <article class="portfolio-card">
-  <div class="tile-hover-panel">
-    <div class="tile-hover-panel-items">
-      <a class="tile-hover-panel-title" href={url}>{title}</a>
-      {line2 && <p class="tile-hover-panel-line2">{line2}</p>}
-      {line3 && <p class="tile-hover-panel-line3">{line3}</p>}
-    </div>
+  {
+    thumbnail ? (
+      <Image src={thumbnail} class={"card-image"} alt="" />
+    ) : (
+      <div class="card-image" />
+    )
+  }
+  <div class="card-text-panel">
+    <a class="card-text-panel-title" href={url}>{title}</a>
+    {line2 && <p class="card-text-panel-line2">{line2}</p>}
+    {line3 && <p class="card-text-panel-line3">{line3}</p>}
   </div>
 </article>
 
