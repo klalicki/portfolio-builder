@@ -16,18 +16,31 @@ const tileSettings = settings.portfolioLayouts.coolTile;
     background-color: var(--cardBGColor);
     border-radius: var(--cardBorderRadius);
     transition: all 0.3s;
+    position: relative;
   }
   .portfolio-card:hover {
     background-color: var(--cardHoverColor);
   }
   .card-image {
     aspect-ratio: var(--imgAspectRatio);
+    position: relative;
     object-fit: cover;
     background-color: var(--cardHoverColor);
     border-radius: var(--imgBorderRadius);
+    pointer-events: none;
   }
   .card-text-panel {
     padding: var(--textAreaPadding);
+  }
+
+  .card-link::after {
+    position: absolute;
+    border-radius: var(--cardBorderRadius);
+    content: "";
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
   }
 
   .card-text-panel-title {
@@ -74,7 +87,7 @@ const tileSettings = settings.portfolioLayouts.coolTile;
     )
   }
   <div class="card-text-panel">
-    <a class="card-text-panel-title" href={url}>{title}</a>
+    <a class="card-text-panel-title card-link" href={url}>{title}</a>
     {line2 && <p class="card-text-panel-line2">{line2}</p>}
     {line3 && <p class="card-text-panel-line3">{line3}</p>}
   </div>
