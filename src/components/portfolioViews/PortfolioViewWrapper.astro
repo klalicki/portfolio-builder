@@ -11,12 +11,15 @@ import SBSContainer from "./sideBySide/SBSContainer.astro";
 import SBSItem from "./sideBySide/SBSItem.astro";
 import CoolTileContainer from "./coolTile/CoolTileContainer.astro";
 import CoolTileItem from "./coolTile/CoolTileItem.astro";
+import WideCardContainer from "./wideCard/WideCardContainer.astro";
+import WideCardItem from "./wideCard/WideCardItem.astro";
 
 const componentMappings = {
   cards: { Container: CardContainer, Item: CardItem },
   tiles: { Container: TileContainer, Item: TileItem },
   sbs: { Container: SBSContainer, Item: SBSItem },
   coolTiles: { Container: CoolTileContainer, Item: CoolTileItem },
+  wideCards: { Container: WideCardContainer, Item: WideCardItem },
 };
 
 let projectList: {
@@ -63,7 +66,7 @@ if (projectSource.discriminant === "selected") {
     return !isHidden;
   });
 }
-let validType: "cards" | "tiles" | "sbs" | "coolTiles" = "cards";
+let validType: "cards" | "tiles" | "sbs" | "coolTiles" | "wideCards" = "cards";
 if (Object.keys(componentMappings).includes(props.portfolioLayout)) {
   validType = props.portfolioLayout;
 }

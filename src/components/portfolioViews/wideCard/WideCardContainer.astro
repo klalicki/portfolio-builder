@@ -1,0 +1,45 @@
+---
+const { props } = Astro;
+import { settings } from "../../helpers/settingsHelper";
+const cardSettings = settings.portfolioLayouts.card;
+import { fontRules } from "../../helpers/fontRuleBuilder";
+// @ts-ignore
+const rules = fontRules(settings.portfolioLayouts.typography);
+import { formatCssRules } from "../../helpers/formatCssRules";
+
+const cardRules = formatCssRules({
+  containerPadding: settings.portfolioLayouts.container.padding,
+  containerGap: settings.portfolioLayouts.container.gap,
+  containerWidth: settings.portfolioLayouts.container.width,
+
+  minCardWidth: cardSettings.card.minWidth + "px",
+  cardBorderRadius: cardSettings.card.borderRadius,
+  cardPadding: cardSettings.card.padding,
+  textAreaPadding: cardSettings.card.textPadding,
+  cardGap: cardSettings.card.cardGap,
+  cardBGColor: cardSettings.card.bgColor,
+  cardHoverColor: cardSettings.card.hoverColor,
+
+  imgAspectRatio: cardSettings.image.aspectRatio,
+  imgBorderRadius: cardSettings.image.borderRadius,
+
+  ...rules,
+});
+---
+
+<style>
+  .tile-container {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(var(--minCardWidth), 100%), 1fr)
+    );
+    gap: var(--containerGap);
+    padding: var(--containerPadding);
+    max-width: var(--containerWidth);
+  }
+</style>
+
+<div id={props.containerId} class="tile-container" style={cardRules}>
+  <slot />
+</div>

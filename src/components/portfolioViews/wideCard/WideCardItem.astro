@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+const { title, line2, line3, url, thumbnail, accent } = Astro.props;
+import { settings } from "../../helpers/settingsHelper";
+import { colord } from "colord";
+
+const tileSettings = settings.portfolioLayouts.coolTile;
+---
+
+<style>
+  .portfolio-card {
+    padding: var(--cardPadding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--cardGap);
+    background-color: var(--cardBGColor);
+    border-radius: var(--cardBorderRadius);
+    transition: all 0.3s;
+    position: relative;
+  }
+  .portfolio-card:hover {
+    background-color: var(--cardHoverColor);
+  }
+  .card-image {
+    aspect-ratio: var(--imgAspectRatio);
+    position: relative;
+    object-fit: cover;
+    background-color: var(--cardHoverColor);
+    border-radius: var(--imgBorderRadius);
+    pointer-events: none;
+  }
+  .card-text-panel {
+    padding: var(--textAreaPadding);
+  }
+
+  .card-link::after {
+    position: absolute;
+    border-radius: var(--cardBorderRadius);
+    content: "";
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+  }
+
+  .card-text-panel-title {
+    font-family: var(--title-fontFamily);
+    font-size: var(--title-fontSize);
+    font-weight: var(--title-fontWeight);
+    font-style: var(--title-fontStyle);
+    margin-top: var(--title-marginTop);
+    margin-bottom: var(--title-marginBottom);
+    color: var(--title-color);
+    line-height: var(--title-lineHeight);
+    text-decoration: none;
+  }
+  .card-text-panel-line2 {
+    font-family: var(--line2-fontFamily);
+    font-size: var(--line2-fontSize);
+    font-weight: var(--line2-fontWeight);
+    font-style: var(--line2-fontStyle);
+
+    margin-top: var(--line2-marginTop);
+    margin-bottom: var(--line2-marginBottom);
+    color: var(--line2-color);
+    line-height: var(--line2-lineHeight);
+  }
+  .card-text-panel-line3 {
+    font-family: var(--line3-fontFamily);
+    font-size: var(--line3-fontSize);
+    font-weight: var(--line3-fontWeight);
+    font-style: var(--line3-fontStyle);
+
+    margin-top: var(--line3-marginTop);
+    margin-bottom: var(--line3-marginBottom);
+    color: var(--line3-color);
+    line-height: var(--line3-lineHeight);
+  }
+</style>
+
+<article class="portfolio-card">
+  {
+    thumbnail ? (
+      <Image src={thumbnail} class={"card-image"} alt="" />
+    ) : (
+      <div class="card-image" />
+    )
+  }
+  <div class="card-text-panel">
+    <a class="card-text-panel-title card-link" href={url}>{title}</a>
+    {line2 && <p class="card-text-panel-line2">{line2}</p>}
+    {line3 && <p class="card-text-panel-line3">{line3}</p>}
+  </div>
+</article>
+
+<!-- 
+  watch this youtube video:
+  https://www.youtube.com/watch?v=5DEq5cWNYt8
+ -->

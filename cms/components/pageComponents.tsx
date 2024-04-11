@@ -16,6 +16,7 @@ export const pageComponents = {
         options: [
           { label: "Cards", value: "cards" },
           { label: "Tiles", value: "tiles" },
+          { label: "Wide Cards", value: "wideCards" },
           { label: "Side by Side", value: "sbs" },
           { label: "Cool Tiles", value: "coolTiles" },
         ],

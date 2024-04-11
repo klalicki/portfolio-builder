@@ -102,45 +102,48 @@ export const portfolioLayouts = singleton({
     ),
     card: fields.object(
       {
-        card: fields.object({
-          minWidth: fields.number({
-            label: "Min Card Width (px)",
-            description: "The minimum width the tiles will be",
-            validation: { isRequired: true, max: 1200, min: 0 },
-          }),
-          borderRadius: customFields.cssUnit({
-            isCompact: true,
-            label: "Image Rounded Corners",
-            defaultValue: "1rem",
-            limitUnits: ["px", "rem", "em"],
-          }),
-          padding: customFields.cssUnit({
-            isCompact: true,
-            label: "Card Padding",
-            defaultValue: "1rem",
-            limitUnits: ["px", "rem", "em"],
-          }),
-          textPadding: customFields.cssUnit({
-            isCompact: true,
-            label: "Text Area Padding",
-            defaultValue: "1rem",
-            limitUnits: ["px", "rem", "em"],
-          }),
-          cardGap: customFields.cssUnit({
-            isCompact: true,
-            label: "Gap between Image and Text Area",
-            defaultValue: "1rem",
-            limitUnits: ["px", "rem", "em"],
-          }),
-          bgColor: customFields.colorPicker({
-            label: "Card Background Color",
-            compact: true,
-          }),
-          hoverColor: customFields.colorPicker({
-            label: "Card Hover Color",
-            compact: true,
-          }),
-        }),
+        card: fields.object(
+          {
+            minWidth: fields.number({
+              label: "Min Card Width (px)",
+
+              validation: { isRequired: true, max: 1200, min: 0 },
+            }),
+            borderRadius: customFields.cssUnit({
+              isCompact: true,
+              label: "Card Rounded Corners",
+              defaultValue: "1rem",
+              limitUnits: ["px", "rem", "em"],
+            }),
+            padding: customFields.cssUnit({
+              isCompact: true,
+              label: "Card Padding",
+              defaultValue: "1rem",
+              limitUnits: ["px", "rem", "em"],
+            }),
+            textPadding: customFields.cssUnit({
+              isCompact: true,
+              label: "Text Area Padding",
+              defaultValue: "1rem",
+              limitUnits: ["px", "rem", "em"],
+            }),
+            cardGap: customFields.cssUnit({
+              isCompact: true,
+              label: "Gap between Image/Text",
+              defaultValue: "1rem",
+              limitUnits: ["px", "rem", "em"],
+            }),
+            bgColor: customFields.colorPicker({
+              label: "Card Background Color",
+              compact: true,
+            }),
+            hoverColor: customFields.colorPicker({
+              label: "Card Hover Color",
+              compact: true,
+            }),
+          },
+          { layout: [3, 3, 6, 3, 3, 3, 3] }
+        ),
         image: fields.object({
           aspectRatio: fields.text({
             label: "Image Aspect Ratio",
