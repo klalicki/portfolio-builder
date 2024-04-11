@@ -84,6 +84,11 @@ export default config({
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
+        sortID: fields.number({
+          label: "Sort ID",
+          description:
+            "this number is used to figure out the order for the All Projects portfolio group",
+        }),
         hideTitle: fields.checkbox({
           label: "Hide Title",
           defaultValue: false,
@@ -143,8 +148,11 @@ export default config({
           description:
             "Remove default title element from this page (make sure to include a Heading 1 near the top of the page for accessibility!)",
         }),
-        line2: fields.text({ label: "Line 2 text for portfolio views" }),
-        line3: fields.text({ label: "Line 3 text for portfolio views" }),
+        sortID: fields.number({
+          label: "Sort ID",
+          description:
+            "this number is used to figure out the order for the All Projects portfolio group",
+        }),
         publishStatus: fields.select({
           label: "Published?",
           description:
@@ -230,6 +238,11 @@ export default config({
           defaultValue: false,
           description:
             "Remove default title element from this page (make sure to include a Heading 1 near the top of the page for accessibility!)",
+        }),
+        sortID: fields.number({
+          label: "Sort ID",
+          description:
+            "this number is used to figure out the order for the All Projects portfolio group",
         }),
         customNavigation: customNavField,
 

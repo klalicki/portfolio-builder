@@ -149,14 +149,14 @@ declare module 'astro:content' {
   slug: "a-hidden-page";
   body: string;
   collection: "pages";
-  data: any
+  data: InferEntrySchema<"pages">
 } & { render(): Render[".mdoc"] };
 "about.mdoc": {
 	id: "about.mdoc";
   slug: "about";
   body: string;
   collection: "pages";
-  data: any
+  data: InferEntrySchema<"pages">
 } & { render(): Render[".mdoc"] };
 };
 "portfolioGroups": {
@@ -165,14 +165,14 @@ declare module 'astro:content' {
   slug: "all";
   body: string;
   collection: "portfolioGroups";
-  data: any
+  data: InferEntrySchema<"portfolioGroups">
 } & { render(): Render[".mdoc"] };
 "custom-group.mdoc": {
 	id: "custom-group.mdoc";
   slug: "custom-group";
   body: string;
   collection: "portfolioGroups";
-  data: any
+  data: InferEntrySchema<"portfolioGroups">
 } & { render(): Render[".mdoc"] };
 };
 "projects": {
@@ -181,49 +181,49 @@ declare module 'astro:content' {
   slug: "an-actual-design-project";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "data-sphere-innovations.mdoc": {
 	id: "data-sphere-innovations.mdoc";
   slug: "data-sphere-innovations";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "eco-essence.mdoc": {
 	id: "eco-essence.mdoc";
   slug: "eco-essence";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "formatting-test.mdoc": {
 	id: "formatting-test.mdoc";
   slug: "formatting-test";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "unlisted-project.mdoc": {
 	id: "unlisted-project.mdoc";
   slug: "unlisted-project";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "unpublished-page.mdoc": {
 	id: "unpublished-page.mdoc";
   slug: "unpublished-page";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 "you-wouldn-t-download-a-hedgehog.mdoc": {
 	id: "you-wouldn-t-download-a-hedgehog.mdoc";
   slug: "you-wouldn-t-download-a-hedgehog";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
 };
 
@@ -235,5 +235,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("../src/content/config.js");
 }
