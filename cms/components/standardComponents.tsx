@@ -342,7 +342,7 @@ export const standardComponents = {
         max: 5,
       },
     },
-    schema: {},
+    schema: { customClass: customFields.customClass },
     ContentView(props) {
       return (
         <div
