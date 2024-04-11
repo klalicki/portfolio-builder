@@ -2,9 +2,28 @@
 
 A portfolio builder/static site generator built with Keystatic CMS and Astro.
 
+## GitHub Pages vs Netlify
+
+This project is designed to be deployed GitHub Pages, a free hosting platform that is integrated with GitHub. Because of the structure of this site, it is only able to be deployed to the root of a GitHub Pages site, and not to a subdirectory. This means that if you want to host this site on GitHub Pages, you will need to give your repository the name `username.github.io`, where `username` is your GitHub username. You can then deploy this site to that repository.
+
+If you already have a site hosted at 'username.github.io', you can still use this project by deploying it to Netlify, a free hosting platform that has similar features. 
+
 ## Getting Started
 
+### GitHub Pages
+
 To start, make a copy of this repository by clicking the "Use this template" button. This will create a new repository in your account with the same files and folders as this one. 
+
+You will need to rename the repository to `username.github.io`, where `username` is your GitHub username.
+
+### Netlify
+
+Create an account on Netlify, and connect your GitHub Account.
+Then, click this button to automatically create and deploy a copy of this site:
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/klalicki/portfolio-builder)
+
+
 
 Then, open the repository in GitHub Codespaces by clicking the "Code" button and selecting "Open with Codespaces". This will open the repository in a new Codespaces environment, a cloud-based editor that has everything you need to build and run the project.
 

@@ -1,12 +1,10 @@
 {
   "siteTitle": "Your Name Here",
   "position": {
-    "discriminant": "side",
+    "discriminant": "top",
     "value": {
-      "u": "1712808515093",
-      "layout": {
-        "width": "clamp(35%, 35%, 35%)"
-      }
+      "u": "1712840379550",
+      "alwaysDropdown": false
     }
   },
   "appearance": {
@@ -20,9 +18,9 @@
   },
   "colors": {
     "backgroundColor": "#9cacff87",
-    "menuHoverColor": "#8f91ffe3",
+    "menuHoverColor": "#ffffff80",
     "dropdownColor": "#0a0057ed",
-    "dropdownHoverColor": "#4533d3ed"
+    "dropdownHoverColor": "#ffffff80"
   },
   "typography": {
     "menuMain": {

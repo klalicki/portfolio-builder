@@ -6,7 +6,7 @@
       "fontStyle": "italic",
       "fontSize": "1.5rem",
       "lineHeight": 1.25,
-      "color": "#0830fd",
+      "color": "#001ca8",
       "marginTop": "0rem",
       "marginBottom": "0.25rem"
     },
@@ -42,7 +42,7 @@
       "minWidth": 300,
       "overlayInset": "1rem",
       "overlayColor": "#ffffff",
-      "useProjectColor": true,
+      "useProjectColor": false,
       "overlayPadding": "2rem",
       "overlayOpacity": 70
     }
