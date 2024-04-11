@@ -21,7 +21,13 @@ const tileSettings = settings.portfolioLayouts.coolTile;
     background-color: var(--cardHoverColor);
   }
   .card-image {
-    aspect-ratio: var(--cardAspectRatio);
+    aspect-ratio: var(--imgAspectRatio);
+    object-fit: cover;
+    background-color: var(--cardHoverColor);
+    border-radius: var(--imgBorderRadius);
+  }
+  .card-text-panel {
+    padding: var(--textAreaPadding);
   }
 
   .card-text-panel-title {
