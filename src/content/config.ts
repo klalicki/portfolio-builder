@@ -9,6 +9,7 @@ const projectCollection = defineCollection({
       hideTitle: z.optional(z.boolean()),
       thumbnail: image().optional(),
       accent: z.string(),
+      publishStatus: z.string().optional(),
     }),
 });
 

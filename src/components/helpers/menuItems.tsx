@@ -37,9 +37,9 @@ const menuItems = [...homepage, ...pages]
       page.data.publishStatus === "unlisted" ||
       page.data.publishStatus === "unpublished"
     ) {
-      return {};
+      return [];
     }
-    console.log(page);
+    // console.log(page);
     if (page.data?.customNavigation?.discriminant) {
       // page has customNav;
       const customNav = page.data.customNavigation.value;
@@ -48,14 +48,26 @@ const menuItems = [...homepage, ...pages]
         (customNavItem: { title: string; subItems: string }, itemIndex) => {
           const projects = getProjectList(customNavItem.subItems);
 
-          const projectNavItems = projects.map(
-            (project: { data: { title: string }; slug: string }) => {
-              return {
-                title: project.data.title,
-                url: "/projects/" + project.slug + "/",
-              };
-            }
-          );
+          const projectNavItems = projects
+            .map(
+              (project: {
+                data: { title: string; publishStatus: string };
+                slug: string;
+              }) => {
+                const hideProject =
+                  project.data.publishStatus === "unlisted" ||
+                  project.data.publishStatus === "unpublished";
+
+                return {
+                  title: project.data.title,
+                  showInMenu: !hideProject,
+                  url: "/projects/" + project.slug + "/",
+                };
+              }
+            )
+            .filter((item) => {
+              return item.showInMenu;
+            });
 
           const workingSlug = page.slug === "index" ? "" : page.slug + "/";
           return {
@@ -94,5 +106,6 @@ const menuItems = [...homepage, ...pages]
   .filter((page) => {
     return page.showInMenu;
   });
+console.log(menuItems);
 
 export default menuItems;

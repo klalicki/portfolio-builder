@@ -176,13 +176,6 @@ declare module 'astro:content' {
   collection: "projects";
   data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
-"custom-html-page.mdoc": {
-	id: "custom-html-page.mdoc";
-  slug: "custom-html-page";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".mdoc"] };
 "eco-essence.mdoc": {
 	id: "eco-essence.mdoc";
   slug: "eco-essence";
@@ -197,9 +190,16 @@ declare module 'astro:content' {
   collection: "projects";
   data: InferEntrySchema<"projects">
 } & { render(): Render[".mdoc"] };
-"project-3.mdoc": {
-	id: "project-3.mdoc";
-  slug: "project-3";
+"unlisted-project.mdoc": {
+	id: "unlisted-project.mdoc";
+  slug: "unlisted-project";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdoc"] };
+"unpublished-page.mdoc": {
+	id: "unpublished-page.mdoc";
+  slug: "unpublished-page";
   body: string;
   collection: "projects";
   data: InferEntrySchema<"projects">
