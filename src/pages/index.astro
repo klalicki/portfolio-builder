@@ -10,5 +10,6 @@ const { Content } = await page.render();
 ---
 
 <Layout title={page.data.title || "Home"}>
+  {!page.data.hideTitle && <h1>{page.data.title}</h1>}
   <Content />
 </Layout>

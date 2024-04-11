@@ -244,7 +244,12 @@ fontSpecSets.forEach((pair) => {
         color: var(--font-color-override, --p-color);
         line-height: var(--p-lineHeight);
       }
-
+      .unstyled-link {
+        text-decoration: none;
+      }
+      .unstyled-link:visited {
+        color: inital;
+      }
       *:first-child {
         margin-top: 0;
       }
