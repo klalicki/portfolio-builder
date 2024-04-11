@@ -26,7 +26,7 @@ Go to 'Actions' in the top tab bar, click 'Deploy Astro site to Pages' on the le
 
 To start, make a copy of this repository by clicking the "Use this template" button. This will create a new repository in your account with the same files and folders as this one. 
 
-Create an account on Netlify if you don't already have one. On the Netlify dashboard, under 'Sites', click 'Add new site', then 'Import an existing project'.Click 'Deploy with  GitHub' - it will ask you to authorize Netlify to access your GitHub account.
+Create an account on Netlify if you don't already have one. On the Netlify dashboard, under 'Sites', click 'Add new site', then 'Import an existing project'. Click 'Deploy with  GitHub' - it will ask you to authorize Netlify to access your GitHub account.
 
 Select your repository from the list of repositories. On the next page, you can set a site name - this will become part of your site's URL as sitename.netlify.app. You can change this later as well.
 
