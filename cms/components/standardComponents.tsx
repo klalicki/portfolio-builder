@@ -504,6 +504,7 @@ export const standardComponents = {
         label: "Max Width",
         defaultValue: "100vw",
       }),
+      customClass: customFields.customClass,
     },
   }),
   CustomCSSWrapper: wrapper({

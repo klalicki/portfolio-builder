@@ -1,8 +1,8 @@
 ---
-const {props}=Astro;
-const {width}=props
-
+const { props } = Astro;
+const { width } = props;
 ---
-<div style={{maxWidth:width}}>
-<slot />
+
+<div style={{ maxWidth: width }} class:list={[props.customClass]}>
+  <slot />
 </div>
