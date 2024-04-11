@@ -7,6 +7,7 @@ import {
   BlockWrapper,
 } from "@keystatic/core";
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
+import { Icon } from "@keystar/ui/icon";
 
 import { portfolioLayouts } from "./cms/singletons/portfolioLayouts";
 import { menuConfig } from "./cms/singletons/menuConfig";
@@ -18,6 +19,7 @@ import { fonts } from "./cms/singletons/fonts";
 import * as customFields from "./cms/fields";
 import { standardComponents } from "./cms/components/standardComponents";
 import { pageComponents } from "./cms/components/pageComponents";
+import { hammerIcon } from "@keystar/ui/icon/icons/hammerIcon";
 
 const customNavField = fields.conditional(
   fields.checkbox({
@@ -51,6 +53,12 @@ const customNavField = fields.conditional(
 
 export default config({
   ui: {
+    brand: {
+      name: "portfolio-builder",
+      mark: () => {
+        return <Icon src={hammerIcon} />;
+      },
+    },
     navigation: {
       Content: ["projects", "pages", "homepage", "portfolioGroups"],
       Settings: ["menu", "general"],
