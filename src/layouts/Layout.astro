@@ -104,6 +104,15 @@ fontSpecSets.forEach((pair) => {
         max-width: var(--maxPageContentWidth);
         overflow-wrap: break-word;
       }
+      main ul,
+      main ol {
+        padding: 0 calc(2rem + var(--standardPadding));
+      }
+      ul,
+      li {
+        margin-bottom: 0.5rem;
+        line-height: var(--p-lineHeight);
+      }
       .md-default-image {
         max-width: var(--maxImageWidth);
       }
@@ -233,6 +242,7 @@ fontSpecSets.forEach((pair) => {
         color: var(--font-color-override, --p-color);
         line-height: var(--p-lineHeight);
       }
+
       *:first-child {
         margin-top: 0;
       }

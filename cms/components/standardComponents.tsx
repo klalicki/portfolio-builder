@@ -184,6 +184,7 @@ export const standardComponents = {
               panelColor: customFields.colorPicker({
                 label: "Background color for panel",
                 defaultValue: "#ffffff",
+                allowAlpha: true,
               }),
               textColor: customFields.colorPicker({
                 label: "Text color for panel",

@@ -1,8 +1,8 @@
 {
   "pageWidth": "700px",
   "padding": {
-    "horizontal": "1rem",
-    "vertical": "1rem"
+    "horizontal": "0rem",
+    "vertical": "0rem"
   },
   "images": {
     "displayWidth": "800px",
