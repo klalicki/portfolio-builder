@@ -20,11 +20,15 @@ You will need to name the repository `username.github.io`, where `username` is y
 
 Go into 'Settings' on the repository, and scroll down to the 'GitHub Pages' section. Under 'Build and deployment', change the 'Source' to 'GitHub Actions'.
 
+Still in the Settings tab: On the left side, click 'Actions', then 'General'. Make sure 'Actions permissions' is set to 'Allow all actions and reusable workflows'. 
+
 Go to 'Actions' in the top tab bar, click 'Deploy Astro site to Pages' on the left, and then click 'Run workflow'. Select 'main' as the branch. This will deploy the site to GitHub Pages. This will probably take about a minute to complete.Once it is complete you will have a live URL for your site, which will be `https://username.github.io`.
 
 ### Netlify
 
 To start, make a copy of this repository by clicking the "Use this template" button. This will create a new repository in your account with the same files and folders as this one. 
+
+Go to the Settings tab of your repository. On the left side, click 'Actions', then 'General'. Switch 'Actions permissions' to 'Disable actions'. This will stop GitHub Pages from trying to deploy the site, since we will be using Netlify instead.
 
 Create an account on Netlify if you don't already have one. On the Netlify dashboard, under 'Sites', click 'Add new site', then 'Import an existing project'. Click 'Deploy with  GitHub' - it will ask you to authorize Netlify to access your GitHub account.
 
