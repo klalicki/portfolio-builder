@@ -120,6 +120,5 @@ const menuItems = [...homepage, ...pages]
   .filter((page) => {
     return page.showInMenu;
   });
-console.log(menuItems);
 
 export default menuItems;
