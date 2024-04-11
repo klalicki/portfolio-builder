@@ -1,3 +1,4 @@
 {
-  "favicon": "../assets/images/general/favicon.jpg"
+  "favicon": "../assets/images/general/favicon.jpg",
+  "customCSS": "LmNhc2Utc3R1ZHktbGlua3sKICAgIHRleHQtZGVjb3JhdGlvbjpub25lOwogICAgcGFkZGluZzouNXJlbTsKICAgIGJhY2tncm91bmQtY29sb3I6I2UzNzNmZjsKICAgIGNvbG9yOndoaXRlOwogICAgbWF4LXdpZHRoOmZpdC1jb250ZW50OwogICAgdHJhbnNpdGlvbjphbGwgMC4zczsKfQouY2FzZS1zdHVkeS1saW5rOmhvdmVyewogICAgYmFja2dyb3VuZC1jb2xvcjojZDUyYmZmOwp9Cg=="
 }

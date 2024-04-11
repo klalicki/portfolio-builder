@@ -12,5 +12,8 @@ export const generalSettings = singleton({
       directory: "src/assets/images/general",
       publicPath: "../assets/images/general/",
     }),
+    customCSS: customFields.codeEditor({
+      label: "Write some custom CSS for the page here",
+    }),
   },
 });

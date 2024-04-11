@@ -63,6 +63,7 @@ const fontSettings = fontRules(settings.menu.typography);
     background-color: white;
     color: black;
     padding: 1rem;
+    z-index: 1000;
   }
   .skip-link:focus {
     pointer-events: all;
@@ -240,6 +241,7 @@ const fontSettings = fontRules(settings.menu.typography);
     }
   }
 </style>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <nav class="menu-main">
   {
@@ -249,7 +251,6 @@ const fontSettings = fontRules(settings.menu.typography);
       </div>
     )
   }
-  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <button id="menu-toggle"
     ><span class="material-icons-outlined">menu</span></button

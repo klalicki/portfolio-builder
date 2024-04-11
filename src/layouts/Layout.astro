@@ -6,6 +6,8 @@ import { ViewTransitions } from "astro:transitions";
 import { settings } from "../components/helpers/settingsHelper";
 import { getImage } from "astro:assets";
 
+const customCSS = atob(settings.general.customCSS);
+
 const imagePath = settings.general.favicon;
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../**/*.{jpeg,jpg,png,gif}"
@@ -271,4 +273,5 @@ fontSpecSets.forEach((pair) => {
 
     AOS.init();
   </script>
+  <style set:html={customCSS}></style>
 </html>

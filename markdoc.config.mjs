@@ -35,7 +35,9 @@ export default defineMarkdocConfig({
       },
     },
     FileLink: {
+      ...nodes.link,
       render: component("./src/components/pagebuilder/FileLink.astro"),
+
       attributes: {
         text: { type: String },
         cssClass: { type: String },

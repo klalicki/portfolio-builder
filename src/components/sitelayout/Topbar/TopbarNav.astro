@@ -60,6 +60,7 @@ const cssRules = {
     background-color: white;
     color: black;
     padding: 1rem;
+    z-index: 1000;
   }
   .skip-link:focus {
     pointer-events: all;
@@ -276,6 +277,7 @@ const cssRules = {
     }
   }
 </style>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <nav
   style={formatCssRules(cssRules)}
@@ -292,7 +294,6 @@ const cssRules = {
       </div>
     )
   }
-  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <button id="menu-toggle"
     ><span class="material-icons-outlined">menu</span></button
