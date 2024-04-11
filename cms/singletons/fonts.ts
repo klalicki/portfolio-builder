@@ -22,7 +22,7 @@ const fontPicker = (label: string) => {
 };
 
 export const fonts = singleton({
-  label: "Fonts",
+  label: "Link Fonts (Google or Adobe)",
   format: { data: "json" },
 
   path: "src/settings/fonts",

@@ -144,16 +144,16 @@ declare module 'astro:content' {
 } & { render(): Render[".mdoc"] };
 };
 "pages": {
-"a-hidden-page.mdoc": {
-	id: "a-hidden-page.mdoc";
-  slug: "a-hidden-page";
+"about.mdoc": {
+	id: "about.mdoc";
+  slug: "about";
   body: string;
   collection: "pages";
   data: InferEntrySchema<"pages">
 } & { render(): Render[".mdoc"] };
-"about.mdoc": {
-	id: "about.mdoc";
-  slug: "about";
+"hidden-page.mdoc": {
+	id: "hidden-page.mdoc";
+  slug: "hidden-page";
   body: string;
   collection: "pages";
   data: InferEntrySchema<"pages">
@@ -200,6 +200,13 @@ declare module 'astro:content' {
 "formatting-test.mdoc": {
 	id: "formatting-test.mdoc";
   slug: "formatting-test";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdoc"] };
+"typography-stuff.mdoc": {
+	id: "typography-stuff.mdoc";
+  slug: "typography-stuff";
   body: string;
   collection: "projects";
   data: InferEntrySchema<"projects">
