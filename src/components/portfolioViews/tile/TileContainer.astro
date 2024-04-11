@@ -4,7 +4,7 @@ import { settings } from "../../helpers/settingsHelper";
 const tileSettings = settings.portfolioLayouts.coolTile;
 import { fontRules } from "../../helpers/fontRuleBuilder";
 // @ts-ignore
-const rules = fontRules(tileSettings.typography);
+const rules = fontRules(settings.portfolioLayouts.typography);
 import { formatCssRules } from "../../helpers/formatCssRules";
 
 const coolTileRules = formatCssRules({

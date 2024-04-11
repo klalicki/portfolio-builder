@@ -12,6 +12,14 @@ export const portfolioLayouts = singleton({
   format: { data: "json" },
   path: "src/settings/portfolioLayouts",
   schema: {
+    typography: fields.object(
+      {
+        title: typeProps({ label: "Project Title" }),
+        line2: typeProps({ label: "Line 2" }),
+        line3: typeProps({ label: "Line 3" }),
+      },
+      { label: "Typography (used by all layouts)" }
+    ),
     coolTile: fields.object(
       {
         container: fields.object(
@@ -80,15 +88,6 @@ export const portfolioLayouts = singleton({
             }),
           },
           { layout: [4, 3, 5, 3, 2, 4, 3] }
-        ),
-
-        typography: fields.object(
-          {
-            title: typeProps({ label: "Project Title" }),
-            line2: typeProps({ label: "Line 2" }),
-            line3: typeProps({ label: "Line 3" }),
-          },
-          { label: "Typography" }
         ),
       },
 
