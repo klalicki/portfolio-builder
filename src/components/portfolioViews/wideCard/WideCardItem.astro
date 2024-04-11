@@ -2,9 +2,8 @@
 import { Image } from "astro:assets";
 const { title, line2, line3, url, thumbnail, index, accent } = Astro.props;
 import { settings } from "../../helpers/settingsHelper";
-import { colord } from "colord";
 
-const tileSettings = settings.portfolioLayouts.coolTile;
+const maxImageWidth = 1440;
 ---
 
 <style>
@@ -32,6 +31,7 @@ const tileSettings = settings.portfolioLayouts.coolTile;
   .card-text-panel {
     padding: var(--textAreaPadding);
     display: grid;
+    gap: 0.5rem;
     grid-template-columns: 1fr 7fr 3fr;
   }
 
@@ -103,7 +103,12 @@ const tileSettings = settings.portfolioLayouts.coolTile;
     </div>
     {
       thumbnail ? (
-        <Image src={thumbnail} class={"wide-card-image"} alt="" />
+        <Image
+          src={thumbnail}
+          class={"wide-card-image"}
+          widths={[300, 600, 1200, 2400]}
+          alt=""
+        />
       ) : (
         <div class="wide-card-image" />
       )
