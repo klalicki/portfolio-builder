@@ -51,7 +51,17 @@ In the CMS, there are three types of pages you can edit. All three provide an ed
 
 - **Pages**: These are the main pages of the site, like the about page, portfolio page, and contact page. These are built in an editor that allows you to add text, images, and other content to the page. You can also add special blocks, including a portfolio grid.
 
-- **Homepage**: This is a special page that is used for the homepage of the site. Other than that, it is the same as a regular page.
+- **Homepage**: This is a special page that is used for the homepage of the site and cannot be unlisted or unpublished. Other than that, it is the same as a regular page.
+
+### Publish Status
+
+Each page and project has a 'publish status' that determines whether it is visible on the live site. There are three options:
+
+- **Yes**: The page or project is visible on the live site.
+
+- **No**: The page or project is not visible on the live site.
+
+- **Unlisted**: The page or project is visible on the live site, but it is hidden from the navigation menu and 'all' portfolio group (for projects only). You can still access the page by visiting its URL directly. In addition, unlisted projects can be added to custom portfolio groups and displayed on the site using the Portfolio View component. This can be useful if you want to share a project with a specific group of people without making it public. _Note: unlisted projects can still be found by others on the internet - if you are legally required to keep a project confidential, this will ***NOT*** suffice._
 
 # Organizing Content
 
@@ -61,4 +71,4 @@ This project uses a flexible system of pages and projects to organize content, f
 
   - **Portfolio View component**: This is the component you can place in a page to display a grid of projects. You can select which portfolio group to display, and customize the layout of the grid. You can place multiple Portfolio View components on a single page to show different groups of projects. _Note: This component is only available in Pages and the Homepage, not Projects_ 
 
-  - **Navigation Menu (Show Sub-items in Nav)**: If you want the portfolio items to show up in the site menu, you can check the 'Show Sub-items in Nav' box on a page, which will allow you to select one or multiple portfolio groups to show in the navigation menu.
+  - **Navigation Menu (Show Sub-items in Nav)**: If you want the portfolio items to show up in the site menu, you can check the 'Show Sub-items in Nav' box on a page, which will allow you to select one or multiple portfolio groups to show in the navigation menu, and to select a title that will appear in the nav menu for that portfolio group.
