@@ -159,7 +159,7 @@ export const portfolioLayouts = singleton({
           }),
         }),
       },
-      { label: "Card Layout Items" }
+      { label: "Card/Wide Card Layout Items" }
     ),
     sideBySide: fields.object(
       {

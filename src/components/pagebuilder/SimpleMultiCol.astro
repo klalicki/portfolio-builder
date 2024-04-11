@@ -1,3 +1,20 @@
 ---
 
 ---
+
+<style>
+  .simple-multicol {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: 768px) {
+    .simple-multicol {
+      flex-wrap: nowrap;
+    }
+  }
+</style>
+<div class="simple-multicol">
+  <slot />
+</div>

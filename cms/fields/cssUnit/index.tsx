@@ -20,6 +20,7 @@ const stringToUnits = (value: string) => {
   if (match) {
     const number = parseFloat(match[1]);
     const unit = match[2] || "px";
+    console.log(unit);
     return { number, unit };
   } else {
     return { number: 0, unit: "px" };

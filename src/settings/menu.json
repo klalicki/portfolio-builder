@@ -1,10 +1,12 @@
 {
   "siteTitle": "Your Name Here",
   "position": {
-    "discriminant": "top",
+    "discriminant": "side",
     "value": {
-      "u": "1712805172953",
-      "alwaysDropdown": false
+      "u": "1712808515093",
+      "layout": {
+        "width": "clamp(35%, 35%, 35%)"
+      }
     }
   },
   "appearance": {

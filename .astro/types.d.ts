@@ -183,6 +183,13 @@ declare module 'astro:content' {
   collection: "projects";
   data: any
 } & { render(): Render[".mdoc"] };
+"data-sphere-innovations.mdoc": {
+	id: "data-sphere-innovations.mdoc";
+  slug: "data-sphere-innovations";
+  body: string;
+  collection: "projects";
+  data: any
+} & { render(): Render[".mdoc"] };
 "eco-essence.mdoc": {
 	id: "eco-essence.mdoc";
   slug: "eco-essence";
