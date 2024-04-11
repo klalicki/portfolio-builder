@@ -83,7 +83,7 @@ const projectCount = projectList.length;
 const { Container, Item } = componentMappings[validType];
 ---
 
-<Container containerId={portfolioGroupId}>
+<Container containerId={portfolioGroupId} addClass={props.customClass}>
   {
     projectList.map((item, index) => {
       // console.log(item)

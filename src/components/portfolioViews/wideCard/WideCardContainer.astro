@@ -37,6 +37,10 @@ const cardRules = formatCssRules({
   }
 </style>
 
-<div id={props.containerId} class="wide-card-container" style={cardRules}>
+<div
+  id={props.containerId}
+  class:list={["wide-card-container", props.addClass]}
+  style={cardRules}
+>
   <slot />
 </div>

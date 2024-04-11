@@ -26,13 +26,7 @@ export const pageComponents = {
         collection: "portfolioGroups",
       }),
 
-      // cssOptions: customFields.cssMulti({
-      //   label: "asst stuff",
-      //   params: [
-      //     { cssName: "item1", label: "Item 1", defaultVal: "la1" },
-      //     { cssName: "item2", label: "Item 2", defaultVal: "la2" },
-      //   ],
-      // }),
+      customClass: customFields.customClass,
     },
     // ContentView(props) {
     //   return <div dangerouslySetInnerHTML={{ __html: props.value.content }} />;

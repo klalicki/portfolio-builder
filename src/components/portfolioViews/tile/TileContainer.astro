@@ -32,6 +32,10 @@ const coolTileRules = formatCssRules({
   }
 </style>
 
-<div id={props.containerId} class="tile-container" style={coolTileRules}>
+<div
+  id={props.containerId}
+  class:list={["tile-container", props.addClass]}
+  style={coolTileRules}
+>
   <slot />
 </div>
