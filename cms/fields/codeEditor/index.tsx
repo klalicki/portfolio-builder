@@ -1,6 +1,9 @@
 import Editor from "@monaco-editor/react";
 import type { BasicFormField, FormFieldStoredValue } from "@keystatic/core";
 import { FieldPrimitive } from "@keystar/ui/field";
+import prettier from "prettier";
+import * as prettierPluginCSS from "prettier/plugins/postcss";
+import * as prettierPluginHTML from "prettier/plugins/html";
 
 function parseAsNormalField(value: FormFieldStoredValue) {
   if (value === undefined) {
@@ -56,8 +59,12 @@ export function codeEditor({
               },
               ...editorOptions,
             }}
-            onMount={(editor) => {
-              editor.getAction("editor.action.formatDocument")?.run();
+            onMount={async (editor) => {
+              const formattedCode = await prettier.format(editor.getValue(), {
+                parser: language || "html",
+                plugins: [prettierPluginCSS, prettierPluginHTML],
+              });
+              editor.setValue(formattedCode);
             }}
             onChange={(newVal) => {
               if (newVal) {

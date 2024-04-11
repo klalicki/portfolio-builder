@@ -1,14 +1,14 @@
 {
   "font1": {
-    "htmlLink": "PGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Xb3JrK1NhbnM6aXRhbCx3Z2h0QDAsMTAwLi45MDA7MSwxMDAuLjkwMCZkaXNwbGF5PXN3YXAiIHJlbD0ic3R5bGVzaGVldCI+",
+    "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PVdvcmsrU2FuczppdGFsLHdnaHRAMCwxMDAuLjkwMDsxLDEwMC4uOTAwJmRpc3BsYXk9c3dhcCIKICByZWw9InN0eWxlc2hlZXQiCi8+Cg==",
     "fontFamily": "\"Work Sans\", sans-serif"
   },
   "font2": {
-    "htmlLink": "PGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1QbGF5ZmFpcitEaXNwbGF5Oml0YWwsd2dodEAwLDQwMC4uOTAwOzEsNDAwLi45MDAmZGlzcGxheT1zd2FwIiByZWw9InN0eWxlc2hlZXQiPg==",
+    "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PVBsYXlmYWlyK0Rpc3BsYXk6aXRhbCx3Z2h0QDAsNDAwLi45MDA7MSw0MDAuLjkwMCZkaXNwbGF5PXN3YXAiCiAgcmVsPSJzdHlsZXNoZWV0IgovPgo=",
     "fontFamily": "\"Playfair Display\", serif"
   },
   "font3": {
-    "htmlLink": "PGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1EZWxhK0dvdGhpYytPbmUmZGlzcGxheT1zd2FwIiByZWw9InN0eWxlc2hlZXQiPg==",
+    "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PURlbGErR290aGljK09uZSZkaXNwbGF5PXN3YXAiCiAgcmVsPSJzdHlsZXNoZWV0IgovPgo=",
     "fontFamily": "\"Dela Gothic One\", sans-serif"
   }
 }
