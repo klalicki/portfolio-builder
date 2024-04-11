@@ -32,6 +32,7 @@ export default defineMarkdocConfig({
       render: component("./src/components/pagebuilder/CustomCSSWrapper.astro"),
       attributes: {
         customCSS: { type: String },
+        customClass: { type: String },
       },
     },
     FileLink: {
@@ -49,6 +50,7 @@ export default defineMarkdocConfig({
       attributes: {
         targetWidth: { type: String },
         flexGrow: { type: Boolean },
+        customClass: { type: String },
       },
     },
     HeroSection: {
@@ -60,8 +62,10 @@ export default defineMarkdocConfig({
         showPanel: { type: Object },
         height: { type: String },
         parallax: { type: Boolean },
+        customClass: { type: String },
+
         // panelColor: { type: String },
-        // textColor: { type: String },
+        // textColor: { type: String },        customClass: { type: String },
       },
     },
     ImageGallery: {
@@ -78,11 +82,13 @@ export default defineMarkdocConfig({
         image: { type: String },
         altText: { type: String },
         caption: { type: String },
+        customClass: { type: String },
       },
     },
     CodeEmbed: {
       render: component("./src/components/pagebuilder/CodeEmbed.astro"),
       attributes: { content: { type: String } },
+      customClass: { type: String },
     },
     MultiColumn: {
       render: component("./src/components/pagebuilder/MultiColumn.astro"),
@@ -91,19 +97,22 @@ export default defineMarkdocConfig({
         flexDirection: { type: String },
         alignItems: { type: String },
         gap: { type: String },
+        customClass: { type: String },
       },
     },
     SimpleMultiCol: {
       render: component("./src/components/pagebuilder/SimpleMultiCol.astro"),
+      attributes: { customClass: { type: String } },
     },
     SimpleCol: {
       render: component("./src/components/pagebuilder/SimpleCol.astro"),
-      attributes: { width: { type: Number } },
+      attributes: { width: { type: Number }, customClass: { type: String } },
     },
     CustomWidth: {
       render: component("./src/components/pagebuilder/CustomWidth.astro"),
       attributes: {
         width: { type: String },
+        customClass: { type: String },
       },
     },
     PortfolioView: {
@@ -113,6 +122,8 @@ export default defineMarkdocConfig({
       attributes: {
         unique: { type: String },
         portfolioLayout: { type: String },
+        customClass: { type: String },
+
         projectSource: {
           type: String,
         },

@@ -99,7 +99,7 @@ export const standardComponents = {
           },
         }
       ),
-      customClass:customFields.customClass
+      customClass: customFields.customClass,
     },
     ContentView(props) {
       const [imageDataUrl, setImageDataUrl] = useState<{
@@ -220,6 +220,7 @@ export const standardComponents = {
           ),
         }
       ),
+      customClass: customFields.customClass,
     },
     ContentView(props) {
       const [imageDataUrl, setImageDataUrl] = useState<any>(null);

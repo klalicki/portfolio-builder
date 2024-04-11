@@ -91,7 +91,7 @@ if (props.parallax) {
     position: relative;
   }
 </style>
-<div class="hero-section-wrapper">
+<div class:list={["hero-section-wrapper", props.customClass]}>
   {
     props.showPanel.discriminant && (
       <div class="hero-section-content-wrapper">
