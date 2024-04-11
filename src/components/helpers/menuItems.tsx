@@ -33,6 +33,13 @@ const getProjectList = (portfolioGroupSlug: string) => {
 
 const menuItems = [...homepage, ...pages]
   .flatMap((page) => {
+    if (
+      page.data.publishStatus === "unlisted" ||
+      page.data.publishStatus === "unpublished"
+    ) {
+      return {};
+    }
+    console.log(page);
     if (page.data?.customNavigation?.discriminant) {
       // page has customNav;
       const customNav = page.data.customNavigation.value;

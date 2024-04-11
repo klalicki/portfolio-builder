@@ -10,7 +10,6 @@ const imagePath = settings.general.favicon;
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "./../../**/*.{jpeg,jpg,png,gif}"
 );
-console.log(images);
 
 if (!images[imagePath]) {
 }
