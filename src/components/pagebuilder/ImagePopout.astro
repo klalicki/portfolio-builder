@@ -159,7 +159,7 @@ if (props.forceAspectRatio) {
   }
 </style>
 
-<figure class="image-popout">
+<figure class:list={["image-popout", props.customClass]}>
   <a
     href={imageSrc}
     data-sizes="(max-width: 512px) 512px, (max-width: 1024px) 1024px, (max-width: 2048px) 2048px, 4096px"

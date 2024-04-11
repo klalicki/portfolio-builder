@@ -316,6 +316,7 @@ export const standardComponents = {
         description: "An optional caption to display below the image. ",
         defaultValue: "",
       }),
+      customClass: customFields.customClass,
     },
   }),
   CodeEmbed: block({
