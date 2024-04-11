@@ -115,9 +115,10 @@ This project uses a flexible system of pages and projects to organize content, f
 
 All three page types have a similar editor that allows you to add text, images, and other content to the page. You can also add special blocks, including column layouts, HTML embeds, and image galleries.
 
-### Components
 
-The site has an assortment of components available in pages and projects. Here are some of the components you can use:
+## Components
+
+The site has an assortment of components available in pages and projects. All of these components also provide a field to add a custom CSS class, which you can style using the site-wide custom CSS field (in General Settings) Here are some of the components you can use:
 
 #### Image Popout
 
@@ -127,3 +128,59 @@ This component allows you to add an image to the page that can be clicked on to 
 
 This component allows you to add a gallery of images to the page. Each image can have a caption. When you click on an image, it will open in a lightbox where you can view a larger version of the image, and scroll through the other images in the gallery.
 
+#### Hero Section
+
+A header component with a background image (that supports parallax scrolling) and a place to put text or other content.
+
+#### Multi-Column Layout
+
+This component gives you a flexible multi-column layout where you can set the size of each column, and control how the columns stretch/shrink on different screen sizes.
+
+#### Simple 12-col Multi-Column Layout
+
+This component gives you a simpler multi-column layout where you can place content in a 12-column grid. This layout automatically collapses to a single column on smaller screens
+
+#### HTML Embed
+
+This component allows you to insert raw HTML code. This would be useful for embedding a video, audio player, or other custom content.
+
+#### Custom Width Container
+
+This allows you to create a section of content that is a specific width, rather than the site-wide content width. This can be useful for creating a section that stands out from the rest of the page.
+
+#### Link to File
+
+This component allows you to upload a file to the site and create a link. This is useful for sharing documents like PDFs.
+
+#### Custom CSS Container
+
+This component creates a `<div>` and gives you the ability to add CSS directly to it. You can insert other content inside this component.
+
+### Portfolio Views (Pages and Homepage only)
+
+This component allows you to display a grid of projects from a specific portfolio group, or from the 'all items' group. 
+There are 4 different layouts to choose from. All layouts can be customized from the 'Portfolio Layout Settings' section in the editor.
+
+## Menu
+
+There are two menu variants available in the site: a topbar and a side panel. On both variants, the menu becomes a 'hamburger' on smaller screens. The menu's items are automatically generated from the pages and portfolio groups you have created. You can adjust spacing, colors, and fonts in the 'Menu' section of the editor.
+
+## Fonts
+
+The site is able to load fonts from Google Fonts and Adobe Fonts, as well as any other font service that provides a `<link>` tag to include in the document. You can specify 3 font familes to use in the 'Link Fonts' section of the editor.
+
+For each font family, you will need the `<link>` tag from the font service. You will also need to paste the 'font-family' text from the font service. Make sure that you don't include the text 'font-family:' in the field, just the font name and fallback fonts.
+
+## Typography Options
+
+This is where you set the font parameters for the entire site. I know this page looks kinda overwhelming, but I promise it is easier to use than it looks. At the top you can set a base font size for desktop and mobile devices. You will then be able to use 'rem' units when setting font sizes elsewhere to have them based on this base size. 1rem is equal to the base font size.
+
+## Custom CSS
+
+In the 'General Settings' section, you can add custom CSS that will be applied across the site. This is useful for making small tweaks to the design that aren't available in the editor. If you add custom CSS classes to a component, you will be able to style it using this field.
+
+_Note that CSS specificity rules still apply, so you may need to use more specific selectors to override the default styles._
+
+# Questions/Issues/Feature Requests
+
+If you have any questions, issues, or feature requests, please open an issue on this repository or email me! I'm always looking for ways to improve this project and make it more useful for others.
