@@ -8,8 +8,6 @@ import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
 import AutoImport from "astro-auto-import";
 
-import mdx from "@astrojs/mdx";
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [markdoc(), ...(isDev ? [react(), keystatic()] : [])],

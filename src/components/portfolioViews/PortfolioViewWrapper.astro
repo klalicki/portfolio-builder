@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 const { props } = Astro;
 // console.log('layout:',props.portfolioLayout)
-const allProjects = await getCollection("projects");
+
 import CardContainer from "./card/CardContainer.astro";
 import CardItem from "./card/CardItem.astro";
 import TileContainer from "./tile/TileContainer.astro";
@@ -21,6 +21,13 @@ const componentMappings = {
   coolTiles: { Container: CoolTileContainer, Item: CoolTileItem },
   wideCards: { Container: WideCardContainer, Item: WideCardItem },
 };
+
+const allProjectsRaw = await getCollection("projects");
+const allProjects = allProjectsRaw.sort((a, b) => {
+  const idA = a.data.sortID || 0;
+  const idB = b.data.sortID || 0;
+  return idA - idB;
+});
 
 let projectList: {
   id: string;
