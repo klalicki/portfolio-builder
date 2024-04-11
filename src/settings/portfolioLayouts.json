@@ -31,12 +31,12 @@
       "marginBottom": "0.25rem"
     }
   },
+  "container": {
+    "width": "1200px",
+    "padding": "1rem",
+    "gap": "1rem"
+  },
   "coolTile": {
-    "container": {
-      "width": "1200px",
-      "padding": "1rem",
-      "gap": "1rem"
-    },
     "tiles": {
       "aspectRatio": "4/3",
       "minWidth": 300,

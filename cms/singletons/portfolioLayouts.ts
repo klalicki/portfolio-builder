@@ -20,33 +20,36 @@ export const portfolioLayouts = singleton({
       },
       { label: "Typography (used by all layouts)" }
     ),
+    container: fields.object(
+      {
+        width: customFields.cssUnit({
+          label: "Container Width",
+          description: "The maximum width the portfolio group can be",
+          defaultValue: "1000px",
+          isCompact: true,
+        }),
+        padding: customFields.cssUnit({
+          label: "Container Padding",
+          description: "The space around the edge of the portfolio grid",
+          defaultValue: "1rem",
+          limitUnits: ["px", "rem", "em"],
+          isCompact: true,
+        }),
+        gap: customFields.cssUnit({
+          label: "Gap",
+          description: "The gap between projects in this layout",
+          defaultValue: "0px",
+          limitUnits: ["px", "rem", "em"],
+          isCompact: true,
+        }),
+      },
+      {
+        label: "Portfolio Layout Container (used by all layouts)",
+        layout: [4, 4, 4],
+      }
+    ),
     coolTile: fields.object(
       {
-        container: fields.object(
-          {
-            width: customFields.cssUnit({
-              label: "Container Width",
-              description: "The maximum width the portfolio group can be",
-              defaultValue: "1000px",
-              isCompact: true,
-            }),
-            padding: customFields.cssUnit({
-              label: "Container Padding",
-              description: "The space around the edge of the portfolio grid",
-              defaultValue: "1rem",
-              limitUnits: ["px", "rem", "em"],
-              isCompact: true,
-            }),
-            gap: customFields.cssUnit({
-              label: "Gap",
-              description: "The gap between projects in this layout",
-              defaultValue: "0px",
-              limitUnits: ["px", "rem", "em"],
-              isCompact: true,
-            }),
-          },
-          { layout: [4, 4, 4] }
-        ),
         tiles: fields.object(
           {
             aspectRatio: fields.text({
@@ -92,9 +95,10 @@ export const portfolioLayouts = singleton({
       },
 
       {
-        label: "'Cool Tile' Layout",
+        label: "Tile/'Cool Tile' Layout",
       }
     ),
+    card: fields.object({}),
     sideBySide: fields.object(
       {
         tileAspectRatio: fields.text({

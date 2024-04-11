@@ -10,12 +10,12 @@ import { formatCssRules } from "../../helpers/formatCssRules";
 const coolTileRules = formatCssRules({
   minTileWidth: tileSettings.tiles.minWidth + "px",
 
-  containerPadding: tileSettings.container.padding,
+  containerPadding: settings.portfolioLayouts.container.padding,
   overlayPadding: tileSettings.tiles.overlayPadding,
-  tileGap: tileSettings.container.gap,
+  tileGap: settings.portfolioLayouts.container.gap,
   tileRatio: tileSettings.tiles.aspectRatio,
   overlayInset: tileSettings.tiles.overlayInset,
-  containerWidth: tileSettings.container.width,
+  containerWidth: settings.portfolioLayouts.container.width,
 
   ...rules,
 });
