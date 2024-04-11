@@ -1,12 +1,13 @@
 import { block, repeating, wrapper } from "@keystatic/core/content-components";
 import * as customFields from "../fields";
 import { fields } from "@keystatic/core";
-
+import {layoutGridIcon} from "@keystar/ui/icon/icons/layoutGridIcon";
 import PortfolioPreview from "./previews/PortfolioPreview";
 export const pageComponents = {
   PortfolioView: block({
     label: "Portfolio View",
     ContentView: PortfolioPreview,
+    icon: layoutGridIcon,
     schema: {
       unique: customFields.uniquify({ label: "unif", description: "unif" }),
       portfolioLayout: fields.select({

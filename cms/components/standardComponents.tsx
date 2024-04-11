@@ -9,8 +9,9 @@ import * as customFields from "../fields";
 import { fields } from "@keystatic/core";
 import { CSSUnitEditor } from "../fields/cssUnit";
 import { useEffect, useId, useRef, useState } from "react";
-import { Icon } from "@keystar/ui/icon";
+import { moveHorizontalIcon } from "@keystar/ui/icon/icons/moveHorizontalIcon";
 import { underlineIcon } from "@keystar/ui/icon/icons/underlineIcon";
+import { paintbrush2Icon } from "@keystar/ui/icon/icons/paintbrush2Icon";
 import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 
 export const standardComponents = {
@@ -494,6 +495,7 @@ export const standardComponents = {
   }),
   CustomWidth: wrapper({
     label: "Custom Width Container",
+    icon: moveHorizontalIcon,
     ContentView(props) {
       return (
         <div style={{ maxWidth: props.value.width }}>{props.children}</div>
@@ -513,6 +515,7 @@ export const standardComponents = {
       customCSS: customFields.codeEditor({ label: "Custom CSS Code" }),
       customClass: customFields.customClass,
     },
+    icon: paintbrush2Icon,
     ContentView(props) {
       const divRef = useRef<HTMLDivElement>(null); // Add type assertion
       useEffect(() => {
