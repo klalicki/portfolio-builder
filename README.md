@@ -10,20 +10,29 @@ If you already have a site hosted at 'username.github.io', you can still use thi
 
 ## Getting Started
 
+Follow one of the deployment methods below to get your site up and running.
+
 ### GitHub Pages
 
 To start, make a copy of this repository by clicking the "Use this template" button. This will create a new repository in your account with the same files and folders as this one. 
 
-You will need to rename the repository to `username.github.io`, where `username` is your GitHub username.
+You will need to name the repository `username.github.io`, where `username` is your GitHub username.
+
+Go into 'Settings' on the repository, and scroll down to the 'GitHub Pages' section. Under 'Build and deployment', change the 'Source' to 'GitHub Actions'.
+
+Go to 'Actions' in the top tab bar, click 'Deploy Astro site to Pages' on the left, and then click 'Run workflow'. Select 'main' as the branch. This will deploy the site to GitHub Pages. This will probably take about a minute to complete.Once it is complete you will have a live URL for your site, which will be `https://username.github.io`.
 
 ### Netlify
 
-Create an account on Netlify, and connect your GitHub Account.
-Then, click this button to automatically create and deploy a copy of this site:
+To start, make a copy of this repository by clicking the "Use this template" button. This will create a new repository in your account with the same files and folders as this one. 
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/klalicki/portfolio-builder)
+Create an account on Netlify if you don't already have one. On the Netlify dashboard, under 'Sites', click 'Add new site', then 'Import an existing project'.Click 'Deploy with  GitHub' - it will ask you to authorize Netlify to access your GitHub account.
 
+Select your repository from the list of repositories. On the next page, you can set a site name - this will become part of your site's URL as sitename.netlify.app. You can change this later as well.
 
+Click the deploy button at the bottom of the screen, and Netlify will start building your site. This will probably take about a minute to complete. Once it is complete you will have a live URL for your site.
+
+## Starting Codespaces
 
 Then, open the repository in GitHub Codespaces by clicking the "Code" button and selecting "Open with Codespaces". This will open the repository in a new Codespaces environment, a cloud-based editor that has everything you need to build and run the project.
 
