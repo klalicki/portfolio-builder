@@ -1,13 +1,13 @@
 {
   "coolTile": {
     "container": {
-      "width": "900px",
+      "width": "1200px",
       "padding": "1rem",
       "gap": "1rem"
     },
     "tiles": {
       "aspectRatio": "4/3",
-      "minWidth": 400,
+      "minWidth": 300,
       "overlayInset": "1rem",
       "overlayColor": "#000000",
       "useProjectColor": false,

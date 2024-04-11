@@ -9,11 +9,14 @@ import { formatCssRules } from "../../helpers/formatCssRules";
 
 const coolTileRules = formatCssRules({
   minTileWidth: tileSettings.tiles.minWidth + "px",
+
   containerPadding: tileSettings.container.padding,
   overlayPadding: tileSettings.tiles.overlayPadding,
   tileGap: tileSettings.container.gap,
   tileRatio: tileSettings.tiles.aspectRatio,
   overlayInset: tileSettings.tiles.overlayInset,
+  containerWidth: tileSettings.container.width,
+
   ...rules,
 });
 ---
@@ -27,6 +30,7 @@ const coolTileRules = formatCssRules({
     );
     gap: var(--tileGap);
     padding: var(--containerPadding);
+    max-width: var(--containerWidth);
   }
 </style>
 
