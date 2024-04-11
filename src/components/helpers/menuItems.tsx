@@ -38,6 +38,11 @@ const getProjectList = (portfolioGroupSlug: string) => {
 };
 
 const menuItems = [...homepage, ...pages]
+  .sort((a, b) => {
+    const idA = a.data.sortID || 0;
+    const idB = b.data.sortID || 0;
+    return idA - idB;
+  })
   .flatMap((page) => {
     if (
       page.data.publishStatus === "unlisted" ||
