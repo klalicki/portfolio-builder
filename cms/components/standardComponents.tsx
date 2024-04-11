@@ -489,6 +489,7 @@ export const standardComponents = {
         description:
           "Allow this column to get larger than the target width if the screen is wide enough",
       }),
+      customClass: customFields.customClass,
     },
   }),
   CustomWidth: wrapper({

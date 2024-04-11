@@ -1,12 +1,15 @@
 ---
-const {props}=Astro;
-const {targetWidth,flexGrow}=props;
+const { props } = Astro;
+const { targetWidth, flexGrow } = props;
 ---
+
 <style>
-  .column{
-  
+  .column {
   }
 </style>
-<div class="column" style={`flex-basis:${targetWidth};flex-grow:${flexGrow?"1":"0"}`}>
-  <slot/>
+<div
+  class:list={["column", props.customClass]}
+  style={`flex-basis:${targetWidth};flex-grow:${flexGrow ? "1" : "0"}`}
+>
+  <slot />
 </div>
