@@ -7,13 +7,20 @@ import {
 } from "@keystatic/core/content-components";
 import * as customFields from "../fields";
 import { fields } from "@keystatic/core";
-import { CSSUnitEditor } from "../fields/cssUnit";
 import { useEffect, useId, useRef, useState } from "react";
 import { moveHorizontalIcon } from "@keystar/ui/icon/icons/moveHorizontalIcon";
 import { codeSquareIcon } from "@keystar/ui/icon/icons/codeSquareIcon";
 import { underlineIcon } from "@keystar/ui/icon/icons/underlineIcon";
 import { paintbrush2Icon } from "@keystar/ui/icon/icons/paintbrush2Icon";
+import { columns4Icon } from "@keystar/ui/icon/icons/columns4Icon";
+import { columnsIcon } from "@keystar/ui/icon/icons/columnsIcon";
 import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
+import { fullscreenIcon } from "@keystar/ui/icon/icons/fullscreenIcon";
+import { layoutGridIcon } from "@keystar/ui/icon/icons/layoutGridIcon";
+
+// import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
+// import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
+// import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 
 export const standardComponents = {
   FileLink: inline({
@@ -41,6 +48,7 @@ export const standardComponents = {
   }),
   ImageGallery: block({
     label: "Image Gallery",
+    icon: layoutGridIcon,
     schema: {
       options: fields.object(
         {
@@ -276,6 +284,7 @@ export const standardComponents = {
   }),
   ImagePopout: block({
     label: "Image (with Popout)",
+    icon: fullscreenIcon,
     ContentView(props) {
       const [imageDataUrl, setImageDataUrl] = useState<any>(null);
 
@@ -339,6 +348,7 @@ export const standardComponents = {
   SimpleMultiCol: repeating({
     label: "Simple (12-col) Multi-Column Layout",
     children: ["SimpleCol"],
+    icon: columnsIcon,
     validation: {
       children: {
         min: 1,
@@ -389,6 +399,7 @@ export const standardComponents = {
   MultiColumn: repeating({
     label: "Multi-Column Layout",
     children: ["Column"],
+    icon: columns4Icon,
     schema: {
       justifyContent: fields.select({
         label: "Justify Content",
