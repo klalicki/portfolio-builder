@@ -14,6 +14,8 @@ export const generalSettings = singleton({
     }),
     customCSS: customFields.codeEditor({
       label: "Write some custom CSS for the page here",
+      language: "css",
+      wrap: true,
     }),
   },
 });

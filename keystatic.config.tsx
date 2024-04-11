@@ -142,6 +142,7 @@ export default config({
       previewUrl: "/{slug}",
       path: "src/content/pages/*",
       entryLayout: "content",
+      columns: ["sortID", "publishStatus"],
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),

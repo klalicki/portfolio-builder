@@ -19,12 +19,14 @@ export function codeEditor({
   height,
   wrap,
   editorOptions,
+  language,
 }: {
   label: string;
   defaultValue?: string;
   description?: string;
   height?: string;
   wrap?: boolean;
+  language?: string;
   editorOptions?: {};
 }): BasicFormField<string> {
   return {
@@ -42,14 +44,20 @@ export function codeEditor({
           <Editor
             value={props.value}
             height={height || "50vh"}
-            defaultLanguage="html"
+            defaultLanguage={language || "html"}
             theme="vs-dark"
             options={{
+              formatOnPaste: true,
+              formatOnType: true,
+              autoIndent: "advanced",
               wordWrap: wrap ? "on" : "off",
               minimap: {
                 enabled: false,
               },
               ...editorOptions,
+            }}
+            onMount={(editor) => {
+              editor.getAction("editor.action.formatDocument")?.run();
             }}
             onChange={(newVal) => {
               if (newVal) {
