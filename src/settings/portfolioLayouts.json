@@ -47,6 +47,21 @@
       "overlayOpacity": 70
     }
   },
+  "card": {
+    "card": {
+      "minWidth": 300,
+      "borderRadius": "1rem",
+      "padding": "0.75rem",
+      "textPadding": "0px",
+      "cardGap": "0.75rem",
+      "bgColor": "#e6e6e6",
+      "hoverColor": "#a8eeff"
+    },
+    "image": {
+      "aspectRatio": "3/2",
+      "imageBorderRadius": "0.25rem"
+    }
+  },
   "sideBySide": {
     "tileAspectRatio": "4/3",
     "itemGap": "0px"

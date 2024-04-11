@@ -1,27 +1,44 @@
 ---
-import Image from "astro/components/Image.astro";
-const {props}=Astro
-const {title,url,thumbnail,accent}=Astro.props;
+import { getImage } from "astro:assets";
+const { title, line2, line3, url, thumbnail, accent } = Astro.props;
+import { settings } from "../../helpers/settingsHelper";
+import { colord } from "colord";
 
-// console.log(props)
----
-<style>
-.card-item{
-  padding:1rem;
+const tileSettings = settings.portfolioLayouts.coolTile;
+let fancyImage = { src: "" };
+if (thumbnail) {
+  const imageProps = await getImage({
+    src: thumbnail,
+  });
+  // console.log(imageProps);
+  const srcRatio = imageProps.attributes.width / imageProps.attributes.height;
+  const neededWidth = srcRatio * tileSettings.tiles.minWidth * 2;
+
+  fancyImage = await getImage({
+    src: thumbnail,
+    width: neededWidth,
+  });
 }
-  .card-image{
-    width:100%;
-    aspect-ratio: 3/2;
-    object-fit: cover;
+const overlayColor = colord(
+  tileSettings.tiles.useProjectColor ? accent : tileSettings.tiles.overlayColor
+)
+  .alpha(tileSettings.tiles.overlayOpacity / 100)
+  .toHex();
+---
 
-  }
-</style>
-<div class="card-item">
-  <div class="card-image-container" >
-{thumbnail ?<Image widths={[400]} class={"card-image"} src={thumbnail} alt=""/>:<div class="card-image" style={{backgroundColor:accent}}></div>}
-  
+<style></style>
+
+<article class="portfolio-card">
+  <div class="tile-hover-panel">
+    <div class="tile-hover-panel-items">
+      <a class="tile-hover-panel-title" href={url}>{title}</a>
+      {line2 && <p class="tile-hover-panel-line2">{line2}</p>}
+      {line3 && <p class="tile-hover-panel-line3">{line3}</p>}
+    </div>
   </div>
-  <a href={url}> {title}</a>
- 
-  <slot />
-</div>
+</article>
+
+<!-- 
+  watch this youtube video:
+  https://www.youtube.com/watch?v=5DEq5cWNYt8
+ -->

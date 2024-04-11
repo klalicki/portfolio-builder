@@ -69,6 +69,7 @@ export const portfolioLayouts = singleton({
               isCompact: true,
               label: "Overlay Inset",
               defaultValue: "1rem",
+              limitUnits: ["px", "rem", "em"],
             }),
 
             overlayColor: customFields.colorPicker({
@@ -83,6 +84,7 @@ export const portfolioLayouts = singleton({
               isCompact: true,
               label: "Overlay Padding",
               defaultValue: "1rem",
+              limitUnits: ["px", "rem", "em"],
             }),
 
             overlayOpacity: fields.number({
@@ -95,10 +97,67 @@ export const portfolioLayouts = singleton({
       },
 
       {
-        label: "Tile/'Cool Tile' Layout",
+        label: "Tile/'Cool Tile' Layout Items",
       }
     ),
-    card: fields.object({}),
+    card: fields.object(
+      {
+        card: fields.object({
+          minWidth: fields.number({
+            label: "Min Card Width (px)",
+            description: "The minimum width the tiles will be",
+            validation: { isRequired: true, max: 1200, min: 0 },
+          }),
+          borderRadius: customFields.cssUnit({
+            isCompact: true,
+            label: "Image Rounded Corners",
+            defaultValue: "1rem",
+            limitUnits: ["px", "rem", "em"],
+          }),
+          padding: customFields.cssUnit({
+            isCompact: true,
+            label: "Card Padding",
+            defaultValue: "1rem",
+            limitUnits: ["px", "rem", "em"],
+          }),
+          textPadding: customFields.cssUnit({
+            isCompact: true,
+            label: "Text Area Padding",
+            defaultValue: "1rem",
+            limitUnits: ["px", "rem", "em"],
+          }),
+          cardGap: customFields.cssUnit({
+            isCompact: true,
+            label: "Gap between Image and Text Area",
+            defaultValue: "1rem",
+            limitUnits: ["px", "rem", "em"],
+          }),
+          bgColor: customFields.colorPicker({
+            label: "Card Background Color",
+            compact: true,
+          }),
+          hoverColor: customFields.colorPicker({
+            label: "Card Hover Color",
+            compact: true,
+          }),
+        }),
+        image: fields.object({
+          aspectRatio: fields.text({
+            label: "Image Aspect Ratio",
+            description:
+              "This can be either a number (1 is square, higher than 1 is a horizontal rectangle), or a ratio ie 3/2",
+            defaultValue: "3/2",
+          }),
+          imageBorderRadius: customFields.cssUnit({
+            isCompact: true,
+            label: "Image Rounded Corners",
+            defaultValue: "1rem",
+            limitUnits: ["px", "rem", "em"],
+          }),
+        }),
+      },
+      { label: "Card Layout Items" }
+    ),
     sideBySide: fields.object(
       {
         tileAspectRatio: fields.text({
