@@ -2,8 +2,14 @@ import { getCollection } from "astro:content";
 
 const homepage = (await getCollection("homepage")) || [];
 const pages = (await getCollection("pages")) || [];
-const allProjects = (await getCollection("projects")) || [];
+const allProjectsUnsorted = (await getCollection("projects")) || [];
 const portfolioGroups = (await getCollection("portfolioGroups")) || [];
+
+const allProjects = allProjectsUnsorted.sort((a, b) => {
+  const idA = a.data.sortID || 0;
+  const idB = b.data.sortID || 0;
+  return idA - idB;
+});
 
 const getProjectList = (portfolioGroupSlug: string) => {
   let projectList;
