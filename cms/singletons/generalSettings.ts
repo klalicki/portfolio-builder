@@ -13,7 +13,7 @@ export const generalSettings = singleton({
       publicPath: "../assets/images/general/",
     }),
     customCSS: customFields.codeEditor({
-      label: "Write some custom CSS for the page here",
+      label: "Site-Wide custom CSS",
       language: "css",
       wrap: true,
     }),

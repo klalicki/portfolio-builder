@@ -2,6 +2,12 @@
 
 A portfolio builder/static site generator built with Keystatic CMS and Astro.
 
+## Note
+
+This is a work in progress, and may still have some bugs. If you find any issues, please let me know and I'll work with you to get it fixed!
+
+In addition, if you have any feature requests or suggestions, please let me know. I'm always looking for ways to improve this project.
+
 ## GitHub Pages vs Netlify
 
 This project is designed to be deployed GitHub Pages, a free hosting platform that is integrated with GitHub. Because of the structure of this site, it is only able to be deployed to the root of a GitHub Pages site, and not to a subdirectory. This means that if you want to host this site on GitHub Pages, you will need to give your repository the name `username.github.io`, where `username` is your GitHub username. You can then deploy this site to that repository.
@@ -89,13 +95,13 @@ In the CMS, there are three types of pages you can edit. All three provide an ed
 
 Each page and project has a 'publish status' that determines whether it is visible on the live site. There are three options:
 
-- **Yes**: The page or project is visible on the live site.
+- **Published**: The page or project is visible on the live site.
 
-- **No**: The page or project is not visible on the live site.
+- **Unpublished**: The page or project is not visible on the live site.
 
 - **Unlisted**: The page or project is visible on the live site, but it is hidden from the navigation menu and 'all' portfolio group (for projects only). You can still access the page by visiting its URL directly. In addition, unlisted projects can be added to custom portfolio groups and displayed on the site using the Portfolio View component. This can be useful if you want to share a project with a specific group of people without making it public. _Note: unlisted projects can still be found by others on the internet - if you are legally required to keep a project confidential, this will ***NOT*** suffice._
 
-# Organizing Content
+## Organizing Content
 
 This project uses a flexible system of pages and projects to organize content, focused around the organization needs of artists and designers. Here's how it works:
 
@@ -104,3 +110,20 @@ This project uses a flexible system of pages and projects to organize content, f
   - **Portfolio View component**: This is the component you can place in a page to display a grid of projects. You can select which portfolio group to display, and customize the layout of the grid. You can place multiple Portfolio View components on a single page to show different groups of projects. _Note: This component is only available in Pages and the Homepage, not Projects_ 
 
   - **Navigation Menu (Show Sub-items in Nav)**: If you want the portfolio items to show up in the site menu, you can check the 'Show Sub-items in Nav' box on a page, which will allow you to select one or multiple portfolio groups to show in the navigation menu, and to select a title that will appear in the nav menu for that portfolio group.
+
+## Editing Content
+
+All three page types have a similar editor that allows you to add text, images, and other content to the page. You can also add special blocks, including column layouts, HTML embeds, and image galleries.
+
+### Components
+
+The site has an assortment of components available in pages and projects. Here are some of the components you can use:
+
+#### Image Popout
+
+This component allows you to add an image to the page that can be clicked on to view a larger version. You can also add a caption to the image.
+
+#### Image Gallery
+
+This component allows you to add a gallery of images to the page. Each image can have a caption. When you click on an image, it will open in a lightbox where you can view a larger version of the image, and scroll through the other images in the gallery.
+

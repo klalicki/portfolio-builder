@@ -44,7 +44,7 @@
       "overlayColor": "#ffffff",
       "useProjectColor": false,
       "overlayPadding": "2rem",
-      "overlayOpacity": 70
+      "overlayOpacity": 75
     }
   },
   "card": {

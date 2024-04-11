@@ -12,7 +12,7 @@ import { Icon } from "@keystar/ui/icon";
 import { portfolioLayouts } from "./cms/singletons/portfolioLayouts";
 import { menuConfig } from "./cms/singletons/menuConfig";
 import { generalSettings } from "./cms/singletons/generalSettings";
-import { sidebarSettings } from "./cms/singletons/sidebarSettings";
+
 import { typeOptions } from "./cms/singletons/typeOptions";
 import { pageArea } from "./cms/singletons/pageAreaSettings";
 import { fonts } from "./cms/singletons/fonts";
@@ -46,29 +46,28 @@ const customNavField = fields.conditional(
               : "")
           );
         },
-      }
+      },
     ),
-  }
+  },
 );
 
 export default config({
   ui: {
     brand: {
-      name: "portfolio-builder",
+      name: "portfolio-builder v1.0",
       mark: () => {
         return <Icon src={hammerIcon} />;
       },
     },
     navigation: {
       Content: ["projects", "pages", "homepage", "portfolioGroups"],
-      Settings: ["menu", "general"],
-      Appearance: [
+      "Layout/Appearance": [
         "pageArea",
-        "sidebarSettings",
         "portfolioLayouts",
-        "fonts",
+        "menu",
         "typeOptions",
       ],
+      Settings: ["fonts", "general"],
     },
   },
   storage: {
@@ -216,9 +215,9 @@ export default config({
                 itemLabel(props) {
                   return props.value || "";
                 },
-              }
+              },
             ),
-          }
+          },
         ),
       },
     }),
@@ -226,7 +225,6 @@ export default config({
   singletons: {
     typeOptions: typeOptions,
     portfolioLayouts: portfolioLayouts,
-    sidebarSettings: sidebarSettings,
     general: generalSettings,
     menu: menuConfig,
     pageArea: pageArea,

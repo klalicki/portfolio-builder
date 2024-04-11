@@ -76,7 +76,7 @@ export const standardComponents = {
             defaultValue: "1/1",
           }),
         },
-        { layout: [6, 6, 6, 6] }
+        { layout: [6, 6, 6, 6] },
       ),
       items: fields.array(
         fields.object({
@@ -107,7 +107,7 @@ export const standardComponents = {
               `Item ${props?.key}`
             );
           },
-        }
+        },
       ),
       customClass: customFields.customClass,
     },
@@ -169,7 +169,7 @@ export const standardComponents = {
                   The image has been placed. Once you save the page, you will
                   see it here.
                 </div>
-              )
+              ),
             )}
           </div>{" "}
         </div>
@@ -226,9 +226,9 @@ export const standardComponents = {
                 defaultValue: "#000000",
               }),
             },
-            { layout: [12, 6, 6] }
+            { layout: [12, 6, 6] },
           ),
-        }
+        },
       ),
       customClass: customFields.customClass,
     },
@@ -479,7 +479,7 @@ export const standardComponents = {
     ContentView(props) {
       const itemID = useId();
       const cssStyles = `.column-container-wrapper > span > span > div:has(#${CSS.escape(
-        itemID
+        itemID,
       )}){
         flex-basis:${props.value.targetWidth};
         flex-grow:${props.value.flexGrow ? "1" : "0"}
@@ -524,8 +524,13 @@ export const standardComponents = {
   }),
   CustomCSSWrapper: wrapper({
     label: "Custom CSS Container",
+
     schema: {
-      customCSS: customFields.codeEditor({ label: "Custom CSS Code" }),
+      customCSS: customFields.codeEditor({
+        label: "Custom CSS Code",
+        language: "",
+        disablePrettier: true,
+      }),
       customClass: customFields.customClass,
     },
     icon: paintbrush2Icon,

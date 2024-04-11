@@ -23,10 +23,12 @@ export function codeEditor({
   wrap,
   editorOptions,
   language,
+  disablePrettier,
 }: {
   label: string;
   defaultValue?: string;
   description?: string;
+  disablePrettier?: boolean;
   height?: string;
   wrap?: boolean;
   language?: string;
@@ -64,7 +66,9 @@ export function codeEditor({
                 parser: language || "html",
                 plugins: [prettierPluginCSS, prettierPluginHTML],
               });
-              editor.setValue(formattedCode);
+              if (!disablePrettier) {
+                editor.setValue(formattedCode);
+              }
             }}
             onChange={(newVal) => {
               if (newVal) {
