@@ -66,7 +66,11 @@ export default defineMarkdocConfig({
     },
     ImageGallery: {
       render: component("./src/components/pagebuilder/ImageGallery.astro"),
-      attributes: { items: { type: Array }, options: { type: Object } },
+      attributes: {
+        items: { type: Array },
+        options: { type: Object },
+        customClass: { type: String },
+      },
     },
     ImagePopout: {
       render: component("./src/components/pagebuilder/ImagePopout.astro"),

@@ -21,7 +21,7 @@ const { props } = Astro;
 </style>
 
 <div
-  class="image-gallery"
+  class:list={["image-gallery", props.customClass]}
   style={{
     "--sectionWidth": props.options.width,
     "--galleryGap": props.options.gap,
