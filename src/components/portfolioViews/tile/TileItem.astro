@@ -1,74 +1,136 @@
 ---
-import Image from "astro/components/Image.astro";
-const { props } = Astro;
-const { title, url, thumbnail, accent } = Astro.props;
+import { getImage } from "astro:assets";
+const { title, line2, line3, url, thumbnail, accent } = Astro.props;
+import { settings } from "../../helpers/settingsHelper";
+import { colord } from "colord";
 
-// console.log(props)
+const tileSettings = settings.portfolioLayouts.coolTile;
+let fancyImage = { src: "" };
+if (thumbnail) {
+  const imageProps = await getImage({
+    src: thumbnail,
+  });
+  // console.log(imageProps);
+  const srcRatio = imageProps.attributes.width / imageProps.attributes.height;
+  const neededWidth = srcRatio * tileSettings.tiles.minWidth * 2;
+
+  fancyImage = await getImage({
+    src: thumbnail,
+    width: neededWidth,
+  });
+}
+const overlayColor = colord(
+  tileSettings.tiles.useProjectColor ? accent : tileSettings.tiles.overlayColor
+)
+  .alpha(tileSettings.tiles.overlayOpacity / 100)
+  .toHex();
 ---
 
-<style>
+<style define:vars={{ overlayColor }}>
   .portfolio-tile {
+    aspect-ratio: var(--tileRatio);
     position: relative;
-    width: 100%;
-    /* height: 100%; */
-    /* aspect-ratio: 5 / 4; */
-  }
-  .tile-image {
-    /* position: ; */
-    object-fit: cover;
-    height: auto;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 1.25;
-    position: relative;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    overflow: hidden;
+    background-size: cover;
+    transition: background 0.5s linear;
+    display: flex;
+    justify-content: stretch;
+    flex-direction: column;
   }
 
   .tile-hover-panel {
-    opacity: 0;
-    position: absolute;
-    z-index: 100;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background-color: lightblue;
+    z-index: 10;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-    transition: opacity 0.3s;
-  }
-  .portfolio-tile:hover .tile-hover-panel,
-  .tile-hover-panel:focus-within {
-    opacity: 1;
+    align-items: center;
+    flex-basis: 100%;
+    flex-grow: 1;
+    transform: scale(0.9);
+    transform-origin: 50% 120% 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    overflow: visible;
+    background-color: var(--overlayColor, rgba(0, 0, 0, 0.642));
   }
 
-  .tile-hover-panel-link::after {
+  .portfolio-tile:hover .tile-hover-panel,
+  .portfolio-tile:focus-within .tile-hover-panel {
+    transform: scale(1);
+    opacity: 1;
+  }
+  .tile-hover-panel-items {
+    padding: var(--overlayPadding);
+  }
+  .tile-hover-panel-title {
+    color: white;
+    text-decoration: none;
+  }
+  .tile-hover-panel-title::before {
     content: "";
     position: absolute;
+
+    width: 100%;
     left: 0;
-    right: 0;
     top: 0;
-    bottom: 0;
+    height: 100%;
   }
-  * {
+  /* typography */
+  .tile-hover-panel-title {
+    font-family: var(--title-fontFamily);
+    font-size: var(--title-fontSize);
+    font-weight: var(--title-fontWeight);
+    font-style: var(--title-fontStyle);
+    margin-top: var(--title-marginTop);
+    margin-bottom: var(--title-marginBottom);
+    color: var(--title-color);
+    line-height: var(--title-lineHeight);
+  }
+  .tile-hover-panel-line2 {
+    font-family: var(--line2-fontFamily);
+    font-size: var(--line2-fontSize);
+    font-weight: var(--line2-fontWeight);
+    font-style: var(--line2-fontStyle);
+
+    margin-top: var(--line2-marginTop);
+    margin-bottom: var(--line2-marginBottom);
+    color: var(--line2-color);
+    line-height: var(--line2-lineHeight);
+  }
+  .tile-hover-panel-line3 {
+    font-family: var(--line3-fontFamily);
+    font-size: var(--line3-fontSize);
+    font-weight: var(--line3-fontWeight);
+    font-style: var(--line3-fontStyle);
+
+    margin-top: var(--line3-marginTop);
+    margin-bottom: var(--line3-marginBottom);
+    color: var(--line3-color);
+    line-height: var(--line3-lineHeight);
+  }
+
+  @media (any-hover: none) {
+    .tile-hover-panel {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 </style>
 
-<article class="portfolio-tile">
-  {
-    thumbnail ? (
-      <Image widths={[500]} class={"tile-image"} src={thumbnail} alt="" />
-    ) : (
-      <div class="tile-image" style={{ backgroundColor: accent }} />
-    )
-  }
+<article
+  class="portfolio-tile"
+  style={{
+    backgroundColor: "darkgray",
+    backgroundImage: `url(${fancyImage.src})`,
+  }}
+>
   <div class="tile-hover-panel">
-    <a class="tile-hover-panel-link" href={url}> {title}</a>
+    <div class="tile-hover-panel-items">
+      <a class="tile-hover-panel-title" href={url}>{title}</a>
+      {line2 && <p class="tile-hover-panel-line2">{line2}</p>}
+      {line3 && <p class="tile-hover-panel-line3">{line3}</p>}
+    </div>
   </div>
 </article>
 
