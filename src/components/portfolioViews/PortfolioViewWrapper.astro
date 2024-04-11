@@ -71,6 +71,8 @@ if (Object.keys(componentMappings).includes(props.portfolioLayout)) {
   validType = props.portfolioLayout;
 }
 
+const projectCount = projectList.length;
+
 const { Container, Item } = componentMappings[validType];
 ---
 
@@ -87,6 +89,7 @@ const { Container, Item } = componentMappings[validType];
           thumbnail={item.data.thumbnail || ""}
           index={index}
           accent={item.data.accent}
+          projectCount
         />
       );
     })

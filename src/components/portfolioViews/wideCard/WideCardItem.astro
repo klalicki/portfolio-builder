@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-const { title, line2, line3, url, thumbnail, accent } = Astro.props;
+const { title, line2, line3, url, thumbnail, index, accent } = Astro.props;
 import { settings } from "../../helpers/settingsHelper";
 import { colord } from "colord";
 
@@ -9,18 +9,18 @@ const tileSettings = settings.portfolioLayouts.coolTile;
 
 <style>
   .portfolio-card {
-    padding: var(--cardPadding);
+    padding: var(--containerGap) 0 calc(var(--containerGap) * 2);
     display: flex;
     flex-direction: column;
     gap: var(--cardGap);
-    background-color: var(--cardBGColor);
-    border-radius: var(--cardBorderRadius);
+
     transition: all 0.3s;
+    border-bottom: 2px solid black;
+  }
+  .card-content {
     position: relative;
   }
-  .portfolio-card:hover {
-    background-color: var(--cardHoverColor);
-  }
+
   .card-image {
     aspect-ratio: var(--imgAspectRatio);
     position: relative;
@@ -31,6 +31,17 @@ const tileSettings = settings.portfolioLayouts.coolTile;
   }
   .card-text-panel {
     padding: var(--textAreaPadding);
+    display: grid;
+    grid-template-columns: 1fr 7fr 3fr;
+  }
+
+  .card-text-panel-right {
+    text-align: right;
+  }
+
+  .card-text-panel-left {
+    flex-basis: 50px;
+    display: inline;
   }
 
   .card-link::after {
@@ -78,18 +89,25 @@ const tileSettings = settings.portfolioLayouts.coolTile;
   }
 </style>
 
-<article class="portfolio-card">
-  {
-    thumbnail ? (
-      <Image src={thumbnail} class={"card-image"} alt="" />
-    ) : (
-      <div class="card-image" />
-    )
-  }
-  <div class="card-text-panel">
-    <a class="card-text-panel-title card-link" href={url}>{title}</a>
-    {line2 && <p class="card-text-panel-line2">{line2}</p>}
-    {line3 && <p class="card-text-panel-line3">{line3}</p>}
+<article class:list={"portfolio-card"}>
+  <div class="card-content">
+    <div class="card-text-panel">
+      <p class="card-text-panel-title card-text-panel-left">
+        {index.toString().padStart(2, "0")}
+      </p>
+      <a class="card-text-panel-title card-link" href={url}> {title}</a>
+      <div class="card-text-panel-right">
+        {line2 && <p class="card-text-panel-line2">{line2}</p>}
+        {line3 && <p class="card-text-panel-line3">{line3}</p>}
+      </div>
+    </div>
+    {
+      thumbnail ? (
+        <Image src={thumbnail} class={"wide-card-image"} alt="" />
+      ) : (
+        <div class="wide-card-image" />
+      )
+    }
   </div>
 </article>
 

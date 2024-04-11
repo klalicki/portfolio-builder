@@ -28,18 +28,15 @@ const cardRules = formatCssRules({
 ---
 
 <style>
-  .tile-container {
-    display: grid;
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(min(var(--minCardWidth), 100%), 1fr)
-    );
-    gap: var(--containerGap);
+  .wide-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     padding: var(--containerPadding);
     max-width: var(--containerWidth);
   }
 </style>
 
-<div id={props.containerId} class="tile-container" style={cardRules}>
+<div id={props.containerId} class="wide-card-container" style={cardRules}>
   <slot />
 </div>
