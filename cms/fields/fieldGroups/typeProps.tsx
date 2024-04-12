@@ -1,16 +1,17 @@
 import { fields, type ComponentSchema } from "@keystatic/core";
 import { colorPicker, cssUnit } from "..";
+import fontSettings from "../../../src/settings/fonts.json";
+const fontOptions = fontSettings.fontLibrary.map((item, index) => {
+  return { label: item.fontName, value: index.toString() };
+});
+
 export function typeProps({ label }: { label: string }) {
   const typeOptionsObj = fields.object(
     {
       fontFamily: fields.select({
         label: "Font Family",
-        options: [
-          { label: "Font 1", value: "fontStack1" },
-          { label: "Font 2", value: "fontStack2" },
-          { label: "Font 3", value: "fontStack3" },
-        ],
-        defaultValue: "fontStack1",
+        options: fontOptions,
+        defaultValue: "0",
       }),
       fontWeight: fields.select({
         label: "Font Weight",
@@ -59,7 +60,7 @@ export function typeProps({ label }: { label: string }) {
         limitUnits: ["px", "em", "rem"],
       }),
     },
-    { label: label, layout: [2, 2, 2, 4, 2, 4, 4, 4] }
+    { label: label, layout: [2, 2, 2, 4, 2, 4, 4, 4] },
   );
   // console.log(typeOptionsObj);
   return typeOptionsObj;
