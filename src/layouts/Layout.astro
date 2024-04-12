@@ -26,9 +26,13 @@ if (images && images[imagePath]) {
   faviconSrc = fancyImage.src;
 }
 
-const fontLinks = Object.values(settings.fonts)
+const fontLinks = Object.values(settings.fonts.fontLibrary)
   .map((fontObj) => {
-    return atob(fontObj.htmlLink);
+    if (fontObj.mode.discriminant === "remote") {
+      return atob(fontObj.mode.value.htmlLink);
+    } else {
+      return "";
+    }
   })
   .join("");
 
@@ -123,9 +127,9 @@ fontSpecSets.forEach((pair) => {
     <style
       is:global
       define:vars={{
-        fontStack1: settings.fonts.font1.fontFamily,
-        fontStack2: settings.fonts.font2.fontFamily,
-        fontStack3: settings.fonts.font3.fontFamily,
+        // fontStack1: settings.fonts.font1.fontFamily,
+        // fontStack2: settings.fonts.font2.fontFamily,
+        // fontStack3: settings.fonts.font3.fontFamily,
         ...fontRules,
         // rootFontSize: settings.fonts.sizes.rootSize,
       }}
