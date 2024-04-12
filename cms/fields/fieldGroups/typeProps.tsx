@@ -1,9 +1,14 @@
 import { fields, type ComponentSchema } from "@keystatic/core";
 import { colorPicker, cssUnit } from "..";
 import fontSettings from "../../../src/settings/fonts.json";
-const fontOptions = fontSettings.fontLibrary.map((item, index) => {
-  return { label: item.fontName, value: index.toString() };
+
+const loadedFontOptions = fontSettings.fontLibrary.map((item) => {
+  return { label: item.fontName, value: item.uniqueID };
 });
+const fontOptions = [
+  { label: "Default Font", value: "0" },
+  ...loadedFontOptions,
+];
 
 export function typeProps({ label }: { label: string }) {
   const typeOptionsObj = fields.object(
@@ -14,12 +19,16 @@ export function typeProps({ label }: { label: string }) {
           options: fontOptions,
           defaultValue: "0",
         }),
-        parse(value) {
+        parse(value: string) {
           console.log("parsing: " + value);
+          const isValidFont = fontOptions.find((item) => {
+            return item.value === value;
+          });
+          return isValidFont ? value : "0";
         },
-        validate(value) {
-          console.log(value);
-        },
+        // validate(value) {
+        //   console.log(value);
+        // },
       },
       fontWeight: fields.select({
         label: "Font Weight",

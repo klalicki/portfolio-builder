@@ -2,11 +2,23 @@
   "fontLibrary": [
     {
       "fontName": "DM Sans",
+      "uniqueID": "1712937629750",
       "mode": {
         "discriminant": "remote",
         "value": {
-          "htmlLink": "PGxpbmsKICAgIGhyZWY9Imh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzMj9mYW1pbHk9RE0rU2FuczppdGFsLG9wc3osd2dodEAwLDkuLjQwLDEwMC4uMTAwMDsxLDkuLjQwLDEwMC4uMTAwMCZkaXNwbGF5PXN3YXAiCiAgICByZWw9InN0eWxlc2hlZXQiPg==",
+          "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PURNK1NhbnM6aXRhbCxvcHN6LHdnaHRAMCw5Li40MCwxMDAuLjEwMDA7MSw5Li40MCwxMDAuLjEwMDAmZGlzcGxheT1zd2FwIgogIHJlbD0ic3R5bGVzaGVldCIKLz4K",
           "fontFamily": " \"DM Sans\", sans-serif"
+        }
+      }
+    },
+    {
+      "fontName": "Another Font",
+      "uniqueID": "1712937645048",
+      "mode": {
+        "discriminant": "remote",
+        "value": {
+          "htmlLink": "",
+          "fontFamily": "asdasd"
         }
       }
     }
