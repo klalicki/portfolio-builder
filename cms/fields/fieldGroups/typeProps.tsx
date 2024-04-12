@@ -8,11 +8,19 @@ const fontOptions = fontSettings.fontLibrary.map((item, index) => {
 export function typeProps({ label }: { label: string }) {
   const typeOptionsObj = fields.object(
     {
-      fontFamily: fields.select({
-        label: "Font Family",
-        options: fontOptions,
-        defaultValue: "0",
-      }),
+      fontFamily: {
+        ...fields.select({
+          label: "Font Family",
+          options: fontOptions,
+          defaultValue: "0",
+        }),
+        parse(value) {
+          console.log("parsing: " + value);
+        },
+        validate(value) {
+          console.log(value);
+        },
+      },
       fontWeight: fields.select({
         label: "Font Weight",
 
