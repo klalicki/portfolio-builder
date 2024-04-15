@@ -26,6 +26,14 @@ if (images && images[imagePath]) {
   faviconSrc = fancyImage.src;
 }
 
+// generate font stacks
+const fontStacks = settings.fonts.fontLibrary.map((item, id) => {
+  const valItem: { [key: string]: string } = {};
+  valItem[`--fontStack-${item.uniqueID}`] = item.mode.value.fontFamily;
+  return valItem;
+});
+console.log(fontStacks);
+
 const fontLinks = Object.values(settings.fonts.fontLibrary)
   .map((fontObj) => {
     if (fontObj.mode.discriminant === "remote") {

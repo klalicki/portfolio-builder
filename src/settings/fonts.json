@@ -1,17 +1,6 @@
 {
   "fontLibrary": [
     {
-      "fontName": "DM Sans",
-      "uniqueID": "1712937629750",
-      "mode": {
-        "discriminant": "remote",
-        "value": {
-          "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PURNK1NhbnM6aXRhbCxvcHN6LHdnaHRAMCw5Li40MCwxMDAuLjEwMDA7MSw5Li40MCwxMDAuLjEwMDAmZGlzcGxheT1zd2FwIgogIHJlbD0ic3R5bGVzaGVldCIKLz4K",
-          "fontFamily": " \"DM Sans\", sans-serif"
-        }
-      }
-    },
-    {
       "fontName": "Jersey 10 Charted",
       "uniqueID": "1712937645048",
       "mode": {
@@ -19,6 +8,17 @@
         "value": {
           "htmlLink": "PGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1KZXJzZXkrMTArQ2hhcnRlZCZkaXNwbGF5PXN3YXAiIHJlbD0ic3R5bGVzaGVldCI+",
           "fontFamily": "\"Jersey 10 Charted\", sans-serif"
+        }
+      }
+    },
+    {
+      "fontName": "DM Sans",
+      "uniqueID": "1712937629750",
+      "mode": {
+        "discriminant": "remote",
+        "value": {
+          "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PURNK1NhbnM6aXRhbCxvcHN6LHdnaHRAMCw5Li40MCwxMDAuLjEwMDA7MSw5Li40MCwxMDAuLjEwMDAmZGlzcGxheT1zd2FwIgogIHJlbD0ic3R5bGVzaGVldCIKLz4K",
+          "fontFamily": " \"DM Sans\", sans-serif"
         }
       }
     }
