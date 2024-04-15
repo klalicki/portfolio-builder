@@ -12,13 +12,13 @@
       }
     },
     {
-      "fontName": "Another Font",
+      "fontName": "Jersey 10 Charted",
       "uniqueID": "1712937645048",
       "mode": {
         "discriminant": "remote",
         "value": {
-          "htmlLink": "QkxBIEJMQSBCTEE=",
-          "fontFamily": "asdasd"
+          "htmlLink": "PGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1KZXJzZXkrMTArQ2hhcnRlZCZkaXNwbGF5PXN3YXAiIHJlbD0ic3R5bGVzaGVldCI+",
+          "fontFamily": "\"Jersey 10 Charted\", sans-serif"
         }
       }
     }
