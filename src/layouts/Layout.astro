@@ -27,10 +27,9 @@ if (images && images[imagePath]) {
 }
 
 // generate font stacks
-const fontStacks = settings.fonts.fontLibrary.map((item, id) => {
-  const valItem: { [key: string]: string } = {};
-  valItem[`--fontStack-${item.uniqueID}`] = item.mode.value.fontFamily;
-  return valItem;
+const fontStacks: { [key: string]: string } = {};
+settings.fonts.fontLibrary.forEach((item, id) => {
+  fontStacks[`fontStack-${id}`] = item.mode.value.fontFamily;
 });
 console.log(fontStacks);
 
@@ -53,13 +52,18 @@ fontSpecSets.forEach((pair) => {
   fontVars.forEach((fontVarPair) => {
     const keyName = pair[0] + "-" + fontVarPair[0];
     if (fontVarPair[0] === "fontFamily") {
-      fontRules[keyName] = `var(--${fontVarPair[1]})`;
+      const fontID = settings.fonts.fontLibrary.findIndex((item) => {
+        return fontVarPair[1] === item.uniqueID;
+      });
+      const normalizedFontID = fontID === -1 ? 0 : fontID;
+      fontRules[keyName] = `var(--fontStack-${normalizedFontID})`;
     } else {
       // @ts-ignore
       fontRules[keyName] = fontVarPair[1];
     }
   });
 });
+console.log(fontRules);
 ---
 
 <!doctype html>
@@ -135,6 +139,7 @@ fontSpecSets.forEach((pair) => {
     <style
       is:global
       define:vars={{
+        ...fontStacks,
         // fontStack1: settings.fonts.font1.fontFamily,
         // fontStack2: settings.fonts.font2.fontFamily,
         // fontStack3: settings.fonts.font3.fontFamily,
