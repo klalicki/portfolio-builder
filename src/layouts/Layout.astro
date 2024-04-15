@@ -27,7 +27,9 @@ if (images && images[imagePath]) {
 }
 
 // generate font stacks
-const fontStacks: { [key: string]: string } = {};
+const fontStacks: { [key: string]: string } = {
+  "fontStack-default": "sans-serif",
+};
 settings.fonts.fontLibrary.forEach((item, id) => {
   fontStacks[`fontStack-${id}`] = item.mode.value.fontFamily;
 });
@@ -55,7 +57,7 @@ fontSpecSets.forEach((pair) => {
       const fontID = settings.fonts.fontLibrary.findIndex((item) => {
         return fontVarPair[1] === item.uniqueID;
       });
-      const normalizedFontID = fontID === -1 ? 0 : fontID;
+      const normalizedFontID = fontID === -1 ? "default" : fontID;
       fontRules[keyName] = `var(--fontStack-${normalizedFontID})`;
     } else {
       // @ts-ignore
