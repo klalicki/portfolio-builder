@@ -19,8 +19,9 @@ export default defineMarkdocConfig({
     },
     image: {
       ...nodes.image,
+
       render: component(
-        "./src/components/pagebuilder/MarkdocImageReplace.astro"
+        "./src/components/pagebuilder/MarkdocImageReplace.astro",
       ),
     },
   },
@@ -117,7 +118,7 @@ export default defineMarkdocConfig({
     },
     PortfolioView: {
       render: component(
-        "./src/components/portfolioViews/PortfolioViewWrapper.astro"
+        "./src/components/portfolioViews/PortfolioViewWrapper.astro",
       ),
       attributes: {
         unique: { type: String },
