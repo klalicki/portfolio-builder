@@ -18,6 +18,8 @@ import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 import { fullscreenIcon } from "@keystar/ui/icon/icons/fullscreenIcon";
 import { layoutGridIcon } from "@keystar/ui/icon/icons/layoutGridIcon";
 
+import { ImagePreviewer, useImageSrc } from "./helpers/ImagePreviewer";
+
 // import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 // import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 // import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
@@ -233,25 +235,12 @@ export const standardComponents = {
       customClass: customFields.customClass,
     },
     ContentView(props) {
-      const [imageDataUrl, setImageDataUrl] = useState<any>(null);
-
-      useEffect(() => {
-        if (props?.value?.image?.data) {
-          const u8intArray = props?.value?.image?.data;
-
-          const blob = new Blob([u8intArray], { type: "image/png" });
-          const reader = new FileReader();
-          reader.onload = () => {
-            setImageDataUrl(reader.result);
-          };
-          reader.readAsDataURL(blob);
-        }
-      }, []);
+      const bgImgSrc = useImageSrc(props.value.image);
 
       return (
         <div
           style={{
-            backgroundImage: `url(${imageDataUrl})`,
+            backgroundImage: `url(${bgImgSrc})`,
             height: props.value.height,
             maxWidth: props.value.width,
             backgroundSize: "cover",
@@ -286,28 +275,8 @@ export const standardComponents = {
     label: "Image (with Popout)",
     icon: fullscreenIcon,
     ContentView(props) {
-      const [imageDataUrl, setImageDataUrl] = useState<any>(null);
-
-      useEffect(() => {
-        const fetchImage = async () => {
-          if (props?.value?.image?.data) {
-            const u8intArray = props?.value?.image?.data;
-            // console.log(u8intArray);
-            const blob = new Blob([u8intArray], { type: "image/png" });
-            const reader = new FileReader();
-            reader.onload = () => {
-              setImageDataUrl(reader.result);
-            };
-            reader.readAsDataURL(blob);
-          }
-        };
-        fetchImage();
-      }, []);
-
       return (
-        <div>
-          <img src={imageDataUrl} alt="" />
-        </div>
+        <ImagePreviewer imgSrc={props.value.image} alt={props.value.altText} />
       );
     },
     schema: {
