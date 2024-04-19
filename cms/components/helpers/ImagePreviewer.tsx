@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
  * for an <img> element, or inside `url()` for a CSS background image.
  */
 export const useImageData = (
-  imgData: { data: Uint8Array | null } | null,
+  imgData: { data: Uint8Array | null | undefined } | null | undefined,
 ): string => {
   const [imageDataUrl, setImageDataUrl] = useState<string>("");
   useEffect(() => {
@@ -32,7 +32,7 @@ export const useImageData = (
   return imageDataUrl;
 };
 export interface ImagePreviewerProps extends React.HTMLProps<HTMLImageElement> {
-  imgData: { data: Uint8Array | null } | null;
+  imgData: { data: Uint8Array | null | undefined } | null | undefined;
 }
 
 export const ImagePreviewer = ({ imgData, ...props }: ImagePreviewerProps) => {

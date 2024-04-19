@@ -245,6 +245,7 @@ export const standardComponents = {
     label: "Image (with Popout)",
     icon: fullscreenIcon,
     ContentView(props) {
+                       props.value.image?.data
       return (
         <ImagePreviewer imgData={props.value.image} alt={props.value.altText} />
       );
