@@ -18,7 +18,7 @@ import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 import { fullscreenIcon } from "@keystar/ui/icon/icons/fullscreenIcon";
 import { layoutGridIcon } from "@keystar/ui/icon/icons/layoutGridIcon";
 
-import { ImagePreviewer, useImageSrc } from "./helpers/ImagePreviewer";
+import { ImagePreviewer, useImageData } from "./helpers/ImagePreviewer";
 
 // import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 // import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
@@ -114,36 +114,6 @@ export const standardComponents = {
       customClass: customFields.customClass,
     },
     ContentView(props) {
-      const [imageDataUrl, setImageDataUrl] = useState<{
-        [key: string | number]: any;
-      }>({});
-
-      const fetchImages = async () => {
-        const updatedImageDataUrl: {
-          [key: string | number]: any;
-        } = {};
-        for (const [index, item] of props.value.items.entries()) {
-          if (item.image?.data) {
-            const u8intArray = item.image.data;
-            const blob = new Blob([u8intArray], { type: "image/png" });
-            const reader = new FileReader();
-            reader.onload = () => {
-              updatedImageDataUrl[index] = reader.result;
-              setImageDataUrl((prevData) => ({
-                ...prevData,
-                ...updatedImageDataUrl,
-              }));
-            };
-            reader.readAsDataURL(blob);
-          }
-        }
-      };
-
-      // Trigger image fetching when the component mounts
-      useEffect(() => {
-        fetchImages();
-      }, []);
-
       return (
         <div>
           Note: the images in the preview of this component will not update
@@ -155,15 +125,15 @@ export const standardComponents = {
               gap: props.value.options.gap,
             }}
           >
-            {Object.values(imageDataUrl).map((url, index) =>
-              url ? (
-                <img
+            {props.value.items.map((item, index) =>
+              item.image?.data ? (
+                <ImagePreviewer
                   style={{
                     aspectRatio: props.value.options.aspectRatio,
                     objectFit: "cover",
                   }}
                   key={index}
-                  src={url}
+                  imgData={item.image}
                   alt={`Image ${index}`}
                 />
               ) : (
@@ -235,7 +205,7 @@ export const standardComponents = {
       customClass: customFields.customClass,
     },
     ContentView(props) {
-      const bgImgSrc = useImageSrc(props.value.image);
+      const bgImgSrc = useImageData(props.value.image);
 
       return (
         <div
@@ -276,7 +246,7 @@ export const standardComponents = {
     icon: fullscreenIcon,
     ContentView(props) {
       return (
-        <ImagePreviewer imgSrc={props.value.image} alt={props.value.altText} />
+        <ImagePreviewer imgData={props.value.image} alt={props.value.altText} />
       );
     },
     schema: {
