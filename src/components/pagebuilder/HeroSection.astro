@@ -9,12 +9,12 @@ const sidePadding = settings.pageArea.padding.horizontal;
 import OptimizedImage from "./OptimizedImage.astro";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "./../../assets/images/**/*.{jpeg,jpg,png,gif}"
+  "./../../assets/images/**/*.{jpeg,jpg,png,gif,PNG,JPG,GIF,JPEG,webp,WEBP}"
 );
 // console.log(images);
 if (!images[imagePath])
   throw new Error(
-    `"${props.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+    `"${props.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,PNG,JPG,GIF,JPEG,webp,WEBP}"`
   );
 
 const fancyImage = await getImage({ src: images[imagePath](), width: 1200 });

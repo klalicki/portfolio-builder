@@ -10,7 +10,7 @@ const customCSS = atob(settings.general.customCSS);
 
 const imagePath = settings.general.favicon;
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "./../../**/*.{jpeg,jpg,png,gif}"
+  "./../../**/*.{jpeg,jpg,png,gif,PNG,JPG,GIF,JPEG,webp,WEBP}"
 );
 
 if (!images[imagePath]) {
