@@ -4,73 +4,80 @@
     "baseFontSizeLg": "18px"
   },
   "p": {
-    "fontFamily": "1712937629750",
+    "fontFamily": "1731355991189",
     "fontWeight": "400",
     "fontStyle": "normal",
     "fontSize": "1rem",
     "lineHeight": 1.5,
     "color": "#000000",
     "marginTop": "0.5em",
-    "marginBottom": "0.5rem"
+    "marginBottom": "0.5rem",
+    "underline": true
   },
   "h1": {
-    "fontFamily": "1712937645048",
+    "fontFamily": "1731355953068",
     "fontWeight": "700",
     "fontStyle": "normal",
     "fontSize": "2rem",
     "lineHeight": 1.5,
     "color": "#000000",
     "marginTop": "1em",
-    "marginBottom": "2em"
+    "marginBottom": "2em",
+    "underline": false
   },
   "h2": {
-    "fontFamily": "0",
+    "fontFamily": "1731355953068",
     "fontWeight": "700",
     "fontStyle": "normal",
     "fontSize": "1.5rem",
     "lineHeight": 1.25,
     "color": "#000000",
     "marginTop": "0.5em",
-    "marginBottom": "0.5em"
+    "marginBottom": "0.5em",
+    "underline": false
   },
   "h3": {
-    "fontFamily": "0",
+    "fontFamily": "1731355953068",
     "fontWeight": "700",
     "fontStyle": "normal",
     "fontSize": "1.17rem",
     "lineHeight": 1.25,
     "color": "",
     "marginTop": "1em",
-    "marginBottom": "1em"
+    "marginBottom": "1em",
+    "underline": false
   },
   "h4": {
-    "fontFamily": "0",
+    "fontFamily": "1731355953068",
     "fontWeight": "700",
     "fontStyle": "normal",
     "fontSize": "1rem",
     "lineHeight": 1.25,
     "color": "",
     "marginTop": "1em",
-    "marginBottom": "1em"
+    "marginBottom": "1em",
+    "underline": false
   },
   "h5": {
-    "fontFamily": "0",
+    "fontFamily": "1731355953068",
     "fontWeight": "700",
     "fontStyle": "normal",
     "fontSize": "0.83rem",
     "lineHeight": 1.25,
     "color": "",
     "marginTop": "1em",
-    "marginBottom": "1em"
+    "marginBottom": "1em",
+    "underline": false
   },
   "h6": {
-    "fontFamily": "0",
+    "fontFamily": "1731355953068",
     "fontWeight": "700",
     "fontStyle": "normal",
     "fontSize": "0.75rem",
     "lineHeight": 1.25,
     "color": "",
     "marginTop": "1em",
-    "marginBottom": "1em"
+    "marginBottom": "1em",
+    "underline": false
   }
 }

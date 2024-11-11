@@ -26,9 +26,6 @@ export function typeProps({ label }: { label: string }) {
           });
           return isValidFont ? value : "0";
         },
-        // validate(value) {
-        //   console.log(value);
-        // },
       },
       fontWeight: fields.select({
         label: "Font Weight",
@@ -76,8 +73,9 @@ export function typeProps({ label }: { label: string }) {
         isCompact: true,
         limitUnits: ["px", "em", "rem"],
       }),
+      underline: fields.checkbox({ label: "Underline", defaultValue: false }),
     },
-    { label: label, layout: [2, 2, 2, 4, 2, 4, 4, 4] },
+    { label: label, layout: [2, 2, 2, 4, 2, 4, 4, 4, 12] },
   );
   // console.log(typeOptionsObj);
   return typeOptionsObj;
