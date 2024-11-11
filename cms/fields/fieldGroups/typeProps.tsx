@@ -73,9 +73,70 @@ export function typeProps({ label }: { label: string }) {
         isCompact: true,
         limitUnits: ["px", "em", "rem"],
       }),
-      underline: fields.checkbox({ label: "Underline", defaultValue: false }),
+      textDecorationLine: fields.select({
+        label: "Underline Type",
+        options: [
+          { label: "None", value: "none" },
+          { label: "Underline", value: "underline" },
+          { label: "Overline", value: "overline" },
+          { label: "Strikethrough", value: "line-through" },
+        ],
+        defaultValue: "none",
+      }),
+
+      textDecorationStyle: fields.select({
+        label: "Underline Style",
+        options: [
+          { label: "Solid", value: "solid" },
+          { label: "Dotted", value: "dotted" },
+          { label: "Dashed", value: "dashed" },
+          { label: "Wavy", value: "wavy" },
+        ],
+        defaultValue: "solid",
+      }),
+      textDecorationSkipInk: fields.select({
+        label: "Skip Descenders?",
+        options: [
+          { label: "Yes", value: "auto" },
+          { label: "No", value: "none" },
+        ],
+        defaultValue: "none",
+      }),
+      textDecorationThickness: cssUnit({
+        label: "Underline Thickness",
+        isCompact: true,
+        limitUnits: ["px", "em"],
+        defaultValue: "1px",
+      }),
+      textDecorationColorProps: fields.conditional(
+        // First, define a `select` field with all the available "conditions"
+        fields.select({
+          label: "Underline Color",
+
+          options: [
+            { label: "Default", value: "default" },
+            { label: "Page Accent", value: "accent" },
+            { label: "Custom", value: "custom" },
+          ],
+          defaultValue: "default",
+        }),
+        // Then, provide a schema for each condition
+        {
+          // "none" condition
+          default: fields.empty(),
+          accent: fields.empty(),
+          // "video" condition
+          custom: colorPicker({
+            label: "Select Color",
+            compact: true,
+          }),
+        },
+      ),
     },
-    { label: label, layout: [2, 2, 2, 4, 2, 4, 4, 4, 12] },
+    {
+      label: label,
+      layout: [2, 2, 2, 4, 2, 4, 4, 4, 2, 2, 2, 3, 3],
+    },
   );
   // console.log(typeOptionsObj);
   return typeOptionsObj;
