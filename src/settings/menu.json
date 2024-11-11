@@ -3,8 +3,8 @@
   "position": {
     "discriminant": "top",
     "value": {
-      "u": "1712840379550",
-      "alwaysDropdown": false
+      "u": "1731365395983",
+      "alwaysDropdown": true
     }
   },
   "appearance": {
@@ -17,41 +17,63 @@
     "subItemIndent": "10px"
   },
   "colors": {
-    "backgroundColor": "#9cacff87",
+    "backgroundColor": "#000000c4",
     "menuHoverColor": "#ffffff80",
     "dropdownColor": "#0a0057ed",
     "dropdownHoverColor": "#ffffff80"
   },
   "typography": {
     "menuMain": {
-      "fontFamily": "fontStack1",
+      "fontFamily": "1731355991189",
       "fontWeight": "400",
       "fontStyle": "normal",
       "fontSize": "1.5rem",
       "lineHeight": 1,
-      "color": "#0a0057",
+      "color": "#ffe433",
       "marginTop": "0.5rem",
-      "marginBottom": "0.5rem"
+      "marginBottom": "0.5rem",
+      "textDecorationLine": "none",
+      "textDecorationStyle": "solid",
+      "textDecorationSkipInk": "none",
+      "textDecorationThickness": "",
+      "textDecorationColorProps": {
+        "discriminant": "default"
+      }
     },
     "menuSub": {
-      "fontFamily": "fontStack1",
+      "fontFamily": "1731355991189",
       "fontWeight": "400",
       "fontStyle": "normal",
       "fontSize": "1rem",
       "lineHeight": 1,
-      "color": "#ffffff",
+      "color": "#ffe433",
       "marginTop": "4px",
-      "marginBottom": "4px"
+      "marginBottom": "4px",
+      "textDecorationLine": "none",
+      "textDecorationStyle": "solid",
+      "textDecorationSkipInk": "none",
+      "textDecorationThickness": "",
+      "textDecorationColorProps": {
+        "discriminant": "default"
+      }
     },
     "menuText": {
-      "fontFamily": "fontStack3",
-      "fontWeight": "400",
-      "fontStyle": "normal",
+      "fontFamily": "1731355953068",
+      "fontWeight": "900",
+      "fontStyle": "italic",
       "fontSize": "1.5rem",
       "lineHeight": 1,
-      "color": "#0a0057",
+      "color": "#ffe433",
       "marginTop": "4px",
-      "marginBottom": "4px"
+      "marginBottom": "4px",
+      "textDecorationLine": "underline",
+      "textDecorationStyle": "wavy",
+      "textDecorationSkipInk": "none",
+      "textDecorationThickness": "3px",
+      "textDecorationColorProps": {
+        "discriminant": "custom",
+        "value": "#00ff33"
+      }
     }
   }
 }

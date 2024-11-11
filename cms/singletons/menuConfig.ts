@@ -91,10 +91,10 @@ export const menuConfig = singleton({
       { layout: [3, 3, 3, 3] },
     ),
     typography: fields.object({
-      menuTitle: customFields.typeProps({ label: "Menu Title" }),
+      // menuTitle: customFields.typeProps({ label: "Menu Title" }),
       menuMain: customFields.typeProps({ label: "Main menu items" }),
       menuSub: customFields.typeProps({ label: "Sub-items" }),
-      menuText: customFields.typeProps({ label: "Menu Bar text" }),
+      menuText: customFields.typeProps({ label: "Menu Bar Text" }),
     }),
   },
 });
