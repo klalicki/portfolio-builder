@@ -116,6 +116,9 @@ export default defineMarkdocConfig({
         customClass: { type: String },
       },
     },
+    PageSection: {
+      render: component("./src/components/pagebuilder/PageSection.astro"),
+    },
     PortfolioView: {
       render: component(
         "./src/components/portfolioViews/PortfolioViewWrapper.astro",

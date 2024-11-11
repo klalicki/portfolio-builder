@@ -157,7 +157,12 @@ export const standardComponents = {
       textDecorationLine: "underline",
     },
   }),
-
+  PageSection: wrapper({
+    label: "Page Section",
+    description:
+      "use this to create a section with a background color, custom padding, etc",
+    schema: {},
+  }),
   HeroSection: wrapper({
     label: "Hero Section",
     schema: {
