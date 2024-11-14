@@ -6,7 +6,6 @@ name: Deploy Astro site to Pages
 
 on:
   # Runs on pushes targeting the default branch
-  # uncomment these two lines to enable GitHub Pages builds
   push:
     branches: ["main"]
 
