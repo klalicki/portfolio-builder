@@ -1,10 +1,12 @@
 {
-  "siteTitle": "Blorp",
+  "siteTitle": "My Site",
   "position": {
-    "discriminant": "top",
+    "discriminant": "side",
     "value": {
-      "u": "1731365395983",
-      "alwaysDropdown": true
+      "u": "1731590023509",
+      "layout": {
+        "width": "clamp(300px, 300px, 300px)"
+      }
     }
   },
   "appearance": {
@@ -17,10 +19,10 @@
     "subItemIndent": "10px"
   },
   "colors": {
-    "backgroundColor": "#000000c4",
-    "menuHoverColor": "#ffffff80",
-    "dropdownColor": "#0a0057ed",
-    "dropdownHoverColor": "#ffffff80"
+    "backgroundColor": "#e3e3e3c4",
+    "menuHoverColor": "#ffffff",
+    "dropdownColor": "#e3e3e3c4",
+    "dropdownHoverColor": "#ffffff"
   },
   "typography": {
     "menuMain": {
@@ -29,7 +31,7 @@
       "fontStyle": "normal",
       "fontSize": "1.5rem",
       "lineHeight": 1,
-      "color": "#ffe433",
+      "color": "#0f00e0",
       "marginTop": "0.5rem",
       "marginBottom": "0.5rem",
       "textDecorationLine": "none",
@@ -46,7 +48,7 @@
       "fontStyle": "normal",
       "fontSize": "1rem",
       "lineHeight": 1,
-      "color": "#ffe433",
+      "color": "#0f00e0",
       "marginTop": "4px",
       "marginBottom": "4px",
       "textDecorationLine": "none",
@@ -59,11 +61,11 @@
     },
     "menuText": {
       "fontFamily": "1731355953068",
-      "fontWeight": "900",
-      "fontStyle": "italic",
+      "fontWeight": "500",
+      "fontStyle": "normal",
       "fontSize": "1.5rem",
       "lineHeight": 1,
-      "color": "#ffe433",
+      "color": "#0f00e0",
       "marginTop": "4px",
       "marginBottom": "4px",
       "textDecorationLine": "underline",
