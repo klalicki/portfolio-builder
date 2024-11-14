@@ -129,9 +129,10 @@ export default defineMarkdocConfig({
       },
     },
     CustomFont: {
-      render: null,
+      render: component("./src/components/pagebuilder/CustomFont.astro"),
       attributes: {
         fontSettings: { type: Object },
+        customClass: { type: String },
       },
     },
     PortfolioView: {

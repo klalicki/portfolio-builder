@@ -22,6 +22,7 @@ import { layoutGridIcon } from "@keystar/ui/icon/icons/layoutGridIcon";
 import globalFontSettings from "../../src/settings/fonts.json";
 
 import { ImagePreviewer, useImageData } from "./helpers/ImagePreviewer";
+import { fontOverrideCSSRules } from "./helpers/FontOverrideCSS";
 
 // import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 // import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
@@ -417,36 +418,14 @@ export const standardComponents = {
     icon: typeIcon,
     style: (props) => {
       const { fontSettings } = props.value;
-      const styles: any = {};
-      console.log(props.value.fontSettings);
-      if (fontSettings.fontFamily.discriminant) {
-        styles["font-family"] = globalFontSettings.fontLibrary.find((item) => {
-          console.log("checking");
-          console.log(item);
-          return item.uniqueID == fontSettings.fontFamily.value;
-        })?.mode.value.fontFamily;
-      }
-      if (fontSettings.fontSize.discriminant) {
-        styles["font-size"] = fontSettings.fontSize.value;
-      }
-      if (fontSettings.fontStyle.discriminant) {
-        styles["font-style"] = fontSettings.fontStyle.value;
-      }
-      if (fontSettings.fontWeight.discriminant) {
-        styles["font-weight"] = fontSettings.fontWeight.value;
-      }
-      if (fontSettings.textColor.discriminant) {
-        styles["color"] = fontSettings.textColor.value;
-      }
-      if (fontSettings.lineHeight.discriminant) {
-        styles["line-height"] = fontSettings.lineHeight.value;
-      }
 
-      console.log(styles);
+      const styles = fontOverrideCSSRules(props);
+
       return { ...styles, border: "1px dashed red" };
     },
     schema: {
-      fontSettings: typePropsOverride({ label: "not sure" }),
+      fontSettings: typePropsOverride({ label: "" }),
+      customClass: fields.text({ label: "Custom CSS Class", defaultValue: "" }),
     },
   }),
   SimpleCol: wrapper({
