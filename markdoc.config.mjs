@@ -126,6 +126,7 @@ export default defineMarkdocConfig({
           type: Object,
         },
         bgType: { type: Object },
+        css: { type: Object },
       },
     },
     CustomFont: {

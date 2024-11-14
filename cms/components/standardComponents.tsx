@@ -165,6 +165,19 @@ export const standardComponents = {
     label: "Page Section",
     description:
       "use this to create a section with a background color, custom padding, etc",
+    ContentView(props) {
+      const divRef = useRef<HTMLDivElement>(null); // Add type assertion
+      useEffect(() => {
+        if (divRef.current) {
+          const paddingProps = `padding-top:${props.value.spacing.boxPaddingTop};padding-bottom:${props.value.spacing.boxPaddingBottom};padding-left:${props.value.spacing.boxPaddingLeft};padding-right:${props.value.spacing.boxPaddingRight}`;
+          divRef.current.setAttribute(
+            "style",
+            props.value.css.customCSS + paddingProps,
+          ); // Fix the problem
+        }
+      }, [props.value.css.customCSS]);
+      return <div ref={divRef}>{props.children}</div>;
+    },
     schema: {
       sizing: fields.object(
         {
@@ -256,6 +269,19 @@ export const standardComponents = {
             allowAlpha: true,
           }),
         },
+      ),
+      css: fields.object(
+        {
+          customClass: customFields.customClass,
+
+          customCSS: customFields.codeEditor({
+            label: "Custom CSS Code",
+            language: "",
+            disablePrettier: true,
+          }),
+        },
+
+        { label: "CSS" },
       ),
     },
   }),
