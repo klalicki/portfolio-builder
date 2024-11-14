@@ -90,6 +90,23 @@ export const menuConfig = singleton({
       },
       { layout: [3, 3, 3, 3] },
     ),
+    borders: fields.object(
+      {
+        borderWidth: customFields.cssUnit({
+          label: "Border Width",
+          defaultValue: "1px",
+          limitUnits: ["px", "rem"],
+          isCompact: true,
+        }),
+        borderColor: customFields.colorPicker({
+          label: "Border Color",
+          allowAlpha: true,
+          compact: true,
+          defaultValue: "#000000",
+        }),
+      },
+      { label: "Borders", layout: [6, 6] },
+    ),
     typography: fields.object({
       // menuTitle: customFields.typeProps({ label: "Menu Title" }),
       menuMain: customFields.typeProps({ label: "Main menu items" }),
