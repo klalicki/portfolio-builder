@@ -16,6 +16,7 @@ import { paintbrush2Icon } from "@keystar/ui/icon/icons/paintbrush2Icon";
 import { columns4Icon } from "@keystar/ui/icon/icons/columns4Icon";
 import { columnsIcon } from "@keystar/ui/icon/icons/columnsIcon";
 import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
+import { groupIcon } from "@keystar/ui/icon/icons/groupIcon";
 import { typeIcon } from "@keystar/ui/icon/icons/typeIcon";
 import { alignLeftIcon } from "@keystar/ui/icon/icons/alignLeftIcon";
 import { fullscreenIcon } from "@keystar/ui/icon/icons/fullscreenIcon";
@@ -30,6 +31,131 @@ import { fontOverrideCSSRules } from "./helpers/FontOverrideCSS";
 // import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 
 export const standardComponents = {
+  PageSection: wrapper({
+    label: "Page Section",
+    icon: groupIcon,
+    description:
+      "use this to create a section with a background color, custom padding, etc",
+    ContentView(props) {
+      const divRef = useRef<HTMLDivElement>(null); // Add type assertion
+      useEffect(() => {
+        if (divRef.current) {
+          const paddingProps = `padding-top:${props.value.spacing.boxPaddingTop};padding-bottom:${props.value.spacing.boxPaddingBottom};padding-left:${props.value.spacing.boxPaddingLeft};padding-right:${props.value.spacing.boxPaddingRight}`;
+          divRef.current.setAttribute(
+            "style",
+            props.value.css.customCSS + paddingProps,
+          ); // Fix the problem
+        }
+      }, [props.value.css.customCSS]);
+      return <div ref={divRef}>{props.children}</div>;
+    },
+    schema: {
+      sizing: fields.object(
+        {
+          boxWidth: customFields.cssUnit({
+            label: "Section Width",
+            defaultValue: "100%",
+            isCompact: true,
+          }),
+          contentWidth: fields.conditional(
+            fields.checkbox({
+              label: "Custom content width",
+              defaultValue: false,
+            }),
+            {
+              false: fields.empty(),
+              true: customFields.cssUnit({
+                label: "Content Block Width",
+                defaultValue: "800px",
+                isCompact: true,
+              }),
+            },
+          ),
+        },
+        { label: "Sizing", layout: [6, 6] },
+      ),
+      spacing: fields.object(
+        {
+          boxPaddingTop: customFields.cssUnit({
+            label: "Top Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          boxPaddingBottom: customFields.cssUnit({
+            label: "Bottom Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          boxPaddingLeft: customFields.cssUnit({
+            label: "Left Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          boxPaddingRight: customFields.cssUnit({
+            label: "Right Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          alignContentBox: fields.select({
+            label: "Horizontally Align Content",
+            options: [
+              { label: "Left", value: "flex-start" },
+              { label: "Right", value: "flex-end" },
+              { label: "Center", value: "center" },
+            ],
+            defaultValue: "center",
+          }),
+          spaceBefore: customFields.cssUnit({
+            label: "Space Before Section",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          spaceAfter: customFields.cssUnit({
+            label: "Space After Section",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+        },
+        { label: "Spacing", layout: [6, 6, 6, 6, 12, 6, 6] },
+      ),
+      bgType: fields.conditional(
+        fields.select({
+          label: "Background Type",
+          defaultValue: "none",
+          options: [
+            { label: "None", value: "none" },
+            { label: "Color", value: "color" },
+            { label: "Image", value: "image" },
+          ],
+        }),
+        {
+          none: fields.empty(),
+          image: fields.image({
+            label: "Background Image",
+            directory: "src/assets/images",
+            publicPath: "",
+          }),
+          color: customFields.colorPicker({
+            label: "BG Color",
+            allowAlpha: true,
+          }),
+        },
+      ),
+      css: fields.object(
+        {
+          customClass: customFields.customClass,
+
+          customCSS: customFields.codeEditor({
+            label: "Custom CSS Code",
+            language: "",
+            disablePrettier: true,
+          }),
+        },
+
+        { label: "CSS" },
+      ),
+    },
+  }),
   FileLink: inline({
     label: "Link to File",
     icon: fileIcon,
@@ -162,130 +288,7 @@ export const standardComponents = {
       textDecorationLine: "underline",
     },
   }),
-  PageSection: wrapper({
-    label: "Page Section",
-    description:
-      "use this to create a section with a background color, custom padding, etc",
-    ContentView(props) {
-      const divRef = useRef<HTMLDivElement>(null); // Add type assertion
-      useEffect(() => {
-        if (divRef.current) {
-          const paddingProps = `padding-top:${props.value.spacing.boxPaddingTop};padding-bottom:${props.value.spacing.boxPaddingBottom};padding-left:${props.value.spacing.boxPaddingLeft};padding-right:${props.value.spacing.boxPaddingRight}`;
-          divRef.current.setAttribute(
-            "style",
-            props.value.css.customCSS + paddingProps,
-          ); // Fix the problem
-        }
-      }, [props.value.css.customCSS]);
-      return <div ref={divRef}>{props.children}</div>;
-    },
-    schema: {
-      sizing: fields.object(
-        {
-          boxWidth: customFields.cssUnit({
-            label: "Section Width",
-            defaultValue: "100%",
-            isCompact: true,
-          }),
-          contentWidth: fields.conditional(
-            fields.checkbox({
-              label: "Custom content width",
-              defaultValue: false,
-            }),
-            {
-              false: fields.empty(),
-              true: customFields.cssUnit({
-                label: "Content Block Width",
-                defaultValue: "800px",
-                isCompact: true,
-              }),
-            },
-          ),
-        },
-        { label: "Sizing", layout: [6, 6] },
-      ),
-      spacing: fields.object(
-        {
-          boxPaddingTop: customFields.cssUnit({
-            label: "Top Padding",
-            defaultValue: "1rem",
-            isCompact: true,
-          }),
-          boxPaddingBottom: customFields.cssUnit({
-            label: "Bottom Padding",
-            defaultValue: "1rem",
-            isCompact: true,
-          }),
-          boxPaddingLeft: customFields.cssUnit({
-            label: "Left Padding",
-            defaultValue: "1rem",
-            isCompact: true,
-          }),
-          boxPaddingRight: customFields.cssUnit({
-            label: "Right Padding",
-            defaultValue: "1rem",
-            isCompact: true,
-          }),
-          alignContentBox: fields.select({
-            label: "Horizontally Align Content",
-            options: [
-              { label: "Left", value: "flex-start" },
-              { label: "Right", value: "flex-end" },
-              { label: "Center", value: "center" },
-            ],
-            defaultValue: "center",
-          }),
-          spaceBefore: customFields.cssUnit({
-            label: "Space Before Section",
-            defaultValue: "1rem",
-            isCompact: true,
-          }),
-          spaceAfter: customFields.cssUnit({
-            label: "Space After Section",
-            defaultValue: "1rem",
-            isCompact: true,
-          }),
-        },
-        { label: "Spacing", layout: [6, 6, 6, 6, 12, 6, 6] },
-      ),
-      bgType: fields.conditional(
-        fields.select({
-          label: "Background Type",
-          defaultValue: "none",
-          options: [
-            { label: "None", value: "none" },
-            { label: "Color", value: "color" },
-            { label: "Image", value: "image" },
-          ],
-        }),
-        {
-          none: fields.empty(),
-          image: fields.image({
-            label: "Background Image",
-            directory: "src/assets/images",
-            publicPath: "",
-          }),
-          color: customFields.colorPicker({
-            label: "BG Color",
-            allowAlpha: true,
-          }),
-        },
-      ),
-      css: fields.object(
-        {
-          customClass: customFields.customClass,
 
-          customCSS: customFields.codeEditor({
-            label: "Custom CSS Code",
-            language: "",
-            disablePrettier: true,
-          }),
-        },
-
-        { label: "CSS" },
-      ),
-    },
-  }),
   HeroSection: wrapper({
     label: "Hero Section",
     schema: {
