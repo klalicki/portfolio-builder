@@ -557,6 +557,11 @@ export const standardComponents = {
   TextAlign: wrapper({
     label: "Text Align",
     icon: alignLeftIcon,
+    ContentView(props) {
+      return (
+        <div style={{ textAlign: props.value.align }}>{props.children}</div>
+      );
+    },
     schema: {
       align: fields.select({
         label: "Text Alignment",
