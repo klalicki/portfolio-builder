@@ -129,6 +129,12 @@ export default defineMarkdocConfig({
         css: { type: Object },
       },
     },
+    TextAlign: {
+      render: component("./src/components/pagebuilder/TextAlign.astro"),
+      attributes: {
+        align: { type: String },
+      },
+    },
     CustomFont: {
       render: component("./src/components/pagebuilder/CustomFont.astro"),
       attributes: {

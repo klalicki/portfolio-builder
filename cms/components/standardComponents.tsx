@@ -17,6 +17,7 @@ import { columns4Icon } from "@keystar/ui/icon/icons/columns4Icon";
 import { columnsIcon } from "@keystar/ui/icon/icons/columnsIcon";
 import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 import { typeIcon } from "@keystar/ui/icon/icons/typeIcon";
+import { alignLeftIcon } from "@keystar/ui/icon/icons/alignLeftIcon";
 import { fullscreenIcon } from "@keystar/ui/icon/icons/fullscreenIcon";
 import { layoutGridIcon } from "@keystar/ui/icon/icons/layoutGridIcon";
 import globalFontSettings from "../../src/settings/fonts.json";
@@ -551,6 +552,22 @@ export const standardComponents = {
           {props.children}
         </div>
       );
+    },
+  }),
+  TextAlign: wrapper({
+    label: "Text Align",
+    icon: alignLeftIcon,
+    schema: {
+      align: fields.select({
+        label: "Text Alignment",
+        options: [
+          { label: "Left", value: "left" },
+          { label: "Center", value: "center" },
+          { label: "Right", value: "right" },
+          { label: "Justify (please don't lol)", value: "justify" },
+        ],
+        defaultValue: "left",
+      }),
     },
   }),
   Column: wrapper({
