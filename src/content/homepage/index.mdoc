@@ -8,15 +8,13 @@ customNavigation:
       subItems: all
 ---
 {% PageSection
-   sizing={boxWidth: "100%", contentWidth: {discriminant: true, value: "500px"}}
-   spacing={boxPaddingTop: "1rem", boxPaddingBottom: "3rem", boxPaddingLeft: "1rem", boxPaddingRight: "1rem", alignContentBox: "center"}
+   sizing={boxWidth: "100%", contentWidth: {discriminant: false}}
+   spacing={boxPaddingTop: "6rem", boxPaddingBottom: "3rem", boxPaddingLeft: "1rem", boxPaddingRight: "1rem", alignContentBox: "center", spaceBefore: "0rem", spaceAfter: "1rem"}
    bgType={discriminant: "image", value: "/pink-clouds.jpg"} %}
 # Welcome to My Website
 
 Here's some content
 {% /PageSection %}
-
-Here's a section of regular text just to see what it does...
 
 {% PortfolioView
    unique="1731555571825"

@@ -217,8 +217,18 @@ export const standardComponents = {
             ],
             defaultValue: "center",
           }),
+          spaceBefore: customFields.cssUnit({
+            label: "Space Before Section",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          spaceAfter: customFields.cssUnit({
+            label: "Space After Section",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
         },
-        { label: "Spacing", layout: [6, 6, 6, 6, 12] },
+        { label: "Spacing", layout: [6, 6, 6, 6, 12, 6, 6] },
       ),
       bgType: fields.conditional(
         fields.select({

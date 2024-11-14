@@ -46,8 +46,6 @@ if (props.sizing.contentWidth.discriminant) {
     )
   }
   <div class="page-section-content">
-    <p>CSS Vars <br />{JSON.stringify(cssVars)}</p>
-    <p>Astro Props <br />{JSON.stringify(props)}</p>
     <slot />
   </div>
 </div>
@@ -62,6 +60,8 @@ if (props.sizing.contentWidth.discriminant) {
     display: flex;
     flex-direction: column;
     align-items: var(--alignContentBox);
+    margin-top: var(--spaceBefore);
+    margin-bottom: var(--spaceAfter);
   }
   .page-section-content {
     max-width: var(--contentWidth);
