@@ -1,12 +1,56 @@
 ---
-
+const { props } = Astro;
+let cssVars = {};
+switch (props.bgType.discriminant) {
+  case "none":
+    cssVars = { ...props.sizing, ...props.spacing };
+    break;
+  case "color":
+    cssVars = {
+      ...props.sizing,
+      ...props.spacing,
+      backgroundColor: props.bgType.value,
+    };
+    break;
+  case "image":
+    cssVars = {
+      ...props.sizing,
+      ...props.spacing,
+      backgroundImage: `url(${props.bgType.value})`,
+    };
+    break;
+  default:
+    cssVars = { ...props.sizing, ...props.spacing };
+}
 ---
 
-<div class="page-section">
+<div
+  class:list={[
+    "page-section-wrapper",
+    `section-bg-${props.bgType.discriminant}`,
+  ]}
+>
+  <div class="page-section-content"></div>
+  <p>{JSON.stringify(cssVars)}</p>
   <slot />
 </div>
-<style>
-  .page-section {
-    background-color: lightblue;
+<style define:vars={cssVars}>
+  .page-section-wrapper {
+    padding-left: var(--boxPaddingLeft);
+    padding-right: var(--boxPaddingRight);
+    padding-top: var(--boxPaddingTop);
+    padding-bottom: var(--boxPaddingBottom);
+    max-width: var(--boxWidth);
+  }
+  .section-bg-none {
+    background-color: transparent;
+  }
+  .section-bg-color {
+    background-color: var(--backgroundColor);
+  }
+  .section-bg-image {
+    background-image: var(--backgroundImage);
+    background-size: cover;
+    background-position: center;
   }
 </style>

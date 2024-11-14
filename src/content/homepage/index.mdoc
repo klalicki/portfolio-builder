@@ -7,14 +7,16 @@ customNavigation:
     - title: Portfolio
       subItems: all
 ---
-{% PageSection %}
-# Welcome to my website!
+{% PageSection
+   sizing={boxWidth: "100%", contentWidth: "400px"}
+   spacing={boxPaddingTop: "1rem", boxPaddingBottom: "3rem", boxPaddingLeft: "1rem", boxPaddingRight: "1rem"}
+   bgType={discriminant: "image", value: "/pink-clouds.jpg"} %}
+# Welcome to My Website
 
-This is a website i made. enjoy.
+Here's some content
 {% /PageSection %}
 
 {% PortfolioView
-   unique="1712274945295"
+   unique="1731555571825"
    portfolioLayout="cards"
-   projectSource="all"
-   customClass="custom-class" /%}
+   projectSource="all" /%}

@@ -162,30 +162,45 @@ export const standardComponents = {
     description:
       "use this to create a section with a background color, custom padding, etc",
     schema: {
+      sizing: fields.object(
+        {
+          boxWidth: customFields.cssUnit({
+            label: "Section Width",
+            defaultValue: "100%",
+            isCompact: true,
+          }),
+          contentWidth: customFields.cssUnit({
+            label: "Content Block Width",
+            defaultValue: "800px",
+            isCompact: true,
+          }),
+        },
+        { label: "Sizing", layout: [6, 6] },
+      ),
       spacing: fields.object(
         {
-          paddingTop: customFields.cssUnit({
+          boxPaddingTop: customFields.cssUnit({
             label: "Top Padding",
             defaultValue: "1rem",
             isCompact: true,
           }),
-          paddingBottom: customFields.cssUnit({
+          boxPaddingBottom: customFields.cssUnit({
             label: "Bottom Padding",
             defaultValue: "1rem",
             isCompact: true,
           }),
-          paddingLeft: customFields.cssUnit({
+          boxPaddingLeft: customFields.cssUnit({
             label: "Left Padding",
             defaultValue: "1rem",
             isCompact: true,
           }),
-          paddingRight: customFields.cssUnit({
+          boxPaddingRight: customFields.cssUnit({
             label: "Right Padding",
             defaultValue: "1rem",
             isCompact: true,
           }),
         },
-        { layout: [6, 6, 6, 6] },
+        { label: "Spacing", layout: [6, 6, 6, 6] },
       ),
       bgType: fields.conditional(
         fields.select({

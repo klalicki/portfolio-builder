@@ -118,6 +118,15 @@ export default defineMarkdocConfig({
     },
     PageSection: {
       render: component("./src/components/pagebuilder/PageSection.astro"),
+      attributes: {
+        sizing: {
+          type: Object,
+        },
+        spacing: {
+          type: Object,
+        },
+        bgType: { type: Object },
+      },
     },
     PortfolioView: {
       render: component(
