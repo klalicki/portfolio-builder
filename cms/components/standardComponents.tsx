@@ -164,14 +164,23 @@ export const standardComponents = {
     schema: {
       sizing: fields.object(
         {
+          contentWidth: fields.conditional(
+            fields.checkbox({
+              label: "Custom content width",
+              defaultValue: false,
+            }),
+            {
+              false: fields.empty(),
+              true: customFields.cssUnit({
+                label: "Content Block Width",
+                defaultValue: "800px",
+                isCompact: true,
+              }),
+            },
+          ),
           boxWidth: customFields.cssUnit({
             label: "Section Width",
             defaultValue: "100%",
-            isCompact: true,
-          }),
-          contentWidth: customFields.cssUnit({
-            label: "Content Block Width",
-            defaultValue: "800px",
             isCompact: true,
           }),
         },
@@ -198,6 +207,15 @@ export const standardComponents = {
             label: "Right Padding",
             defaultValue: "1rem",
             isCompact: true,
+          }),
+          alignContentBox: fields.select({
+            label: "Horizontally Align Content",
+            options: [
+              { label: "Left", value: "flex-start" },
+              { label: "Right", value: "flex-end" },
+              { label: "Center", value: "center" },
+            ],
+            defaultValue: "center",
           }),
         },
         { label: "Spacing", layout: [6, 6, 6, 6] },

@@ -1,5 +1,6 @@
 ---
 const { props } = Astro;
+import OptimizedImage from "./OptimizedImage.astro";
 let cssVars = {};
 switch (props.bgType.discriminant) {
   case "none":
@@ -30,17 +31,32 @@ switch (props.bgType.discriminant) {
     `section-bg-${props.bgType.discriminant}`,
   ]}
 >
-  <div class="page-section-content"></div>
-  <p>{JSON.stringify(cssVars)}</p>
+  {
+    props.bgType.discriminant === "image" && (
+      <OptimizedImage
+        class="section-bg-image-element"
+        src={"../../assets/images" + props.bgType.value}
+        alt=""
+      />
+    )
+  }
+  <div class="page-section-content">
+    <p>{JSON.stringify(cssVars)}</p>
+  </div>
+
   <slot />
 </div>
 <style define:vars={cssVars}>
   .page-section-wrapper {
+    max-width: var(--boxWidth);
+    position: relative;
     padding-left: var(--boxPaddingLeft);
     padding-right: var(--boxPaddingRight);
     padding-top: var(--boxPaddingTop);
     padding-bottom: var(--boxPaddingBottom);
-    max-width: var(--boxWidth);
+  }
+  .page-section-content {
+    max-width: var(--contentWidth);
   }
   .section-bg-none {
     background-color: transparent;
@@ -48,9 +64,13 @@ switch (props.bgType.discriminant) {
   .section-bg-color {
     background-color: var(--backgroundColor);
   }
-  .section-bg-image {
-    background-image: var(--backgroundImage);
-    background-size: cover;
-    background-position: center;
+  .section-bg-image-element {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
   }
 </style>
