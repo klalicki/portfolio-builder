@@ -2,6 +2,22 @@
 
 A portfolio builder/static site generator built with Keystatic CMS and Astro.
 
+## Quickstart
+
+Open the terminal and run the following commands
+
+To setup:
+
+```bash
+npm install
+```
+
+To run:
+
+```bash
+npm run dev
+```
+
 ## Note
 
 This is a work in progress, and may still have some bugs. If you find any issues, please let me know and I'll work with you to get it fixed!
