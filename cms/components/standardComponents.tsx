@@ -6,6 +6,7 @@ import {
   wrapper,
 } from "@keystatic/core/content-components";
 import * as customFields from "../fields";
+import { typePropsOverride } from "../fields/fieldGroups/typePropsOverride";
 import { fields } from "@keystatic/core";
 import { useEffect, useId, useRef, useState } from "react";
 import { moveHorizontalIcon } from "@keystar/ui/icon/icons/moveHorizontalIcon";
@@ -15,6 +16,7 @@ import { paintbrush2Icon } from "@keystar/ui/icon/icons/paintbrush2Icon";
 import { columns4Icon } from "@keystar/ui/icon/icons/columns4Icon";
 import { columnsIcon } from "@keystar/ui/icon/icons/columnsIcon";
 import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
+import { textCursorIcon } from "@keystar/ui/icon/icons/textCursorIcon";
 import { fullscreenIcon } from "@keystar/ui/icon/icons/fullscreenIcon";
 import { layoutGridIcon } from "@keystar/ui/icon/icons/layoutGridIcon";
 
@@ -409,7 +411,14 @@ export const standardComponents = {
       );
     },
   }),
-
+  CustomFont: mark({
+    label: "Custom Font",
+    icon: textCursorIcon,
+    style: { backgroundColor: "yellow" },
+    schema: {
+      fontSettings: typePropsOverride({ label: "not sure" }),
+    },
+  }),
   SimpleCol: wrapper({
     forSpecificLocations: true,
     label: "Col",
