@@ -12,23 +12,34 @@ Regular text with an *italic* section
 
 *Fully Italic*
 
+{% TextAlign align="right" %}
+Some right aligned text
+{% /TextAlign %}
+
+{% TextAlign align="center" %}
+Some center aligned text
+{% /TextAlign %}
+
 Regular Text with **Bold** section
 
 Regular text with ~~Strikethrough~~ section
 
 Regular text with {% underline %}Underline{% /underline %} section
 
-*asdasda*
+{% PageSection
+   sizing={boxWidth: "100%", contentWidth: {discriminant: true, value: "1000px"}}
+   spacing={boxPaddingTop: "1rem", boxPaddingBottom: "1rem", boxPaddingLeft: "1rem", boxPaddingRight: "1rem", alignContentBox: "center", spaceBefore: "1rem", spaceAfter: "1rem"}
+   bgType={discriminant: "color", value: "#c2fbff"}
+   css={customCSS: ""} %}
+{% CustomFont fontSettings={fontFamily: {discriminant: true, value: "1712937645048"}, fontWeight: {discriminant: false}, fontStyle: {discriminant: false}, fontSize: {discriminant: true, value: "4rem"}, lineHeight: {discriminant: false}, textColor: {discriminant: true, value: "#000fe6"}} %}Here's some custom styled text in a Page Section{% /CustomFont %}
+{% /PageSection %}
 
 - bullet list
 - item 2
 - item 3
 
 1. number list item 1
-
 1. number list item 2
-
    1. sub item
    1. sub item
-
 1. back to first list
