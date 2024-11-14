@@ -161,7 +161,56 @@ export const standardComponents = {
     label: "Page Section",
     description:
       "use this to create a section with a background color, custom padding, etc",
-    schema: {},
+    schema: {
+      spacing: fields.object(
+        {
+          paddingTop: customFields.cssUnit({
+            label: "Top Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          paddingBottom: customFields.cssUnit({
+            label: "Bottom Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          paddingLeft: customFields.cssUnit({
+            label: "Left Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          paddingRight: customFields.cssUnit({
+            label: "Right Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+        },
+        { layout: [6, 6, 6, 6] },
+      ),
+      bgType: fields.conditional(
+        fields.select({
+          label: "Background Type",
+          defaultValue: "none",
+          options: [
+            { label: "None", value: "none" },
+            { label: "Color", value: "color" },
+            { label: "Image", value: "image" },
+          ],
+        }),
+        {
+          none: fields.empty(),
+          image: fields.image({
+            label: "Background Image",
+            directory: "src/assets/images",
+            publicPath: "",
+          }),
+          color: customFields.colorPicker({
+            label: "BG Color",
+            allowAlpha: true,
+          }),
+        },
+      ),
+    },
   }),
   HeroSection: wrapper({
     label: "Hero Section",
