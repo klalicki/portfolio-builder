@@ -1,10 +1,12 @@
 {
   "siteTitle": "My Site",
   "position": {
-    "discriminant": "top",
+    "discriminant": "side",
     "value": {
-      "u": "1731590738381",
-      "alwaysDropdown": false
+      "u": "1731625106494",
+      "layout": {
+        "width": "clamp(200px, 30%, 400px)"
+      }
     }
   },
   "appearance": {
