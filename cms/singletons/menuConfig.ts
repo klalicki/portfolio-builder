@@ -1,6 +1,5 @@
 import { singleton, fields } from "@keystatic/core";
 import { customFields } from "../fields";
-import { c } from "../../dist/_astro/_commonjsHelpers.Cpj98o6Y";
 
 export const menuConfig = singleton({
   label: "Menu",

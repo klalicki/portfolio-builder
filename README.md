@@ -32,7 +32,7 @@ Click the deploy button at the bottom of the screen, and Netlify will start buil
 
 ### GitHub Pages
 
-_Note: this method requires that you do not currently have a site hosted at `username.github.io`. If you do, you will need to use Netlify instead._
+_Note: this method requires that you DO NOT currently have a site hosted at `username.github.io`. If you do, you will need to use Netlify instead._
 
 To start, make a copy of this repository by clicking the "Use this template" button. This will create a new repository in your account with the same files and folders as this one. 
 
