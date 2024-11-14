@@ -18,19 +18,7 @@ If you already have a site hosted at 'username.github.io', you can still use thi
 
 Follow one of the deployment methods below to get your site up and running.
 
-### GitHub Pages
-
-To start, make a copy of this repository by clicking the "Use this template" button. This will create a new repository in your account with the same files and folders as this one. 
-
-You will need to name the repository `username.github.io`, where `username` is your GitHub username.
-
-Go into 'Settings' on the repository, and scroll down to the 'GitHub Pages' section. Under 'Build and deployment', change the 'Source' to 'GitHub Actions'.
-
-Still in the Settings tab: On the left side, click 'Actions', then 'General'. Make sure 'Actions permissions' is set to 'Allow all actions and reusable workflows'. 
-
-Go to 'Actions' in the top tab bar, click 'Deploy Astro site to Pages' on the left, and then click 'Run workflow'. Select 'main' as the branch. This will deploy the site to GitHub Pages. This will probably take about a minute to complete.Once it is complete you will have a live URL for your site, which will be `https://username.github.io`.
-
-### Netlify
+### Netlify (Recommended)
 
 To start, make a copy of this repository by clicking the "Use this template" button. This will create a new repository in your account with the same files and folders as this one. 
 
@@ -41,6 +29,20 @@ Create an account on Netlify if you don't already have one. On the Netlify dashb
 Select your repository from the list of repositories. On the next page, you can set a site name - this will become part of your site's URL as sitename.netlify.app. You can change this later as well.
 
 Click the deploy button at the bottom of the screen, and Netlify will start building your site. This will probably take about a minute to complete. Once it is complete you will have a live URL for your site.
+
+### GitHub Pages
+
+_Note: this method requires that you do not currently have a site hosted at `username.github.io`. If you do, you will need to use Netlify instead._
+
+To start, make a copy of this repository by clicking the "Use this template" button. This will create a new repository in your account with the same files and folders as this one. 
+
+You will need to name the repository `username.github.io`, where `username` is your GitHub username.
+
+Go into 'Settings' on the repository, and scroll down to the 'GitHub Pages' section. Under 'Build and deployment', change the 'Source' to 'GitHub Actions'.
+
+Still in the Settings tab: On the left side, click 'Actions', then 'General'. Make sure 'Actions permissions' is set to 'Allow all actions and reusable workflows'. 
+
+Go to 'Actions' in the top tab bar, click 'Deploy Astro site to Pages' on the left, and then click 'Run workflow'. Select 'main' as the branch. This will deploy the site to GitHub Pages. This will probably take about a minute to complete.Once it is complete you will have a live URL for your site, which will be `https://username.github.io`.
 
 ## Starting Codespaces
 
@@ -107,6 +109,7 @@ This project uses a flexible system of pages and projects to organize content, f
 
 - **Portfolio Groups**: This site allows you to organize your projects into groups. There is a default 'all' group that shows all projects, but you can create additional groups to organize your work. For example, you could have a group for 'Illustration' and a group for 'Design', or you could even create a custom group of projects that you want to share for a specific occasion. In each portfolio group, you can select which projects you want to include, and the order in which they will be displayed. _Note: Creating a portfolio group doesn't automatically add it to the navigation menu. You will still need to add it in one or both of the following places:_
 
+
   - **Portfolio View component**: This is the component you can place in a page to display a grid of projects. You can select which portfolio group to display, and customize the layout of the grid. You can place multiple Portfolio View components on a single page to show different groups of projects. _Note: This component is only available in Pages and the Homepage, not Projects_ 
 
   - **Navigation Menu (Show Sub-items in Nav)**: If you want the portfolio items to show up in the site menu, you can check the 'Show Sub-items in Nav' box on a page, which will allow you to select one or multiple portfolio groups to show in the navigation menu, and to select a title that will appear in the nav menu for that portfolio group.
@@ -119,6 +122,14 @@ All three page types have a similar editor that allows you to add text, images, 
 ## Components
 
 The site has an assortment of components available in pages and projects. All of these components also provide a field to add a custom CSS class, which you can style using the site-wide custom CSS field (in General Settings) Here are some of the components you can use:
+
+#### Page Section
+
+This component is quite flexible. It basically creates a section of the page that you can place other content or components into. You can customize the size and spacing of the section, and add a background color or image.
+
+#### Custom Font
+
+This component allows you select a piece of text and change its font family/size/weight/style/color.
 
 #### Image Popout
 
@@ -134,7 +145,7 @@ A header component with a background image (that supports parallax scrolling) an
 
 #### Multi-Column Layout
 
-This component gives you a flexible multi-column layout where you can set the size of each column, and control how the columns stretch/shrink on different screen sizes.
+This component gives you a powerful and flexible multi-column layout where you can set the size of each column, and control how the columns stretch/shrink on different screen sizes.
 
 #### Simple 12-col Multi-Column Layout
 
