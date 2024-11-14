@@ -1,12 +1,10 @@
 {
   "siteTitle": "My Site",
   "position": {
-    "discriminant": "side",
+    "discriminant": "top",
     "value": {
-      "u": "1731590023509",
-      "layout": {
-        "width": "clamp(300px, 300px, 300px)"
-      }
+      "u": "1731590738381",
+      "alwaysDropdown": false
     }
   },
   "appearance": {
@@ -21,7 +19,7 @@
   "colors": {
     "backgroundColor": "#e3e3e3c4",
     "menuHoverColor": "#ffffff",
-    "dropdownColor": "#e3e3e3c4",
+    "dropdownColor": "#e3e3e3",
     "dropdownHoverColor": "#ffffff"
   },
   "borders": {

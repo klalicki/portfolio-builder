@@ -8,12 +8,12 @@ customNavigation:
       subItems: all
 ---
 {% PageSection
-   sizing={boxWidth: "100%", contentWidth: {discriminant: false}}
+   sizing={boxWidth: "100%", contentWidth: {discriminant: true, value: "400px"}}
    spacing={boxPaddingTop: "6rem", boxPaddingBottom: "3rem", boxPaddingLeft: "1rem", boxPaddingRight: "1rem", alignContentBox: "center", spaceBefore: "0rem", spaceAfter: "1rem"}
    bgType={discriminant: "image", value: "/pink-clouds.jpg"} %}
-# Welcome to My Website
+# {% CustomFont fontSettings={fontFamily: {discriminant: false}, fontWeight: {discriminant: false}, fontStyle: {discriminant: false}, fontSize: {discriminant: true, value: "3rem"}, lineHeight: {discriminant: true, value: 1}, textColor: {discriminant: false}} %}Welcome to My Website{% /CustomFont %}
 
-Here's {% CustomFont fontSettings={fontFamily: {discriminant: false}, fontWeight: {discriminant: false}, fontStyle: {discriminant: false}, fontSize: {discriminant: false}, lineHeight: {discriminant: false}, textColor: {discriminant: true, value: "#ad2525"}} customClass="test-class" %}some{% /CustomFont %} content
+{% CustomFont fontSettings={fontFamily: {discriminant: false}, fontWeight: {discriminant: false}, fontStyle: {discriminant: false}, fontSize: {discriminant: true, value: "2rem"}, lineHeight: {discriminant: false}, textColor: {discriminant: false}} %}I am a designer! Here is some of my work.{% /CustomFont %}
 {% /PageSection %}
 
 {% PortfolioView
