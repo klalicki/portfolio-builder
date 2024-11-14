@@ -35,7 +35,7 @@ export function typePropsOverride({ label }: { label: string }) {
       ),
 
       fontWeight: fields.conditional(
-        fields.checkbox({ label: "Override Font Family", defaultValue: false }),
+        fields.checkbox({ label: "Override Font Weight", defaultValue: false }),
         {
           false: fields.empty(),
           true: fields.select({
@@ -57,7 +57,10 @@ export function typePropsOverride({ label }: { label: string }) {
       ),
 
       fontStyle: fields.conditional(
-        fields.checkbox({ label: "Override Font Family", defaultValue: false }),
+        fields.checkbox({
+          label: "Override Font Style (Italic/Regular)",
+          defaultValue: false,
+        }),
         {
           false: fields.empty(),
           true: fields.select({
@@ -72,7 +75,7 @@ export function typePropsOverride({ label }: { label: string }) {
       ),
 
       fontSize: fields.conditional(
-        fields.checkbox({ label: "Override Font Family", defaultValue: false }),
+        fields.checkbox({ label: "Override Font Size", defaultValue: false }),
         {
           false: fields.empty(),
           true: cssUnit({
@@ -83,15 +86,18 @@ export function typePropsOverride({ label }: { label: string }) {
         },
       ),
 
-      fontWeight: fields.conditional(
-        fields.checkbox({ label: "Override Font Family", defaultValue: false }),
+      lineHeight: fields.conditional(
+        fields.checkbox({
+          label: "Override Line Height (Leading)",
+          defaultValue: false,
+        }),
         {
           false: fields.empty(),
           true: fields.number({ label: "Line Height", defaultValue: 1.25 }),
         },
       ),
-      fontWeight: fields.conditional(
-        fields.checkbox({ label: "Override Font Family", defaultValue: false }),
+      textColor: fields.conditional(
+        fields.checkbox({ label: "Override Text Color", defaultValue: false }),
         {
           false: fields.empty(),
           true: colorPicker({

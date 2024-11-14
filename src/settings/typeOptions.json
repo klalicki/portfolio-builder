@@ -12,13 +12,12 @@
     "color": "#000000",
     "marginTop": "0.5em",
     "marginBottom": "0.5rem",
-    "textDecorationLine": "underline",
+    "textDecorationLine": "none",
     "textDecorationStyle": "solid",
     "textDecorationSkipInk": "auto",
     "textDecorationThickness": "1px",
     "textDecorationColorProps": {
-      "discriminant": "custom",
-      "value": "#f50505"
+      "discriminant": "default"
     }
   },
   "h1": {

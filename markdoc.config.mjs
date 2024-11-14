@@ -128,6 +128,12 @@ export default defineMarkdocConfig({
         bgType: { type: Object },
       },
     },
+    CustomFont: {
+      render: null,
+      attributes: {
+        fontSettings: { type: Object },
+      },
+    },
     PortfolioView: {
       render: component(
         "./src/components/portfolioViews/PortfolioViewWrapper.astro",
