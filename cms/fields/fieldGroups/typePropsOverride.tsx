@@ -24,7 +24,6 @@ export function typePropsOverride({ label }: { label: string }) {
               defaultValue: "0",
             }),
             parse(value: string) {
-              console.log("parsing: " + value);
               const isValidFont = fontOptions.find((item) => {
                 return item.value === value;
               });

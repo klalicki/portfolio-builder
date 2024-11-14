@@ -20,7 +20,6 @@ export function typeProps({ label }: { label: string }) {
           defaultValue: "0",
         }),
         parse(value: string) {
-          console.log("parsing: " + value);
           const isValidFont = fontOptions.find((item) => {
             return item.value === value;
           });
@@ -138,6 +137,5 @@ export function typeProps({ label }: { label: string }) {
       layout: [2, 2, 2, 4, 2, 4, 4, 4, 2, 2, 2, 3, 3],
     },
   );
-  // console.log(typeOptionsObj);
   return typeOptionsObj;
 }

@@ -4,11 +4,9 @@ export const fontOverrideCSSRules = (props: any) => {
   const { fontSettings } = props.value;
 
   const styles: any = {};
-  console.log(props.value.fontSettings);
   if (fontSettings.fontFamily.discriminant) {
     styles["font-family"] = globalFontSettings.fontLibrary.find((item) => {
-      console.log("checking");
-      console.log(item);
+
       return item.uniqueID == fontSettings.fontFamily.value;
     })?.mode.value.fontFamily;
   }
