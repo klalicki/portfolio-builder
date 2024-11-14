@@ -38,6 +38,8 @@ To start, make a copy of this repository by clicking the "Use this template" but
 
 You will need to name the repository `username.github.io`, where `username` is your GitHub username.
 
+In the codespace, navigate to ".github/workflows/astro.yml" and uncomment line 11 (remove the `#` at the beginning of the line). This will allow the site to be deployed to GitHub Pages.
+
 Go into 'Settings' on the repository, and scroll down to the 'GitHub Pages' section. Under 'Build and deployment', change the 'Source' to 'GitHub Actions'.
 
 Still in the Settings tab: On the left side, click 'Actions', then 'General'. Make sure 'Actions permissions' is set to 'Allow all actions and reusable workflows'. 
