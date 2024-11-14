@@ -36,7 +36,7 @@ _Note: this method requires that you DO NOT currently have a site hosted at `use
 
 To start, make a copy of this repository by clicking the "Use this template" button. This will create a new repository in your account with the same files and folders as this one. 
 
-You will need to name the repository `username.github.io`, where `username` is your GitHub username.
+In the repo, rename the folder ".github-actions" to ".github". This will allow the GitHub Actions workflow to run correctly.
 
 In the codespace, navigate to ".github/workflows/astro.yml" and uncomment line 11 (remove the `#` at the beginning of the line). This will allow the site to be deployed to GitHub Pages.
 

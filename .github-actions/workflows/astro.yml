@@ -8,7 +8,7 @@ on:
   # Runs on pushes targeting the default branch
   # uncomment these two lines to enable GitHub Pages builds
   push:
-  #  branches: ["main"]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
