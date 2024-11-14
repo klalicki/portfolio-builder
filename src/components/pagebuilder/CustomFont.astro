@@ -1,0 +1,7 @@
+---
+import { fontOverrideCSSRules } from "../../../cms/components/helpers/FontOverrideCSS.tsx";
+const { props } = Astro;
+const styles = fontOverrideCSSRules({ value: props });
+---
+
+<span style={styles} class={props.customClass}><slot /></span>

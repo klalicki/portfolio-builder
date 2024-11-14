@@ -1,0 +1,92 @@
+---
+const { props } = Astro;
+import OptimizedImage from "./OptimizedImage.astro";
+let cssVars: any = {};
+switch (props.bgType.discriminant) {
+  case "none":
+    cssVars = { ...props.sizing, ...props.spacing };
+    break;
+  case "color":
+    cssVars = {
+      ...props.sizing,
+      ...props.spacing,
+      backgroundColor: props.bgType.value,
+    };
+    break;
+  case "image":
+    cssVars = {
+      ...props.sizing,
+      ...props.spacing,
+      backgroundImage: `url(${props.bgType.value})`,
+    };
+    break;
+  default:
+    cssVars = { ...props.sizing, ...props.spacing };
+}
+if (props.sizing.contentWidth.discriminant) {
+  cssVars.contentWidth = props.sizing.contentWidth.value;
+} else {
+  cssVars.contentWidth = "var(--maxPageContentWidth)";
+}
+---
+
+<!-- {"sizing":{"boxWidth":"100%","contentWidth":{"discriminant":false}},"spacing":{"boxPaddingTop":"2rem","boxPaddingBottom":"2rem","boxPaddingLeft":"1rem","boxPaddingRight":"1rem","alignContentBox":"center","spaceBefore":"1rem","spaceAfter":"0rem"},"bgType":{"discriminant":"color","value":"#eeeeee"},"css":{"customCSS":"Ym9yZGVyLXRvcDoxcHggc29saWQgbGltZTs="}}
+
+ -->
+<div
+  class:list={[
+    "page-section-wrapper",
+    `section-bg-${props.bgType.discriminant}`,
+    props.css?.customClass,
+  ]}
+  style={atob(props.css?.customCSS || "")}
+>
+  {
+    props.bgType.discriminant === "image" && (
+      <OptimizedImage
+        class="section-bg-image-element"
+        src={"../../assets/images" + props.bgType.value}
+        alt=""
+      />
+    )
+  }
+  <div class="page-section-content">
+    <slot />
+  </div>
+</div>
+<style define:vars={cssVars}>
+  .page-section-wrapper {
+    max-width: var(--boxWidth);
+    position: relative;
+    padding-left: var(--boxPaddingLeft);
+    padding-right: var(--boxPaddingRight);
+    padding-top: var(--boxPaddingTop);
+    padding-bottom: var(--boxPaddingBottom);
+    display: flex;
+    flex-direction: column;
+    align-items: var(--alignContentBox);
+    margin-top: var(--spaceBefore);
+    margin-bottom: var(--spaceAfter);
+  }
+  .page-section-content {
+    max-width: var(--contentWidth);
+    width: 100%;
+    padding: 0 var(--standardPadding);
+  }
+
+  .section-bg-none {
+    background-color: transparent;
+  }
+  .section-bg-color {
+    background-color: var(--backgroundColor);
+  }
+  .section-bg-image-element {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+  }
+</style>

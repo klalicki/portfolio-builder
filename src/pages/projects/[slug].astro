@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout title={post.data.title}>
+<Layout title={post.data.title} accent={post.data.accent}>
   {!post.data.hideTitle && <h1>{post.data.title}</h1>}
   <Content />
 </Layout>

@@ -1,5 +1,6 @@
 import { singleton, fields } from "@keystatic/core";
 import { customFields } from "../fields";
+import { c } from "../../dist/_astro/_commonjsHelpers.Cpj98o6Y";
 
 export const menuConfig = singleton({
   label: "Menu",
@@ -25,7 +26,7 @@ export const menuConfig = singleton({
           u: customFields.uniquify({ label: "u" }),
           layout: fields.object(
             { width: customFields.cssFlex({ label: "Width" }) },
-            { label: "Layout" }
+            { label: "Layout" },
           ),
         }),
         top: fields.object({
@@ -37,7 +38,7 @@ export const menuConfig = singleton({
               "Use the mobile-style (hamburger) navigation regardless of screen size",
           }),
         }),
-      }
+      },
     ),
     appearance: fields.object({
       blurBehind: fields.checkbox({ label: "Blur behind menu" }),
@@ -87,12 +88,30 @@ export const menuConfig = singleton({
           allowAlpha: true,
         }),
       },
-      { layout: [3, 3, 3, 3] }
+      { layout: [3, 3, 3, 3] },
+    ),
+    borders: fields.object(
+      {
+        borderWidth: customFields.cssUnit({
+          label: "Border Width",
+          defaultValue: "1px",
+          limitUnits: ["px", "rem"],
+          isCompact: true,
+        }),
+        borderColor: customFields.colorPicker({
+          label: "Border Color",
+          allowAlpha: true,
+          compact: true,
+          defaultValue: "#000000",
+        }),
+      },
+      { label: "Borders", layout: [6, 6] },
     ),
     typography: fields.object({
+      // menuTitle: customFields.typeProps({ label: "Menu Title" }),
       menuMain: customFields.typeProps({ label: "Main menu items" }),
       menuSub: customFields.typeProps({ label: "Sub-items" }),
-      menuText: customFields.typeProps({ label: "Menu Bar text" }),
+      menuText: customFields.typeProps({ label: "Menu Bar Text" }),
     }),
   },
 });

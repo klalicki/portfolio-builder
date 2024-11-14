@@ -20,6 +20,7 @@ const fontSettings = fontRules(settings.menu.typography);
     subItemIndent: settings.menu.sizes.subItemIndent,
     blurStyle: settings.menu.appearance.blurBehind ? "blur(100px)" : "none",
     ...fontSettings,
+    ...settings.menu.borders,
   }}
 >
   /* type stuff */
@@ -32,6 +33,11 @@ const fontSettings = fontRules(settings.menu.typography);
     margin-bottom: var(--menuText-marginBottom);
     color: var(--menuText-color);
     line-height: var(--menuText-lineHeight);
+    text-decoration-line: var(--menuText-textDecorationLine);
+    text-decoration-color: var(--menuText-textDecorationColor);
+    text-decoration-style: var(--menuText-textDecorationStyle);
+    text-decoration-skip-ink: var(--menuText-textDecorationSkipInk);
+    text-decoration-thickness: var(--menuText-textDecorationThickness);
   }
   .menu-item {
     font-family: var(--menuMain-fontFamily);
@@ -41,8 +47,13 @@ const fontSettings = fontRules(settings.menu.typography);
     padding-top: var(--menuMain-marginTop);
     padding-bottom: var(--menuMain-marginBottom);
     color: var(--menuMain-color);
-    color: var(--menuSub-color);
     line-height: var(--menuMain-lineHeight);
+
+    text-decoration-line: var(--menuMain-textDecorationLine);
+    text-decoration-color: var(--menuMain-textDecorationColor);
+    text-decoration-style: var(--menuMain-textDecorationStyle);
+    text-decoration-skip-ink: var(--menuMain-textDecorationSkipInk);
+    text-decoration-thickness: var(--menuMain-textDecorationThickness);
   }
   .submenu-item {
     font-family: var(--menuSub-fontFamily);
@@ -53,6 +64,11 @@ const fontSettings = fontRules(settings.menu.typography);
     padding-bottom: var(--menuSub-marginBottom);
     color: var(--menuSub-color);
     line-height: var(--menuSub-lineHeight);
+    text-decoration-line: var(--menuSub-textDecorationLine);
+    text-decoration-color: var(--menuSub-textDecorationColor);
+    text-decoration-style: var(--menuSub-textDecorationStyle);
+    text-decoration-skip-ink: var(--menuSub-textDecorationSkipInk);
+    text-decoration-thickness: var(--menuSub-textDecorationThickness);
   }
 
   /* skip link */
@@ -169,6 +185,9 @@ const fontSettings = fontRules(settings.menu.typography);
     width: 100%;
     height: 100%;
     z-index: 10;
+
+    border-right: none;
+    border-bottom: var(--borderWidth) solid var(--borderColor);
   }
 
   .menu-mobile-hidden {
@@ -218,7 +237,8 @@ const fontSettings = fontRules(settings.menu.typography);
     .menu-main {
       position: static;
       flex-direction: column;
-
+      border-bottom: none;
+      border-right: var(--borderWidth) solid var(--borderColor);
       justify-content: flex-start;
       padding: var(--menuPadding);
     }
@@ -227,10 +247,10 @@ const fontSettings = fontRules(settings.menu.typography);
       background-color: transparent;
       overflow: visible;
     }
-    .menu-item,
+    /* .menu-item,
     .submenu-item {
       color: var(--menuText-color);
-    }
+    } */
     .menu-item:hover,
     .submenu-item:hover {
       background-color: var(--mainHoverColor);

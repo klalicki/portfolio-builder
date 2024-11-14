@@ -1,0 +1,9 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("footer");
+const page = posts[0];
+const { Content } = await page.render();
+---
+
+<Content />

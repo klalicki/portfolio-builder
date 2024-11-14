@@ -19,8 +19,9 @@ export default defineMarkdocConfig({
     },
     image: {
       ...nodes.image,
+
       render: component(
-        "./src/components/pagebuilder/MarkdocImageReplace.astro"
+        "./src/components/pagebuilder/MarkdocImageReplace.astro",
       ),
     },
   },
@@ -115,9 +116,35 @@ export default defineMarkdocConfig({
         customClass: { type: String },
       },
     },
+    PageSection: {
+      render: component("./src/components/pagebuilder/PageSection.astro"),
+      attributes: {
+        sizing: {
+          type: Object,
+        },
+        spacing: {
+          type: Object,
+        },
+        bgType: { type: Object },
+        css: { type: Object },
+      },
+    },
+    TextAlign: {
+      render: component("./src/components/pagebuilder/TextAlign.astro"),
+      attributes: {
+        align: { type: String },
+      },
+    },
+    CustomFont: {
+      render: component("./src/components/pagebuilder/CustomFont.astro"),
+      attributes: {
+        fontSettings: { type: Object },
+        customClass: { type: String },
+      },
+    },
     PortfolioView: {
       render: component(
-        "./src/components/portfolioViews/PortfolioViewWrapper.astro"
+        "./src/components/portfolioViews/PortfolioViewWrapper.astro",
       ),
       attributes: {
         unique: { type: String },

@@ -1,7 +1,7 @@
 ---
 import LayoutSwitcher from "../components/sitelayout/LayoutSwitcher.astro";
 import FloatingEdit from "../components/sitelayout/FloatingEdit.astro";
-const { title } = Astro.props;
+const { title, accent } = Astro.props;
 import { ViewTransitions } from "astro:transitions";
 import { settings } from "../components/helpers/settingsHelper";
 import { getImage } from "astro:assets";
@@ -10,7 +10,7 @@ const customCSS = atob(settings.general.customCSS);
 
 const imagePath = settings.general.favicon;
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "./../../**/*.{jpeg,jpg,png,gif}"
+  "./../../**/*.{jpeg,jpg,png,gif,PNG,JPG,GIF,JPEG,webp,WEBP}"
 );
 
 if (!images[imagePath]) {
@@ -26,9 +26,22 @@ if (images && images[imagePath]) {
   faviconSrc = fancyImage.src;
 }
 
-const fontLinks = Object.values(settings.fonts)
+// generate font stacks
+const fontStacks: { [key: string]: string | { [key: string]: string } } = {
+  "fontStack-default": "sans-serif",
+};
+settings.fonts.fontLibrary.forEach((item, id) => {
+  fontStacks[`fontStack-${id}`] = item.mode.value.fontFamily;
+});
+// console.log(fontStacks);
+
+const fontLinks = Object.values(settings.fonts.fontLibrary)
   .map((fontObj) => {
-    return atob(fontObj.htmlLink);
+    if (fontObj.mode.discriminant === "remote") {
+      return atob(fontObj.mode.value.htmlLink);
+    } else {
+      return "";
+    }
   })
   .join("");
 
@@ -38,16 +51,37 @@ const fontSpecs = settings.typeOptions;
 const fontSpecSets = Object.entries(fontSpecs);
 fontSpecSets.forEach((pair) => {
   const fontVars = Object.entries(pair[1]);
+  //pair[0] would be 'h1' or 'p' etc
   fontVars.forEach((fontVarPair) => {
-    const keyName = pair[0] + "-" + fontVarPair[0];
+    let keyName = pair[0] + "-" + fontVarPair[0];
     if (fontVarPair[0] === "fontFamily") {
-      fontRules[keyName] = `var(--${fontVarPair[1]})`;
+      const fontID = settings.fonts.fontLibrary.findIndex((item) => {
+        return fontVarPair[1] === item.uniqueID;
+      });
+      const normalizedFontID = fontID === -1 ? "default" : fontID;
+      fontRules[keyName] = `var(--fontStack-${normalizedFontID})`;
+    } else if (fontVarPair[0] === "textDecorationColorProps") {
+      // console.log(fontVarPair[1]);
+      keyName = pair[0] + "-textDecorationColor";
+      switch (fontVarPair[1].discriminant) {
+        case "default":
+          fontRules[keyName] = "default";
+          break;
+        case "accent":
+          fontRules[keyName] = "var(--pageAccentColor)";
+          break;
+        case "custom":
+          const customColor = fontVarPair[1].value;
+          fontRules[keyName] = customColor;
+      }
+      // console.log("colorProps:");
     } else {
       // @ts-ignore
       fontRules[keyName] = fontVarPair[1];
     }
   });
 });
+// console.log(fontRules);
 ---
 
 <!doctype html>
@@ -71,6 +105,7 @@ fontSpecSets.forEach((pair) => {
         standardPadding: settings.pageArea.padding.horizontal,
         verticalPadding: settings.pageArea.padding.vertical,
         maxImageWidth: settings.pageArea.images.displayWidth,
+        pageAccentColor: accent,
       }}
       is:global
     >
@@ -123,9 +158,10 @@ fontSpecSets.forEach((pair) => {
     <style
       is:global
       define:vars={{
-        fontStack1: settings.fonts.font1.fontFamily,
-        fontStack2: settings.fonts.font2.fontFamily,
-        fontStack3: settings.fonts.font3.fontFamily,
+        ...fontStacks,
+        // fontStack1: settings.fonts.font1.fontFamily,
+        // fontStack2: settings.fonts.font2.fontFamily,
+        // fontStack3: settings.fonts.font3.fontFamily,
         ...fontRules,
         // rootFontSize: settings.fonts.sizes.rootSize,
       }}
@@ -176,6 +212,11 @@ fontSpecSets.forEach((pair) => {
         margin-bottom: var(--h1-marginBottom);
         color: var(--font-color-override, --h1-color);
         line-height: var(--h1-lineHeight);
+        text-decoration-line: var(--h1-textDecorationLine);
+        text-decoration-style: var(--h1-textDecorationStyle);
+        text-decoration-thickness: var(--h1-textDecorationThickness);
+        text-decoration-skip-ink: var(--h1-textDecorationSkipInk);
+        text-decoration-color: var(--h1-textDecorationColor);
       }
       h2 {
         font-family: var(--h2-fontFamily);
@@ -187,6 +228,11 @@ fontSpecSets.forEach((pair) => {
         margin-bottom: var(--h2-marginBottom);
         color: var(--font-color-override, --h2-color);
         line-height: var(--h2-lineHeight);
+        text-decoration-line: var(--h2-textDecorationLine);
+        text-decoration-style: var(--h2-textDecorationStyle);
+        text-decoration-thickness: var(--h2-textDecorationThickness);
+        text-decoration-skip-ink: var(--h2-textDecorationSkipInk);
+        text-decoration-color: var(--h2-textDecorationColor);
       }
       h3 {
         font-family: var(--h3-fontFamily);
@@ -198,6 +244,12 @@ fontSpecSets.forEach((pair) => {
         margin-bottom: var(--h3-marginBottom);
         color: var(--font-color-override, --h3-color);
         line-height: var(--h3-lineHeight);
+
+        text-decoration-line: var(--h3-textDecorationLine);
+        text-decoration-style: var(--h3-textDecorationStyle);
+        text-decoration-thickness: var(--h3-textDecorationThickness);
+        text-decoration-skip-ink: var(--h3-textDecorationSkipInk);
+        text-decoration-color: var(--h3-textDecorationColor);
       }
       h4 {
         font-family: var(--h4-fontFamily);
@@ -209,6 +261,12 @@ fontSpecSets.forEach((pair) => {
         margin-bottom: var(--h4-marginBottom);
         color: var(--font-color-override, --h4-color);
         line-height: var(--h4-lineHeight);
+
+        text-decoration-line: var(--h4-textDecorationLine);
+        text-decoration-style: var(--h4-textDecorationStyle);
+        text-decoration-thickness: var(--h4-textDecorationThickness);
+        text-decoration-skip-ink: var(--h4-textDecorationSkipInk);
+        text-decoration-color: var(--h4-textDecorationColor);
       }
       h5 {
         font-family: var(--h5-fontFamily);
@@ -220,6 +278,12 @@ fontSpecSets.forEach((pair) => {
         margin-bottom: var(--h5-marginBottom);
         color: var(--font-color-override, --h5-color);
         line-height: var(--h5-lineHeight);
+
+        text-decoration-line: var(--h5-textDecorationLine);
+        text-decoration-style: var(--h5-textDecorationStyle);
+        text-decoration-thickness: var(--h5-textDecorationThickness);
+        text-decoration-skip-ink: var(--h5-textDecorationSkipInk);
+        text-decoration-color: var(--h5-textDecorationColor);
       }
       h6 {
         font-family: var(--h6-fontFamily);
@@ -231,6 +295,12 @@ fontSpecSets.forEach((pair) => {
         margin-bottom: var(--h6-marginBottom);
         color: var(--font-color-override, --h6-color);
         line-height: var(--h6-lineHeight);
+
+        text-decoration-line: var(--h6-textDecorationLine);
+        text-decoration-style: var(--h6-textDecorationStyle);
+        text-decoration-thickness: var(--h6-textDecorationThickness);
+        text-decoration-skip-ink: var(--h6-textDecorationSkipInk);
+        text-decoration-color: var(--h6-textDecorationColor);
       }
 
       p {
@@ -243,6 +313,12 @@ fontSpecSets.forEach((pair) => {
         margin-bottom: var(--p-marginBottom);
         color: var(--font-color-override, --p-color);
         line-height: var(--p-lineHeight);
+
+        text-decoration-line: var(--p-textDecorationLine);
+        text-decoration-style: var(--p-textDecorationStyle);
+        text-decoration-thickness: var(--p-textDecorationThickness);
+        text-decoration-skip-ink: var(--p-textDecorationSkipInk);
+        text-decoration-color: var(--p-textDecorationColor);
       }
       .unstyled-link {
         text-decoration: none;

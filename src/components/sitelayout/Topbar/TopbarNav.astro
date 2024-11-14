@@ -15,6 +15,7 @@ const cssRules = {
   dropdownHoverColor: settings.menu.colors.dropdownHoverColor,
   blurStyle: settings.menu.appearance.blurBehind ? "blur(100px)" : "none",
   ...fontSettings,
+  ...settings.menu.borders,
 };
 ---
 
@@ -29,6 +30,11 @@ const cssRules = {
     margin-bottom: var(--menuText-marginBottom);
     color: var(--menuText-color);
     line-height: var(--menuText-lineHeight);
+    text-decoration-line: var(--menuText-textDecorationLine);
+    text-decoration-color: var(--menuText-textDecorationColor);
+    text-decoration-style: var(--menuText-textDecorationStyle);
+    text-decoration-skip-ink: var(--menuText-textDecorationSkipInk);
+    text-decoration-thickness: var(--menuText-textDecorationThickness);
   }
   .menu-item {
     font-family: var(--menuMain-fontFamily);
@@ -93,6 +99,8 @@ const cssRules = {
     display: flex;
     padding: 0;
     justify-content: flex-end;
+    border-right: none;
+    border-bottom: var(--borderWidth) solid var(--borderColor);
   }
 
   .menu-main-group {
@@ -109,6 +117,9 @@ const cssRules = {
     z-index: 0;
     transform: none;
     transition: all 0.3s;
+
+    border-right: none;
+    border-bottom: var(--borderWidth) solid var(--borderColor);
   }
   .menu-mobile-hidden {
     transform: translateY(-50px);
@@ -172,6 +183,13 @@ const cssRules = {
   /* This section controls the layout on desktop */
 
   @media screen and (min-width: 768px) {
+    .menu-switchable .menu-main {
+      border-right: none;
+      border-bottom: var(--borderWidth) solid var(--borderColor);
+    }
+    .menu-main-group {
+      border-bottom: none;
+    }
     /* unhides mobile menu */
     .menu-switchable .menu-mobile-hidden {
       display: flex;

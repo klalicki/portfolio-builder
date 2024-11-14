@@ -6,6 +6,7 @@ import {
   wrapper,
 } from "@keystatic/core/content-components";
 import * as customFields from "../fields";
+import { typePropsOverride } from "../fields/fieldGroups/typePropsOverride";
 import { fields } from "@keystatic/core";
 import { useEffect, useId, useRef, useState } from "react";
 import { moveHorizontalIcon } from "@keystar/ui/icon/icons/moveHorizontalIcon";
@@ -15,8 +16,14 @@ import { paintbrush2Icon } from "@keystar/ui/icon/icons/paintbrush2Icon";
 import { columns4Icon } from "@keystar/ui/icon/icons/columns4Icon";
 import { columnsIcon } from "@keystar/ui/icon/icons/columnsIcon";
 import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
+import { typeIcon } from "@keystar/ui/icon/icons/typeIcon";
+import { alignLeftIcon } from "@keystar/ui/icon/icons/alignLeftIcon";
 import { fullscreenIcon } from "@keystar/ui/icon/icons/fullscreenIcon";
 import { layoutGridIcon } from "@keystar/ui/icon/icons/layoutGridIcon";
+import globalFontSettings from "../../src/settings/fonts.json";
+
+import { ImagePreviewer, useImageData } from "./helpers/ImagePreviewer";
+import { fontOverrideCSSRules } from "./helpers/FontOverrideCSS";
 
 // import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
 // import { fileIcon } from "@keystar/ui/icon/icons/fileIcon";
@@ -112,36 +119,6 @@ export const standardComponents = {
       customClass: customFields.customClass,
     },
     ContentView(props) {
-      const [imageDataUrl, setImageDataUrl] = useState<{
-        [key: string | number]: any;
-      }>({});
-
-      const fetchImages = async () => {
-        const updatedImageDataUrl: {
-          [key: string | number]: any;
-        } = {};
-        for (const [index, item] of props.value.items.entries()) {
-          if (item.image?.data) {
-            const u8intArray = item.image.data;
-            const blob = new Blob([u8intArray], { type: "image/png" });
-            const reader = new FileReader();
-            reader.onload = () => {
-              updatedImageDataUrl[index] = reader.result;
-              setImageDataUrl((prevData) => ({
-                ...prevData,
-                ...updatedImageDataUrl,
-              }));
-            };
-            reader.readAsDataURL(blob);
-          }
-        }
-      };
-
-      // Trigger image fetching when the component mounts
-      useEffect(() => {
-        fetchImages();
-      }, []);
-
       return (
         <div>
           Note: the images in the preview of this component will not update
@@ -153,15 +130,15 @@ export const standardComponents = {
               gap: props.value.options.gap,
             }}
           >
-            {Object.values(imageDataUrl).map((url, index) =>
-              url ? (
-                <img
+            {props.value.items.map((item, index) =>
+              item.image?.data ? (
+                <ImagePreviewer
                   style={{
                     aspectRatio: props.value.options.aspectRatio,
                     objectFit: "cover",
                   }}
                   key={index}
-                  src={url}
+                  imgData={item.image}
                   alt={`Image ${index}`}
                 />
               ) : (
@@ -185,7 +162,130 @@ export const standardComponents = {
       textDecorationLine: "underline",
     },
   }),
+  PageSection: wrapper({
+    label: "Page Section",
+    description:
+      "use this to create a section with a background color, custom padding, etc",
+    ContentView(props) {
+      const divRef = useRef<HTMLDivElement>(null); // Add type assertion
+      useEffect(() => {
+        if (divRef.current) {
+          const paddingProps = `padding-top:${props.value.spacing.boxPaddingTop};padding-bottom:${props.value.spacing.boxPaddingBottom};padding-left:${props.value.spacing.boxPaddingLeft};padding-right:${props.value.spacing.boxPaddingRight}`;
+          divRef.current.setAttribute(
+            "style",
+            props.value.css.customCSS + paddingProps,
+          ); // Fix the problem
+        }
+      }, [props.value.css.customCSS]);
+      return <div ref={divRef}>{props.children}</div>;
+    },
+    schema: {
+      sizing: fields.object(
+        {
+          boxWidth: customFields.cssUnit({
+            label: "Section Width",
+            defaultValue: "100%",
+            isCompact: true,
+          }),
+          contentWidth: fields.conditional(
+            fields.checkbox({
+              label: "Custom content width",
+              defaultValue: false,
+            }),
+            {
+              false: fields.empty(),
+              true: customFields.cssUnit({
+                label: "Content Block Width",
+                defaultValue: "800px",
+                isCompact: true,
+              }),
+            },
+          ),
+        },
+        { label: "Sizing", layout: [6, 6] },
+      ),
+      spacing: fields.object(
+        {
+          boxPaddingTop: customFields.cssUnit({
+            label: "Top Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          boxPaddingBottom: customFields.cssUnit({
+            label: "Bottom Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          boxPaddingLeft: customFields.cssUnit({
+            label: "Left Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          boxPaddingRight: customFields.cssUnit({
+            label: "Right Padding",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          alignContentBox: fields.select({
+            label: "Horizontally Align Content",
+            options: [
+              { label: "Left", value: "flex-start" },
+              { label: "Right", value: "flex-end" },
+              { label: "Center", value: "center" },
+            ],
+            defaultValue: "center",
+          }),
+          spaceBefore: customFields.cssUnit({
+            label: "Space Before Section",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+          spaceAfter: customFields.cssUnit({
+            label: "Space After Section",
+            defaultValue: "1rem",
+            isCompact: true,
+          }),
+        },
+        { label: "Spacing", layout: [6, 6, 6, 6, 12, 6, 6] },
+      ),
+      bgType: fields.conditional(
+        fields.select({
+          label: "Background Type",
+          defaultValue: "none",
+          options: [
+            { label: "None", value: "none" },
+            { label: "Color", value: "color" },
+            { label: "Image", value: "image" },
+          ],
+        }),
+        {
+          none: fields.empty(),
+          image: fields.image({
+            label: "Background Image",
+            directory: "src/assets/images",
+            publicPath: "",
+          }),
+          color: customFields.colorPicker({
+            label: "BG Color",
+            allowAlpha: true,
+          }),
+        },
+      ),
+      css: fields.object(
+        {
+          customClass: customFields.customClass,
 
+          customCSS: customFields.codeEditor({
+            label: "Custom CSS Code",
+            language: "",
+            disablePrettier: true,
+          }),
+        },
+
+        { label: "CSS" },
+      ),
+    },
+  }),
   HeroSection: wrapper({
     label: "Hero Section",
     schema: {
@@ -233,25 +333,12 @@ export const standardComponents = {
       customClass: customFields.customClass,
     },
     ContentView(props) {
-      const [imageDataUrl, setImageDataUrl] = useState<any>(null);
-
-      useEffect(() => {
-        if (props?.value?.image?.data) {
-          const u8intArray = props?.value?.image?.data;
-
-          const blob = new Blob([u8intArray], { type: "image/png" });
-          const reader = new FileReader();
-          reader.onload = () => {
-            setImageDataUrl(reader.result);
-          };
-          reader.readAsDataURL(blob);
-        }
-      }, []);
+      const bgImgSrc = useImageData(props.value.image);
 
       return (
         <div
           style={{
-            backgroundImage: `url(${imageDataUrl})`,
+            backgroundImage: `url(${bgImgSrc})`,
             height: props.value.height,
             maxWidth: props.value.width,
             backgroundSize: "cover",
@@ -286,28 +373,9 @@ export const standardComponents = {
     label: "Image (with Popout)",
     icon: fullscreenIcon,
     ContentView(props) {
-      const [imageDataUrl, setImageDataUrl] = useState<any>(null);
-
-      useEffect(() => {
-        const fetchImage = async () => {
-          if (props?.value?.image?.data) {
-            const u8intArray = props?.value?.image?.data;
-            // console.log(u8intArray);
-            const blob = new Blob([u8intArray], { type: "image/png" });
-            const reader = new FileReader();
-            reader.onload = () => {
-              setImageDataUrl(reader.result);
-            };
-            reader.readAsDataURL(blob);
-          }
-        };
-        fetchImage();
-      }, []);
-
+      props.value.image?.data;
       return (
-        <div>
-          <img src={imageDataUrl} alt="" />
-        </div>
+        <ImagePreviewer imgData={props.value.image} alt={props.value.altText} />
       );
     },
     schema: {
@@ -372,7 +440,21 @@ export const standardComponents = {
       );
     },
   }),
+  CustomFont: mark({
+    label: "Custom Font",
+    icon: typeIcon,
+    style: (props) => {
+      const { fontSettings } = props.value;
 
+      const styles = fontOverrideCSSRules(props);
+
+      return { ...styles, border: "1px dashed red" };
+    },
+    schema: {
+      fontSettings: typePropsOverride({ label: "" }),
+      customClass: fields.text({ label: "Custom CSS Class", defaultValue: "" }),
+    },
+  }),
   SimpleCol: wrapper({
     forSpecificLocations: true,
     label: "Col",
@@ -470,6 +552,27 @@ export const standardComponents = {
           {props.children}
         </div>
       );
+    },
+  }),
+  TextAlign: wrapper({
+    label: "Text Align",
+    icon: alignLeftIcon,
+    ContentView(props) {
+      return (
+        <div style={{ textAlign: props.value.align }}>{props.children}</div>
+      );
+    },
+    schema: {
+      align: fields.select({
+        label: "Text Alignment",
+        options: [
+          { label: "Left", value: "left" },
+          { label: "Center", value: "center" },
+          { label: "Right", value: "right" },
+          { label: "Justify (please don't lol)", value: "justify" },
+        ],
+        defaultValue: "left",
+      }),
     },
   }),
   Column: wrapper({

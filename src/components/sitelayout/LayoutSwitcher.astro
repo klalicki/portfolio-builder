@@ -4,7 +4,7 @@ import settings from "../../settings/menu.json";
 // import templates
 import SidebarPage from "./Sidebar/SidebarPage.astro";
 import TopbarPage from "./Topbar/TopbarPage.astro";
-
+import Footer from "./Footer/Footer.astro";
 let PageLayout;
 switch (settings.position.discriminant) {
   case "side":
@@ -107,4 +107,5 @@ switch (settings.position.discriminant) {
     });
   </script>
   <slot />
+  <Footer />
 </PageLayout>

@@ -1,14 +1,48 @@
 {
-  "font1": {
-    "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PVdvcmsrU2FuczppdGFsLHdnaHRAMCwxMDAuLjkwMDsxLDEwMC4uOTAwJmRpc3BsYXk9c3dhcCIKICByZWw9InN0eWxlc2hlZXQiCi8+Cg==",
-    "fontFamily": "\"Work Sans\", sans-serif"
-  },
-  "font2": {
-    "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PVBsYXlmYWlyK0Rpc3BsYXk6aXRhbCx3Z2h0QDAsNDAwLi45MDA7MSw0MDAuLjkwMCZkaXNwbGF5PXN3YXAiCiAgcmVsPSJzdHlsZXNoZWV0IgovPgo=",
-    "fontFamily": "\"Playfair Display\", serif"
-  },
-  "font3": {
-    "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PURlbGErR290aGljK09uZSZkaXNwbGF5PXN3YXAiCiAgcmVsPSJzdHlsZXNoZWV0IgovPgo=",
-    "fontFamily": "\"Dela Gothic One\", sans-serif"
-  }
+  "fontLibrary": [
+    {
+      "fontName": "Jersey 10 Charted",
+      "uniqueID": "1712937645048",
+      "mode": {
+        "discriminant": "remote",
+        "value": {
+          "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PUplcnNleSsxMCtDaGFydGVkJmRpc3BsYXk9c3dhcCIKICByZWw9InN0eWxlc2hlZXQiCi8+Cg==",
+          "fontFamily": "\"Jersey 10 Charted\", sans-serif"
+        }
+      }
+    },
+    {
+      "fontName": "DM Sans",
+      "uniqueID": "1712937629750",
+      "mode": {
+        "discriminant": "remote",
+        "value": {
+          "htmlLink": "PGxpbmsKICBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PURNK1NhbnM6aXRhbCxvcHN6LHdnaHRAMCw5Li40MCwxMDAuLjEwMDA7MSw5Li40MCwxMDAuLjEwMDAmZGlzcGxheT1zd2FwIgogIHJlbD0ic3R5bGVzaGVldCIKLz4K",
+          "fontFamily": " \"DM Sans\", sans-serif"
+        }
+      }
+    },
+    {
+      "fontName": "Funnel Display",
+      "uniqueID": "1731355953068",
+      "mode": {
+        "discriminant": "remote",
+        "value": {
+          "htmlLink": "PGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1GdW5uZWwrRGlzcGxheTp3Z2h0QDMwMC4uODAwJmZhbWlseT1Xb3JrK1NhbnM6aXRhbCx3Z2h0QDAsMTAwLi45MDA7MSwxMDAuLjkwMCZkaXNwbGF5PXN3YXAiIHJlbD0ic3R5bGVzaGVldCI+Cg==",
+          "fontFamily": "\"Funnel Display\", sans-serif"
+        }
+      }
+    },
+    {
+      "fontName": "Funnel Sans",
+      "uniqueID": "1731355991189",
+      "mode": {
+        "discriminant": "remote",
+        "value": {
+          "htmlLink": "PGxpbmsgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1GdW5uZWwrU2FuczppdGFsLHdnaHRAMCwzMDAuLjgwMDsxLDMwMC4uODAwJmRpc3BsYXk9c3dhcCIgcmVsPSJzdHlsZXNoZWV0Ij4K",
+          "fontFamily": "\"Funnel Sans\", sans-serif"
+        }
+      }
+    }
+  ]
 }
