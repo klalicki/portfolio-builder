@@ -1,7 +1,7 @@
 ---
 const { props } = Astro;
 import OptimizedImage from "./OptimizedImage.astro";
-let cssVars = {};
+let cssVars: any = {};
 switch (props.bgType.discriminant) {
   case "none":
     cssVars = { ...props.sizing, ...props.spacing };
@@ -23,6 +23,11 @@ switch (props.bgType.discriminant) {
   default:
     cssVars = { ...props.sizing, ...props.spacing };
 }
+if (props.sizing.contentWidth.discriminant) {
+  cssVars.contentWidth = props.sizing.contentWidth.value;
+} else {
+  cssVars.contentWidth = "var(--maxPageContentWidth)";
+}
 ---
 
 <div
@@ -41,10 +46,10 @@ switch (props.bgType.discriminant) {
     )
   }
   <div class="page-section-content">
-    <p>{JSON.stringify(cssVars)}</p>
+    <p>CSS Vars <br />{JSON.stringify(cssVars)}</p>
+    <p>Astro Props <br />{JSON.stringify(props)}</p>
+    <slot />
   </div>
-
-  <slot />
 </div>
 <style define:vars={cssVars}>
   .page-section-wrapper {
@@ -54,10 +59,16 @@ switch (props.bgType.discriminant) {
     padding-right: var(--boxPaddingRight);
     padding-top: var(--boxPaddingTop);
     padding-bottom: var(--boxPaddingBottom);
+    display: flex;
+    flex-direction: column;
+    align-items: var(--alignContentBox);
   }
   .page-section-content {
     max-width: var(--contentWidth);
+    width: 100%;
+    padding: 0 var(--standardPadding);
   }
+
   .section-bg-none {
     background-color: transparent;
   }

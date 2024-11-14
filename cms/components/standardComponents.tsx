@@ -164,6 +164,11 @@ export const standardComponents = {
     schema: {
       sizing: fields.object(
         {
+          boxWidth: customFields.cssUnit({
+            label: "Section Width",
+            defaultValue: "100%",
+            isCompact: true,
+          }),
           contentWidth: fields.conditional(
             fields.checkbox({
               label: "Custom content width",
@@ -178,11 +183,6 @@ export const standardComponents = {
               }),
             },
           ),
-          boxWidth: customFields.cssUnit({
-            label: "Section Width",
-            defaultValue: "100%",
-            isCompact: true,
-          }),
         },
         { label: "Sizing", layout: [6, 6] },
       ),
@@ -218,7 +218,7 @@ export const standardComponents = {
             defaultValue: "center",
           }),
         },
-        { label: "Spacing", layout: [6, 6, 6, 6] },
+        { label: "Spacing", layout: [6, 6, 6, 6, 12] },
       ),
       bgType: fields.conditional(
         fields.select({
